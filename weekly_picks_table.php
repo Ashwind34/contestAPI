@@ -11,28 +11,28 @@ require_once ('pdo_connect.php');
 
 $datemarker = 0;
 
-//problem starts here.  need to learn to join rows from both test tables, then submit to array, then debug while loop below
+//create array - data to be displayed in weekly picks table below.  Will need to limit by pick_1_week
 
-$query=$conn->prepare("SELECT 
-						player_id, 
-						user_name, 
-						fav_team
-						FROM player_roster"); 
-						/*player_picks.player_id,
+$query=$conn->prepare("SELECT
+						 
+						player_roster.user_name, 
+						player_roster.fav_team,						 
 						player_picks.pick_1,
 						player_picks.pick_2,
 						player_picks.pick_3,
 						player_picks.pick_4,
 						player_picks.pick_5,
 						player_picks.pick_1_week,
-						player_picks.time_entered");*/
+						player_picks.time_entered
+                        FROM 
+                        player_roster JOIN player_picks ON
+                        player_roster.player_id = player_picks.player_id");
 						
 						
 $query->execute();
 
 $data=$query->fetch(PDO::FETCH_ASSOC);
 
-//echo $data;
 
 if (count($data) > 0) {
 	
@@ -49,12 +49,13 @@ if (count($data) > 0) {
 		<td align="center">Pick #5</td>
 		<td align="center">Time of Entry</td></tr>';
 		
-		//code breaks down here - something wrong with $row syntax
+		/*code breaks down here - something wrong with $row syntax - first row in join prints normal, then continually prints same row 
+		over and over, does not stop.  Must find a way to display all rows and end while loop after final row*/
 		
 		while ($row=$data) {
 		
-			echo '<tr><td align="center">' . $row['user.name'] . '</td>
-			<td align="center">' . $row['fav.team'] . '</td>
+			echo '<tr><td align="center">' . $row['user_name'] . '</td>
+			<td align="center">' . $row['fav_team'] . '</td>
 			<td align="center">' . $row['pick_1'] . '</td>
 			<td align="center">' . $row['pick_2'] . '</td>
 			<td align="center">' . $row['pick_3'] . '</td>
