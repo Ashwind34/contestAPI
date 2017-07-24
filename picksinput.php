@@ -14,7 +14,7 @@ if (empty($_POST['pick_1'])) {
 		if (!empty($_POST['pick_1']) && !empty($_POST['pick_2']) && !empty($_POST['pick_3']) && 
 		!empty($_POST['pick_4']) && !empty($_POST['pick_5'])) {
 
-		//PDO prepared statement
+		//PDO prepared statement (MUST STILL INSERT WEEK VARIABLE TO DIVIDE PICKS BY WEEK)
 		
 		$submit = $conn->prepare("INSERT INTO player_picks (player_id, pick_1, pick_2, pick_3, pick_4, pick_5) 
 								VALUES (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5)");
@@ -80,7 +80,7 @@ p {
 			while ($teamlist = $query->fetch(PDO::FETCH_ASSOC))
 			{
 	?>
-	
+	<!--will also need to update ['pick_1'] to match with new db query (for all 5 picks)-->
 	<option value="<?php echo $teamlist['pick_1']; ?>"><?php echo $teamlist['pick_1']; ?></option>
 	<?php 
 	

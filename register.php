@@ -65,7 +65,7 @@ mysqli_close($conn);
 	Favorite NFL Team? <input type="text" name="team" id="team"><br><br>
 	Your Password <input type="password" name="userpass" id="userpass"><br><br>
 	Confirm Password <input type="password" name="confirmpass" id="confirmpass"><br><br> 
-	<input type="submit" name="Register">
+	<input type="submit" name="register" value="Register">
 <form>
 
 </body>

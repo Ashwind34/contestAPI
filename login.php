@@ -42,7 +42,7 @@ if(!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
 <form action="login.php" method="post">
 	Email Address <input type="text" name="useremail" id="useremail"><br><br>
 	Password <input type="password" name="userpass" id="userpass"><br><br>
-	<input type="submit" name="Login">
+	<input type="submit" name="login" value="Login">
 </form>
 
 </body>

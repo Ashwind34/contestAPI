@@ -7,6 +7,9 @@
 </body>
 <?php 
 
+
+$logfile = '/error.txt';
+
 require_once ('pdo_connect.php');
 
 $datemarker = 0;
@@ -54,10 +57,22 @@ if (count($data) > 0) {
 		<th align="center">Pick #5</th>
 		<th align="center">Time of Entry</th></tr>';
 		
+		fopen ($logfile. "a");
+		
+		
 	// foreach loop to list out each row in the array	
 		
 		foreach ($data as $row) {
 			
+			/*tims stupid error log tip
+		fwrite ($logfle, "entry= " . $row['user_name'] . ", " . 
+		$row['fav_team'] . ", " . 
+		$row['pick_1'] . ", " . 
+		$row['pick_2'] . ", " . 
+		$row['pick_3'] . ", " . 
+		$row['pick_4'] . ", " . 
+		$row['pick_5'] . ", " .
+		$row['time_entered'] . PHP_EOL;*/
 				
 			echo 
 			'<tr><td align="center">' . $row['user_name'] . '</td>
@@ -73,6 +88,7 @@ if (count($data) > 0) {
 			
 		} 
 		
+		fclose ($logfle);
 		
 		echo  '</table>';
 		
