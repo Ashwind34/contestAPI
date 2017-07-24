@@ -55,6 +55,13 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 <p>
 <b>Hello<?php echo "$user[first_name]";?>!</p>
 
+<!--datecheck test url
+
+<p><a href="datecheck.php">Date Check</a></p>
+
+<p><a href="functions.php">Date Function</a></p>
+-->
+
 
 <!--only shows login links if user is not logged in-->
 

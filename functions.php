@@ -20,12 +20,12 @@ $season_start = strtotime("09/03/2017");
 
 $weekmarker = ceil((($date - $season_start)/"604800"));
 
-/*PRINT VALUES 
+//PRINT VALUES 
 echo 
 $today . "<br>" . 
 $date . "<br>" .
 $season_start . "<br>" .
-$weekmarker;*/
+$weekmarker;
 
 
 ?>

@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p style=text-align:center; color:blue;>Your picks for week [] have been submitted!</p>
+<?php 
+
+require_once('datecheck.php');
+require_once('pdo_connect.php');
+
+?>
+
+<p style=text-align:center; color:blue;>Your picks for week <?php echo $weekmarker; ?> have been submitted!</p>
 <p style=text-align:center;><a href="index.php">Return to Home Page</a></p>
 
 </body>
 <?php 
 
-require_once ('pdo_connect.php');
 
 $datemarker = 0;
 //need to fill this in with a function from another file

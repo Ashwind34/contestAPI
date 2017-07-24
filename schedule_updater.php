@@ -8,9 +8,8 @@
 <?php 
 
 require_once ('pdo_connect.php');
+require_once ('datecheck.php');
 
-//need to fill this in with a function from another file
-$datemarker = 1;
 
 /*PDO statement to update spreads and scores from form below
 if (empty($_POST(['h_spread']))) {
@@ -40,7 +39,7 @@ $query=$conn->prepare("SELECT
 						FROM
 						regseason
 						WHERE
-						week='$datemarker'");
+						week='$weekmarker'");
 						
 						 
 												
