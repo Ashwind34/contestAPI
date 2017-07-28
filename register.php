@@ -60,9 +60,51 @@ mysqli_close($conn);
 	
 	First Name <input type="text" value="<?php if( isset($_POST['fname'])){ echo $_POST['fname'];} ?>" name="fname" id="fname"><br><br>
 	Last Name  <input type="text" name="lname" id="lname"><br><br>
-	Your Email Address <input type="text" name="useremail" id="useremail"><br><br>
+	
+	<!-- MUST UPDATE DB CONNECTION AND INSERT STATEMENT TO PDO TO USE DROPDOWN MENUS -->
+	
+	<!-- <p>Email Address <select name="useremail">
+	<option value="">-Select-</option>
+	<?php 
+	// query db to get list of player emails
+		$query = $conn->prepare("SELECT email FROM player_roster");
+		$query->execute();		
+			while ($email_list = $query->fetch(PDO::FETCH_ASSOC))
+			{
+	?>
+	
+	<option value="<?php echo $email_list['email']; ?>"><?php echo $email_list['email']; ?></option>
+	<?php 
+	
+			}
+			
+			
+	?>
+	</select></p><br>
+	
+	<p>Favorite NFL Team <select name="useremail">
+	<option value="">-Select-</option>
+	<?php 
+	// query db to get list of all NFL teams 
+		$query = $conn->prepare(
+		"SELECT home AS teamlist FROM regseason WHERE week='1'
+		UNION
+		SELECT away AS teamlist FROM regseason WHERE week='1'
+		ORDER BY teamlist ASC");
+		$query->execute();		
+			while ($nfl_teams = $query->fetch(PDO::FETCH_ASSOC))
+			{
+	?>
+	
+	<option value="<?php echo $nfl_teams['teamlist']; ?>"><?php echo $nfl_teams['teamlist']; ?></option>
+	<?php 
+	
+			}
+			
+			
+	?>
+	</select></p><br> -->
 	Select User Name <input type="text" name="uname" id="uname"><br><br>
-	Favorite NFL Team? <input type="text" name="team" id="team"><br><br>
 	Your Password <input type="password" name="userpass" id="userpass"><br><br>
 	Confirm Password <input type="password" name="confirmpass" id="confirmpass"><br><br> 
 	<input type="submit" name="register" value="Register">
