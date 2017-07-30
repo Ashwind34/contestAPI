@@ -1,10 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+p
+{
+	text-align:center;
+
+}
+</style>
+<body>
 
 <?php
 
 require_once('pdo_connect.php');
 
-
-	
 	//Check to make sure form is empty
 
 if (!empty($_POST['register'])) {
@@ -18,10 +30,17 @@ if (!empty($_POST['register'])) {
 		if(!empty($_POST['userpass']) && !empty($_POST['fname']) && !empty($_POST['lname']) && !empty($_POST['email']) 
 		&& !empty($_POST['uname']) && !empty($_POST['team'])) {
 			
-		//Prepared Statement 
+		//Prepared Statement (MOST LIKELY NEED TO DELETE FIRST NAME AND LAST NAME FROM INPUT AND QUERY
 		
-		$submit = $conn->prepare("REPLACE INTO player_roster (first_name, last_name, user_name, email, password, fav_team) 
-					VALUES (:fname, :lname, :uname, :email, :password, :team)");
+		$query = "UPDATE player_roster 
+					SET first_name = :fname,
+					last_name = :lname,
+					user_name = :uname,
+					fav_team = :team,
+					password = :password
+					WHERE email = :email";
+		
+		$submit = $conn->prepare($query);
 		
 		//Bind Parameters
 		
@@ -32,15 +51,12 @@ if (!empty($_POST['register'])) {
 		$submit->BindParam(':password', password_hash($_POST['userpass'], PASSWORD_BCRYPT));
 		$submit->BindParam(':team', $_POST['team']);
 		
-			
-		
-
-				
+						
 		//Submit query to database
 
 			if ($submit->execute()) {
-				echo "User Added Successfully";
-				echo '<br><a href="index.php">Return to Home Page</a>';
+				echo '<br><p style="font-size:20px">Player Updated Successfully</p>';
+				echo '<br><p style="font-size:20px;"><a href="index.php">Return to Home Page</a></p>';
 				} else {
 				echo "Registration failed.  Please try again."; 
 			}
@@ -57,25 +73,11 @@ if (!empty($_POST['register'])) {
 
 
 ?>
-<!DOCTYPE HTML>
-<html>
 
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<style>
-p
-{
-	text-align:center;
-
-}
-</style>
-<body>
 
 <br>
 <p style="font-size:25px"><b>PLEASE REGISTER</b></p>
-<br>
-<br>
+
 
 <form action="register.php" method="post">
 	
@@ -87,9 +89,9 @@ p
 	<option value="">-Select-</option>
 	<?php 
 	// query db to get list of player emails
-		$query = $conn->prepare("SELECT email FROM player_roster");
-		$query->execute();		
-			while ($email_list = $query->fetch(PDO::FETCH_ASSOC))
+		$email_query = $conn->prepare("SELECT email FROM player_roster");
+		$email_query->execute();		
+			while ($email_list = $email_query->fetch(PDO::FETCH_ASSOC))
 			{
 	?>
 	
@@ -110,13 +112,13 @@ p
 	<option value="">-Select-</option>
 	<?php 
 	// query db to get list of all NFL teams 
-		$teamquery = $conn->prepare(
+		$team_query = $conn->prepare(
 		"SELECT home AS teamlist FROM regseason WHERE week='1'
 		UNION
 		SELECT away AS teamlist FROM regseason WHERE week='1'
 		ORDER BY teamlist ASC");
-		$teamquery->execute();		
-			while ($nfl_teams = $teamquery->fetch(PDO::FETCH_ASSOC))
+		$team_query->execute();		
+			while ($nfl_teams = $team_query->fetch(PDO::FETCH_ASSOC))
 			{
 	?>
 	
