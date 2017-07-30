@@ -1,47 +1,60 @@
 
 <?php
 
-require_once('mysqli_connect.php');
-	
-	//Check to make sure all fields completed
+require_once('pdo_connect.php');
 
-if ($_POST['userpass'] == $_POST['confirmpass']) {
+
 	
-	if(!empty($_POST['userpass']) && !empty($_POST['fname']) && !empty($_POST['lname']) && !empty($_POST['useremail']) 
-	&& !empty($_POST['uname']) && !empty($_POST['team'])) {
+	//Check to make sure form is empty
+
+if (!empty($_POST['register'])) {
+	
+	//check to make sure password is confirmed
+	
+	if ($_POST['userpass'] == $_POST['confirmpass']) {
 		
-	//DB query to enter form data
-
-	$query = "INSERT INTO player_roster (first_name, last_name, user_name, email, password, fav_team) 
-				VALUES ( ? , ? , ? , ? , ? , ? )";
-	
-	//Prepared Statement
-	
-	$stmt = $conn->prepare($query);
-	
-	//Bind Parameters
-	
-	$stmt->bind_param('ssssss', $_POST['fname'], $_POST['lname'], $_POST['uname'], 
-			$_POST['useremail'], PASSWORD_HASH($_POST['userpass'], PASSWORD_DEFAULT), $_POST['team']);
-	
+		//check to make sure all fields completed
+		
+		if(!empty($_POST['userpass']) && !empty($_POST['fname']) && !empty($_POST['lname']) && !empty($_POST['email']) 
+		&& !empty($_POST['uname']) && !empty($_POST['team'])) {
 			
-	//Submit query to database
+		//Prepared Statement 
+		
+		$submit = $conn->prepare("REPLACE INTO player_roster (first_name, last_name, user_name, email, password, fav_team) 
+					VALUES (:fname, :lname, :uname, :email, :password, :team)");
+		
+		//Bind Parameters
+		
+		$submit->BindParam(':fname', $_POST['fname']);
+		$submit->BindParam(':lname', $_POST['lname']);
+		$submit->BindParam(':uname', $_POST['uname']);
+		$submit->BindParam(':email', $_POST['email']);
+		$submit->BindParam(':password', password_hash($_POST['userpass'], PASSWORD_BCRYPT));
+		$submit->BindParam(':team', $_POST['team']);
+		
+			
+		
 
-		if ($stmt->execute()) {
-			echo "User Added Successfully";
-			echo '<br><a href="index.php">Return to Home Page</a>';
-			} else {
-			echo ("Registration Failed, Error is: " . mysqli_error($conn)); 
+				
+		//Submit query to database
+
+			if ($submit->execute()) {
+				echo "User Added Successfully";
+				echo '<br><a href="index.php">Return to Home Page</a>';
+				} else {
+				echo "Registration failed.  Please try again."; 
+			}
 		}
-	}
-} else {
-		echo "Password does not match.  Please try again.";
-	}	
+	} else {
+			echo "Password does not match.  Please try again.";
+		}
+} else {		
+	
 
 	
 	
 
-mysqli_close($conn);
+
 
 ?>
 <!DOCTYPE HTML>
@@ -50,20 +63,27 @@ mysqli_close($conn);
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<style>
+p
+{
+	text-align:center;
+
+}
+</style>
 <body>
 
 <br>
+<p style="font-size:25px"><b>PLEASE REGISTER</b></p>
 <br>
 <br>
 
 <form action="register.php" method="post">
 	
-	First Name <input type="text" value="<?php if( isset($_POST['fname'])){ echo $_POST['fname'];} ?>" name="fname" id="fname"><br><br>
-	Last Name  <input type="text" name="lname" id="lname"><br><br>
+	
 	
 	<!-- MUST UPDATE DB CONNECTION AND INSERT STATEMENT TO PDO TO USE DROPDOWN MENUS -->
 	
-	<!-- <p>Email Address <select name="useremail">
+	<p>Email Address <select name="email">
 	<option value="">-Select-</option>
 	<?php 
 	// query db to get list of player emails
@@ -82,17 +102,21 @@ mysqli_close($conn);
 	?>
 	</select></p><br>
 	
-	<p>Favorite NFL Team <select name="useremail">
+	<p>First Name <input type="text"  name="fname" id="fname"></p><br><br>
+	
+	<p>Last Name  <input type="text" name="lname" id="lname"></p><br><br>
+	
+	<p>Favorite NFL Team <select name="team">
 	<option value="">-Select-</option>
 	<?php 
 	// query db to get list of all NFL teams 
-		$query = $conn->prepare(
+		$teamquery = $conn->prepare(
 		"SELECT home AS teamlist FROM regseason WHERE week='1'
 		UNION
 		SELECT away AS teamlist FROM regseason WHERE week='1'
 		ORDER BY teamlist ASC");
-		$query->execute();		
-			while ($nfl_teams = $query->fetch(PDO::FETCH_ASSOC))
+		$teamquery->execute();		
+			while ($nfl_teams = $teamquery->fetch(PDO::FETCH_ASSOC))
 			{
 	?>
 	
@@ -103,14 +127,20 @@ mysqli_close($conn);
 			
 			
 	?>
-	</select></p><br> -->
-	Select User Name <input type="text" name="uname" id="uname"><br><br>
-	Your Password <input type="password" name="userpass" id="userpass"><br><br>
-	Confirm Password <input type="password" name="confirmpass" id="confirmpass"><br><br> 
-	<input type="submit" name="register" value="Register">
+	</select></p><br> 
+	
+	<p>Select User Name <input type="text" name="uname" id="uname"><p><br><br>
+	
+	<p>Your Password <input type="password" name="userpass" id="userpass"></p><br><br>
+	
+	<p>Confirm Password <input type="password" name="confirmpass" id="confirmpass"></p><br><br> 
+	
+	<p><input type="submit" name="register" value="Register"></p>
 <form>
 
-</body>
 
+
+</body>
+<?php }  ?>
 
 </html>
