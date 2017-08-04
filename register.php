@@ -4,6 +4,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<link rel="stylesheet" type="text/css" href="style.css">
 <style>
 p
 {
@@ -16,6 +17,7 @@ p
 <?php
 
 require_once('pdo_connect.php');
+require_once('datecheck.php');
 
 	//Check to make sure form is empty
 
@@ -30,7 +32,7 @@ if (!empty($_POST['register'])) {
 		if(!empty($_POST['userpass']) && !empty($_POST['fname']) && !empty($_POST['lname']) && !empty($_POST['email']) 
 		&& !empty($_POST['uname']) && !empty($_POST['team'])) {
 			
-		//Prepared Statement (MOST LIKELY NEED TO DELETE FIRST NAME AND LAST NAME FROM INPUT AND QUERY
+		//Prepared Statement (MOST LIKELY NEED TO DELETE FIRST NAME AND LAST NAME FROM INPUT AND QUERY)
 		
 		$query = "UPDATE player_roster 
 					SET first_name = :fname,
@@ -66,24 +68,13 @@ if (!empty($_POST['register'])) {
 		}
 } else {		
 	
-
-	
-	
-
-
-
 ?>
 
 
 <br>
 <p style="font-size:25px"><b>PLEASE REGISTER</b></p>
 
-
 <form action="register.php" method="post">
-	
-	
-	
-	<!-- MUST UPDATE DB CONNECTION AND INSERT STATEMENT TO PDO TO USE DROPDOWN MENUS -->
 	
 	<p>Email Address <select name="email">
 	<option value="">-Select-</option>
@@ -96,6 +87,7 @@ if (!empty($_POST['register'])) {
 	?>
 	
 	<option value="<?php echo $email_list['email']; ?>"><?php echo $email_list['email']; ?></option>
+	
 	<?php 
 	
 			}
@@ -104,9 +96,9 @@ if (!empty($_POST['register'])) {
 	?>
 	</select></p><br>
 	
-	<p>First Name <input type="text"  name="fname" id="fname"></p><br><br>
+	<p>First Name <input type="text"  name="fname" id="fname"></p><br>
 	
-	<p>Last Name  <input type="text" name="lname" id="lname"></p><br><br>
+	<p>Last Name  <input type="text" name="lname" id="lname"></p><br>
 	
 	<p>Favorite NFL Team <select name="team">
 	<option value="">-Select-</option>
@@ -131,11 +123,11 @@ if (!empty($_POST['register'])) {
 	?>
 	</select></p><br> 
 	
-	<p>Select User Name <input type="text" name="uname" id="uname"><p><br><br>
+	<p>Select User Name <input type="text" name="uname" id="uname"><p><br>;
+		
+	<p>Your Password <input type="password" name="userpass" id="userpass"></p><br>
 	
-	<p>Your Password <input type="password" name="userpass" id="userpass"></p><br><br>
-	
-	<p>Confirm Password <input type="password" name="confirmpass" id="confirmpass"></p><br><br> 
+	<p>Confirm Password <input type="password" name="confirmpass" id="confirmpass"></p><br> 
 	
 	<p><input type="submit" name="register" value="Register"></p>
 <form>

@@ -5,6 +5,31 @@ session_start();
 require_once('pdo_connect.php');
 require_once('datecheck.php');
 
+if( isset($_SESSION['player_id'])) {
+	
+	//PDO prepared statement
+	$record = $conn->prepare("SELECT player_id, first_name FROM player_roster WHERE player_id = :id"); 
+	$record->bindParam(':id',$_SESSION['player_id']);
+	$record->execute();
+	
+	//create associative array from query
+	$result = $record->fetch(PDO::FETCH_ASSOC);
+	
+	
+	//set $user as array that contains query data
+	if (COUNT($result) > 0 ) {
+	$user = $result;
+	} else {
+		die("No result returned");
+}
+}
+// query db to get list of teams available to pick for that week NEED TO UPDATE TO CHECK DATE VS TEAM'S GAME START
+$team_query = 
+		"SELECT home AS teamlist FROM regseason WHERE week='$weekmarker'
+		UNION
+		SELECT away AS teamlist FROM regseason WHERE week='$weekmarker'
+		ORDER BY teamlist ASC";
+
 //skip sql query before data is entered
 
 if (empty($_POST['pick_1'])) {
@@ -15,16 +40,17 @@ if (empty($_POST['pick_1'])) {
 		if (!empty($_POST['pick_1']) && !empty($_POST['pick_2']) && !empty($_POST['pick_3']) && 
 		!empty($_POST['pick_4']) && !empty($_POST['pick_5'])) {
 
-		//PDO prepared statement (MUST STILL INSERT WEEK VARIABLE TO DIVIDE PICKS BY WEEK)
+		//PDO prepared statement 
 		
-		$submit = $conn->prepare("INSERT INTO player_picks (player_id, pick_1, pick_2, pick_3, pick_4, pick_5) 
-								VALUES (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5)");
+		$submit = $conn->prepare("INSERT INTO player_picks (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
+								VALUES (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5, :weekmarker)");
 		$submit->BindParam(':pick_1', $_POST['pick_1']);
 		$submit->BindParam(':pick_2', $_POST['pick_2']);
 		$submit->BindParam(':pick_3', $_POST['pick_3']);
 		$submit->BindParam(':pick_4', $_POST['pick_4']);
 		$submit->BindParam(':pick_5', $_POST['pick_5']);
 		$submit->BindParam(':player_id', $_SESSION['player_id']);
+		$submit->BindParam(':weekmarker', $weekmarker);
 		
 			//make sure statement executes correctly, then send to table with all player picks
 		
@@ -45,6 +71,8 @@ if (empty($_POST['pick_1'])) {
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <title>Week <?php echo $weekmarker;?> Picks</title>
 <body>
@@ -63,7 +91,7 @@ p {
 
 </style>
 
-<h1>MAKE YOUR PICKS FOR WEEK <?php echo $weekmarker;?></h1>
+<h1>Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!</h1>
 
 
 
@@ -72,11 +100,11 @@ p {
 
 	<p>Pick #1</p>
 	
-	<p><select name="pick_1">'
+	<p><select name="pick_1">
 	<option value="">-Select-</option>
 	<?php 
-	// query db to get list of teams available to pick for that week -- NEED TO COMBINE HOME AND AWAY INTO ONE COLUMN
-		$query = $conn->prepare("SELECT home, away AS teamlist FROM regseason WHERE week='$weekmarker'");
+	// insert team list as options for picks dropdown list
+		$query = $conn->prepare($team_query);
 		$query->execute();		
 			while ($teamlist = $query->fetch(PDO::FETCH_ASSOC))
 			{
@@ -93,10 +121,10 @@ p {
 
 	<p>Pick #2</p>
 
-	<p><select name="pick_2">'
+	<p><select name="pick_2">
 	<option value="">-Select-</option>
 	<?php 
-	$query = $conn->prepare("SELECT home, away AS teamlist FROM regseason WHERE week='$weekmarker'");
+	$query = $conn->prepare($team_query);
 		$query->execute();		
 			while ($teamlist = $query->fetch(PDO::FETCH_ASSOC))
 			{
@@ -113,10 +141,10 @@ p {
 	
 	<p>Pick #3</p>
 
-<p><select name="pick_3">'
+<p><select name="pick_3">
 	<option value="">-Select-</option>
 	<?php 
-		$query = $conn->prepare("SELECT home, away AS teamlist FROM regseason WHERE week='$weekmarker'");
+		$query = $conn->prepare($team_query);
 		$query->execute();		
 			while ($teamlist = $query->fetch(PDO::FETCH_ASSOC))
 			{
@@ -133,10 +161,10 @@ p {
 	
 	<p>Pick #4</p>
 
-	<p><select name="pick_4">'
+	<p><select name="pick_4">
 	<option value="">-Select-</option>
 	<?php 
-	$query = $conn->prepare("SELECT home, away AS teamlist FROM regseason WHERE week='$weekmarker'");
+	$query = $conn->prepare($team_query);
 		$query->execute();		
 			while ($teamlist = $query->fetch(PDO::FETCH_ASSOC))
 			{
@@ -153,10 +181,10 @@ p {
 	
 	<p>Pick #5</p>
 
-	<p><select name="pick_5">'
+	<p><select name="pick_5">
 	<option value="">-Select-</option>
 	<?php 
-	$query = $conn->prepare("SELECT home, away AS teamlist FROM regseason WHERE week='$weekmarker'");
+	$query = $conn->prepare($team_query);
 		$query->execute();		
 			while ($teamlist = $query->fetch(PDO::FETCH_ASSOC))
 			{

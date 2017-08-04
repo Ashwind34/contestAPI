@@ -33,16 +33,45 @@ if(!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<style>
+
+	p{text-align:center;}
+	
+</style>
+
 <body>
 
 <br>
 <br>
+<p style="font-size:25px"><b>PLEASE LOGIN</b></p>
 <br>
 
+
+
 <form action="login.php" method="post">
-	Email Address <input type="text" name="useremail" id="useremail"><br><br>
-	Password <input type="password" name="userpass" id="userpass"><br><br>
-	<input type="submit" name="login" value="Login">
+	<!--Email Address <input type="text" name="useremail" id="useremail"><br><br> -->
+		
+	<p>Email Address <select name="useremail">
+	<option value="">-Select-</option>
+	<?php 
+	// query db to get list of player emails 
+		$query = $conn->prepare("SELECT email FROM player_roster");
+		$query->execute();		
+			while ($email_list = $query->fetch(PDO::FETCH_ASSOC))
+			{
+	?>
+	
+	<option value="<?php echo $email_list['email']; ?>"><?php echo $email_list['email']; ?></option>
+	<?php 
+	
+			}
+			
+			
+	?>
+	</select></p><br>
+	<p>Password <input type="password" name="userpass" id="userpass"></p><br><br>
+	<p><input type="submit" name="login" value="Login"></p>
 </form>
 
 </body>

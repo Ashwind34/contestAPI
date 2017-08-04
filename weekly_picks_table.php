@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body>
 <?php 
 
 require_once('datecheck.php');
 require_once('pdo_connect.php');
+require_once('weekly_picks_query.php');
 
 ?>
 
@@ -14,40 +16,18 @@ require_once('pdo_connect.php');
 </body>
 <?php 
 
+//query most recent picks by each player, (weekly_picks_query.php)
 
-$datemarker = 0;
-//need to fill this in with a function from another file
+$picks_table;
 
-$query=$conn->prepare("SELECT
-						 
-						player_roster.user_name, 
-						player_roster.fav_team,						 
-						player_picks.pick_1,
-						player_picks.pick_2,
-						player_picks.pick_3,
-						player_picks.pick_4,
-						player_picks.pick_5,
-						player_picks.pick_1_week,
-						player_picks.time_entered
-                        FROM 
-                        player_roster JOIN player_picks ON
-                        player_roster.player_id = player_picks.player_id");
-						
-						
-$query->execute();
-//query for all picks on record - MUST LIMIT BY WEEK
+//create array - data to be displayed in weekly picks table below.
 
-
-$data=$query->fetchall(PDO::FETCH_ASSOC);
-//create array - data to be displayed in weekly picks table below.  Will need to limit by pick_1_week
-
-
-
-
-
+$data=$picks_table->fetchall(PDO::FETCH_ASSOC);
+  
+//Make sure	query array is not empty, then create html table with all entries
+  
 if (count($data) > 0) {
 	
-//Make sure	query array is not empty, then create html table with all entries
 		
 		echo '<table align="center" border="1" cellspacing="5" cellpadding="8">
 		

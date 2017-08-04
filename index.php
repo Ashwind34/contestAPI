@@ -3,6 +3,7 @@
 session_start();
 
 require_once('pdo_connect.php');
+require_once('datecheck.php');
 
 //check if user is logged in
 
@@ -35,11 +36,12 @@ if( isset($_SESSION['player_id'])) {
 <title>
 	SuperContest 2017
 </title>
+<link rel="stylesheet" type="text/css" href="style.css">
 <style>
-	h1{color:green;}
+	<!--h1{color:green;}
 	h2{color:black;}
 	p {color:blue; text-align:center;}
-	body {background-color:grey;}
+	body {background-color:grey;} -->
 	
 	
 </style>
@@ -53,7 +55,7 @@ style="text-align:center;">WELCOME TO THE 2017 NFL SUPERCONTEST</h1>
 style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 <p><b>THIS IS A WORK IN PROGRESS</b></p>
 <p>
-<b>Hello<?php echo "$user[first_name]";?>!</p>
+<b>Hello<?php echo " $user[first_name]";?>!</p>
 
 <!--datecheck test url
 
@@ -74,7 +76,7 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 		<p><a href="register.php">Click Here to Register</a></p>
 		<br>
 		<br>
-		<p><a href="user_table_test.php">Player Roster</a></p>
+		<p><a href="user_table_test.php">Leaderboard</a></p>
 		<br>
 		<br>';
 	} else {
