@@ -4,6 +4,7 @@ session_start();
 
 require_once('pdo_connect.php');
 require_once('datecheck.php');
+require_once('player_picks_query.php');
 
 if( isset($_SESSION['player_id'])) {
 	
@@ -24,10 +25,17 @@ if( isset($_SESSION['player_id'])) {
 }
 }
 // query db to get list of teams available to pick for that week NEED TO UPDATE TO CHECK DATE VS TEAM'S GAME START
+
+
+
 $team_query = 
-		"SELECT home AS teamlist FROM regseason WHERE week='$weekmarker'
+		"SELECT home AS teamlist
+		FROM regseason 
+		WHERE week='$weekmarker' AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > 'time()'
 		UNION
-		SELECT away AS teamlist FROM regseason WHERE week='$weekmarker'
+		SELECT away AS teamlist
+		FROM regseason 
+		WHERE week='$weekmarker' AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > 'time()'
 		ORDER BY teamlist ASC";
 
 //skip sql query before data is entered
@@ -124,7 +132,7 @@ p {
 	<p><select name="pick_2">
 	<option value="">-Select-</option>
 	<?php 
-	$query = $conn->prepare($team_query);
+		$query = $conn->prepare($team_query);
 		$query->execute();		
 			while ($teamlist = $query->fetch(PDO::FETCH_ASSOC))
 			{
@@ -195,7 +203,7 @@ p {
 	
 			}
 			
-			
+	
 	?>
 	</select></p><br>
 

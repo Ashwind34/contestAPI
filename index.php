@@ -4,6 +4,7 @@ session_start();
 
 require_once('pdo_connect.php');
 require_once('datecheck.php');
+require_once('player_picks_query.php');
 
 //check if user is logged in
 
@@ -89,9 +90,54 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 			<p><a href="schedule_updater.php">Update Lines and Scores</a></p>
 			<br>
 			<br>
-			<p><a href="logout.php">Logout</a></p>';
-}
-?>
+			<p><a href="logout.php">Logout</a></p>
+			<br>
+			<br>';
+					
+			//Make sure	query array is not empty, then create html table with all entries
+			//NEED TO FORMAT TABLE!!!!! ALSO MAY WANT TO MOVE TABLE TO FIRST ROW
+  
+			if (count($user_pick_array) > 0) {
+	
+		
+			echo '<table align="center" border="1" cellspacing="5" cellpadding="8">
+		
+			<tr><th align="center">Player</th>
+			<th align="center">Favorite Team</th>
+			<th align="center">Pick #1</th>
+			<th align="center">Pick #2</th>
+			<th align="center">Pick #3</th>
+			<th align="center">Pick #4</th>
+			<th align="center">Pick #5</th>
+			<th align="center">Time of Entry</th></tr>';
+			
+			// foreach loop to list out each row in the array	
+			
+			foreach ($user_pick_array as $row) {
+				
+					
+				echo 
+				'<tr><td align="center">' . $row['user_name'] . '</td>
+				<td align="center">' . $row['fav_team'] . '</td>
+				<td align="center">' . $row['pick_1'] . '</td>
+				<td align="center">' . $row['pick_2'] . '</td>
+				<td align="center">' . $row['pick_3'] . '</td>
+				<td align="center">' . $row['pick_4'] . '</td>
+				<td align="center">' . $row['pick_5'] . '</td>
+				<td align="center">' . $row['time_entered'] . '</td>';
+				echo '</tr>';
+				
+				
+			} 
+			
+			
+			echo  '</table>';
+			
+			} else {
+				echo "query problem";
+	}
+	}
+	?>
 
 
 

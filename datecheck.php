@@ -12,9 +12,9 @@ if ($today < "20170907") {
 }
 
 // MANUAL DATE OVERRIDE IF NEEDED
-//$date = strtotime("<INSERT DATE HERE>");
+//$date = strtotime("09/10/2017 17:00:00");
 
-$season_start = strtotime("09/03/2017");
+$season_start = strtotime("09/05/2017");
 
 //$weekmarker variable will return current NFL week value
 
