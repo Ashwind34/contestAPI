@@ -24,9 +24,7 @@ if( isset($_SESSION['player_id'])) {
 		die("No result returned");
 }
 }
-// query db to get list of teams available to pick for that week NEED TO UPDATE TO CHECK DATE VS TEAM'S GAME START
-
-
+// query db to get list of teams available to pick for that week
 
 $team_query = 
 		"SELECT home AS teamlist
@@ -40,7 +38,7 @@ $team_query =
 
 //skip sql query before data is entered
 
-if (empty($_POST['pick_1'])) {
+if (empty($_POST['submit'])) {
 	} else {
 
 		//make sure all picks have been entered
@@ -71,7 +69,7 @@ if (empty($_POST['pick_1'])) {
 		echo "<p>Please Select 5 Teams</p>";
 		}
 	}
-
+	
 ?>
 
 

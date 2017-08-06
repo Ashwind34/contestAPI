@@ -3,6 +3,8 @@
 
 $player_id = $_SESSION['player_id'];;
 
+//query to pull most recent picks of logged in player
+
 $user_picks_table = $conn->prepare("SELECT					 
 								player_roster.user_name, 
 								player_roster.fav_team,						 
@@ -33,9 +35,38 @@ $user_picks_table = $conn->prepare("SELECT
 						
 $user_picks_table->execute();
 
-//create array - data to be displayed in weekly picks table below.
+//create array to pull data
 
-$user_pick_array=$user_picks_table->fetchall(PDO::FETCH_ASSOC);
+$user_pick_array = $user_picks_table->fetchALL(PDO::FETCH_ASSOC);
+
+$pick_1 = $user_pick_array['0']['pick_1'];
+$pick_2 = $user_pick_array['0']['pick_2'];
+$pick_3 = $user_pick_array['0']['pick_3'];
+$pick_4 = $user_pick_array['0']['pick_4'];
+$pick_5 = $user_pick_array['0']['pick_5'];
+
+//query to pull any pick already submitted with kickoff time as UNIX timestamp
+
+$user_picks_check = $conn->prepare("SELECT
+									home AS teams,
+									UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) AS kickoff
+									FROM regseason
+									WHERE week = '$weekmarker'
+									AND home = '$pick_1'
+									UNION
+									SELECT
+									away AS teams,
+									UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) AS kickoff
+									FROM regseason
+									WHERE week = '$weekmarker'
+									AND away = '$pick_1'");
+$user_picks_check->execute();
+									
+//create array to pull data (FOR SOME REASON WILL NOT PULL COLUMN NAMES AS ARRAY KEYS...MAY CORRECT LATER.  RIGHT NOW 0=teams and 1=kickoff
+									
+$picks_check_array = $user_picks_check->fetch(PDO::FETCH_ASSOC);
+
+$kickoff = $picks_check_array['kickoff'];
 
 ?>
   
