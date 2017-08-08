@@ -50,6 +50,7 @@ $pick_5 = $user_pick_array['0']['pick_5'];
 function PickDropdown($pick, $conn, $picknum, $weekmarker, $date) {
 	
 	// query db to get list of teams available to pick for that week
+	//REMEMBER TO RESET $DATE TO TIME() LINES 58,62,92 --> ALSO TURN OFF $DATE VARIABLE IN DATECHECK.PHP
 
 	$team_query = 
 		"SELECT home AS teamlist
