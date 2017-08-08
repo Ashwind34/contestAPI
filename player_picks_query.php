@@ -35,9 +35,11 @@ $user_picks_table = $conn->prepare("SELECT
 						
 $user_picks_table->execute();
 
-//create array to pull data
+//create array to pull data from
 
 $user_pick_array = $user_picks_table->fetchALL(PDO::FETCH_ASSOC);
+
+//ASSIGN EACH PICK AS A VARIABLE
 
 $pick_1 = $user_pick_array['0']['pick_1'];
 $pick_2 = $user_pick_array['0']['pick_2'];
@@ -45,28 +47,78 @@ $pick_3 = $user_pick_array['0']['pick_3'];
 $pick_4 = $user_pick_array['0']['pick_4'];
 $pick_5 = $user_pick_array['0']['pick_5'];
 
-//query to pull any pick already submitted with kickoff time as UNIX timestamp
+function PickDropdown($pick, $conn, $picknum, $weekmarker, $date) {
+	
+	// query db to get list of teams available to pick for that week
 
-$user_picks_check = $conn->prepare("SELECT
-									home AS teams,
-									UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) AS kickoff
-									FROM regseason
-									WHERE week = '$weekmarker'
-									AND home = '$pick_1'
-									UNION
-									SELECT
-									away AS teams,
-									UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) AS kickoff
-									FROM regseason
-									WHERE week = '$weekmarker'
-									AND away = '$pick_1'");
-$user_picks_check->execute();
-									
-//create array to pull data (FOR SOME REASON WILL NOT PULL COLUMN NAMES AS ARRAY KEYS...MAY CORRECT LATER.  RIGHT NOW 0=teams and 1=kickoff
-									
-$picks_check_array = $user_picks_check->fetch(PDO::FETCH_ASSOC);
+	$team_query = 
+		"SELECT home AS teamlist
+		FROM regseason 
+		WHERE week='$weekmarker' AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > '$date/*time()*/'
+		UNION
+		SELECT away AS teamlist
+		FROM regseason 
+		WHERE week='$weekmarker' AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > '$date/*time()*/'
+		ORDER BY teamlist ASC";
 
-$kickoff = $picks_check_array['kickoff'];
+	//query to pull any pick already submitted with kickoff time as UNIX timestamp
+	
+	$user_picks_check = $conn->prepare("SELECT
+										home AS teams,
+										UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) AS kickoff
+										FROM regseason
+										WHERE week = '$weekmarker'
+										AND home = '$pick'
+										UNION
+										SELECT
+										away AS teams,
+										UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) AS kickoff
+										FROM regseason
+										WHERE week = '$weekmarker'
+										AND away = '$pick'");
+	$user_picks_check->execute();
+										
+	//create array to pull data from 
+										
+	$picks_check_array = $user_picks_check->fetch(PDO::FETCH_ASSOC);
 
-?>
-  
+	$kickoff = $picks_check_array['kickoff'];
+
+		
+		//check to make sure that a pick already submitted cannot be changed after kickoff
+		//NOT WORKING - PROBLEM WITH INSERTING VARIABLE USING POST ARRAY
+		
+		if (!empty($pick)) {
+			if($kickoff < $date/*time()*/) {
+				
+				echo '<p><select name="' . $picknum . '">';
+				echo '<option value="">-Select-</option>';
+				echo '<option value="">' . $pick .'</option>';
+				echo '</select></p><br>';				
+								
+								
+			// else enable dropdown menu for that pick
+		
+			} else {
+			
+				echo '<p><select name="' . $picknum . '">';
+				echo '<option value="">-Select-</option>';
+				 
+				// insert team list as options for picks dropdown list
+				
+					$query = $conn->prepare($team_query);
+					$query->execute();		
+						while ($teamlist = $query->fetch(PDO::FETCH_ASSOC)){
+						
+							echo '<option value="' . $teamlist['teamlist'] . '">' . $teamlist['teamlist'] . '</option>';
+							
+				} echo '</select></p><br>';
+			}
+		} 
+}
+	
+		
+		 	
+
+?> 
+	  
