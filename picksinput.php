@@ -33,8 +33,8 @@ if (empty($_POST['submit'])) {
 
 		//make sure that all picks are filled
 	
-		/*if(!empty($_POST['pick_1']) && !empty($_POST['pick_2']) && !empty($_POST['pick_3']) && !empty($_POST['pick_4']) 
-		&& !empty($_POST['pick_5'])) {*/
+		if(!empty($_POST['pick_1']) && !empty($_POST['pick_2']) && !empty($_POST['pick_3']) && !empty($_POST['pick_4']) 
+		&& !empty($_POST['pick_5'])) {
 	
 			//PDO prepared statement 
 			
@@ -56,7 +56,7 @@ if (empty($_POST['submit'])) {
 					echo "It seems like there was a problem submitting your picks.  Please try again.";
 				}
 			
-			} /*else {
+			} else {
 				echo '<p style=text-align:center><b>Please select 5 teams!</b></p><br>';
 				echo '<p style=text-align:center><a href="picksinput.php">Try Again</a></p><br>';
 				echo '<p style=text-align:center><a href="index.php">Return to Home Page</a></p>';
@@ -64,7 +64,7 @@ if (empty($_POST['submit'])) {
 				
 			
 			}
-	}*/
+	}
 			
 	
 	

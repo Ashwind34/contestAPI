@@ -86,18 +86,17 @@ function PickDropdown($pick, $conn, $picknum, $weekmarker, $date) {
 
 		
 		//check to make sure that a pick already submitted cannot be changed after kickoff
-		//NOT WORKING - PROBLEM WITH INSERTING VARIABLE USING POST ARRAY
-		
+				
 		if (!empty($pick)) {
 			if($kickoff < $date/*time()*/) {
 				
 				echo '<p><select name="' . $picknum . '">';
 				echo '<option value="">-Select-</option>';
-				echo '<option value="">' . $pick .'</option>';
+				echo '<option value="' . $pick . '">' . $pick .'</option>';
 				echo '</select></p><br>';				
 								
 								
-			// else enable dropdown menu for that pick
+			// else enable dropdown menu wth remaining games
 		
 			} else {
 			
