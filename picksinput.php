@@ -24,54 +24,50 @@ if( isset($_SESSION['player_id'])) {
 		die("No result returned");
 }
 }
-// query db to get list of teams available to pick for that week NEED TO UPDATE TO CHECK DATE VS TEAM'S GAME START
 
-
-
-$team_query = 
-		"SELECT home AS teamlist
-		FROM regseason 
-		WHERE week='$weekmarker' AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > 'time()'
-		UNION
-		SELECT away AS teamlist
-		FROM regseason 
-		WHERE week='$weekmarker' AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > 'time()'
-		ORDER BY teamlist ASC";
 
 //skip sql query before data is entered
 
-if (empty($_POST['pick_1'])) {
+if (empty($_POST['submit'])) {
 	} else {
 
-		//make sure all picks have been entered
-
-		if (!empty($_POST['pick_1']) && !empty($_POST['pick_2']) && !empty($_POST['pick_3']) && 
-		!empty($_POST['pick_4']) && !empty($_POST['pick_5'])) {
-
-		//PDO prepared statement 
-		
-		$submit = $conn->prepare("INSERT INTO player_picks (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
-								VALUES (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5, :weekmarker)");
-		$submit->BindParam(':pick_1', $_POST['pick_1']);
-		$submit->BindParam(':pick_2', $_POST['pick_2']);
-		$submit->BindParam(':pick_3', $_POST['pick_3']);
-		$submit->BindParam(':pick_4', $_POST['pick_4']);
-		$submit->BindParam(':pick_5', $_POST['pick_5']);
-		$submit->BindParam(':player_id', $_SESSION['player_id']);
-		$submit->BindParam(':weekmarker', $weekmarker);
-		
-			//make sure statement executes correctly, then send to table with all player picks
-		
-			if ($submit->execute()) {
-				header("Location: /weekly_picks_table.php");
+		//make sure that all picks are filled
+	
+		if(!empty($_POST['pick_1']) && !empty($_POST['pick_2']) && !empty($_POST['pick_3']) && !empty($_POST['pick_4']) 
+		&& !empty($_POST['pick_5'])) {
+	
+			//PDO prepared statement 
+			
+			$submit = $conn->prepare("INSERT INTO player_picks (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
+									VALUES (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5, :weekmarker)");
+			$submit->BindParam(':pick_1', $_POST['pick_1']);
+			$submit->BindParam(':pick_2', $_POST['pick_2']);
+			$submit->BindParam(':pick_3', $_POST['pick_3']);
+			$submit->BindParam(':pick_4', $_POST['pick_4']);
+			$submit->BindParam(':pick_5', $_POST['pick_5']);
+			$submit->BindParam(':player_id', $_SESSION['player_id']);
+			$submit->BindParam(':weekmarker', $weekmarker);
+			
+				//make sure statement executes correctly, then send to table with all player picks
+			
+				if ($submit->execute()) {
+					header("Location: /weekly_picks_table.php");
+				} else {
+					echo "It seems like there was a problem submitting your picks.  Please try again.";
+				}
+			
 			} else {
-				echo "It seems like there was a problem submitting your picks.  Please try again.";
+				echo '<p style=text-align:center><b>Please select 5 teams!</b></p><br>';
+				echo '<p style=text-align:center><a href="picksinput.php">Try Again</a></p><br>';
+				echo '<p style=text-align:center><a href="index.php">Return to Home Page</a></p>';
+				exit();
+				
+			
 			}
-		} else {
-		echo "<p>Please Select 5 Teams</p>";
-		}
 	}
-
+			
+	
+	
 ?>
 
 
@@ -106,106 +102,26 @@ p {
 
 <form action="picksinput.php" method="post">
 
+
 	<p>Pick #1</p>
 	
-	<p><select name="pick_1">
-	<option value="">-Select-</option>
-	<?php 
-	// insert team list as options for picks dropdown list
-		$query = $conn->prepare($team_query);
-		$query->execute();		
-			while ($teamlist = $query->fetch(PDO::FETCH_ASSOC))
-			{
-	?>
+	<p><?php PickDropdown($pick_1, $conn, 'pick_1', $weekmarker, $date); ?></p>
 	
-	<option value="<?php echo $teamlist['teamlist']; ?>"><?php echo $teamlist['teamlist']; ?></option>
-	<?php 
-	
-			}
-			
-			
-	?>
-	</select></p><br>
-
 	<p>Pick #2</p>
 
-	<p><select name="pick_2">
-	<option value="">-Select-</option>
-	<?php 
-		$query = $conn->prepare($team_query);
-		$query->execute();		
-			while ($teamlist = $query->fetch(PDO::FETCH_ASSOC))
-			{
-	?>
-	
-	<option value="<?php echo $teamlist['teamlist']; ?>"><?php echo $teamlist['teamlist']; ?></option>
-	<?php 
-	
-			}
-			
-			
-	?>
-	</select></p><br>
+	<p><?php PickDropdown($pick_2, $conn, 'pick_2', $weekmarker, $date); ?></p>
 	
 	<p>Pick #3</p>
 
-<p><select name="pick_3">
-	<option value="">-Select-</option>
-	<?php 
-		$query = $conn->prepare($team_query);
-		$query->execute();		
-			while ($teamlist = $query->fetch(PDO::FETCH_ASSOC))
-			{
-	?>
-	
-	<option value="<?php echo $teamlist['teamlist']; ?>"><?php echo $teamlist['teamlist']; ?></option>
-	<?php 
-	
-			}
-			
-			
-	?>
-	</select></p><br>
-	
+	<p><?php PickDropdown($pick_3, $conn, 'pick_3', $weekmarker, $date); ?></p>
+		
 	<p>Pick #4</p>
 
-	<p><select name="pick_4">
-	<option value="">-Select-</option>
-	<?php 
-	$query = $conn->prepare($team_query);
-		$query->execute();		
-			while ($teamlist = $query->fetch(PDO::FETCH_ASSOC))
-			{
-	?>
-	
-	<option value="<?php echo $teamlist['teamlist']; ?>"><?php echo $teamlist['teamlist']; ?></option>
-	<?php 
-	
-			}
-			
-			
-	?>
-	</select></p><br>
+	<p><?php PickDropdown($pick_4, $conn, 'pick_4', $weekmarker, $date); ?></p>
 	
 	<p>Pick #5</p>
 
-	<p><select name="pick_5">
-	<option value="">-Select-</option>
-	<?php 
-	$query = $conn->prepare($team_query);
-		$query->execute();		
-			while ($teamlist = $query->fetch(PDO::FETCH_ASSOC))
-			{
-	?>
-	
-	<option value="<?php echo $teamlist['teamlist']; ?>"><?php echo $teamlist['teamlist']; ?></option>
-	<?php 
-	
-			}
-			
-	
-	?>
-	</select></p><br>
+	<p><?php PickDropdown($pick_5, $conn, 'pick_5', $weekmarker, $date); ?></p>
 
 	
 	<p><input type="submit" name="submit" value="Submit Your Picks"></p>
