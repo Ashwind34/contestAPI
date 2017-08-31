@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <body>
-<!-- <p style=text-align:center; color:blue;>Your picks for week [] have been submitted!</p>
-<p style=text-align:center;><a href="index.php">Return to Home Page</a></p> -->
+
+<p style=text-align:center;><a href="index.php">Return to Home Page</a></p>
 
 </body>
 <?php 
 
 require_once ('pdo_connect.php');
+require_once ('datecheck.php');
 
-$datemarker = 1;
-//need to fill this in with a function from another file
 
 $query=$conn->prepare("SELECT
 
@@ -22,21 +21,13 @@ $query=$conn->prepare("SELECT
 						FROM
 						regseason
 						WHERE
-						week='$datemarker'");
-						
-						 
-												
+						week='$weekmarker'");											
 						
 $query->execute();
-//query for all picks on record - MUST LIMIT BY WEEK
 
+//create array - data to be displayed in weekly picks table below.  
 
 $data=$query->fetchall(PDO::FETCH_ASSOC);
-//create array - data to be displayed in weekly picks table below.  Will need to limit by pick_1_week
-
-
-/* use to check array values
-print_r (array_values($data));*/
 
 
 if (count($data) > 0) {
