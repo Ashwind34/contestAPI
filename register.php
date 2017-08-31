@@ -44,7 +44,7 @@ if (!empty($_POST['register'])) {
 		
 		$submit = $conn->prepare($query);
 		
-		//Bind Parameters
+		//bind parameters
 		
 		$submit->BindParam(':fname', $_POST['fname']);
 		$submit->BindParam(':lname', $_POST['lname']);
@@ -80,7 +80,7 @@ if (!empty($_POST['register'])) {
 	<option value="">-Select-</option>
 	<?php 
 	// query db to get list of player emails
-		$email_query = $conn->prepare("SELECT email FROM player_roster");
+		$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
 		$email_query->execute();		
 			while ($email_list = $email_query->fetch(PDO::FETCH_ASSOC))
 			{
@@ -122,6 +122,8 @@ if (!empty($_POST['register'])) {
 			
 	?>
 	</select></p><br> 
+	
+	<!--CONSIDER REMOVING USERNAME OPTION, OR LIMIT CHARACTERS TO AVOID EXTENDING HTML TABLES TOO LONG -->
 	
 	<p>Select User Name <input type="text" name="uname" id="uname"><p><br>;
 		
