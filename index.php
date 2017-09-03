@@ -39,10 +39,10 @@ if( isset($_SESSION['player_id'])) {
 </title>
 <link rel="stylesheet" type="text/css" href="style.css">
 <style>
-	<!--h1{color:green;}
+	h1{color:green;}
 	h2{color:black;}
 	p {color:blue; text-align:center;}
-	body {background-color:grey;} -->
+	body {background-color:grey;}
 	
 	
 </style>
@@ -58,13 +58,6 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 <p>
 <b>Hello<?php echo " $user[first_name]";?>!</p>
 
-<!--datecheck test url
-
-<p><a href="datecheck.php">Date Check</a></p>
-
-<p><a href="functions.php">Date Function</a></p>
--->
-
 
 <!--only shows login links if user is not logged in-->
 
@@ -77,67 +70,33 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 		<p><a href="register.php">Click Here to Register</a></p>
 		<br>
 		<br>
+		';
+	} else {
+		echo '<br>
+		<br><p><a href="picksinput.php">Submit Your Picks</a></p>
+		<br>
+		<br>
+		<p><a href="weekly_lines_table.php">Weekly Schedule</a></p>
+		<br>
+		<br>
 		<p><a href="user_table_test.php">Leaderboard</a></p>
 		<br>
-		<br>';
-	} else {
-	echo '<br><br><p><a href="picksinput.php">Submit Your Picks</a></p>
-			<br>
-			<br>
-			<p><a href="weekly_schedule.php">Weekly Schedule</a></p>
-			<br>
-			<br>
-			<p><a href="schedule_updater.php">Update Lines and Scores</a></p>
-			<br>
-			<br>
-			<p><a href="logout.php">Logout</a></p>
-			<br>
-			<br>';
-					
-			//Make sure	query array is not empty, then create html table with all entries
-			//NEED TO FORMAT TABLE!!!!! ALSO MAY WANT TO MOVE TABLE TO FIRST ROW
-  
-			if (count($user_pick_array) > 0) {
+		<br>			
+		<p><a href="logout.php">Logout</a></p>
+		<br>
+		<br>
+		';
+		
+		if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
+			
+			echo'<p><a href="schedule_updater.php">Update Lines and Scores</a></p>';
+			
+		} else {} 
+	}
 	
-		
-			echo '<table align="center" border="1" cellspacing="5" cellpadding="8">
-		
-			<tr><th align="center">Player</th>
-			<th align="center">Favorite Team</th>
-			<th align="center">Pick #1</th>
-			<th align="center">Pick #2</th>
-			<th align="center">Pick #3</th>
-			<th align="center">Pick #4</th>
-			<th align="center">Pick #5</th>
-			<th align="center">Time of Entry</th></tr>';
-			
-			// foreach loop to list out each row in the array	
-			
-			foreach ($user_pick_array as $row) {
-				
-					
-				echo 
-				'<tr><td align="center">' . $row['user_name'] . '</td>
-				<td align="center">' . $row['fav_team'] . '</td>
-				<td align="center">' . $row['pick_1'] . '</td>
-				<td align="center">' . $row['pick_2'] . '</td>
-				<td align="center">' . $row['pick_3'] . '</td>
-				<td align="center">' . $row['pick_4'] . '</td>
-				<td align="center">' . $row['pick_5'] . '</td>
-				<td align="center">' . $row['time_entered'] . '</td>';
-				echo '</tr>';
-				
-				
-			} 
 			
 			
-			echo  '</table>';
-			
-			} else {
-				echo "query problem";
-	}
-	}
-	?>
+		?>
 
 
 
