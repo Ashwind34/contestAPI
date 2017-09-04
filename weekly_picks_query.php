@@ -1,5 +1,7 @@
 <?php 
 
+//db query to pull each player's most recent picks for that week
+
 $picks_table = $conn->prepare("SELECT					 
 								player_roster.user_name, 
 								player_roster.fav_team,						 

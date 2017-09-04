@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html>
-<body>
-
-<p style=text-align:center;><a href="index.php">Return to Home Page</a></p>
-
-</body>
 <?php 
 
 require_once ('pdo_connect.php');
@@ -33,7 +26,9 @@ $data=$query->fetchall(PDO::FETCH_ASSOC);
 if (count($data) > 0) {
 	
 //Make sure	query array is not empty, then create html table with all entries
+//use ob_start to catch HTML table output in a variable $weekly_lines_table
 		
+		ob_start();
 		echo '<table align="center" border="1" cellspacing="5" cellpadding="8">
 		
 		<tr><th align="center">Home</th>
@@ -55,20 +50,21 @@ if (count($data) > 0) {
 			<td align="center">' . $row['a_spread'] . '</td>
 			<td align="center">' . date('h:i a',strtotime($row['start_time'])) . '</td>
 			</tr>';
-			
-			
+					
 		} 
-		
-		
+				
 		echo  '</table>';
-		
+		$weekly_lines_table = ob_get_clean();
+				
 	} else {
 			echo "query problem"; 
 	
 			
 
 
-		}		
+		}	
+
+		
 ?>
 </body>
 </html>
