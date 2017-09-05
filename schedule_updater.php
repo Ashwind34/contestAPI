@@ -14,21 +14,6 @@
 require_once ('pdo_connect.php');
 require_once ('datecheck.php');
 
-//select data to use for spread/score update table
-		
-$query=$conn->prepare("SELECT
-						home, h_score, h_spread, away, a_score, a_spread, id, week
-						FROM
-						regseason
-						WHERE
-						week='$weekmarker'");
-						 
-$query->execute();
-
-//create array - data to be displayed in table below. 
-
-$data=$query->fetchall(PDO::FETCH_ASSOC);
-
 //insert score and spread data into regseason table after data submit
 
 if (empty($_POST['submit'])) {
@@ -125,55 +110,107 @@ if (empty($_POST['submit'])) {
 									WHEN H_margin + H_spread < 0 THEN 0
 									ELSE 0
 									END
-								WHERE Week = '$weekmarker'";	
+								WHERE Week = '$weekmarker'";
 								
-			//START HERE.  MUST CREATE QUERY(S) TO UPDATE THE PSCORE FOR EACH PLAYER PICK ACROSS TABLES
-			//WILL NEED TO ADD GAME_ID TO EACH PICK IN PLAYER_PICKS TABLE IN ORDER TO UPDATE FROM REGSEASON TABLE
-			
-			//TEST QUERY, DOES NOT WORK
-
-			/*$PScoreUpdate = 		UPDATE player_picks AS p, 
-									(
-									SELECT 	
-									home AS teams, 
-                           			H_Pscore AS Pscore
-									FROM regseason
-									WHERE week = 1
-									UNION
-									SELECT
-									away AS teams,
-									A_Pscore AS Pscore
-									FROM regseason
-									WHERE week = 1 
-									) AS a 
-
-									SET p.pick_1_wlt = a.Pscore 
-									WHERE p.pick_1 = a.teams;	*/		
-			
-			
-
-			
-			
-			
-			
-			
-			
 			TRY {
 				
-				$conn->exec($margin);
+				$conn->exec($marginUpdate);
 				$conn->exec($A_PscoreUpdate);
 				$conn->exec($H_PscoreUpdate);
 			}
 			CATCH (PDOException $e) {
 				
-				echo $margin . '<br>' . $e->getMessage();
+				echo $e->getMessage();
 			}
 
-		header("Location: /weekly_schedule.php");
+			$Weekly_PScoreQuery = $conn->prepare
+					(
+					"SELECT 	
+					home AS teams, 
+					H_Pscore AS Pscore
+					FROM 
+					regseason
+					WHERE 
+					week = '$weekmarker'
+					UNION
+					SELECT
+					away AS teams,
+					A_Pscore AS Pscore
+					FROM 
+					regseason
+					WHERE 
+					week = '$weekmarker'");
+			
+			$Weekly_PScoreQuery->execute();
+			
+			$Weekly_PscoreTable = $Weekly_PScoreQuery->fetchall(PDO::FETCH_ASSOC);
+			
+			foreach ($Weekly_PscoreTable as $key => $value){
+							
+				$team = $value['teams'];
+				$pscore = $value['Pscore'];
+				
+				$update_1 = "UPDATE player_picks
+							SET pick_1_wlt = '$pscore'
+							WHERE pick_1 = '$team'";
+							
+				$update_2 = "UPDATE player_picks
+							SET pick_2_wlt = '$pscore'
+							WHERE pick_2 = '$team'";
+							
+				$update_3 = "UPDATE player_picks
+							SET pick_3_wlt = '$pscore'
+							WHERE pick_3 = '$team'";
+							
+				$update_4 = "UPDATE player_picks
+							SET pick_4_wlt = '$pscore'
+							WHERE pick_4 = '$team'";
+							
+				$update_5 = "UPDATE player_picks
+							SET pick_5_wlt = '$pscore'
+							WHERE pick_5 = '$team'";
+							
+				$update_total = "UPDATE player_picks
+								SET week_score = pick_1_wlt + pick_2_wlt + pick_3_wlt + pick_4_wlt + pick_5_wlt
+								WHERE week = '$weekmarker'"; 
+							
+				TRY {
+			
+					$conn->exec($update_1);
+					$conn->exec($update_2);
+					$conn->exec($update_3);
+					$conn->exec($update_4);
+					$conn->exec($update_5);
+					$conn->exec($update_total);
+					
+				}
+				CATCH (PDOException $e) {
+			
+					echo $e->getMessage();
+							
+				}
+			}
+				
+				
+
+		header("Location: /weekly_lines_table.php");
 		
 		}			
 
+//select data to use for spread/score update table
+		
+$query=$conn->prepare("SELECT
+						home, h_score, h_spread, away, a_score, a_spread, id, week
+						FROM
+						regseason
+						WHERE
+						week='$weekmarker'");
+						 
+$query->execute();
 
+//create array - data to be displayed in table below. 
+
+$data=$query->fetchall(PDO::FETCH_ASSOC);
 
 //Make sure	query array is not empty, then create html form with embedded html table
 
