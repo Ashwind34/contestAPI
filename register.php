@@ -92,7 +92,6 @@ if (!empty($_POST['register'])) {
 	
 			}
 			
-			
 	?>
 	</select></p><br>
 	
