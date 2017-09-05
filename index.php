@@ -79,7 +79,7 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 		<p><a href="weekly_lines_table.php">Weekly Schedule</a></p>
 		<br>
 		<br>
-		<p><a href="user_table_test.php">Leaderboard</a></p>
+		<p><a href="leaderboard.php">Leaderboard</a></p>
 		<br>
 		<br>			
 		<p><a href="logout.php">Logout</a></p>
@@ -89,7 +89,7 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 		
 		if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
 			
-			echo'<p><a href="schedule_updater.php">Update Lines and Scores</a></p>';
+			echo'<p><a href="schedule_updater.php"><i>Update Lines and Scores</i></a></p>';
 			
 		} else {} 
 	}

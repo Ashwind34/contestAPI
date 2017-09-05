@@ -1,9 +1,8 @@
 <?php 
 
-
 $player_id = $_SESSION['player_id'];;
 
-//query to pull most recent picks of logged in player
+//query to pull most recent picks of logged-in player
 
 $user_picks_table = $conn->prepare("SELECT					 
 								player_roster.user_name, 
@@ -39,27 +38,69 @@ $user_picks_table->execute();
 
 $user_pick_array = $user_picks_table->fetchALL(PDO::FETCH_ASSOC);
 
-//ASSIGN EACH PICK AS A VARIABLE
+//Create HTML table and assign output to $player_picks_table variable
+
+			ob_start();
+			
+			if (count($user_pick_array) > 0) {
+	
+		
+			echo '<table align="center" border="1" cellspacing="5" cellpadding="8">
+		
+			<tr><th align="center">Pick #1</th>
+			<th align="center">Pick #2</th>
+			<th align="center">Pick #3</th>
+			<th align="center">Pick #4</th>
+			<th align="center">Pick #5</th>
+			<th align="center">Time of Entry</th></tr>';
+			
+			// foreach loop to list out each row in the array	
+			
+			foreach ($user_pick_array as $row) {
+				
+					
+				echo 
+				'<tr><td align="center">' . $row['pick_1'] . '</td>
+				<td align="center">' . $row['pick_2'] . '</td>
+				<td align="center">' . $row['pick_3'] . '</td>
+				<td align="center">' . $row['pick_4'] . '</td>
+				<td align="center">' . $row['pick_5'] . '</td>
+				<td align="center">' . $row['time_entered'] . '</td>';
+				echo '</tr>';
+				
+				
+			} 
+			
+			
+			echo  '</table>';
+			$player_picks_table = ob_get_clean();
+			
+			} else {
+				
+	}
+	
+//assign each pick as a variable
 
 $pick_1 = $user_pick_array['0']['pick_1'];
 $pick_2 = $user_pick_array['0']['pick_2'];
 $pick_3 = $user_pick_array['0']['pick_3'];
 $pick_4 = $user_pick_array['0']['pick_4'];
 $pick_5 = $user_pick_array['0']['pick_5'];
+	
 
-function PickDropdown($pick, $conn, $picknum, $weekmarker, $date) {
+function PickDropdown($pick, $conn, $picknum, $weekmarker) {
 	
 	// query db to get list of teams available to pick for that week
-	//REMEMBER TO RESET $DATE TO TIME() LINES 58,62,92 --> ALSO TURN OFF $DATE VARIABLE IN DATECHECK.PHP
+	
 
 	$team_query = 
 		"SELECT home AS teamlist
 		FROM regseason 
-		WHERE week='$weekmarker' AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > '$date/*time()*/'
+		WHERE week='$weekmarker' AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > 'time()'
 		UNION
 		SELECT away AS teamlist
 		FROM regseason 
-		WHERE week='$weekmarker' AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > '$date/*time()*/'
+		WHERE week='$weekmarker' AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > 'time()'
 		ORDER BY teamlist ASC";
 
 	//query to pull any pick already submitted with kickoff time as UNIX timestamp
@@ -89,7 +130,7 @@ function PickDropdown($pick, $conn, $picknum, $weekmarker, $date) {
 		//check to make sure that a pick already submitted cannot be changed after kickoff
 				
 		if (!empty($pick)) {
-			if($kickoff < $date/*time()*/) {
+			if($kickoff < time()) {
 				
 				echo '<p><select name="' . $picknum . '">';
 				echo '<option value="">-Select-</option>';

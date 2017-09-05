@@ -16,15 +16,12 @@ require_once('weekly_picks_query.php');
 </body>
 <?php 
 
-//query most recent picks by each player, (weekly_picks_query.php)
-
-$picks_table;
-
 //create array - data to be displayed in weekly picks table below.
 
 $data=$picks_table->fetchall(PDO::FETCH_ASSOC);
   
 //Make sure	query array is not empty, then create html table with all entries
+//MUST SET THIS TO ONLY SHOW AFTER SUNDAY MORNING GAMES HAVE STARTED, SHOW LOGGED-IN PLAYER'S PICKS BEFORE THEN
   
 if (count($data) > 0) {
 	

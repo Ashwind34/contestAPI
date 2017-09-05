@@ -5,6 +5,7 @@ session_start();
 require_once('pdo_connect.php');
 require_once('datecheck.php');
 require_once('player_picks_query.php');
+require_once ('weekly_schedule.php');
 
 if( isset($_SESSION['player_id'])) {
 	
@@ -48,7 +49,8 @@ if (empty($_POST['submit'])) {
 			$submit->BindParam(':player_id', $_SESSION['player_id']);
 			$submit->BindParam(':weekmarker', $weekmarker);
 			
-				//make sure statement executes correctly, then send to table with all player picks
+				//make sure statement executes correctly, then send to table with all player picks 
+				//MAY NEED TO SEND TO HOMEPAGE
 			
 				if ($submit->execute()) {
 					header("Location: /weekly_picks_table.php");
@@ -97,36 +99,45 @@ p {
 
 <h1>Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!</h1>
 
+<h2 style=text-align:center; color:blue><i>Current Picks</i></h2>
+<h2><?php echo $player_picks_table;?></h2>
 
-
+<!--dropdown menus for each pick, referenced from function in player_picks_query.php -->
 
 <form action="picksinput.php" method="post">
 
 
 	<p>Pick #1</p>
 	
-	<p><?php PickDropdown($pick_1, $conn, 'pick_1', $weekmarker, $date); ?></p>
+	<p><?php PickDropdown($pick_1, $conn, 'pick_1', $weekmarker); ?></p>
 	
 	<p>Pick #2</p>
 
-	<p><?php PickDropdown($pick_2, $conn, 'pick_2', $weekmarker, $date); ?></p>
+	<p><?php PickDropdown($pick_2, $conn, 'pick_2', $weekmarker); ?></p>
 	
 	<p>Pick #3</p>
 
-	<p><?php PickDropdown($pick_3, $conn, 'pick_3', $weekmarker, $date); ?></p>
+	<p><?php PickDropdown($pick_3, $conn, 'pick_3', $weekmarker); ?></p>
 		
 	<p>Pick #4</p>
 
-	<p><?php PickDropdown($pick_4, $conn, 'pick_4', $weekmarker, $date); ?></p>
+	<p><?php PickDropdown($pick_4, $conn, 'pick_4', $weekmarker); ?></p>
 	
 	<p>Pick #5</p>
 
-	<p><?php PickDropdown($pick_5, $conn, 'pick_5', $weekmarker, $date); ?></p>
+	<p><?php PickDropdown($pick_5, $conn, 'pick_5', $weekmarker); ?></p>
 
 	
 	<p><input type="submit" name="submit" value="Submit Your Picks"></p>
 	</form>
-</body>
+	
+	<br>
+	<p style=text-align:center; color:blue;></p>
+	<p style=text-align:center;><a href="index.php">Return to Home Page</a></p><br>
+	<h3 style=text-align:center; color:blue>Week <?php echo $weekmarker ;?> Lines</h3>
+	<p style=text-align:center;><?php echo $weekly_lines_table?></p>
+
+	</body>
 	
 	
 
