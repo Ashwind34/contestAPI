@@ -20,19 +20,47 @@ require_once('pdo_connect.php');
 </body>
 <?php 
 
-//NEED TO SOLVE PSCORE ISSUE AND THEN ADD PREVIOUS WEEKS SCORE TO $QUERY FOR TABLE
-$query_last_week = "Week_$last_week";
+//NEED TO FIGURE OUT HOW TO UPDATE TOTAL_SCORE, THEN DONE WITH LEADERBOARD
 
-$query = $conn->prepare("SELECT 
-							
-							CONCAT(first_name, ' ', last_name) AS name,
-							fav_team,
-							total_score,
-							'$query_last_week'
-							FROM 
+
+$query = $conn->prepare(
+						"SELECT
+							player_picks.player_id,
+							player_picks.week_score,
+							player_picks.week,
+							player_picks.time_entered,
+							CONCAT(
+								player_roster.first_name,
+								' ',
+								player_roster.last_name
+							) AS name,
+							player_roster.fav_team,
+							player_roster.total_score
+						FROM
+							player_picks
+						INNER JOIN
 							player_roster
+						ON
+							player_picks.player_id = player_roster.player_id
+						INNER JOIN
+							(
+							SELECT DISTINCT
+								player_picks.player_id AS id,
+								MAX(time_entered) AS maxtime
+							FROM
+								player_picks
+							WHERE
+								WEEK = '$last_weekmarker'
+							GROUP BY
+								id
 							ORDER BY
-							total_score DESC");
+								maxtime
+							DESC
+						) AS a
+						ON
+							player_picks.player_id = a.id AND player_picks.time_entered = a.maxtime 
+						ORDER BY
+						total_score DESC");
 			
 		
 $query->execute();
@@ -51,7 +79,7 @@ if (count($data) > 0) {
 		<tr><th align="center">Player</th>
 		<th align="center">Favorite Team</th>
 		<th align="center">Total Score</th>
-		<th align="center">Previous Week</th>
+		<th align="center">Last Week</th>
 		</tr>';
 		
 	// foreach loop to list out each row in the array	
@@ -63,11 +91,12 @@ if (count($data) > 0) {
 			'<tr><td align="center">' . $row['name'] . '</td>
 			<td align="center">' . $row['fav_team'] . '</td>
 			<td align="center">' . $row['total_score'] . '</td>
-			<td align="center">' . $row['$query_last_week'] . '</td></tr>';
+			<td align="center">' . $row['week_score'] . '</td></tr>';
 						
 		} 
 		
 		echo  '</table>';
+		
 		
 	} else {
 			echo "query problem";
