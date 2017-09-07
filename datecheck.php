@@ -24,8 +24,8 @@ $weekmarker = ceil((($date - $season_start)/"604800"));
 
 $last_weekmarker = '';
 
-if ($weekmarker == 1) {
-	$last_weekmarker == 1;
+if ($weekmarker = 1) {
+	$last_weekmarker = 1;
 } else {
 $last_weekmarker = $weekmarker - 1;
 }

@@ -8,7 +8,7 @@ require_once('player_picks_query.php');
 
 //check if user is logged in
 
-if( isset($_SESSION['player_id'])) {
+if(isset($_SESSION['player_id'])) {
 	
 	//PDO prepared statement
 	$record = $conn->prepare("SELECT player_id, first_name FROM player_roster WHERE player_id = :id"); 

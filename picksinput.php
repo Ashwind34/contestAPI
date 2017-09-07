@@ -100,6 +100,7 @@ p {
 <h1>Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!</h1>
 
 <h2 style=text-align:center; color:blue><i>Current Picks</i></h2>
+<!-- $player_picks_table located in player_picks_query.php -->
 <h2><?php echo $player_picks_table;?></h2>
 
 <!--dropdown menus for each pick, referenced from function in player_picks_query.php -->

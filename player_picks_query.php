@@ -42,9 +42,6 @@ $user_pick_array = $user_picks_table->fetchALL(PDO::FETCH_ASSOC);
 
 			ob_start();
 			
-			if (count($user_pick_array) > 0) {
-	
-		
 			echo '<table align="center" border="1" cellspacing="5" cellpadding="8">
 		
 			<tr><th align="center">Pick #1</th>
@@ -66,19 +63,17 @@ $user_pick_array = $user_picks_table->fetchALL(PDO::FETCH_ASSOC);
 				<td align="center">' . $row['pick_4'] . '</td>
 				<td align="center">' . $row['pick_5'] . '</td>
 				<td align="center">' . $row['time_entered'] . '</td>';
-				echo '</tr>';
+				echo '</tr>';			
 				
-				
-			} 
-			
+			} 			
 			
 			echo  '</table>';
+			
+			//variable that will display each player's current picks for that week
+			
 			$player_picks_table = ob_get_clean();
 			
-			} else {
-				
-	}
-	
+		
 //assign each pick as a variable
 
 $pick_1 = $user_pick_array['0']['pick_1'];
@@ -130,6 +125,7 @@ function PickDropdown($pick, $conn, $picknum, $weekmarker) {
 		//check to make sure that a pick already submitted cannot be changed after kickoff
 				
 		if (!empty($pick)) {
+			
 			if($kickoff < time()) {
 				
 				echo '<p><select name="' . $picknum . '">';
@@ -153,10 +149,28 @@ function PickDropdown($pick, $conn, $picknum, $weekmarker) {
 						
 							echo '<option value="' . $teamlist['teamlist'] . '">' . $teamlist['teamlist'] . '</option>';
 							
-				} echo '</select></p><br>';
+						} echo '</select></p><br>';
 			}
-		} 
-}
+			
+		} else { 
+		
+				echo '<p><select name="' . $picknum . '">';
+				echo '<option value="">-Select-</option>';
+				 
+				// insert team list as options for picks dropdown list
+				
+					$query = $conn->prepare($team_query);
+					$query->execute();		
+						while ($teamlist = $query->fetch(PDO::FETCH_ASSOC)){
+						
+							echo '<option value="' . $teamlist['teamlist'] . '">' . $teamlist['teamlist'] . '</option>';
+							
+						} echo '</select></p><br>';
+		
+				
+			}
+		
+}		
 	
 		
 		 	

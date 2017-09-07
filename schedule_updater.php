@@ -89,6 +89,8 @@ if (empty($_POST['submit'])) {
 					}
 			}
 			
+			//insert score (1, 0.5, or 0) assigned to each team on update 
+			
 			$marginUpdate = "UPDATE regseason
 						SET a_margin = a_score - h_score,
 							h_margin = h_score - a_score
@@ -96,6 +98,7 @@ if (empty($_POST['submit'])) {
 							
 			$A_PscoreUpdate = "UPDATE regseason
 								SET A_Pscore = CASE	
+									WHEN A_score = 0 AND H_score = 0 THEN 0
 									WHEN A_margin + A_spread > 0 THEN 1
 									WHEN A_margin + A_spread = 0 THEN 0.5
 									WHEN A_margin + A_spread < 0 THEN 0
@@ -105,6 +108,7 @@ if (empty($_POST['submit'])) {
 
 			$H_PscoreUpdate = "UPDATE regseason
 								SET H_Pscore = CASE	
+									WHEN A_score = 0 AND H_score = 0 THEN 0
 									WHEN H_margin + H_spread > 0 THEN 1
 									WHEN H_margin + H_spread = 0 THEN 0.5
 									WHEN H_margin + H_spread < 0 THEN 0
@@ -123,6 +127,8 @@ if (empty($_POST['submit'])) {
 				echo $e->getMessage();
 			}
 
+			//assign team score (1, 0.5, 0) to each pick in player_picks table
+			
 			$Weekly_PScoreQuery = $conn->prepare
 					(
 					"SELECT 	
@@ -152,23 +158,28 @@ if (empty($_POST['submit'])) {
 				
 				$update_1 = "UPDATE player_picks
 							SET pick_1_wlt = '$pscore'
-							WHERE pick_1 = '$team'";
+							WHERE pick_1 = '$team'
+							AND week = '$weekmarker'";
 							
 				$update_2 = "UPDATE player_picks
 							SET pick_2_wlt = '$pscore'
-							WHERE pick_2 = '$team'";
+							WHERE pick_2 = '$team'
+							AND week = '$weekmarker'";
 							
 				$update_3 = "UPDATE player_picks
 							SET pick_3_wlt = '$pscore'
-							WHERE pick_3 = '$team'";
+							WHERE pick_3 = '$team'
+							AND week = '$weekmarker'";
 							
 				$update_4 = "UPDATE player_picks
 							SET pick_4_wlt = '$pscore'
-							WHERE pick_4 = '$team'";
+							WHERE pick_4 = '$team'
+							AND week = '$weekmarker'";
 							
 				$update_5 = "UPDATE player_picks
 							SET pick_5_wlt = '$pscore'
-							WHERE pick_5 = '$team'";
+							WHERE pick_5 = '$team'
+							AND week = '$weekmarker'";
 							
 				$update_total = "UPDATE player_picks
 								SET week_score = pick_1_wlt + pick_2_wlt + pick_3_wlt + pick_4_wlt + pick_5_wlt
@@ -191,8 +202,6 @@ if (empty($_POST['submit'])) {
 				}
 			}
 				
-				
-
 		header("Location: /weekly_lines_table.php");
 		
 		}			
