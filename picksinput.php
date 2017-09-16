@@ -129,8 +129,6 @@ if (empty($_POST['submit'])) {
 	
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
 <head>

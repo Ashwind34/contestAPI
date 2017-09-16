@@ -37,7 +37,7 @@ if(isset($_SESSION['player_id'])) {
 <title>
 	SuperContest 2017
 </title>
-<link rel="stylesheet" type="text/css" href="style.css">
+<!--<link rel="stylesheet" type="text/css" href="style.css">-->
 <style>
 	h1{color:green;}
 	h2{color:black;}
