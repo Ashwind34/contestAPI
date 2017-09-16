@@ -54,6 +54,7 @@ if (count($data) > 0) {
 		} 
 				
 		echo  '</table>';
+		
 		$weekly_lines_table = ob_get_clean();
 				
 	} else {

@@ -4,7 +4,7 @@ session_start();
 
 require_once('pdo_connect.php');
 require_once('datecheck.php');
-require_once('player_picks_query.php');
+require_once('picks_query.php');
 
 //check if user is logged in
 
@@ -77,6 +77,9 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 		<br>
 		<br>
 		<p><a href="weekly_lines_table.php">Weekly Schedule</a></p>
+		<br>
+		<br>
+		<p><a href="weekly_picks_table.php">Contest Picks</a></p>
 		<br>
 		<br>
 		<p><a href="leaderboard.php">Leaderboard</a></p>

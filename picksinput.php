@@ -4,7 +4,7 @@ session_start();
 
 require_once('pdo_connect.php');
 require_once('datecheck.php');
-require_once('player_picks_query.php');
+require_once('picks_query.php');
 require_once ('weekly_schedule.php');
 
 if( isset($_SESSION['player_id'])) {
@@ -37,10 +37,10 @@ if (empty($_POST['submit'])) {
 		if(!empty($_POST['pick_1']) && !empty($_POST['pick_2']) && !empty($_POST['pick_3']) && !empty($_POST['pick_4']) 
 		&& !empty($_POST['pick_5'])) {
 	
-			//PDO prepared statement 
-			//MAY NEED TO USE INSERT STATMENT FOR PICKS LOG, MAKE SURE UPDATE STATEMENT WORKS FIRST
 			
-			/*$submit = $conn->prepare("INSERT INTO player_picks (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
+			/*MAY NEED TO USE INSERT STATMENT FOR PICKS LOG
+			
+			$submit = $conn->prepare("INSERT INTO player_picks (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
 									VALUES (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5, :weekmarker)");
 									
 									
@@ -113,7 +113,7 @@ if (empty($_POST['submit'])) {
 					echo $e->getMessage();
 					}
 		
-				header("Location: /weekly_picks_table.php");
+				header("Location: /player_picks_table.php");
 			
 			
 				
@@ -159,12 +159,12 @@ p {
 
 <h1>Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!</h1>
 
-<h2 style=text-align:center; color:blue><i>Current Picks</i></h2>
+<h2 style=text-align:center; color:blue><i>Your Current Picks</i></h2>
 
 
 <!-- $player_picks_table located in player_picks_query.php -->
 
-<h2><?php echo $player_picks_table;?></h2>
+<h2 style=text-align:center;><?php echo $player_picks_table;?></h2>
 
 <!--dropdown menus for each pick, referenced from function in player_picks_query.php -->
 

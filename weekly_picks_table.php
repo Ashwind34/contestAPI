@@ -8,76 +8,25 @@ session_start();
 
 require_once('datecheck.php');
 require_once('pdo_connect.php');
-require_once('weekly_picks_query.php');
-require_once('player_picks_query.php');
-
-?>
-
-<p style=text-align:center; color:blue;>Your picks for week <?php echo $weekmarker; ?> have been submitted!</p>
-<p style=text-align:center;><a href="index.php">Return to Home Page</a></p>
-
-</body>
-<?php 
+require_once('picks_query.php');
 
 //if we are before approx. 11:30 AM PST on Sunday, show logged-in player's picks only.  Else show all player's picks.
 
 if ($kickoff_marker > 0.22) {
 	
+	echo '<h1 style=text-align:center; color:red;>Your Picks for Week' . $weekmarker . '</h1>
+			<p style=text-align:center;><a href="index.php">Return to Home Page</a></p><br>';
+
 	echo $player_picks_table;
-	
-} else {
-	
-//create array - data to be displayed in weekly picks table below.
 
-$data=$picks_table->fetchall(PDO::FETCH_ASSOC);
-  
-//Make sure	query array is not empty, then create html table with all entries
-
-  
-if (count($data) > 0) {
-	
-		
-		echo '<table align="center" border="1" cellspacing="5" cellpadding="8">
-		
-		<tr><th align="center">Player</th>
-		<th align="center">Favorite Team</th>
-		<th align="center">Pick #1</th>
-		<th align="center">Pick #2</th>
-		<th align="center">Pick #3</th>
-		<th align="center">Pick #4</th>
-		<th align="center">Pick #5</th>
-		<th align="center">Time of Entry</th></tr>';
-		
-	// foreach loop to list out each row in the array	
-		
-		foreach ($data as $row) {
-			
-				
-			echo 
-			'<tr><td align="center">' . $row['user_name'] . '</td>
-			<td align="center">' . $row['fav_team'] . '</td>
-			<td align="center">' . $row['pick_1'] . '</td>
-			<td align="center">' . $row['pick_2'] . '</td>
-			<td align="center">' . $row['pick_3'] . '</td>
-			<td align="center">' . $row['pick_4'] . '</td>
-			<td align="center">' . $row['pick_5'] . '</td>
-			<td align="center">' . $row['time_entered'] . '</td>';
-			echo '</tr>';
-			
-			
-		} 
-		
-		
-		echo  '</table>';
-		
 	} else {
-			echo "query problem";
-	
 			
+		echo '<h1 style=text-align:center; color:red;>Player Picks for Week' . $weekmarker . '</h1>
+				<p style=text-align:center;><a href="index.php">Return to Home Page</a></p><br>';
+	
+		echo $weekly_picks_table;
 
-
-		}	
-}		
+		}		
 ?>
 </body>
 </html>

@@ -14,7 +14,7 @@ require_once('pdo_connect.php');
 
 ?>
 
-<h1 style=text-align:center; color:blue;>LEADERBOARD</h1>
+<h1 style=text-align:center; style=color:blue;>LEADERBOARD</h1>
 <p style=text-align:center;><a href="index.php">Return to Home Page</a></p>
 
 </body>
