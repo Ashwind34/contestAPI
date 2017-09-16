@@ -51,13 +51,30 @@ if (!empty($_POST['register'])) {
 
 			if ($submit->execute()) {
 				echo '<br><p style="font-size:20px">Player Updated Successfully</p>';
-				echo '<br><p style="font-size:20px;"><a href="index.php">Return to Home Page</a></p>';
-				} else {
-				echo "Registration failed.  Please try again."; 
+				echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+				
+			} else {
+				
+				echo '<br><p style="font-size:20px">Problem with Registration.  Please try again.</p>';
+				echo '<br><p style="font-size:20px;"><a href="register.php">Try Again</a></p>';
+				echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+				
 			}
+		} else {
+			
+			echo '<br><p style="font-size:20px">Please complete all fields.</p>';
+			echo '<br><p style="font-size:20px;"><a href="register.php">Try Again</a></p>';
+			echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+			
 		}
+		
 	} else {
-			echo "Password does not match.  Please try again.";
+		
+		echo '<br><p style="font-size:20px">Passwords to not match.  Please try again.</p>';
+		echo '<br><p style="font-size:20px;"><a href="register.php">Try Again</a></p>';
+		echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+		
+			
 		}
 } else {		
 	
@@ -113,7 +130,7 @@ if (!empty($_POST['register'])) {
 	
 	<p><input type="submit" name="register" value="Register"></p><br>
 	
-	<p><a href="index.php">Return to Home Page</a></p>
+	<p><a href="../index.php">Return to Home Page</a></p>
 <form>
 
 

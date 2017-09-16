@@ -95,10 +95,7 @@ if (empty($_POST['submit'])) {
 						WHERE week = '$weekmarker'
 						AND player_id = '$player_id_in'";
 						
-						
-												
-						
-						
+					
 					TRY {
 					
 					$conn->exec($submit_1);
@@ -197,7 +194,7 @@ p {
 	
 	<br>
 	<p style=text-align:center; color:blue;></p>
-	<p style=text-align:center;><a href="index.php">Return to Home Page</a></p><br>
+	<p style=text-align:center;><a href="../index.php">Return to Home Page</a></p><br>
 	<h3 style=text-align:center; color:blue>Week <?php echo $weekmarker ;?> Lines</h3>
 	
 	<!-- display table with weekly lines from weekly_schedule.php -->

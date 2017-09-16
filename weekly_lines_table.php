@@ -8,7 +8,7 @@ require_once ('datecheck.php');
 
 ?>
 
-<p style=text-align:center;><a href="index.php">Return to Home Page</a></p>
+<p style=text-align:center;><a href="../index.php">Return to Home Page</a></p>
 <p style=text-align:center; color:blue>Week <?php echo $weekmarker ;?> Lines</p>
 
 

@@ -15,14 +15,12 @@ require_once('pdo_connect.php');
 ?>
 
 <h1 style=text-align:center; style=color:blue;>LEADERBOARD</h1>
-<p style=text-align:center;><a href="index.php">Return to Home Page</a></p>
+<p style=text-align:center;><a href="../index.php">Return to Home Page</a></p>
 
 </body>
 <?php 
 
 //query for leaderboard table
-//NEED TO FIGURE OUT HOW TO UPDATE TOTAL_SCORE, THEN DONE WITH LEADERBOARD
-
 
 $query = $conn->prepare(
 						"SELECT

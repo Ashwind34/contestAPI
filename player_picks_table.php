@@ -13,7 +13,7 @@ require_once('picks_query.php');
 ?>
 
 <p style=text-align:center; color:blue;>Your picks for week <?php echo $weekmarker; ?> have been submitted!</p>
-<p style=text-align:center;><a href="index.php">Return to Home Page</a></p>
+<p style=text-align:center;><a href="../index.php">Return to Home Page</a></p>
 
 </body>
 <?php 

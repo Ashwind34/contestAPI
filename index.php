@@ -2,9 +2,9 @@
 
 session_start();
 
-require_once('pdo_connect.php');
-require_once('datecheck.php');
-require_once('picks_query.php');
+require_once('contest/pdo_connect.php');
+require_once('contest/datecheck.php');
+require_once('contest/picks_query.php');
 
 //check if user is logged in
 
@@ -64,35 +64,35 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 <?php 
 	if (empty($user)) {
 		echo '<br>
-		<p><a href="login.php">Click Here to Login</a></p>
+		<p><a href="contest/login.php">Click Here to Login</a></p>
 		<br>
 		<br>
-		<p><a href="register.php">Click Here to Register</a></p>
+		<p><a href="contest/register.php">Click Here to Register</a></p>
 		<br>
 		<br>
 		';
 	} else {
 		echo '<br>
-		<br><p><a href="picksinput.php">Submit Your Picks</a></p>
+		<br><p><a href="contest/picksinput.php">Submit Your Picks</a></p>
 		<br>
 		<br>
-		<p><a href="weekly_lines_table.php">Weekly Schedule</a></p>
+		<p><a href="contest/weekly_lines_table.php">Weekly Schedule</a></p>
 		<br>
 		<br>
-		<p><a href="weekly_picks_table.php">Contest Picks</a></p>
+		<p><a href="contest/weekly_picks_table.php">Contest Picks</a></p>
 		<br>
 		<br>
-		<p><a href="leaderboard.php">Leaderboard</a></p>
+		<p><a href="contest/leaderboard.php">Leaderboard</a></p>
 		<br>
 		<br>			
-		<p><a href="logout.php">Logout</a></p>
+		<p><a href="contest/logout.php">Logout</a></p>
 		<br>
 		<br>
 		';
 		
 		if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
 			
-			echo'<p><a href="schedule_updater.php"><i>Update Lines and Scores</i></a></p>';
+			echo'<p><a href="contest/schedule_updater.php"><i>Update Lines and Scores</i></a></p>';
 			
 		} else {} 
 	}

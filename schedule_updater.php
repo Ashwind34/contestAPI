@@ -6,7 +6,7 @@
 <meta http-equiv="Expires" content="0" />
 <body>
 <p style=text-align:center; color:blue;></p>
-<p style=text-align:center;><a href="index.php">Return to Home Page</a></p>
+<p style=text-align:center;><a href="../index.php">Return to Home Page</a></p>
 
 
 <?php 

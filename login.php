@@ -18,7 +18,7 @@ if(!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
 	if (COUNT($result) > 0 && password_verify($_POST['userpass'], $result['password'])) {
 	
 	$_SESSION['player_id'] = $result['player_id'];
-	header("Location: /index.php");
+	header("Location: ../index.php");
 	
 		} else { 
 
@@ -47,8 +47,8 @@ if(!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
 <br>
 <p style="font-size:25px"><b>PLEASE LOGIN</b></p>
 <br>
-
-
+<p><a href="../index.php">Return to Home Page</a></p>;
+<br>
 
 <form action="login.php" method="post">
 
@@ -65,8 +65,7 @@ if(!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
 	<option value="<?php echo $email_list['email']; ?>"><?php echo $email_list['email']; ?></option>
 	<?php 
 	
-			}
-			
+			}			
 			
 	?>
 	</select></p><br>
