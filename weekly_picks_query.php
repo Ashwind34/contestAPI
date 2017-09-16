@@ -6,7 +6,6 @@ require_once ('datecheck.php');
 //db query to pull each player's most recent picks for that week
 
 $picks_table = $conn->prepare("SELECT					 
-								player_roster.user_name, 
 								player_roster.fav_team,						 
 								player_picks.player_id,
 								player_picks.pick_1,

@@ -38,9 +38,12 @@ if (empty($_POST['submit'])) {
 		&& !empty($_POST['pick_5'])) {
 	
 			//PDO prepared statement 
+			//MAY NEED TO USE INSERT STATMENT FOR PICKS LOG, MAKE SURE UPDATE STATEMENT WORKS FIRST
 			
-			$submit = $conn->prepare("INSERT INTO player_picks (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
+			/*$submit = $conn->prepare("INSERT INTO player_picks (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
 									VALUES (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5, :weekmarker)");
+									
+									
 			$submit->BindParam(':pick_1', $_POST['pick_1']);
 			$submit->BindParam(':pick_2', $_POST['pick_2']);
 			$submit->BindParam(':pick_3', $_POST['pick_3']);
@@ -56,7 +59,64 @@ if (empty($_POST['submit'])) {
 					header("Location: /weekly_picks_table.php");
 				} else {
 					echo "It seems like there was a problem submitting your picks.  Please try again.";
-				}
+						
+				}*/
+				
+				
+			$pick_1_in = $_POST['pick_1'];
+			$pick_2_in = $_POST['pick_2'];
+			$pick_3_in = $_POST['pick_3'];
+			$pick_4_in = $_POST['pick_4'];
+			$pick_5_in = $_POST['pick_5'];
+			$player_id_in = $_SESSION['player_id'];
+						
+			$submit_1 = "UPDATE player_picks 
+						SET pick_1 = '$pick_1_in' 
+						WHERE week = '$weekmarker'
+						AND player_id = '$player_id_in'";
+						
+			$submit_2 = "UPDATE player_picks 
+						SET pick_2 = '$pick_2_in' 
+						WHERE week = '$weekmarker'
+						AND player_id = '$player_id_in'";
+						
+			$submit_3 = "UPDATE player_picks 
+						SET pick_3 = '$pick_3_in' 
+						WHERE week = '$weekmarker'
+						AND player_id = '$player_id_in'";
+						
+			$submit_4 = "UPDATE player_picks 
+						SET pick_4 = '$pick_4_in' 
+						WHERE week = '$weekmarker'
+						AND player_id = '$player_id_in'";
+
+			$submit_5 = "UPDATE player_picks 
+						SET pick_5 = '$pick_5_in'
+						WHERE week = '$weekmarker'
+						AND player_id = '$player_id_in'";
+						
+						
+												
+						
+						
+					TRY {
+					
+					$conn->exec($submit_1);
+					$conn->exec($submit_2);
+					$conn->exec($submit_3);
+					$conn->exec($submit_4);
+					$conn->exec($submit_5);
+										
+					}
+					CATCH (PDOException $e) {
+					
+					echo $e->getMessage();
+					}
+		
+				header("Location: /weekly_picks_table.php");
+			
+			
+				
 			
 			} else {
 				echo '<p style=text-align:center><b>Please select 5 teams!</b></p><br>';
@@ -100,7 +160,10 @@ p {
 <h1>Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!</h1>
 
 <h2 style=text-align:center; color:blue><i>Current Picks</i></h2>
+
+
 <!-- $player_picks_table located in player_picks_query.php -->
+
 <h2><?php echo $player_picks_table;?></h2>
 
 <!--dropdown menus for each pick, referenced from function in player_picks_query.php -->
@@ -136,6 +199,9 @@ p {
 	<p style=text-align:center; color:blue;></p>
 	<p style=text-align:center;><a href="index.php">Return to Home Page</a></p><br>
 	<h3 style=text-align:center; color:blue>Week <?php echo $weekmarker ;?> Lines</h3>
+	
+	<!-- display table with weekly lines from weekly_schedule.php -->
+	
 	<p style=text-align:center;><?php echo $weekly_lines_table?></p>
 
 	</body>

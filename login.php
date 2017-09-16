@@ -22,7 +22,8 @@ if(!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
 	
 		} else { 
 
-			die("Email or password is incorrect, please try again.");
+			echo '<br><br><p>Email or password is incorrect, please try again</p>';
+			
 			}
 }
 ?>

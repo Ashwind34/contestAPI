@@ -1,11 +1,13 @@
 <?php 
 
+require_once ('datecheck.php');
+
+
 $player_id = $_SESSION['player_id'];;
 
 //query to pull most recent picks of logged-in player
 
 $user_picks_table = $conn->prepare("SELECT					 
-								player_roster.user_name, 
 								player_roster.fav_team,						 
 								player_picks.player_id,
 								player_picks.pick_1,
@@ -87,15 +89,16 @@ function PickDropdown($pick, $conn, $picknum, $weekmarker) {
 	
 	// query db to get list of teams available to pick for that week
 	
+	$t = time();
 
 	$team_query = 
 		"SELECT home AS teamlist
 		FROM regseason 
-		WHERE week='$weekmarker' AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > 'time()'
+		WHERE week='$weekmarker' AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > '$t'
 		UNION
 		SELECT away AS teamlist
 		FROM regseason 
-		WHERE week='$weekmarker' AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > 'time()'
+		WHERE week='$weekmarker' AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > '$t'
 		ORDER BY teamlist ASC";
 
 	//query to pull any pick already submitted with kickoff time as UNIX timestamp
@@ -126,7 +129,7 @@ function PickDropdown($pick, $conn, $picknum, $weekmarker) {
 				
 		if (!empty($pick)) {
 			
-			if($kickoff < time()) {
+			if($kickoff < $t) {
 				
 				echo '<p><select name="' . $picknum . '">';
 				echo '<option value="">-Select-</option>';
@@ -151,6 +154,9 @@ function PickDropdown($pick, $conn, $picknum, $weekmarker) {
 							
 						} echo '</select></p><br>';
 			}
+			
+			//SOMETHING WRONG HERE...TEAMS THAT HAVE ALREADY PLAYED STILL AVAILABLE IF NOT PICKED BEFORE
+			//ISSUE WITH $TEAM_QUERY LOGIC
 			
 		} else { 
 		

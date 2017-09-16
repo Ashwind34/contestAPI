@@ -181,9 +181,16 @@ if (empty($_POST['submit'])) {
 							WHERE pick_5 = '$team'
 							AND week = '$weekmarker'";
 							
-				$update_total = "UPDATE player_picks
+				//update week_score for each row of picks and total_score on player_roster table
+							
+				$update_week_score = "UPDATE player_picks
 								SET week_score = pick_1_wlt + pick_2_wlt + pick_3_wlt + pick_4_wlt + pick_5_wlt
 								WHERE week = '$weekmarker'"; 
+								
+				$update_total_score = "UPDATE player_roster AS r,(SELECT player_id, SUM(week_score) as tscore
+										FROM player_picks GROUP BY player_id) as p
+										SET r.total_score = p.tscore
+										WHERE r.player_id = p.player_id";
 							
 				TRY {
 			
@@ -192,7 +199,8 @@ if (empty($_POST['submit'])) {
 					$conn->exec($update_3);
 					$conn->exec($update_4);
 					$conn->exec($update_5);
-					$conn->exec($update_total);
+					$conn->exec($update_week_score);
+					$conn->exec($update_total_score);
 					
 				}
 				CATCH (PDOException $e) {

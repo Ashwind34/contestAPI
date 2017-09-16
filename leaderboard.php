@@ -20,6 +20,7 @@ require_once('pdo_connect.php');
 </body>
 <?php 
 
+//query for leaderboard table
 //NEED TO FIGURE OUT HOW TO UPDATE TOTAL_SCORE, THEN DONE WITH LEADERBOARD
 
 
@@ -60,7 +61,7 @@ $query = $conn->prepare(
 						ON
 							player_picks.player_id = a.id AND player_picks.time_entered = a.maxtime 
 						ORDER BY
-						total_score DESC");
+						total_score DESC, name");
 			
 		
 $query->execute();

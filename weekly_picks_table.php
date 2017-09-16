@@ -4,9 +4,12 @@
 <body>
 <?php 
 
+session_start();
+
 require_once('datecheck.php');
 require_once('pdo_connect.php');
 require_once('weekly_picks_query.php');
+require_once('player_picks_query.php');
 
 ?>
 
@@ -16,12 +19,20 @@ require_once('weekly_picks_query.php');
 </body>
 <?php 
 
+//if we are before approx. 11:30 AM PST on Sunday, show logged-in player's picks only.  Else show all player's picks.
+
+if ($kickoff_marker > 0.22) {
+	
+	echo $player_picks_table;
+	
+} else {
+	
 //create array - data to be displayed in weekly picks table below.
 
 $data=$picks_table->fetchall(PDO::FETCH_ASSOC);
   
 //Make sure	query array is not empty, then create html table with all entries
-//MUST SET THIS TO ONLY SHOW AFTER SUNDAY MORNING GAMES HAVE STARTED, SHOW LOGGED-IN PLAYER'S PICKS BEFORE THEN
+
   
 if (count($data) > 0) {
 	
@@ -65,7 +76,8 @@ if (count($data) > 0) {
 			
 
 
-		}		
+		}	
+}		
 ?>
 </body>
 </html>
