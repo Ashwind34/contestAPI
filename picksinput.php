@@ -47,7 +47,7 @@ if (empty($_POST['submit'])) {
 			
 			/*MAY NEED TO USE INSERT STATMENT FOR PICKS LOG
 			
-			$submit = $conn->prepare("INSERT INTO player_picks (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
+			$submit = $conn->prepare("INSERT INTO player_log (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
 									VALUES (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5, :weekmarker)");
 									
 									

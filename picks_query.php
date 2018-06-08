@@ -171,7 +171,7 @@ function PickDropdown($pick, $conn, $picknum, $weekmarker) {
 	
 	// query db to get list of teams available to pick for that week
 	
-	$t = time();
+	$t = $date; //time();
 
 	$team_query = 
 		"SELECT home AS teamlist
