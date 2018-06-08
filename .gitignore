@@ -1,0 +1,7 @@
+# DB credentials
+pdo_connect.php
+
+# php mailer library
+/PHPMailer-master
+
+
