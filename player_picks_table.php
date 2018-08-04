@@ -6,11 +6,7 @@ session_start();
 
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
-<meta name="viewport" content="width=device-width">
-=======
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
->>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 <body>
 <?php 
 

@@ -2,16 +2,6 @@
 
 session_start();
 
-<<<<<<< HEAD
-?>
-
-<!DOCTYPE html>
-<html>
-
-<?php
-
-=======
->>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 require_once('pdo_connect.php');
 require_once('datecheck.php');
 require_once('picks_query.php');
@@ -48,15 +38,9 @@ if (empty($_POST['submit'])) {
 		&& !empty($_POST['pick_5'])) {
 	
 			
-<<<<<<< HEAD
 			//insert picks into picks log table in case there is a problem
 			
 			$submit = $conn->prepare("INSERT INTO picks_log (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
-=======
-			/*MAY NEED TO USE INSERT STATMENT FOR PICKS LOG
-			
-			$submit = $conn->prepare("INSERT INTO player_picks (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
->>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 									VALUES (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5, :weekmarker)");
 									
 									
@@ -69,7 +53,6 @@ if (empty($_POST['submit'])) {
 			$submit->BindParam(':weekmarker', $weekmarker);
 			
 				//make sure statement executes correctly, then send to table with all player picks 
-<<<<<<< HEAD
 							
 				if ($submit->execute()) {
 					header("Location: weekly_picks_table.php");
@@ -80,17 +63,6 @@ if (empty($_POST['submit'])) {
 				
 				//updates player picks table to show current most recent picks
 				//CREATE A FUNCTION FOR THESE UPDATE STATEMENTS, USE FOREACH LOOP TO PROCESS EACH PICK
-=======
-				//MAY NEED TO SEND TO HOMEPAGE
-			
-				if ($submit->execute()) {
-					header("Location: /weekly_picks_table.php");
-				} else {
-					echo "It seems like there was a problem submitting your picks.  Please try again.";
-						
-				}*/
-				
->>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 				
 			$pick_1_in = $_POST['pick_1'];
 			$pick_2_in = $_POST['pick_2'];
@@ -139,14 +111,11 @@ if (empty($_POST['submit'])) {
 					echo $e->getMessage();
 					}
 		
-<<<<<<< HEAD
 					echo '<meta HTTP-EQUIV="Refresh" Content="0; URL=player_picks_table.php">';
 							
-=======
 				header("Location: /player_picks_table.php");
 			
 			
->>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 				
 			
 			} else {
@@ -163,16 +132,10 @@ if (empty($_POST['submit'])) {
 	
 ?>
 
-<<<<<<< HEAD
-
-<head>
-<meta name="viewport" content="width=device-width">
-=======
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
->>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <title>Week <?php echo $weekmarker;?> Picks</title>
@@ -199,11 +162,7 @@ p {
 
 <!-- $player_picks_table located in player_picks_query.php -->
 
-<<<<<<< HEAD
-<p style=text-align:center;><?php echo $player_picks_table;?></p>
-=======
 <h2 style=text-align:center;><?php echo $player_picks_table;?></h2>
->>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 
 <!--dropdown menus for each pick, referenced from function in player_picks_query.php -->
 
@@ -235,11 +194,7 @@ p {
 	</form>
 	
 	<br>
-<<<<<<< HEAD
-	<p style=text-align:center; color:blue></p>
-=======
 	<p style=text-align:center; color:blue;></p>
->>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 	<p style=text-align:center;><a href="../index.php">Return to Home Page</a></p><br>
 	<h3 style=text-align:center; color:blue>Week <?php echo $weekmarker ;?> Lines</h3>
 	

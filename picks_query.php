@@ -51,12 +51,7 @@ $user_pick_array = $user_picks_table->fetchALL(PDO::FETCH_ASSOC);
 			<th align="center">Pick #2</th>
 			<th align="center">Pick #3</th>
 			<th align="center">Pick #4</th>
-<<<<<<< HEAD
 			<th align="center">Pick #5</th>';
-=======
-			<th align="center">Pick #5</th>
-			<th align="center">Time of Entry</th></tr>';
->>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 			
 			// foreach loop to list out each row in the array	
 			
@@ -68,12 +63,7 @@ $user_pick_array = $user_picks_table->fetchALL(PDO::FETCH_ASSOC);
 				<td align="center">' . $row['pick_2'] . '</td>
 				<td align="center">' . $row['pick_3'] . '</td>
 				<td align="center">' . $row['pick_4'] . '</td>
-<<<<<<< HEAD
 				<td align="center">' . $row['pick_5'] . '</td>';
-=======
-				<td align="center">' . $row['pick_5'] . '</td>
-				<td align="center">' . $row['time_entered'] . '</td>';
->>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 				echo '</tr>';			
 				
 			} 			
@@ -137,12 +127,7 @@ if (count($data) > 0) {
 		<th align="center">Pick #2</th>
 		<th align="center">Pick #3</th>
 		<th align="center">Pick #4</th>
-<<<<<<< HEAD
 		<th align="center">Pick #5</th>';
-=======
-		<th align="center">Pick #5</th>
-		<th align="center">Time of Entry</th></tr>';
->>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 		
 	// foreach loop to list out each row in the array	
 		
@@ -151,21 +136,12 @@ if (count($data) > 0) {
 				
 			echo 
 			'<tr><td align="center">' . $row['name'] . '</td>
-<<<<<<< HEAD
 			<td align="center"><i>' . $row['fav_team'] . '</i></td>
-=======
-			<td align="center">' . $row['fav_team'] . '</td>
->>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 			<td align="center">' . $row['pick_1'] . '</td>
 			<td align="center">' . $row['pick_2'] . '</td>
 			<td align="center">' . $row['pick_3'] . '</td>
 			<td align="center">' . $row['pick_4'] . '</td>
-<<<<<<< HEAD
 			<td align="center">' . $row['pick_5'] . '</td>';
-=======
-			<td align="center">' . $row['pick_5'] . '</td>
-			<td align="center">' . $row['time_entered'] . '</td>';
->>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 			echo '</tr>';			
 			
 		} 
@@ -176,13 +152,9 @@ if (count($data) > 0) {
 			
 		$weekly_picks_table = ob_get_clean();
 	
-<<<<<<< HEAD
-	} else {}
-=======
 	} else {
 			echo "query problem";
 	}
->>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 	
 
 			
@@ -201,11 +173,7 @@ function PickDropdown($pick, $conn, $picknum, $weekmarker) {
 	
 	// query db to get list of teams available to pick for that week
 	
-<<<<<<< HEAD
 	$t = $date; //time();
-=======
-	$t = time();
->>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 
 	$team_query = 
 		"SELECT home AS teamlist
