@@ -113,7 +113,7 @@ if (empty($_POST['submit'])) {
 		
 					echo '<meta HTTP-EQUIV="Refresh" Content="0; URL=player_picks_table.php">';
 							
-				header("Location: /player_picks_table.php");
+				header("Location: ./player_picks_table.php");
 			
 			
 				

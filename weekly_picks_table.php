@@ -14,14 +14,14 @@ require_once('picks_query.php');
 
 if ($kickoff_marker > 0.22) {
 	
-	echo '<h1 style=text-align:center; color:red;>Your Picks for Week' . $weekmarker . '</h1>
+	echo '<h1 style=text-align:center; color:red;>Your Picks for Week ' . $weekmarker . '</h1>
 			<p style=text-align:center;><a href="../index.php">Return to Home Page</a></p><br>';
 
 	echo $player_picks_table;
 
 	} else {
 			
-		echo '<h1 style=text-align:center; color:red;>Player Picks for Week' . $weekmarker . '</h1>
+		echo '<h1 style=text-align:center; color:red;>Player Picks for Week ' . $weekmarker . '</h1>
 				<p style=text-align:center;><a href="../index.php">Return to Home Page</a></p><br>';
 	
 		echo $weekly_picks_table;

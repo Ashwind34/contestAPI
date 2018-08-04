@@ -212,7 +212,7 @@ if (empty($_POST['submit'])) {
 			}
 				
 		echo '<meta HTTP-EQUIV="Refresh" Content="0; URL=weekly_lines_table.php">';;
-		header("Location: /weekly_lines_table.php");
+		header("Location: ./weekly_lines_table.php");
 		
 		}			
 
