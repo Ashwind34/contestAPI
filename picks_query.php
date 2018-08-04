@@ -152,10 +152,8 @@ if (count($data) > 0) {
 			
 		$weekly_picks_table = ob_get_clean();
 	
-	} else {
-			echo "query problem";
-	}
-	
+	} 
+			
 
 			
 		
