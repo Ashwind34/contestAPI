@@ -45,7 +45,7 @@ if (empty($_POST['submit'])) {
 		&& !empty($_POST['pick_5'])) {
 	
 			
-			//MAY NEED TO USE INSERT STATMENT FOR PICKS LOG
+			//insert picks into picks log table in case there is a problem
 			
 			$submit = $conn->prepare("INSERT INTO picks_log (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
 									VALUES (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5, :weekmarker)");
@@ -60,8 +60,7 @@ if (empty($_POST['submit'])) {
 			$submit->BindParam(':weekmarker', $weekmarker);
 			
 				//make sure statement executes correctly, then send to table with all player picks 
-				//MAY NEED TO SEND TO HOMEPAGE
-			
+							
 				if ($submit->execute()) {
 					header("Location: weekly_picks_table.php");
 				} else {
@@ -69,6 +68,8 @@ if (empty($_POST['submit'])) {
 						
 				}
 				
+				//updates player picks table to show current most recent picks
+				//CREATE A FUNCTION FOR THESE UPDATE STATEMENTS, USE FOREACH LOOP TO PROCESS EACH PICK
 				
 			$pick_1_in = $_POST['pick_1'];
 			$pick_2_in = $_POST['pick_2'];
