@@ -4,7 +4,10 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
+<<<<<<< HEAD
 <meta name="viewport" content="width=device-width">
+=======
+>>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 <body>
 <p style=text-align:center; color:blue;></p>
 <p style=text-align:center;><a href="../index.php">Return to Home Page</a></p>
@@ -211,7 +214,11 @@ if (empty($_POST['submit'])) {
 				}
 			}
 				
+<<<<<<< HEAD
 		echo '<meta HTTP-EQUIV="Refresh" Content="0; URL=weekly_lines_table.php">';;
+=======
+		header("Location: /weekly_lines_table.php");
+>>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 		
 		}			
 

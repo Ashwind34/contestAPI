@@ -42,11 +42,19 @@ if(isset($_SESSION['player_id'])) {
 	h1{color:green;}
 	h2{color:black;}
 	p {color:blue; text-align:center;}
+<<<<<<< HEAD
 	
 	
 	
 </style>
 <meta name="viewport" content="width=device-width">
+=======
+	body {background-color:grey;}
+	
+	
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+>>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 </head>
 <body>
 
@@ -87,12 +95,21 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 		<br>			
 		<p><a href="contest/logout.php">Logout</a></p>
 		<br>
+<<<<<<< HEAD
 		<br>';
 		
 		if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
 			
 			echo'<p><a href="contest/schedule_updater.php"><i>Update Lines and Scores</i></a></p><br>';
 			echo'<p><a href="contest/regtest1.php">Reg Test</a></p>';
+=======
+		<br>
+		';
+		
+		if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
+			
+			echo'<p><a href="contest/schedule_updater.php"><i>Update Lines and Scores</i></a></p>';
+>>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 			
 		} else {} 
 	}

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <meta name="viewport" content="width=device-width">
+=======
+>>>>>>> 2aa6d7ca75aed135284ce6158a746dceb3517302
 <body>
 <?php 
 
