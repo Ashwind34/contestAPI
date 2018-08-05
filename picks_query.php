@@ -136,11 +136,11 @@ if (count($data) > 0) {
 		
 //assign each pick as a variable
 
-$pick_1 = $user_pick_array['0']['pick_1'];
-$pick_2 = $user_pick_array['0']['pick_2'];
-$pick_3 = $user_pick_array['0']['pick_3'];
-$pick_4 = $user_pick_array['0']['pick_4'];
-$pick_5 = $user_pick_array['0']['pick_5'];
+$pick_1 = $user_pick_array['pick_1'];
+$pick_2 = $user_pick_array['pick_2'];
+$pick_3 = $user_pick_array['pick_3'];
+$pick_4 = $user_pick_array['pick_4'];
+$pick_5 = $user_pick_array['pick_5'];
 
 //function that populates pick dropdown menus with correct teams based on kickoff times
 	
