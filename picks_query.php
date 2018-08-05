@@ -9,30 +9,16 @@ $player_id = $_SESSION['player_id'];;
 //query to pull LOGGED-IN player's most recent picks 
 
 $user_picks_table = $conn->prepare("SELECT					 
-									player_roster.fav_team,						 
 									player_picks.player_id,
 									player_picks.pick_1,
 									player_picks.pick_2,
 									player_picks.pick_3,
 									player_picks.pick_4,
 									player_picks.pick_5,
-									player_picks.week,
-									player_picks.time_entered
-									FROM player_roster 
-										INNER JOIN player_picks
-											ON player_roster.player_id = player_picks.player_id
-										INNER JOIN
-										(
-											SELECT DISTINCT player_id AS id , MAX(time_entered) AS maxtime
-											FROM player_picks 
-											GROUP BY id
-											ORDER BY maxtime DESC
-										) AS a
-										 ON player_roster.player_id = a.id
-										 AND player_picks.time_entered = a.maxtime
-									
+									player_picks.week
+									FROM player_picks
 									WHERE week = '$weekmarker'
-									AND a.id = '$player_id'");
+									AND player_picks.player_id = '$player_id'");
 			
 						
 $user_picks_table->execute();
@@ -95,24 +81,15 @@ $picks_table = $conn->prepare("SELECT
 								FROM player_roster 
 									INNER JOIN player_picks
 										ON player_roster.player_id = player_picks.player_id
-									INNER JOIN
-									(
-										SELECT DISTINCT player_id AS id , MAX(time_entered) AS maxtime
-										FROM player_picks 
-										GROUP BY id
-										ORDER BY maxtime DESC
-									) AS a
-									 ON player_roster.player_id = a.id
-									 AND player_picks.time_entered = a.maxtime
-								
 								WHERE week = '$weekmarker'
-								ORDER BY name ASC");						
+								ORDER BY player_roster.last_name ASC");						
 						
 $picks_table->execute();
 
 $data=$picks_table->fetchall(PDO::FETCH_ASSOC);
   
 //Make sure	query array is not empty, then create html table with all entries
+//CONSIDER ADDING FAVORITE TEAM COLUMN TO TABLE, CURRENTLY COMMENTED OUT
 
   
 if (count($data) > 0) {
@@ -122,7 +99,7 @@ if (count($data) > 0) {
 		echo '<table align="center" border="1" cellspacing="5" cellpadding="8">
 		
 		<tr><th align="center">Player</th>
-		<th align="center">Favorite Team</th>
+		<!-- <th align="center">Favorite Team</th> -->
 		<th align="center">Pick #1</th>
 		<th align="center">Pick #2</th>
 		<th align="center">Pick #3</th>
@@ -136,7 +113,7 @@ if (count($data) > 0) {
 				
 			echo 
 			'<tr><td align="center">' . $row['name'] . '</td>
-			<td align="center"><i>' . $row['fav_team'] . '</i></td>
+			<!-- <td align="center"><i>' . $row['fav_team'] . '</i></td> -->
 			<td align="center">' . $row['pick_1'] . '</td>
 			<td align="center">' . $row['pick_2'] . '</td>
 			<td align="center">' . $row['pick_3'] . '</td>
