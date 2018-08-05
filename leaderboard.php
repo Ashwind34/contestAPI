@@ -41,23 +41,25 @@ $query = $conn->prepare(
 							player_roster
 						ON
 							player_picks.player_id = player_roster.player_id
-						INNER JOIN
-							(
-							SELECT DISTINCT
-								player_picks.player_id AS id,
-								MAX(time_entered) AS maxtime
-							FROM
-								player_picks
-							WHERE
-								WEEK = '$last_weekmarker'
-							GROUP BY
-								id
-							ORDER BY
-								maxtime
-							DESC
-						) AS a
-						ON
-							player_picks.player_id = a.id AND player_picks.time_entered = a.maxtime 
+						WHERE
+							week = '$weekmarker'
+						-- INNER JOIN
+						-- 	(
+						-- 	SELECT DISTINCT
+						-- 		player_picks.player_id AS id,
+						-- 		MAX(time_entered) AS maxtime
+						-- 	FROM
+						-- 		player_picks
+						-- 	WHERE
+						-- 		WEEK = '$last_weekmarker'
+						-- 	GROUP BY
+						-- 		id
+						-- 	ORDER BY
+						-- 		maxtime
+						-- 	DESC
+						-- ) AS a
+						-- ON
+						-- 	player_picks.player_id = a.id AND player_picks.time_entered = a.maxtime 
 						ORDER BY
 						total_score DESC, name");
 			
