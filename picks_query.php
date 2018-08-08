@@ -89,8 +89,6 @@ $picks_table->execute();
 $data=$picks_table->fetchall(PDO::FETCH_ASSOC);
   
 //Make sure	query array is not empty, then create html table with all entries
-//CONSIDER ADDING FAVORITE TEAM COLUMN TO TABLE, CURRENTLY COMMENTED OUT
-
   
 if (count($data) > 0) {
 	
@@ -136,18 +134,20 @@ if (count($data) > 0) {
 		
 //assign each pick as a variable
 
-$pick_1 = $user_pick_array['pick_1'];
-$pick_2 = $user_pick_array['pick_2'];
-$pick_3 = $user_pick_array['pick_3'];
-$pick_4 = $user_pick_array['pick_4'];
-$pick_5 = $user_pick_array['pick_5'];
+// $pick_1 = $user_pick_array['pick_1'];
+// $pick_2 = $user_pick_array['pick_2'];
+// $pick_3 = $user_pick_array['pick_3'];
+// $pick_4 = $user_pick_array['pick_4'];
+// $pick_5 = $user_pick_array['pick_5'];
 
 //function that populates pick dropdown menus with correct teams based on kickoff times
 	
-function PickDropdown($pick, $conn, $picknum, $weekmarker) {
+function PickDropdown($pick, $picknum) {
 	
 	// query db to get list of teams available to pick for that week
 	
+	global $date, $player_id, $conn, $weekmarker;
+
 	$t = $date; //time();
 
 	$team_query = 
@@ -161,6 +161,7 @@ function PickDropdown($pick, $conn, $picknum, $weekmarker) {
 		ORDER BY teamlist ASC";
 
 	//query to pull any pick already submitted with kickoff time as UNIX timestamp
+	//NEED TO PULL LIST TO SEE IF ANY PICKS ALREADY IN SYSTEM ARE PAST KICKOFF, FIX QUERY
 	
 	$user_picks_check = $conn->prepare("SELECT
 										home AS teams,
@@ -176,30 +177,31 @@ function PickDropdown($pick, $conn, $picknum, $weekmarker) {
 										WHERE week = '$weekmarker'
 										AND away = '$pick'");
 	$user_picks_check->execute();
-										
+			
 	//create array to pull data from 
 										
 	$picks_check_array = $user_picks_check->fetch(PDO::FETCH_ASSOC);
 
 	$kickoff = $picks_check_array['kickoff'];
 
-		
 		//check to make sure that a pick already submitted cannot be changed after kickoff
 				
-		if (!empty($pick)) {
+		if (!empty($picks_check_array)) {
 			
 			if($kickoff < $t) {
 				
+				echo $kickoff;
 				echo '<p><select name="' . $picknum . '">';
 				echo '<option value="">-Select-</option>';
 				echo '<option value="' . $pick . '">' . $pick .'</option>';
-				echo '</select></p><br>';				
+				echo '</select></p><br>';							
 								
 								
 			// else enable dropdown menu wth remaining games
 		
 			} else {
-			
+				
+				echo $kickoff;
 				echo '<p><select name="' . $picknum . '">';
 				echo '<option value="">-Select-</option>';
 				 
@@ -213,12 +215,9 @@ function PickDropdown($pick, $conn, $picknum, $weekmarker) {
 							
 						} echo '</select></p><br>';
 			}
-			
-			//SOMETHING WRONG HERE...TEAMS THAT HAVE ALREADY PLAYED STILL AVAILABLE IF NOT PICKED BEFORE
-			//ISSUE WITH $TEAM_QUERY LOGIC
 			
 		} else { 
-		
+				echo '<p>picks check array empty</p>';
 				echo '<p><select name="' . $picknum . '">';
 				echo '<option value="">-Select-</option>';
 				 
@@ -232,8 +231,7 @@ function PickDropdown($pick, $conn, $picknum, $weekmarker) {
 							
 						} echo '</select></p><br>';
 		
-				
-			}
+		}
 		
 }		
 	

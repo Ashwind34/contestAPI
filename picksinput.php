@@ -5,7 +5,7 @@ session_start();
 require_once('pdo_connect.php');
 require_once('datecheck.php');
 require_once('picks_query.php');
-require_once ('weekly_schedule.php');
+require_once('weekly_schedule.php');
 
 if( isset($_SESSION['player_id'])) {
 	
@@ -171,23 +171,23 @@ p {
 
 	<p>Pick #1</p>
 	
-	<p><?php PickDropdown($pick_1, $conn, 'pick_1', $weekmarker); ?></p>
+	<p><?php PickDropdown($pick_1,'pick_1'); ?></p>
 	
 	<p>Pick #2</p>
 
-	<p><?php PickDropdown($pick_2, $conn, 'pick_2', $weekmarker); ?></p>
+	<p><?php PickDropdown($pick_2, 'pick_2'); ?></p>
 	
 	<p>Pick #3</p>
 
-	<p><?php PickDropdown($pick_3, $conn, 'pick_3', $weekmarker); ?></p>
+	<p><?php PickDropdown($pick_3, 'pick_3'); ?></p>
 		
 	<p>Pick #4</p>
 
-	<p><?php PickDropdown($pick_4, $conn, 'pick_4', $weekmarker); ?></p>
+	<p><?php PickDropdown($pick_4, 'pick_4'); ?></p>
 	
 	<p>Pick #5</p>
 
-	<p><?php PickDropdown($pick_5, $conn, 'pick_5', $weekmarker); ?></p>
+	<p><?php PickDropdown($pick_5,'pick_5'); ?></p>
 
 	
 	<p><input type="submit" name="submit" value="Submit Your Picks"></p>
