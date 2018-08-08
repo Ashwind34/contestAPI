@@ -26,7 +26,15 @@ $kickoff_marker = $weekmarker - $datetest;
 
 //set variable to identify previous week
 
-$last_weekmarker = $weekmarker - 1;
+if ($weekmarker = 1) {
+	
+	$last_weekmarker = 1;
+
+} else {
+
+	$last_weekmarker = $weekmarker - 1;
+
+}
 
 echo $kickoff_marker;
 echo '<br>';

@@ -21,7 +21,6 @@ require_once('pdo_connect.php');
 <?php 
 
 //query for leaderboard table
-//THIS QUERY IS BROKEN, RETURNS EMPTY
 
 $query = $conn->prepare(
 						"SELECT
@@ -52,9 +51,7 @@ $query->execute();
 //create array - data to be displayed in weekly picks table below.
 
 $data=$query->fetchall(PDO::FETCH_ASSOC);
-
-print_r($data);
-
+  
 //Make sure	query array is not empty, then create html table with all entries
   
 if (count($data) > 0) {
