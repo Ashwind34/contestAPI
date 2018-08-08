@@ -161,7 +161,7 @@ function PickDropdown($pick, $picknum) {
 		ORDER BY teamlist ASC";
 
 	//query to pull any pick already submitted with kickoff time as UNIX timestamp
-	//NEED TO PULL LIST TO SEE IF ANY PICKS ALREADY IN SYSTEM ARE PAST KICKOFF, FIX QUERY
+	//NEED TO PULL LIST TO SEE IF ANY PICKS ALREADY IN DB ARE PAST KICKOFF, FIX QUERY
 	
 	$user_picks_check = $conn->prepare("SELECT
 										home AS teams,
