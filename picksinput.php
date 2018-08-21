@@ -160,7 +160,7 @@ p {
 <h2 style=text-align:center; color:blue><i>Your Current Picks</i></h2>
 
 
-<!-- $player_picks_table located in player_picks_query.php -->
+<!-- $player_picks_table located in picks_query.php -->
 
 <h2 style=text-align:center;><?php echo $player_picks_table;?></h2>
 

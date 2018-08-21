@@ -12,7 +12,7 @@ if ($today < "20170907") {
 }
 
 // MANUAL DATE OVERRIDE IF NEEDED
-$date = strtotime("09/10/2017 15:30:00");
+$date = strtotime("09/15/2017 15:30:00");
 
 $season_start = strtotime("09/05/2017");
 
@@ -20,7 +20,7 @@ $season_start = strtotime("09/05/2017");
 
 $datetest = (($date - $season_start)/"604800");
 
-$weekmarker = ceil($datetest);
+//$weekmarker = ceil($datetest);
 
 $kickoff_marker = $weekmarker - $datetest;
 
@@ -36,11 +36,19 @@ if ($weekmarker = 1) {
 
 }
 
-echo $kickoff_marker;
-echo '<br>';
+echo $weekmarker;
+echo $weekmarker;
 echo $weekmarker;
 echo '<br>';
+echo $kickoff_marker;
+echo '<br>';
+echo ceil($datetest);
+echo '<br>';
 echo $date;
+echo '<br>';
+echo $season_start;
+echo '<br>';
+echo $datetest;
 echo '<br>';
 echo date('m/d/y H:i:s', $date);
 echo '<br>';

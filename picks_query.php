@@ -128,72 +128,49 @@ if (count($data) > 0) {
 		$weekly_picks_table = ob_get_clean();
 	
 	} 
-			
-
-			
-		
-//assign each pick as a variable
-
-// $pick_1 = $user_pick_array['pick_1'];
-// $pick_2 = $user_pick_array['pick_2'];
-// $pick_3 = $user_pick_array['pick_3'];
-// $pick_4 = $user_pick_array['pick_4'];
-// $pick_5 = $user_pick_array['pick_5'];
 
 //function that populates pick dropdown menus with correct teams based on kickoff times
 	
 function PickDropdown($pick, $picknum) {
 	
+	global $date, $player_id, $conn, $weekmarker, $user_pick_array;
+
 	// query db to get list of teams available to pick for that week
-	
-	global $date, $player_id, $conn, $weekmarker;
 
 	$t = $date; //time();
 
-	$team_query = 
-		"SELECT home AS teamlist
-		FROM regseason 
-		WHERE week='$weekmarker' AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > '$t'
-		UNION
-		SELECT away AS teamlist
-		FROM regseason 
-		WHERE week='$weekmarker' AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > '$t'
-		ORDER BY teamlist ASC";
+	$team_query = "SELECT home AS teamlist
+					FROM regseason 
+					WHERE week='$weekmarker' 
+					AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > '$t'
+					UNION
+					SELECT away AS teamlist
+					FROM regseason 
+					WHERE week='$weekmarker' 
+					AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > '$t'
+					ORDER BY teamlist ASC";
 
-	//query to pull any pick already submitted with kickoff time as UNIX timestamp
-	//NEED TO PULL LIST TO SEE IF ANY PICKS ALREADY IN DB ARE PAST KICKOFF, FIX QUERY
-	
-	$user_picks_check = $conn->prepare("SELECT
-										home AS teams,
-										UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) AS kickoff
-										FROM regseason
-										WHERE week = '$weekmarker'
-										AND home = '$pick'
-										UNION
-										SELECT
-										away AS teams,
-										UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) AS kickoff
-										FROM regseason
-										WHERE week = '$weekmarker'
-										AND away = '$pick'");
-	$user_picks_check->execute();
-			
-	//create array to pull data from 
-										
-	$picks_check_array = $user_picks_check->fetch(PDO::FETCH_ASSOC);
+	$team_list_query = $conn->prepare($team_query);
 
-	$kickoff = $picks_check_array['kickoff'];
+	$team_list_query->execute();
+
+	//create array with all teams whose games have not started
+
+	$avail_teams_array = $team_list_query->fetchAll(PDO::FETCH_COLUMN);
+
+	//assign current pick to a variable
+
+	$current_pick = $user_pick_array[0][$picknum];
 
 		//check to make sure that a pick already submitted cannot be changed after kickoff
 				
-		if (!empty($picks_check_array)) {
+		if (!empty($current_pick)) {
 			
-			if($kickoff < $t) {
+			if(!in_array($current_pick, $avail_teams_array)) {
 				
-				echo $kickoff;
 				echo '<p><select name="' . $picknum . '">';
 				echo '<option value="">-Select-</option>';
-				echo '<option value="' . $pick . '">' . $pick .'</option>';
+				echo '<option value="' . $current_pick . '">' . $current_pick .'</option>';
 				echo '</select></p><br>';							
 								
 								
@@ -201,7 +178,6 @@ function PickDropdown($pick, $picknum) {
 		
 			} else {
 				
-				echo $kickoff;
 				echo '<p><select name="' . $picknum . '">';
 				echo '<option value="">-Select-</option>';
 				 
@@ -217,26 +193,22 @@ function PickDropdown($pick, $picknum) {
 			}
 			
 		} else { 
-				echo '<p>picks check array empty</p>';
 				echo '<p><select name="' . $picknum . '">';
 				echo '<option value="">-Select-</option>';
-				 
+
 				// insert team list as options for picks dropdown list
 				
-					$query = $conn->prepare($team_query);
-					$query->execute();		
-						while ($teamlist = $query->fetch(PDO::FETCH_ASSOC)){
+				$query = $conn->prepare($team_query);
+				$query->execute();
+				while ($teamlist = $query->fetch(PDO::FETCH_ASSOC)){
 						
-							echo '<option value="' . $teamlist['teamlist'] . '">' . $teamlist['teamlist'] . '</option>';
+					echo '<option value="' . $teamlist['teamlist'] . '">' . $teamlist['teamlist'] . '</option>';
 							
-						} echo '</select></p><br>';
+				} echo '</select></p><br>';
 		
 		}
 		
 }		
-	
-		
-		 	
 
 ?> 
 	  
