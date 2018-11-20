@@ -18,14 +18,14 @@ if (!empty($_POST['submit'])) {
         <form action="processreset.php" method="POST">
                 <select multiple size="20" name="select[]">
                     <?php 
-					// query db to get list of player emails
-						$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
-						$email_query->execute();		
-							while ($email_list = $email_query->fetch(PDO::FETCH_ASSOC)) {
-							
-					?>
-					
-								<option value="<?php echo $email_list['email']; ?>"><?php echo $email_list['email']; ?></option>
+			// query db to get list of player emails
+			$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
+			$email_query->execute();		
+				while ($email_list = $email_query->fetch(PDO::FETCH_ASSOC)) {
+				
+		?>
+		
+			<option value="<?php echo $email_list['email']; ?>"><?php echo $email_list['email']; ?></option>
 					
 					<?php 	}	?>  
                 </select>

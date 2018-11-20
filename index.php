@@ -90,9 +90,9 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 		<br>';
 		
 		if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
+
+			echo'<p><a href="contest/admin.php"><i>Admin Page</i></a></p><br>';
 			
-			echo'<p><a href="contest/schedule_updater.php"><i>Update Lines and Scores</i></a></p><br>';
-			echo'<p><a href="contest/regtest1.php">Reg Test</a></p>';
 
 		} else {} 
 	}
