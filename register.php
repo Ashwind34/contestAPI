@@ -28,38 +28,56 @@ if (!empty($_POST['register'])) {
 	if ($_POST['userpass'] == $_POST['confirmpass']) {
 		
 		//check to make sure all fields completed
-		
+				
 		if(!empty($_POST['userpass']) && !empty($_POST['email']) && !empty($_POST['team'])) {
-			
-		//Prepared Statement (MOST LIKELY NEED TO DELETE FIRST NAME AND LAST NAME FROM INPUT AND QUERY)
-		
-		$query = "UPDATE player_roster 
-					SET fav_team = :team,
-					password = :password
-					WHERE email = :email";
-		
-		$submit = $conn->prepare($query);
-		
-		//bind parameters
-		
-		$submit->BindParam(':email', $_POST['email']);
-		$submit->BindParam(':password', password_hash($_POST['userpass'], PASSWORD_BCRYPT));
-		$submit->BindParam(':team', $_POST['team']);
-		
-						
-		//Submit query to database
 
-			if ($submit->execute()) {
-				echo '<br><p style="font-size:20px">Player Updated Successfully</p>';
-				echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
-				
-			} else {
-				
-				echo '<br><p style="font-size:20px">Problem with Registration.  Please try again.</p>';
+		//check to make sure user has correct PIN
+
+		$email = $_POST['email'];
+		$pin_check = "SELECT email, pin FROM player_roster WHERE email ='$email'";
+		$pin_query = $conn->prepare($pin_check);
+		$pin_query->execute();
+		$pin_check_array = $pin_query->fetch(PDO::FETCH_ASSOC);
+
+			if ($_POST['pin'] == $pin_check_array['pin']){
+			
+			//Prepared Statement to update favorite team and password
+			
+			$query = "UPDATE player_roster 
+						SET fav_team = :team,
+						password = :password
+						WHERE email = :email";
+			
+			$submit = $conn->prepare($query);
+		
+			//bind parameters
+			
+			$submit->BindParam(':email', $_POST['email']);
+			$submit->BindParam(':password', password_hash($_POST['userpass'], PASSWORD_BCRYPT));
+			$submit->BindParam(':team', $_POST['team']);
+			
+							
+			//Submit query to database
+
+				if ($submit->execute()) {
+					echo '<br><p style="font-size:20px">Player Updated Successfully</p>';
+					echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+					
+				} else {
+					
+					echo '<br><p style="font-size:20px">Problem with Registration.  Please try again.</p>';
+					echo '<br><p style="font-size:20px;"><a href="register.php">Try Again</a></p>';
+					echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+					
+				}
+
+			} else {	
+				echo '<br><p style="font-size:20px">PIN is incorrect.  Please try again.</p>';
 				echo '<br><p style="font-size:20px;"><a href="register.php">Try Again</a></p>';
 				echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
-				
-			}
+			}	
+
+			
 		} else {
 			
 			echo '<br><p style="font-size:20px">Please complete all fields.</p>';
@@ -73,11 +91,10 @@ if (!empty($_POST['register'])) {
 		echo '<br><p style="font-size:20px">Passwords to not match.  Please try again.</p>';
 		echo '<br><p style="font-size:20px;"><a href="register.php">Try Again</a></p>';
 		echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
-		
 			
-		}
-} else {		
-	
+	}
+
+} 
 ?>
 
 
@@ -93,12 +110,10 @@ if (!empty($_POST['register'])) {
 		$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
 		$email_query->execute();		
 			while ($email_list = $email_query->fetch(PDO::FETCH_ASSOC)) {
-			
 	?>
+			<option value="<?php echo $email_list['email']; ?>"><?php echo $email_list['email']; ?></option>
 	
-				<option value="<?php echo $email_list['email']; ?>"><?php echo $email_list['email']; ?></option>
-	
-	<?php 	}	?>
+	<?php }	?>
 	
 	</select></p><br>
 	
@@ -122,11 +137,11 @@ if (!empty($_POST['register'])) {
 	
 	</select></p><br> 
 	
-	<!--CONSIDER REMOVING USERNAME OPTION, OR LIMIT CHARACTERS TO AVOID EXTENDING HTML TABLES TOO LONG -->
-	
 	<p>Your Password <input type="password" name="userpass" id="userpass"></p><br>
 	
 	<p>Confirm Password <input type="password" name="confirmpass" id="confirmpass"></p><br> 
+
+	<p>PIN Number <input type="number" size="4" name="pin" id="pin"></p><br>
 	
 	<p><input type="submit" name="register" value="Register"></p><br>
 	
@@ -136,6 +151,4 @@ if (!empty($_POST['register'])) {
 
 
 </body>
-<?php }  ?>
-
 </html>
