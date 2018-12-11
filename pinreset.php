@@ -5,12 +5,14 @@ require_once('pdo_connect.php');
 
 if (!empty($_POST['submit'])) {
 
-    //THIS SELECTS THE EMAIL AND PIN AND DROPS THEM INTO AN ARRAY.  NEED TO PUSH NEW, RANDOM PIN TO DB, THEN ADD TO EMAIL AND SEND
+    //reset pin number in DB
     $email = $_POST['useremail'];
-    $pin_query = $conn->prepare("SELECT email, pin FROM player_roster WHERE email = '$email'");
-    $pin_query->execute();
-    $pin_query_data = $pin_query->fetch(PDO::FETCH_ASSOC);
-    print_r($pin_query_data);
+    $pin = rand(1000,9999);
+    $pin_update =   "UPDATE player_roster 
+                    SET pin = '$pin'
+                    WHERE email = '$email'";
+    $pin_change = $conn->prepare($pin_update);
+    $pin_change->execute();
 
     $to = $email;
     $toName = 'Tim Brock';
