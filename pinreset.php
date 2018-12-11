@@ -1,38 +1,17 @@
 <?php
 
 require_once('pdo_connect.php');
+require_once('pinupdate.php');
 //require 'sendMessage.php';
 
 if (!empty($_POST['submit'])) {
 
-    //reset pin number in DB
+    //set email address for update
     $email = $_POST['useremail'];
-    $pin = rand(1000,9999);
-    $pin_update =   "UPDATE player_roster 
-                    SET pin = '$pin'
-                    WHERE email = '$email'";
-    $pin_change = $conn->prepare($pin_update);
-    $pin_change->execute();
 
-    $to = $email;
-    $toName = 'Tim Brock';
-    $subject = 'More testing';
-    $body = '<html>
-
-            <body>
-                <h1>This is a header!</h1>
-                <p>This is a paragraph!
-                <br>
-                <img src="http://dh.tbrock.online/db.jpg">
-                <br>This is an image!
-                </p>
-            </body>
-        </html>';
+    //call function to 
+    PinUpdate($email);
 }
-
-                
-
-    //send_email_message($to, $toName, $subject, $body);
 
 ?>
 
