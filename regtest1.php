@@ -8,26 +8,27 @@ require_once('pdo_connect.php');
 //Manual email list for testing if needed
 //$users = array("phxxxx@gmail.com", "ahester34@gmail.com");
 
-if (!empty($_POST['submit'])) {
-	header ("Location: /processreset.php");
-	}
+// if (!empty($_POST['submit'])) {
+// 	header ("Location: /processreset.php");
+// 	}
 		
 ?>
 
+<!-- NEED TO USE THIS FORM TO CREATE A PHP ARRAY OF EMAILS TO FEED INTO LOOP FOR PINUPDATE FUNCTION -->
 <html>
-        <form action="processreset.php" method="POST">
+        <form action="regtest1.php" method="POST">
                 <select multiple size="20" name="select[]">
-                    <?php 
+                    	<?php 
 			// query db to get list of player emails
 			$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
 			$email_query->execute();		
 				while ($email_list = $email_query->fetch(PDO::FETCH_ASSOC)) {
 				
-		?>
+			?>
 		
 			<option value="<?php echo $email_list['email']; ?>"><?php echo $email_list['email']; ?></option>
 					
-					<?php 	}	?>  
+			<?php 	}	?>  
                 </select>
                 <br>
                 <textarea name="msgbody" rows="5" cols="20">Greetings, note your registration pin and clink to register</textarea><br>

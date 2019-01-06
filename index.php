@@ -42,11 +42,11 @@ if(isset($_SESSION['player_id'])) {
 	h1{color:green;}
 	h2{color:black;}
 	p {color:blue; text-align:center;}
-	body {background-color:grey;}
+	
 	
 	
 </style>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width">
 </head>
 <body>
 
@@ -70,6 +70,7 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 		<p><a href="contest/register.php">Click Here to Register</a></p>
 		<br>
 		<br>
+		<p><a href="contest/pinreset.php">Click Here to Reset your PIN</a></p>
 		';
 	} else {
 		echo '<br>
@@ -90,10 +91,9 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 		<br>';
 		
 		if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
-
+			
 			echo'<p><a href="contest/admin.php"><i>Admin Page</i></a></p><br>';
 			
-
 		} else {} 
 	}
 	
