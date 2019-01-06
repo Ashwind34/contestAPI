@@ -11,6 +11,8 @@ require_once('pdo_connect.php');
 // if (!empty($_POST['submit'])) {
 // 	header ("Location: /processreset.php");
 // 	}
+
+//test for ssh key
 		
 ?>
 
