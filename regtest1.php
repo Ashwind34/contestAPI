@@ -12,7 +12,7 @@ require_once('pdo_connect.php');
 // 	header ("Location: /processreset.php");
 // 	}
 
-//test for ssh key
+//test for ssh key 2
 		
 ?>
 
