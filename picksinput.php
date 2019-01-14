@@ -23,7 +23,7 @@ if( isset($_SESSION['player_id'])) {
 	$user = $result;
 	} else {
 		die("No result returned");
-}
+	}
 }
 
 

@@ -1,8 +1,29 @@
 <?php
 
+session_start();
+
 require_once('pdo_connect.php');
 require_once('pinupdate.php');
-//require 'sendMessage.php';
+require_once('sendMessage.php');
+
+if( isset($_SESSION['player_id'])) {
+	
+	//PDO prepared statement
+	$record = $conn->prepare("SELECT player_id, email FROM player_roster WHERE player_id = :id"); 
+	$record->bindParam(':id',$_SESSION['player_id']);
+	$record->execute();
+	
+	//create associative array from query
+	$result = $record->fetch(PDO::FETCH_ASSOC);
+	
+	
+	//set $user as array that contains query data
+	if (COUNT($result) > 0 ) {
+	$user = $result;
+	} else {
+		die("No result returned");
+	}
+}
 
 if (!empty($_POST['submit'])) {
 
@@ -10,7 +31,8 @@ if (!empty($_POST['submit'])) {
     $email = $_POST['useremail'];
 
     //call function to 
-    PinUpdate($email);
+	list ($recipientEmail, $recipiantName, $subject, $body) = PinUpdate($email);
+	send_email_message($recipientEmail, $recipiantName, $subject, $body);
 }
 
 ?>
@@ -31,7 +53,7 @@ if (!empty($_POST['submit'])) {
 
 <br>
 <br>
-<p style="font-size:25px"><b>Select your Email to Reset PIN</b></p>
+<p style="font-size:25px"><b>Reset Your PIN</b></p>
 <br>
 <p><a href="../index.php">Return to Home Page</a></p>
 <br>
@@ -39,21 +61,12 @@ if (!empty($_POST['submit'])) {
 <form action="pinreset.php" method="post">
 
 	<p>Email Address <select name="useremail">
-	<option value="">-Select-</option>
-	<?php 
-	// query db to get list of player emails 
-		$query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
-		$query->execute();		
-			while ($email_list = $query->fetch(PDO::FETCH_ASSOC)){
-	?>
 	
-	<option value="<?php echo $email_list['email']; ?>"><?php echo $email_list['email']; ?></option>
-	
-            <?php }	?>
+	<option value="<?php echo $user['email']; ?>"><?php echo $user['email']; ?></option>
 	
     </select></p><br>
 	
-	<p><input type="submit" name="submit" value="Submit"></p>
+	<p><input type="submit" name="submit" value="Reset Your Pin"></p>
 
 </form>
 </body>

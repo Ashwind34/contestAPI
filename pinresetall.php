@@ -3,19 +3,27 @@
 
 require_once('pdo_connect.php');
 require_once('pinupdate.php');
+require_once('sendMessage.php');
+
+//check if $_POST is empty
 
 if (!empty($_POST["select"])) {
+    
     $emailstoreset = $_POST["select"];
-    $emailbody = $_POST["msgbody"];
 
-    foreach ($emailstoreset as $email) {
-        PinUpdate($email);
+    //loop through each email address and generate new PIN in DB, then mail PIN to email address
+ 
+    foreach ($emailstoreset as $key=>$email) {
+        
+        list ($recipientEmail, $recipiantName, $subject, $body) = PinUpdate($email);
+        send_email_message($recipientEmail, $recipiantName, $subject, $body);
+     
     }
         
 }
 ?>
 
-<!-- NEED TO USE THIS FORM TO CREATE A PHP ARRAY OF EMAILS TO FEED INTO LOOP FOR PINUPDATE FUNCTION -->
+<!-- form selector for email lists -->
 <html>
         <form action="pinresetall.php" method="POST">
                 <select multiple size="20" name="select[]">
@@ -34,5 +42,6 @@ if (!empty($_POST["select"])) {
                 <br>
                 <textarea name="msgbody" rows="5" cols="20">Greetings, note your registration pin and clink to register</textarea><br>
                 <input type="submit" value="Submit">
+                <br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>
         </form>
 </html>
