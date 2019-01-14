@@ -3,22 +3,20 @@
 
 require_once('pdo_connect.php');
 
-	
-		
-//Manual email list for testing if needed
-//$users = array("phxxxx@gmail.com", "ahester34@gmail.com");
-
-// if (!empty($_POST['submit'])) {
-// 	header ("Location: /processreset.php");
-// 	}
-
-//test for ssh key 2
-		
+if (!empty($_POST["select"])) {
+    $emailstoreset = $_POST["select"];
+    $emailbody = $_POST["msgbody"];
+    
+    foreach ($emailstoreset as $email) {
+        echo($email);
+    }
+        
+}
 ?>
 
 <!-- NEED TO USE THIS FORM TO CREATE A PHP ARRAY OF EMAILS TO FEED INTO LOOP FOR PINUPDATE FUNCTION -->
 <html>
-        <form action="regtest1.php" method="POST">
+        <form action="pinresetall.php" method="POST">
                 <select multiple size="20" name="select[]">
                     	<?php 
 			// query db to get list of player emails
@@ -34,6 +32,6 @@ require_once('pdo_connect.php');
                 </select>
                 <br>
                 <textarea name="msgbody" rows="5" cols="20">Greetings, note your registration pin and clink to register</textarea><br>
-                <input type="submit" value="Send Reset PINs">
+                <input type="submit" value="Submit">
         </form>
 </html>

@@ -19,7 +19,7 @@
 
 			
 			<p><a href="schedule_updater.php"><i>Update Lines and Scores</i></a></p><br>
-			<p><a href="regtest1.php">Reg Test</a></p><br>
+			<p><a href="pinresetall.php">Reg Test</a></p><br>
             <p><a href="../index.php">Back to Homepage</a></p>
             
 			

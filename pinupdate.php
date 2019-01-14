@@ -6,6 +6,7 @@
 function PinUpdate($email) {
 
     require('pdo_connect.php');
+    require('sendMessage.php');
 
     $pin = 1234; //rand(1000,9999);
     $pin_update =   "UPDATE player_roster 
@@ -36,6 +37,8 @@ function PinUpdate($email) {
     echo $recipientName . '<br>';
     echo $subject . '<br>';
     echo $body . '<br>';
+
+    send_email_message($recipientEmail, $recipientName, $subject, $body);
 
 }
 
