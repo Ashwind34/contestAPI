@@ -2,13 +2,14 @@
 <?php
 
 require_once('pdo_connect.php');
+require_once('pinupdate.php');
 
 if (!empty($_POST["select"])) {
     $emailstoreset = $_POST["select"];
     $emailbody = $_POST["msgbody"];
-    
+
     foreach ($emailstoreset as $email) {
-        echo($email);
+        PinUpdate($email);
     }
         
 }
