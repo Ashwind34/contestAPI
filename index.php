@@ -70,7 +70,7 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 		<p><a href="contest/register.php">Click Here to Register</a></p>
 		<br>
 		<br>
-		<p><a href="contest/pinreset.php">Click Here to Reset your PIN</a></p>
+		<p><a href="contest/pinresetfresh.php">Click Here to Reset Your Pin</a></p>
 		';
 	} else {
 		echo '<br>
@@ -85,7 +85,10 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 		<br>
 		<p><a href="contest/leaderboard.php">Leaderboard</a></p>
 		<br>
-		<br>			
+		<br>	
+		<p><a href="contest/pinreset.php">Click Here to Reset your PIN</a></p>
+		<br>
+		<br>		
 		<p><a href="contest/logout.php">Logout</a></p>
 		<br>
 		<br>';
