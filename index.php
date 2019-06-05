@@ -70,7 +70,6 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 		<p><a href="contest/register.php">Click Here to Register</a></p>
 		<br>
 		<br>
-		<p><a href="contest/pinresetfresh.php">Click Here to Reset Your Pin</a></p>
 		';
 	} else {
 		echo '<br>
