@@ -2,9 +2,9 @@
 
 session_start();
 
-require_once('contest/pdo_connect.php');
-require_once('contest/datecheck.php');
-require_once('contest/picks_query.php');
+require_once('src/pdo_connect.php');
+require_once('src/datecheck.php');
+require_once('src/picks_query.php');
 
 //check if user is logged in
 
@@ -64,37 +64,37 @@ style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
 <?php 
 	if (empty($user)) {
 		echo '<br>
-		<p><a href="contest/login.php">Click Here to Login</a></p>
+		<p><a href="src/login.php">Click Here to Login</a></p>
 		<br>
 		<br>
-		<p><a href="contest/register.php">Click Here to Register</a></p>
+		<p><a href="src/register.php">Click Here to Register</a></p>
 		<br>
 		<br>
 		';
 	} else {
 		echo '<br>
-		<br><p><a href="contest/picksinput.php">Submit Your Picks</a></p>
+		<br><p><a href="src/picksinput.php">Submit Your Picks</a></p>
 		<br>
 		<br>
-		<p><a href="contest/weekly_lines_table.php">Weekly Schedule</a></p>
+		<p><a href="src/weekly_lines_table.php">Weekly Schedule</a></p>
 		<br>
 		<br>
-		<p><a href="contest/weekly_picks_table.php">Contest Picks</a></p>
+		<p><a href="src/weekly_picks_table.php">Contest Picks</a></p>
 		<br>
 		<br>
-		<p><a href="contest/leaderboard.php">Leaderboard</a></p>
+		<p><a href="src/leaderboard.php">Leaderboard</a></p>
 		<br>
 		<br>	
-		<p><a href="contest/pinreset.php">Click Here to Reset your PIN</a></p>
+		<p><a href="src/pinreset.php">Click Here to Reset your PIN</a></p>
 		<br>
 		<br>		
-		<p><a href="contest/logout.php">Logout</a></p>
+		<p><a href="src/logout.php">Logout</a></p>
 		<br>
 		<br>';
 		
 		if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
 			
-			echo'<p><a href="contest/admin.php"><i>Admin Page</i></a></p><br>';
+			echo'<p><a href="src/admin.php"><i>Admin Page</i></a></p><br>';
 			
 		} else {} 
 	}
