@@ -2,9 +2,6 @@
 pdo_connect.php
 email_conf.php
 
-# php mailer library
-/PHPMailer-master
-
 # Tim's PHPMailer bash script
 configurePHPMailer.sh
 
