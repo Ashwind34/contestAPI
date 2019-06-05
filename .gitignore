@@ -8,4 +8,6 @@ email_conf.php
 # Tim's PHPMailer bash script
 configurePHPMailer.sh
 
+# Visual Studio files
+/.vs
 
