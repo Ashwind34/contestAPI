@@ -8,7 +8,6 @@
 session_start();
 
 require_once('src/pdo_connect.php');
-//require_once('src/datecheck.php');
 require_once('src/picks_query.php');
 
 //check if user is logged in
@@ -26,7 +25,7 @@ if(isset($_SESSION['player_id'])) {
 	
 	//set $user as array that contains query data
 	if (COUNT($result) > 0 ) {
-	$user = $result;
+		$user = $result;
 	} else {
 		die("No result returned");
 	}

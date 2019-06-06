@@ -20,7 +20,7 @@ if( isset($_SESSION['player_id'])) {
 	
 	//set $user as array that contains query data
 	if (COUNT($result) > 0 ) {
-	$user = $result;
+		$user = $result;
 	} else {
 		die("No result returned");
 	}
@@ -29,20 +29,17 @@ if( isset($_SESSION['player_id'])) {
 
 //skip sql query before data is entered
 
-if (empty($_POST['submit'])) {
-	} else {
+if (!empty($_POST['submit'])) {
 
 		//make sure that all picks are filled
 	
 		if(!empty($_POST['pick_1']) && !empty($_POST['pick_2']) && !empty($_POST['pick_3']) && !empty($_POST['pick_4']) 
-		&& !empty($_POST['pick_5'])) {
-	
+		&& !empty($_POST['pick_5'])) {	
 			
 			//insert picks into picks log table in case there is a problem
 			
 			$submit = $conn->prepare("INSERT INTO picks_log (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
-									VALUES (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5, :weekmarker)");
-									
+									VALUES (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5, :weekmarker)");									
 									
 			$submit->BindParam(':pick_1', $_POST['pick_1']);
 			$submit->BindParam(':pick_2', $_POST['pick_2']);
@@ -57,8 +54,7 @@ if (empty($_POST['submit'])) {
 				if ($submit->execute()) {
 					header("Location: weekly_picks_table.php");
 				} else {
-					echo "It seems like there was a problem submitting your picks.  Please try again.";
-						
+					echo "It seems like there was a problem submitting your picks.  Please try again.";						
 				}
 				
 				//updates player picks table to show current most recent picks
@@ -134,78 +130,73 @@ if (empty($_POST['submit'])) {
 
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<title>Week <?php echo $weekmarker;?> Picks</title>
-<body>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<title>Week <?php echo $weekmarker;?> Picks</title>
+		<style>
 
-<style>
+			h1 {
+				text-align:center;
+				color:red;
+			}
 
-h1 {
-	text-align:center;
-	color:red;
-}
+			p {
+				text-align:center;
+				color:green;
+			}
 
-p {
-	text-align:center;
-	color:green;
-}
+		</style>
+	</head>		
+	<body>
 
-</style>
+		<h1>Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!</h1>
 
-<h1>Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!</h1>
+		<h2 style=text-align:center; color:blue><i>Your Current Picks</i></h2>
 
-<h2 style=text-align:center; color:blue><i>Your Current Picks</i></h2>
+		<!-- $player_picks_table located in picks_query.php -->
 
+		<h2 style=text-align:center;><?php echo $player_picks_table;?></h2>
 
-<!-- $player_picks_table located in picks_query.php -->
+		<!--dropdown menus for each pick, referenced from function in player_picks_query.php -->
 
-<h2 style=text-align:center;><?php echo $player_picks_table;?></h2>
+		<form action="picksinput.php" method="post">
 
-<!--dropdown menus for each pick, referenced from function in player_picks_query.php -->
+			<p>Pick #1</p>
+			
+			<p><?php PickDropdown($pick_1,'pick_1'); ?></p>
+			
+			<p>Pick #2</p>
 
-<form action="picksinput.php" method="post">
+			<p><?php PickDropdown($pick_2, 'pick_2'); ?></p>
+			
+			<p>Pick #3</p>
 
+			<p><?php PickDropdown($pick_3, 'pick_3'); ?></p>
+				
+			<p>Pick #4</p>
 
-	<p>Pick #1</p>
-	
-	<p><?php PickDropdown($pick_1,'pick_1'); ?></p>
-	
-	<p>Pick #2</p>
+			<p><?php PickDropdown($pick_4, 'pick_4'); ?></p>
+			
+			<p>Pick #5</p>
 
-	<p><?php PickDropdown($pick_2, 'pick_2'); ?></p>
-	
-	<p>Pick #3</p>
+			<p><?php PickDropdown($pick_5,'pick_5'); ?></p>
+			
+			<p><input type="submit" name="submit" value="Submit Your Picks"></p>
+			
+		</form>
+			
+		<br>
+		<p style=text-align:center; color:blue;></p>
 
-	<p><?php PickDropdown($pick_3, 'pick_3'); ?></p>
-		
-	<p>Pick #4</p>
+		<p style=text-align:center;><a href="../index.php">Return to Home Page</a></p><br>
 
-	<p><?php PickDropdown($pick_4, 'pick_4'); ?></p>
-	
-	<p>Pick #5</p>
-
-	<p><?php PickDropdown($pick_5,'pick_5'); ?></p>
-
-	
-	<p><input type="submit" name="submit" value="Submit Your Picks"></p>
-	</form>
-	
-	<br>
-	<p style=text-align:center; color:blue;></p>
-	<p style=text-align:center;><a href="../index.php">Return to Home Page</a></p><br>
-	<h3 style=text-align:center; color:blue>Week <?php echo $weekmarker ;?> Lines</h3>
-	
-	<!-- display table with weekly lines from weekly_schedule.php -->
-	
-	<p style=text-align:center;><?php echo $weekly_lines_table?></p>
+		<h3 style=text-align:center; color:blue>Week <?php echo $weekmarker ;?> Lines</h3>
+			
+		<!-- display table with weekly lines from weekly_schedule.php -->
+			
+		<p style=text-align:center;><?php echo $weekly_lines_table?></p>
 
 	</body>
 	
-	
-
-
-
 </html>
