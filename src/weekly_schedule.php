@@ -5,7 +5,6 @@ require_once ('datecheck.php');
 
 
 $query=$conn->prepare("SELECT
-
 						home,
 						h_spread,
 						away,
@@ -22,50 +21,45 @@ $query->execute();
 
 $data=$query->fetchall(PDO::FETCH_ASSOC);
 
-
 if (count($data) > 0) {
 	
-//Make sure	query array is not empty, then create html table with all entries
-//use ob_start to catch HTML table output in a variable $weekly_lines_table
+	//Make sure	query array is not empty, then create html table with all entries
+	//use ob_start to catch HTML table output in a variable $weekly_lines_table
 		
-		ob_start();
-		echo '<table align="center" border="1" cellspacing="5" cellpadding="8">
-		
-		<tr><th align="center">Home</th>
-		<th align="center">Home Spread</th>
-		<th align="center">Away</th>
-		<th align="center">Away Spread</th>
-		<th align="center">Start Time (Eastern)</th>
-		</tr>';
-		
-	// foreach loop to list out each row in the array	
-		
-		foreach ($data as $row) {
-			
-				
-			echo 
-			'<tr><td align="center">' . $row['home'] . '</td>
-			<td align="center">' . $row['h_spread'] . '</td>
-			<td align="center">' . $row['away'] . '</td>
-			<td align="center">' . $row['a_spread'] . '</td>
-			<td align="center">' . date('h:i a',strtotime($row['start_time'])) . '</td>
-			</tr>';
-					
-		} 
-				
-		echo  '</table>';
-		
-		$weekly_lines_table = ob_get_clean();
-				
-	} else {
-			echo "query problem"; 
+	ob_start();
+
+	echo '<table align="center" border="1" cellspacing="5" cellpadding="8">
 	
+	<tr><th align="center">Home</th>
+	<th align="center">Home Spread</th>
+	<th align="center">Away</th>
+	<th align="center">Away Spread</th>
+	<th align="center">Start Time (Eastern)</th>
+	</tr>';
+	
+	// foreach loop to list out each row in the array	
+	
+	foreach ($data as $row) {		
 			
+		echo 
+		'<tr><td align="center">' . $row['home'] . '</td>
+		<td align="center">' . $row['h_spread'] . '</td>
+		<td align="center">' . $row['away'] . '</td>
+		<td align="center">' . $row['a_spread'] . '</td>
+		<td align="center">' . date('h:i a',strtotime($row['start_time'])) . '</td>
+		</tr>';
+				
+	} 
+			
+	echo  '</table>';
+	
+	$weekly_lines_table = ob_get_clean();
+			
+} else {
+	
+	echo "query problem"; 
 
-
-		}	
-
+}
 		
 ?>
-</body>
-</html>
+

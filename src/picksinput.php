@@ -122,9 +122,7 @@ if (!empty($_POST['submit'])) {
 				
 			
 			}
-	}
-			
-	
+	}	
 	
 ?>
 
@@ -198,5 +196,5 @@ if (!empty($_POST['submit'])) {
 		<p style=text-align:center;><?php echo $weekly_lines_table?></p>
 
 	</body>
-	
+
 </html>
