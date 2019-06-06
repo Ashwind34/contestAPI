@@ -5,3 +5,5 @@ email_conf.php
 # Visual Studio files
 /.vs
 
+/old
+
