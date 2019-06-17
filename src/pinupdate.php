@@ -24,11 +24,12 @@ function PinUpdate($email) {
     $recipientEmail = $email;
     $recipientName = $email_query_array['first_name'] . " " . $email_query_array ['last_name'];
     $subject = 'NFL SUPERCONTEST - PIN RESET';
-    // UPDATE FORMATTING ON BODY EMAIL???
+    // CHECK LINK IN BELOW TEMPLATE TO MAKE SURE IT WORKS ON DREAMHOST
     $body = '<html>
                 <body>
-                    <h3>YOUR NEW PIN IS</h3>
-                    <h3>' . $pin .'</h3>
+                    <h3>YOUR NEW SUPERCONTEST PIN IS</h3>
+                    <h3>' . $pin .'</h3><br>                    
+                    <p><a href="www.nfl-supercontest.com/src/passreset.php">Click Here to Change your Password</a></p>
                 </body>
             </html>';               
 
