@@ -65,7 +65,8 @@ if(isset($_SESSION['player_id'])) {
 			<p><a href="src/register.php">Click Here to Register</a></p>
 			<br>
 			<br>
-			<p><a href="src/pinresetfresh.php">Click Here to Reset your PIN</a></p>';
+			<p><a href="src/passreset.php">Click Here to Change your Password</a></p>';
+
 		} else {
 			echo 
 			'<br>
@@ -81,7 +82,7 @@ if(isset($_SESSION['player_id'])) {
 			<p><a href="src/leaderboard.php">Leaderboard</a></p>
 			<br>
 			<br>	
-			<p><a href="src/pinreset.php">Click Here to Reset your PIN</a></p>
+			<p><a href="src/passreset.php">Click Here to Change your Password</a></p>
 			<br>
 			<br>		
 			<p><a href="src/logout.php">Logout</a></p>

@@ -37,7 +37,7 @@ if (!empty($_POST['submit'])) {
 <p><a href="../index.php">Return to Home Page</a></p>
 <br>
 
-<form action="pinreset.php" method="post">
+<form action="pinresetfresh.php" method="post">
 
 	<p>Email Address <select name="useremail">
 
