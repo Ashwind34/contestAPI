@@ -108,7 +108,19 @@ if (!empty($_POST['register'])) {
 
 <form action="register.php" method="post">
 	
-	<p>Email <input type="email" name="email" id="email"></p><br><br>
+	<p>Email Address <select name="email">
+		<option value="">-Select-</option>
+		<?php 
+		// query db to get list of player emails
+			$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
+			$email_query->execute();		
+				while ($email_list = $email_query->fetch(PDO::FETCH_ASSOC)) {
+		?>
+				<option value="<?php echo $email_list['email']; ?>"><?php echo $email_list['email']; ?></option>
+		
+		<?php }	?>
+		
+		</select></p><br>
 	
 	<p>Favorite NFL Team <select name="team">
 	<option value="">-Select-</option>
