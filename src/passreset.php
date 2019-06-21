@@ -58,7 +58,7 @@ if (!empty($_POST['passreset'])) {
 					
 				} else {
 					
-					echo '<br><p style="font-size:20px">Problem with Registration.  Please try again.</p>';
+					echo '<br><p style="font-size:20px">Problem with Password Change.  Please try again.</p>';
 					echo '<br><p style="font-size:20px;"><a href="passreset.php">Try Again</a></p>';
                     echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
                     exit();
@@ -100,19 +100,7 @@ if (!empty($_POST['passreset'])) {
 
         <form action="passreset.php" method="post">
             
-            <p>Email Address <select name="email">
-            <option value="">-Select-</option>
-            <?php 
-            // query db to get list of player emails
-                $email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
-                $email_query->execute();		
-                    while ($email_list = $email_query->fetch(PDO::FETCH_ASSOC)) {
-            ?>
-                    <option value="<?php echo $email_list['email']; ?>"><?php echo $email_list['email']; ?></option>
-            
-            <?php }	?>
-            
-            </select></p><br>
+            <p>Email <input type="email" name="email" id="email"></p><br><br>
             
             <p>New Password <input type="password" name="userpass" id="userpass"></p><br>
             

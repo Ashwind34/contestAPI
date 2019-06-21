@@ -28,7 +28,7 @@ if( isset($_SESSION['player_id'])) {
 if (!empty($_POST['submit'])) {
 
     //set email address for update
-    $email = $_POST['useremail'];
+    $email = $_POST['email'];
 
     //call function to 
 	list ($recipientEmail, $recipiantName, $subject, $body) = PinUpdate($email);
@@ -60,7 +60,7 @@ if (!empty($_POST['submit'])) {
 
 <form action="pinreset.php" method="post">
 
-	<p>Email Address <select name="useremail">
+	<p>Email Address <select name="email">
 	
 	<option value="<?php echo $user['email']; ?>"><?php echo $user['email']; ?></option>
 	

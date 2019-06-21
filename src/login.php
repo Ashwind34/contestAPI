@@ -52,24 +52,6 @@ if(!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
 
 <form action="login.php" method="post">
 
-	<!-- <p>Email Address <select name="useremail">
-	<option value="">-Select-</option>
-	<?php 
-	// query db to get list of player emails 
-		$query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
-		$query->execute();		
-			while ($email_list = $query->fetch(PDO::FETCH_ASSOC))
-			{
-	?>
-	
-	<option value="<?php echo $email_list['email']; ?>"><?php echo $email_list['email']; ?></option>
-	<?php 
-	
-			}			
-			
-	?>
-	</select></p><br> -->
-
 	<p>Email <input type="email" name="useremail" id="useremail"></p><br><br>
 	
 	<p>Password <input type="password" name="userpass" id="userpass"></p><br><br>
