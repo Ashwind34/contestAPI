@@ -43,7 +43,7 @@ function send_email_message($recipientEmail, $recipientName, $subject, $body)
         $mail->isHTML(true);                                    // Set email format to HTML    
         $mail->send();
 
-        echo '<br><p style="font-size:20px">A new PIN has been sent to ' . $recipientEmail . '. Check your email!</p>';
+        echo '<br><p style="font-size:20px;">A new PIN has been sent to ' . $recipientEmail . '. Check your email!</p>';
         echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
         exit();
     

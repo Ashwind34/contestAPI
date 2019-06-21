@@ -167,8 +167,8 @@ function PickDropdown($pick, $picknum) {
 			if(!in_array($current_pick, $avail_teams_array)) {
 				
 				echo '<p><select name="' . $picknum . '">';
-				echo '<option value="">-Select-</option>';
-				echo '<option value="' . $current_pick . '">' . $current_pick .'</option>';
+				echo '<option value="' . $current_pick . '">' . $current_pick . '</option>';
+				// echo '<option value="' . $current_pick . '">' . $current_pick .'</option>';
 				echo '</select></p><br>';							
 								
 								
@@ -177,9 +177,10 @@ function PickDropdown($pick, $picknum) {
 			} else {
 				
 				echo '<p><select name="' . $picknum . '">';
-				echo '<option value="">-Select-</option>';
+				echo '<option value="' . $current_pick . '">' . $current_pick . '</option>';
 				 
 				// insert team list as options for picks dropdown list
+				// NEED TO FILTER TEAMLIST ARRAY TO EXCLUDE $CURRENT_PICK
 				
 					$query = $conn->prepare($team_query);
 					$query->execute();		

@@ -156,7 +156,7 @@ if (!empty($_POST['submit'])) {
 
 		<h2 style=text-align:center;><?php echo $player_picks_table;?></h2>
 
-		<!--dropdown menus for each pick, referenced from function in player_picks_query.php -->
+		<!--dropdown menus for each pick, referenced from function in picks_query.php -->
 
 		<form action="picksinput.php" method="post">
 
