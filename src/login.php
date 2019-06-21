@@ -9,6 +9,7 @@
 	p{text-align:center;}
 	
 </style>
+</head>
 
 <?php
 
@@ -30,7 +31,10 @@ if(!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
 	if (COUNT($result) > 0 && password_verify($_POST['userpass'], $result['password'])) {
 	
 	$_SESSION['player_id'] = $result['player_id'];
-	header("Location: ../index.php");
+	
+	// redirect to index.php without using header()
+	$URL = '../index.php';
+	echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 	
 		} else { 
 
