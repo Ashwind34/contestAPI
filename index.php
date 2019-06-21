@@ -9,6 +9,7 @@ session_start();
 
 require_once('src/pdo_connect.php');
 require_once('src/picks_query.php');
+require_once('src/datecheck.php');
 
 //check if user is logged in
 
