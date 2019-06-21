@@ -52,7 +52,7 @@ if(!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
 
 <form action="login.php" method="post">
 
-	<p>Email Address <select name="useremail">
+	<!-- <p>Email Address <select name="useremail">
 	<option value="">-Select-</option>
 	<?php 
 	// query db to get list of player emails 
@@ -68,7 +68,9 @@ if(!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
 			}			
 			
 	?>
-	</select></p><br>
+	</select></p><br> -->
+
+	<p>Email <input type="email" name="useremail" id="useremail"></p><br><br>
 	
 	<p>Password <input type="password" name="userpass" id="userpass"></p><br><br>
 	
