@@ -11,7 +11,7 @@ p
 	text-align:center;
 }
 </style>
-<body>
+</head>
 
 <?php
 
@@ -61,12 +61,15 @@ if (!empty($_POST['register'])) {
 				if ($submit->execute()) {
 					echo '<br><p style="font-size:20px">Player Updated Successfully</p>';
 					echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+					exit();
 					
 				} else {
 					
 					echo '<br><p style="font-size:20px">Problem with Registration.  Please try again.</p>';
 					echo '<br><p style="font-size:20px;"><a href="register.php">Try Again</a></p>';
 					echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+					exit();
+
 					
 				}
 
@@ -74,6 +77,7 @@ if (!empty($_POST['register'])) {
 				echo '<br><p style="font-size:20px">PIN is incorrect.  Please try again.</p>';
 				echo '<br><p style="font-size:20px;"><a href="register.php">Try Again</a></p>';
 				echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+				exit();
 			}	
 
 			
@@ -82,6 +86,7 @@ if (!empty($_POST['register'])) {
 			echo '<br><p style="font-size:20px">Please complete all fields.</p>';
 			echo '<br><p style="font-size:20px;"><a href="register.php">Try Again</a></p>';
 			echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+			exit();
 			
 		}
 		
@@ -90,13 +95,14 @@ if (!empty($_POST['register'])) {
 		echo '<br><p style="font-size:20px">Passwords to not match.  Please try again.</p>';
 		echo '<br><p style="font-size:20px;"><a href="register.php">Try Again</a></p>';
 		echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+		exit();
 			
 	}
 
 } 
 ?>
 
-
+<body>
 <br>
 <p style="font-size:25px"><b>PLEASE REGISTER</b></p>
 

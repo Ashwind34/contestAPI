@@ -1,3 +1,15 @@
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<style>
+
+	p{text-align:center;}
+	
+</style>
+
 <?php
 
 session_start();
@@ -23,23 +35,14 @@ if(!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
 		} else { 
 
 			echo '<br><br><p>Email or password is incorrect, please try again</p>';
+			echo '<br><p style="font-size:20px;"><a href="login.php">Try Again</a></p>';
+            echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+            exit();
 			
 			}
 }
 ?>
 
-
-<html>
-
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<link rel="stylesheet" type="text/css" href="style.css">
-<style>
-
-	p{text-align:center;}
-	
-</style>
 
 <body>
 
