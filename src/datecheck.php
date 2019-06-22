@@ -1,6 +1,5 @@
 <?php 
 
-
 $today = date("Ymd");
 
 //check to make sure $date is not negative
