@@ -8,8 +8,8 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-function send_email_message($recipientEmail, $recipientName, $subject, $body)
-{
+function send_email_message($recipientEmail, $recipientName, $subject, $body) {
+    
     // import email settings
     require 'email_conf.php';
 
@@ -31,7 +31,7 @@ function send_email_message($recipientEmail, $recipientName, $subject, $body)
         $mail->SMTPSecure = 'tls';                              // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 587;                                      // TCP port to connect to
         if($fromName === NULL) {
-        $mail->setFrom($fromAddress);
+            $mail->setFrom($fromAddress);
         } else {
             $mail->setFrom($fromAddress, $fromName);
         }      

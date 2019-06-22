@@ -1,7 +1,7 @@
 <?php 
 
-require_once ('pdo_connect.php');
-require_once ('datecheck.php');
+require_once('pdo_connect.php');
+require_once('datecheck.php');
 
 
 $query=$conn->prepare("SELECT
@@ -13,22 +13,22 @@ $query=$conn->prepare("SELECT
 						FROM
 						regseason
 						WHERE
-						week='$weekmarker'");											
-						
+						week='$weekmarker'");
+                        
 $query->execute();
 
-//create array - data to be displayed in weekly picks table below.  
+//create array - data to be displayed in weekly picks table below.
 
 $data=$query->fetchall(PDO::FETCH_ASSOC);
 
 if (count($data) > 0) {
-	
-	//Make sure	query array is not empty, then create html table with all entries
-	//use ob_start to catch HTML table output in a variable $weekly_lines_table
-		
-	ob_start();
+    
+    //Make sure	query array is not empty, then create html table with all entries
+    //use ob_start to catch HTML table output in a variable $weekly_lines_table
+        
+    ob_start();
 
-	echo '<table align="center" border="1" cellspacing="5" cellpadding="8">
+    echo '<table align="center" border="1" cellspacing="5" cellpadding="8">
 	
 	<tr><th align="center">Home</th>
 	<th align="center">Home Spread</th>
@@ -36,30 +36,28 @@ if (count($data) > 0) {
 	<th align="center">Away Spread</th>
 	<th align="center">Start Time (Eastern)</th>
 	</tr>';
-	
-	// foreach loop to list out each row in the array	
-	
-	foreach ($data as $row) {		
-			
-		echo 
-		'<tr><td align="center">' . $row['home'] . '</td>
+    
+    // foreach loop to list out each row in the array
+    
+    foreach ($data as $row) {
+        echo
+        '<tr><td align="center">' . $row['home'] . '</td>
 		<td align="center">' . $row['h_spread'] . '</td>
 		<td align="center">' . $row['away'] . '</td>
 		<td align="center">' . $row['a_spread'] . '</td>
-		<td align="center">' . date('h:i a',strtotime($row['start_time'])) . '</td>
+		<td align="center">' . date('h:i a', strtotime($row['start_time'])) . '</td>
 		</tr>';
-				
-	} 
-			
-	echo  '</table>';
-	
+    }
+            
+    echo  '</table>';
+    
 	$weekly_lines_table = ob_get_clean();
-			
-} else {
 	
-	echo "query problem"; 
+} else {
+
+    echo "query problem";
 
 }
-		
+	
 ?>
 
