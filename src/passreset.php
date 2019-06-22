@@ -14,84 +14,73 @@
 
 require_once('pdo_connect.php');
 
-	//Check to make sure form is empty
+    //Check to make sure form is empty
 
 if (!empty($_POST['passreset'])) {
-	
-	//check to make sure password is confirmed
-	
-	if ($_POST['userpass'] == $_POST['confirmpass']) {
-		
-		//check to make sure all fields completed
-				
-		if(!empty($_POST['userpass']) && !empty($_POST['email'])) {
+    
+    //check to make sure password is confirmed
+    
+    if ($_POST['userpass'] == $_POST['confirmpass']) {
+        
+        //check to make sure all fields completed
+                
+        if (!empty($_POST['userpass']) && !empty($_POST['email'])) {
 
-		//check to make sure user has correct PIN
+        //check to make sure user has correct PIN
 
-		$email = $_POST['email'];
-		$pin_check = "SELECT email, pin FROM player_roster WHERE email ='$email'";
-		$pin_query = $conn->prepare($pin_check);
-		$pin_query->execute();
-		$pin_check_array = $pin_query->fetch(PDO::FETCH_ASSOC);
+            $email = $_POST['email'];
+            $pin_check = "SELECT email, pin FROM player_roster WHERE email ='$email'";
+            $pin_query = $conn->prepare($pin_check);
+            $pin_query->execute();
+            $pin_check_array = $pin_query->fetch(PDO::FETCH_ASSOC);
 
-			if ($_POST['pin'] == $pin_check_array['pin']){
-			
-			//Prepared Statement to update password
-			
-			$query = "UPDATE player_roster 
+            if ($_POST['pin'] == $pin_check_array['pin']) {
+            
+            //Prepared Statement to update password
+            
+                $query = "UPDATE player_roster 
 						SET password = :password
 						WHERE email = :email";
-			
-			$submit = $conn->prepare($query);
-		
-			//bind parameters
-			
-			$submit->BindParam(':email', $_POST['email']);
-			$submit->BindParam(':password', password_hash($_POST['userpass'], PASSWORD_BCRYPT));
-							
-			//Submit query to database
+            
+                $submit = $conn->prepare($query);
+        
+                //bind parameters
+            
+                $submit->BindParam(':email', $_POST['email']);
+                $submit->BindParam(':password', password_hash($_POST['userpass'], PASSWORD_BCRYPT));
+                            
+                //Submit query to database
 
-				if ($submit->execute()) {
-					echo '<br><p style="font-size:20px">Password Updated Successfully</p>';
+                if ($submit->execute()) {
+                    echo '<br><p style="font-size:20px">Password Updated Successfully</p>';
                     echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
                     exit();
-					
-				} else {
-					
-					echo '<br><p style="font-size:20px">Problem with Password Change.  Please try again.</p>';
-					echo '<br><p style="font-size:20px;"><a href="passreset.php">Try Again</a></p>';
+                } else {
+                    echo '<br><p style="font-size:20px">Problem with Password Change.  Please try again.</p>';
+                    echo '<br><p style="font-size:20px;"><a href="passreset.php">Try Again</a></p>';
                     echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
                     exit();
-					
-				}
-
-			} else {	
-				echo '<br><p style="font-size:20px">PIN is incorrect.  Please try again.</p>';
-				echo '<br><p style="font-size:20px;"><a href="passreset.php">Try Again</a></p>';
+                }
+            } else {
+                echo '<br><p style="font-size:20px">PIN is incorrect.  Please try again.</p>';
+                echo '<br><p style="font-size:20px;"><a href="passreset.php">Try Again</a></p>';
                 echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
                 exit();
-			}	
-
-			
-		} else {
-			
-			echo '<br><p style="font-size:20px">Please complete all fields.</p>';
-			echo '<br><p style="font-size:20px;"><a href="passreset.php">Try Again</a></p>';
+            }
+        } else {
+            echo '<br><p style="font-size:20px">Please complete all fields.</p>';
+            echo '<br><p style="font-size:20px;"><a href="passreset.php">Try Again</a></p>';
             echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
             exit();
-			
-		}
-		
-	} else {
-		
-		echo '<br><p style="font-size:20px">Passwords to not match.  Please try again.</p>';
-		echo '<br><p style="font-size:20px;"><a href="passreset.php">Try Again</a></p>';
+        }
+    } else {
+        echo '<br><p style="font-size:20px">Passwords to not match.  Please try again.</p>';
+        echo '<br><p style="font-size:20px;"><a href="passreset.php">Try Again</a></p>';
         echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
         exit();
-			
-	}
+    }
+}
 
-} 
 ?>
 
     <body>

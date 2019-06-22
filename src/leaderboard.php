@@ -62,6 +62,8 @@ if (count($data) > 0) {
 		
 	echo  '</table>';
 
+	//save output table to variable
+
 	$leaderboard = ob_get_clean();
 
 } else {
