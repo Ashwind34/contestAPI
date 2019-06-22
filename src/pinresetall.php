@@ -42,17 +42,19 @@ if (!empty($_POST["select"])) {
             <select multiple size="20" name="select[]">
            
             <?php 
-            
-			// query db to get list of player emails
+
+			//query db to get list of player emails and populate select field
 			$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
-			$email_query->execute();		
-			while ($email_list = $email_query->fetch(PDO::FETCH_ASSOC)) {
-				
-			?>
-		
-			    <option value="<?php echo $email_list['email']; ?>"><?php echo $email_list['email']; ?></option>
-					
-			<?php 	}	?>  
+            
+            $email_query->execute();
+            
+            $email_list = $email_query->fetchAll(PDO::FETCH_ASSOC);
+            
+            foreach($email_list as $k=>$v) {                
+                echo '<option value='. $v['email'] . '>' . $v['email'] . '</option>';                 
+            }
+                      
+            ?>  
 
             </select>
             <br>
