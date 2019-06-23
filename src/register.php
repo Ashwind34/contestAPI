@@ -92,50 +92,67 @@ if (!empty($_POST['register'])) {
 		<p style="font-size:25px"><b>PLEASE REGISTER</b></p>
 
 		<form action="register.php" method="post">
-			
-			<p>Email Address <select name="email">
-				<option value="">-Select-</option>
-				<?php 
-				// query db to get list of player emails
-					$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
-					$email_query->execute();		
-						while ($email_list = $email_query->fetch(PDO::FETCH_ASSOC)) {
-				?>
-						<option value="<?php echo $email_list['email']; ?>"><?php echo $email_list['email']; ?></option>
-				
-				<?php }	?>
-				
-				</select></p><br>
-			
-			<p>Favorite NFL Team <select name="team">
-			<option value="">-Select-</option>
-			<?php 
-			// query db to get list of all NFL teams 
-				$team_query = $conn->prepare(
-				"SELECT home AS teamlist FROM regseason WHERE week='2'
-				UNION
-				SELECT away AS teamlist FROM regseason WHERE week='2'
-				ORDER BY teamlist ASC");
-				$team_query->execute();		
-					
-					while ($nfl_teams = $team_query->fetch(PDO::FETCH_ASSOC)) {
-			?>
-			
-						<option value="<?php echo $nfl_teams['teamlist']; ?>"><?php echo $nfl_teams['teamlist']; ?></option>
-			
-			<?php 	}	?>
-			
-			</select></p><br> 
-			
-			<p>Your Password <input type="password" name="userpass" id="userpass"></p><br>
-			
-			<p>Confirm Password <input type="password" name="confirmpass" id="confirmpass"></p><br> 
+			<div style='text-align:center'>
 
-			<p>PIN Number <input type="number" size="4" name="pin" id="pin"></p><br>
-			
-			<p><input type="submit" name="register" value="Register"></p><br>
-			
-			<p><a href="../index.php">Return to Home Page</a></p>
+				<p>Email</p>
+
+				<select name="email">
+					<option value="">-Select-</option>
+				
+					<?php 
+
+					//query db to get list of player emails and populate select field
+					$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
+					
+					$email_query->execute();
+					
+					$email_list = $email_query->fetchAll(PDO::FETCH_ASSOC);
+					
+					foreach ($email_list as $k=>$v) {                
+						echo '<option value='. $v['email'] . '>' . $v['email'] . '</option>';                 
+					}
+							
+					?>  
+
+				</select><br>			
+				
+				<p>Favorite NFL Team</p>
+				
+				<select name="team">
+					
+					<option value="">-Select-</option>
+					
+					<?php 
+
+					// query db to get list of all NFL teams 
+					$team_query = $conn->prepare(
+					"SELECT home AS teamlist FROM regseason WHERE week='2'
+					UNION
+					SELECT away AS teamlist FROM regseason WHERE week='2'
+					ORDER BY teamlist ASC");
+					
+					$team_query->execute();	
+
+					$team_list = $team_query->fetchAll(PDO::FETCH_ASSOC);
+					
+					foreach ($team_list as $k=>$v) {
+						echo '<option value='. $v['teamlist'] . '>' . $v['teamlist'] . '</option>';
+					}
+							
+					?>
+					
+				</select><br> 
+				
+				<p>Your Password <input type="password" name="userpass" id="userpass"></p><br>
+				
+				<p>Confirm Password <input type="password" name="confirmpass" id="confirmpass"></p><br> 
+
+				<p>PIN Number <input type="number" size="4" name="pin" id="pin"></p><br>
+				
+				<p><input type="submit" name="register" value="Register"></p><br>
+				
+				<p><a href="../index.php">Return to Home Page</a></p>
+			</div>
 		<form>
 	</body>
 </html>
