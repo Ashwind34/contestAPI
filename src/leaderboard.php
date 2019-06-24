@@ -42,7 +42,9 @@ if (count($data) > 0) {
 
 	ob_start();
 
-	echo '<table align="center" border="1" cellspacing="5" cellpadding="8">
+	// echo '<table class="body" align="center" border="1" cellspacing="5" cellpadding="8">
+
+	echo '<table class="body" align="center" border="1" cellspacing="5" cellpadding="3">
 		
 		<tr><th align="center">Player</th>
 		<th align="center">Favorite Team</th>
@@ -80,10 +82,11 @@ if (count($data) > 0) {
 		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 		<meta http-equiv="Pragma" content="no-cache" />
 		<meta http-equiv="Expires" content="0" />
-		<!--<link rel="stylesheet" type="text/css" href="style.css">-->
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
 	<body>
-		<h1 style=text-align:center; style=color:blue;>LEADERBOARD</h1>
+		<div class='headline'>LEADERBOARD</div>
+		<!-- <h1 style=text-align:center; style=color:blue;>LEADERBOARD</h1> -->
 		<p style=text-align:center;><a href="../index.php">Return to Home Page</a></p><br>
 	
 		<?php 

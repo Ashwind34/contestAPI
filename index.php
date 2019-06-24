@@ -39,20 +39,22 @@ if(isset($_SESSION['player_id'])) {
 		<title>
 			SuperContest 2019
 		</title>
-	<!--<link rel="stylesheet" type="text/css" href="style.css">-->
-		<style>
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<!-- <style>
 			h1{color:green;}
 			h2{color:black;}
 			p {color:blue; text-align:center;}		
-		</style>
+		</style> -->
 		<meta name="viewport" content="width=device-width">
 	</head>
 
 	<body>
-		<h1 style="text-align:center;">WELCOME TO THE 2019 NFL SUPERCONTEST</h1>
-		<h2 style="text-align:center;"><i>Brought to you by Jay and Beaks</i></h2>
-		<p><b>THIS IS A WORK IN PROGRESS</b></p>
-		<p><b>Hello<?php echo " $user[first_name]";?>!</p>
+		<h1>WELCOME TO THE 2019 NFL SUPERCONTEST</h1>
+		<h2>Brought to you by Jay and Beaks</h2>
+		<p>THIS IS A WORK IN PROGRESS</p>
+		<div class="body">
+			Hello<?php echo " $user[first_name]";?>!
+		</div>
 
 	<!--only shows login links if user is not logged in-->
 

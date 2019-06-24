@@ -1,32 +1,62 @@
-/*body {
+@font-face {
+	font-family: 'TecmoHeadline';
+	font-style: normal;
+	font-weight: normal;
+	src: local('TecmoHeadline'), url('./Fonts/tecmo-bowl-headline.ttf') format('truetype');    
+}
+
+@font-face {
+	font-family: 'TecmoBody';
+	font-style: normal;
+	font-weight: normal;
+	src: local('TecmoBody'), url('./Fonts/tecmo-bowl-body.ttf') format('truetype');    
+}
+
+
+body {
 	
-	/*background-image: url("./supersrc/field3.jpg");
+	background-image: url("./supersrc/field3.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
-	background-size: contain;
-	
-	background-color:black;
+	background-size: contain;	
+	background-color:rgb(59, 143, 240);
+	margin: 0;
 }
 
-h1, h2, p, body {
-	
-	font-family:"Lucida Console", Monaco, monospace;
-	
-}
-	
 h1 {
 	color:green;
-	font-style: italic;
+	text-align: center;
+	font-family: "TecmoHeadline";
+	line-height: 1.5;
 }
 	
 h2 {
 	color:red;
-	font-style: italic;
+	text-align: center;
+	font-family: "TecmoBody";
+	line-height: 1.5;
 }
 	
 p {
 	color:blue; 
 	text-align:center;
-}*/
+	font-family: "TecmoBody";
+	line-height: 1.5;
+}
+
+.headline {
+	color:green;
+	text-align: center;
+	font-family: "TecmoHeadline";
+	line-height: 1.5;
+}
+
+.body {
+	font-family: "TecmoBody";
+	color: white;
+	text-align: center;
+	line-height: 1.5;
+	font-size: 1.5vh;
+}
 	
