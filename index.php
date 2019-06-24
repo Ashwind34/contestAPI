@@ -49,36 +49,38 @@ if(isset($_SESSION['player_id'])) {
 		</div>
 		<div class="body">
 			Hello<?php echo " $user[first_name]";?>!
+			<fieldset>
+				<legend style='text-align:left'>Main Menu</legend>		
+
+				<!--only shows login links if user is not logged in-->
+
+				<?php 
+					if (empty($user)) {
+						echo 
+						'<a href="src/login.php">Login</a><br>
+						<a href="src/register.php">Register</a><br>
+						<a href="src/passreset.php">Change Password</a>';
+
+					} else {
+						echo 
+						'<a href="src/picksinput.php">Submit Your Picks</a><br>
+						<a href="src/weekly_lines_table.php">Schedule</a><br>
+						<a href="src/weekly_picks_table.php">Picks Table</a><br>
+						<a href="src/leaderboard.php">Leaderboard</a><br>
+						<a href="src/passreset.php">Change Password</a><br>
+						<a href="src/logout.php">Logout</a><br>';
+
+						// Allow link to admin menu for specific users
+						
+						if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
+							
+							echo'<a href="src/admin.php"><i>Admin Page</i></a><br>';
+							
+						} 
+					}				
+				?>
+			</fieldset>	
 		</div>
-
-	<!--only shows login links if user is not logged in-->
-
-	<?php 
-		if (empty($user)) {
-			echo 
-			'<p><a href="src/login.php">Login</a></p>
-			<p><a href="src/register.php">Register</a></p>
-			<p><a href="src/passreset.php">Change Password</a></p>';
-
-		} else {
-			echo 
-			'<br>
-			<br><p><a href="src/picksinput.php">Submit Your Picks</a></p>
-			<p><a href="src/weekly_lines_table.php">Schedule</a></p>
-			<p><a href="src/weekly_picks_table.php">Picks Table</a></p>
-			<p><a href="src/leaderboard.php">Leaderboard</a></p>
-			<p><a href="src/passreset.php">Change Password</a></p>
-			<p><a href="src/logout.php">Logout</a></p>';
-
-			// Allow link to admin menu for specific users
-			
-			if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
-				
-				echo'<p><a href="src/admin.php"><i>Admin Page</i></a></p><br>';
-				
-			} 
-		}				
-	?>
 	</body>
 </html>
 
