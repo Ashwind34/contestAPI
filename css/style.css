@@ -59,4 +59,16 @@ p {
 	line-height: 1.5;
 	font-size: 1.5vh;
 }
+
+.title {
+	color: white;
+	padding: 1.5em;
+	text-align: center;
+	font-family: "TecmoHeadline";
+	line-height: 1.5;
+	margin: 2vh;
+	border: 2em solid white;
+	border-width: medium;
+	border-radius: 5px;
+}
 	

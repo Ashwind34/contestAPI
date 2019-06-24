@@ -40,18 +40,13 @@ if(isset($_SESSION['player_id'])) {
 			SuperContest 2019
 		</title>
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
-		<!-- <style>
-			h1{color:green;}
-			h2{color:black;}
-			p {color:blue; text-align:center;}		
-		</style> -->
 		<meta name="viewport" content="width=device-width">
 	</head>
 
 	<body>
-		<h1>WELCOME TO THE 2019 NFL SUPERCONTEST</h1>
-		<h2>Brought to you by Jay and Beaks</h2>
-		<p>THIS IS A WORK IN PROGRESS</p>
+		<div class='title'>
+			WELCOME TO THE 2019 NFL SUPERCONTEST
+		</div>
 		<div class="body">
 			Hello<?php echo " $user[first_name]";?>!
 		</div>
@@ -61,36 +56,19 @@ if(isset($_SESSION['player_id'])) {
 	<?php 
 		if (empty($user)) {
 			echo 
-			'<br>
-			<p><a href="src/login.php">Click Here to Login</a></p>
-			<br>
-			<br>
-			<p><a href="src/register.php">Click Here to Register</a></p>
-			<br>
-			<br>
-			<p><a href="src/passreset.php">Click Here to Change your Password</a></p>';
+			'<p><a href="src/login.php">Login</a></p>
+			<p><a href="src/register.php">Register</a></p>
+			<p><a href="src/passreset.php">Change Password</a></p>';
 
 		} else {
 			echo 
 			'<br>
 			<br><p><a href="src/picksinput.php">Submit Your Picks</a></p>
-			<br>
-			<br>
-			<p><a href="src/weekly_lines_table.php">Weekly Schedule</a></p>
-			<br>
-			<br>
-			<p><a href="src/weekly_picks_table.php">Contest Picks</a></p>
-			<br>
-			<br>
+			<p><a href="src/weekly_lines_table.php">Schedule</a></p>
+			<p><a href="src/weekly_picks_table.php">Picks Table</a></p>
 			<p><a href="src/leaderboard.php">Leaderboard</a></p>
-			<br>
-			<br>	
-			<p><a href="src/passreset.php">Click Here to Change your Password</a></p>
-			<br>
-			<br>		
-			<p><a href="src/logout.php">Logout</a></p>
-			<br>
-			<br>';
+			<p><a href="src/passreset.php">Change Password</a></p>
+			<p><a href="src/logout.php">Logout</a></p>';
 
 			// Allow link to admin menu for specific users
 			
