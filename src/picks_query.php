@@ -164,7 +164,7 @@ function PickDropdown($pick, $picknum)
         if (!in_array($current_pick, $avail_teams_array)) {
             echo '<p><select name="' . $picknum . '">';
             echo '<option value="' . $current_pick . '">' . $current_pick . '</option>';
-            echo '</select></p><br>';
+            echo '</select></p>';
                                 
                                 
         // else enable dropdown menu wth remaining games
@@ -180,7 +180,7 @@ function PickDropdown($pick, $picknum)
             while ($teamlist = $query->fetch(PDO::FETCH_ASSOC)) {
                 echo '<option value="' . $teamlist['teamlist'] . '">' . $teamlist['teamlist'] . '</option>';
             }
-            echo '</select></p><br>';
+            echo '</select></p>';
         }
     } else {
         echo '<p><select name="' . $picknum . '">';
@@ -196,7 +196,7 @@ function PickDropdown($pick, $picknum)
         while ($teamlist = $query->fetch(PDO::FETCH_ASSOC)) {
             echo '<option value="' . $teamlist['teamlist'] . '">' . $teamlist['teamlist'] . '</option>';
         }
-        echo '</select></p><br>';
+        echo '</select></p>';
     }
 }	
 

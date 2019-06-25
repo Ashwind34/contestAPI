@@ -129,9 +129,12 @@ if (!empty($_POST['submit'])) {
 		<title>Week <?php echo $weekmarker;?> Picks</title>
 	</head>		
 	<body>
-		<h1>Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!</h1>
-		
-		<h2>Your Current Picks</h2>
+		<div class='headline'>
+            Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!
+        </div>		
+		<p>
+            Your Current Picks
+        </p>
 
 		<!-- $player_picks_table located in picks_query.php -->
 

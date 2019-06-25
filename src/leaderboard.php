@@ -42,22 +42,25 @@ if (count($data) > 0) {
 
 	ob_start();
 
-	echo '<table>
-		
-		<tr><th>Player</th>
-		<th>Favorite Team</th>
-		<th>Total Score</th>
-		<th>Last Week</th>
+	echo 
+	'<table>		
+		<tr>
+			<th>Player</th>
+			<th>Favorite Team</th>
+			<th>Total Score</th>
+			<th>Last Week</th>
 		</tr>';
 		
 	// foreach loop to list out each row in the array
 		
 	foreach ($data as $row) {
 		echo
-			'<tr><td>' . $row['name'] . '</td>
+		'<tr>
+			<td>' . $row['name'] . '</td>
 			<td>' . $row['fav_team'] . '</td>
 			<td>' . $row['total_score'] . '</td>
-			<td>' . $row['week_score'] . '</td></tr>';
+			<td>' . $row['week_score'] . '</td>
+		</tr>';
 	}
 		
 	echo  '</table>';
@@ -85,14 +88,10 @@ if (count($data) > 0) {
 	<body>
 		<div class='headline'>LEADERBOARD</div>
 		<p><a href="../index.php">Return to Home Page</a></p><br>
-		<div style='text-align:center'>
-	
-			<?php 
-			
-			echo $leaderboard;
-			
-			?>
-
-		</div>
+		<?php 
+		
+		echo $leaderboard;
+		
+		?>
 	</body>
 </html>

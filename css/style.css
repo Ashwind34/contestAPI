@@ -92,6 +92,11 @@ select {
 	font-family: "TecmoBody";
 }
 
+input {
+	position: relative;
+	font-family: "TecmoBody";
+}
+
 table {
 	border-collapse: separate;
 	border-spacing: 0;
