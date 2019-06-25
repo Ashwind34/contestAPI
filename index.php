@@ -44,9 +44,15 @@ if(isset($_SESSION['player_id'])) {
 	</head>
 
 	<body>
-		<div class='title'>
-			WELCOME TO THE 2019 NFL SUPERCONTEST
+		<br>
+		<div class='redHead'>
+			TECMO 
 		</div>
+		<div class='whiteHead'>
+			SUPER CONTEST 2019
+		</div>
+		<br>
+		<br>
 		<div class="body">
 			Hello<?php echo " $user[first_name]";?>
 			<fieldset>

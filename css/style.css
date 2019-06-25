@@ -60,7 +60,12 @@ p {
 	font-size: 2.5vh;
 }
 
-.title {
+a:link, a:visited {
+	color: white;
+	font-size: 0.75em;
+}
+
+/* .title {
 	color: white;
 	padding: 1.5em;
 	text-align: center;
@@ -70,6 +75,23 @@ p {
 	border: 2em solid white;
 	border-width: medium;
 	border-radius: 5px;
+} */
+
+.redHead {
+	color: red;
+	font-family: "TecmoHeadline";
+	text-align: center;
+	line-height: 1.5;
+	font-size: 1.25em;
+}
+
+.whiteHead {
+	color: white;
+	font-family: "TecmoHeadline";
+	text-align: center;
+	line-height: 1.5;
+	font-size: 1.25em;
+
 }
 
 fieldset {
@@ -84,6 +106,7 @@ fieldset {
 	border: 2em solid white;
 	border-width: medium;
 	border-radius: 5px;
+	max-width: 320px;
 	
 }
 
@@ -97,7 +120,7 @@ select {
 	font-family: "TecmoBody";
 } */
 
-/* NEED SECOND TABLE CLASS FOR LEADERBOARD AND PICKS - FOR LONG NAMES*/
+/* NEED ADDITIONAL TABLE CSS FOR LEADERBOARD AND PICKS - FOR LONG NAMES*/
 
 table {
 	border-collapse: separate;
