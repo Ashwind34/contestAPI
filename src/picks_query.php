@@ -32,26 +32,28 @@ ob_start();
 
 echo
 
-'<table align="center" border="1" cellspacing="5" cellpadding="8">
-<tr><th align="center">Pick #1</th>
-<th align="center">Pick #2</th>
-<th align="center">Pick #3</th>
-<th align="center">Pick #4</th>
-<th align="center">Pick #5</th>';
+'<table>
+	<tr>
+		<th>Pick #1</th>
+		<th>Pick #2</th>
+		<th>Pick #3</th>
+		<th>Pick #4</th>
+		<th>Pick #5</th>';
 
 // foreach loop to list out each row in the array
 
 foreach ($user_pick_array as $row) {
     echo
-    '<tr><td align="center">' . $row['pick_1'] . '</td>
-	<td align="center">' . $row['pick_2'] . '</td>
-	<td align="center">' . $row['pick_3'] . '</td>
-	<td align="center">' . $row['pick_4'] . '</td>
-	<td align="center">' . $row['pick_5'] . '</td>';
-    echo '</tr>';
+	'<tr>
+		<td>' . $row['pick_1'] . '</td>
+		<td>' . $row['pick_2'] . '</td>
+		<td>' . $row['pick_3'] . '</td>
+		<td>' . $row['pick_4'] . '</td>
+		<td>' . $row['pick_5'] . '</td>
+    </tr>';
 }
 
-echo  '</table>';
+echo '</table>';
 
 //variable that will display logged-in player's current picks for that week
 
@@ -89,32 +91,36 @@ $data=$picks_table->fetchall(PDO::FETCH_ASSOC);
 if (count($data) > 0) {
 	
 	ob_start();
+
+	// CHECK TO SEE IF WE NEED TO ADD FAVORITE TEAM BELOW
     
-    echo '<table align="center" border="1" cellspacing="5" cellpadding="8">
-	
-	<tr><th align="center">Player</th>
-	<!-- <th align="center">Favorite Team</th> -->
-	<th align="center">Pick #1</th>
-	<th align="center">Pick #2</th>
-	<th align="center">Pick #3</th>
-	<th align="center">Pick #4</th>
-	<th align="center">Pick #5</th>';
+	echo 	
+	'<table>	
+		<tr>
+			<th align="center">Player</th>
+			<!-- <th align="center">Favorite Team</th> -->
+			<th align="center">Pick #1</th>
+			<th align="center">Pick #2</th>
+			<th align="center">Pick #3</th>
+			<th align="center">Pick #4</th>
+			<th align="center">Pick #5</th>';
     
     // foreach loop to list out each row in the array
     
     foreach ($data as $row) {
         echo
-        '<tr><td align="center">' . $row['name'] . '</td>
-		<!-- <td align="center"><i>' . $row['fav_team'] . '</i></td> -->
-		<td align="center">' . $row['pick_1'] . '</td>
-		<td align="center">' . $row['pick_2'] . '</td>
-		<td align="center">' . $row['pick_3'] . '</td>
-		<td align="center">' . $row['pick_4'] . '</td>
-		<td align="center">' . $row['pick_5'] . '</td>';
-        echo '</tr>';
+		'<tr>
+			<td align="center">' . $row['name'] . '</td>
+			<!-- <td align="center"><i>' . $row['fav_team'] . '</i></td> -->
+			<td align="center">' . $row['pick_1'] . '</td>
+			<td align="center">' . $row['pick_2'] . '</td>
+			<td align="center">' . $row['pick_3'] . '</td>
+			<td align="center">' . $row['pick_4'] . '</td>
+			<td align="center">' . $row['pick_5'] . '</td>
+        </tr>';
     }
             
-    echo  '</table>';
+    echo '</table>';
         
     //variable that will display each player's current picks for that week
         
@@ -150,8 +156,6 @@ function PickDropdown($pick, $picknum)
 
     $avail_teams_array = $team_list_query->fetchAll(PDO::FETCH_COLUMN);
 
-    //assign current pick to a variable
-
     $current_pick = $user_pick_array[0][$picknum];
 
     //check to make sure that a pick already submitted cannot be changed after kickoff
@@ -160,7 +164,6 @@ function PickDropdown($pick, $picknum)
         if (!in_array($current_pick, $avail_teams_array)) {
             echo '<p><select name="' . $picknum . '">';
             echo '<option value="' . $current_pick . '">' . $current_pick . '</option>';
-            // echo '<option value="' . $current_pick . '">' . $current_pick .'</option>';
             echo '</select></p><br>';
                                 
                                 

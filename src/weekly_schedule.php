@@ -28,24 +28,26 @@ if (count($data) > 0) {
         
     ob_start();
 
-    echo '<table align="center" border="1" cellspacing="5" cellpadding="8">
-	
-	<tr><th align="center">Home</th>
-	<th align="center">Home Spread</th>
-	<th align="center">Away</th>
-	<th align="center">Away Spread</th>
-	<th align="center">Start Time (Eastern)</th>
-	</tr>';
+	echo 
+	'<table>	
+		<tr>
+			<th>Home</th>
+			<th>Home Spread</th>
+			<th>Away</th>
+			<th>Away Spread</th>
+			<th>Start Time (Eastern)</th>
+		</tr>';
     
     // foreach loop to list out each row in the array
     
     foreach ($data as $row) {
         echo
-        '<tr><td align="center">' . $row['home'] . '</td>
-		<td align="center">' . $row['h_spread'] . '</td>
-		<td align="center">' . $row['away'] . '</td>
-		<td align="center">' . $row['a_spread'] . '</td>
-		<td align="center">' . date('h:i a', strtotime($row['start_time'])) . '</td>
+		'<tr>
+			<td>' . $row['home'] . '</td>
+			<td>' . $row['h_spread'] . '</td>
+			<td>' . $row['away'] . '</td>
+			<td>' . $row['a_spread'] . '</td>
+			<td>' . date('h:i a', strtotime($row['start_time'])) . '</td>
 		</tr>';
     }
             

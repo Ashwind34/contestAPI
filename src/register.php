@@ -2,12 +2,7 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<style>
-		p {
-			text-align:center;
-		}
-		</style>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
 
 <?php
@@ -56,31 +51,31 @@ if (!empty($_POST['register'])) {
                 //Submit query to database
 
                 if ($submit->execute()) {
-                    echo '<br><p style="font-size:20px">Player Updated Successfully</p>';
-                    echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+                    echo '<br><p>Player Updated Successfully</p>';
+                    echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
                     exit();
                 } else {
-                    echo '<br><p style="font-size:20px">Problem with Registration.  Please try again.</p>';
-                    echo '<br><p style="font-size:20px;"><a href="register.php">Try Again</a></p>';
-                    echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+                    echo '<br><p>Problem with Registration.  Please try again.</p>';
+                    echo '<br><p><a href="register.php">Try Again</a></p>';
+                    echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
                     exit();
                 }
             } else {
-                echo '<br><p style="font-size:20px">PIN is incorrect.  Please try again.</p>';
-                echo '<br><p style="font-size:20px;"><a href="register.php">Try Again</a></p>';
-                echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+                echo '<br><p>PIN is incorrect.  Please try again.</p>';
+                echo '<br><p><a href="register.php">Try Again</a></p>';
+                echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
                 exit();
             }
         } else {
-            echo '<br><p style="font-size:20px">Please complete all fields.</p>';
-            echo '<br><p style="font-size:20px;"><a href="register.php">Try Again</a></p>';
-            echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+            echo '<br><p>Please complete all fields.</p>';
+            echo '<br><p><a href="register.php">Try Again</a></p>';
+            echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
             exit();
         }
     } else {
-        echo '<br><p style="font-size:20px">Passwords to not match.  Please try again.</p>';
-        echo '<br><p style="font-size:20px;"><a href="register.php">Try Again</a></p>';
-        echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+        echo '<br><p>Passwords to not match.  Please try again.</p>';
+        echo '<br><p><a href="register.php">Try Again</a></p>';
+        echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
         exit();
     }
 }

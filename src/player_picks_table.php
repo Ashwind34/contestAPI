@@ -11,12 +11,12 @@ require_once('picks_query.php');
 <!DOCTYPE html>
 <html>
     <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
     </head>
     <body>
-
-        <p style=text-align:center; color:blue;>Your picks for week <?php echo $weekmarker; ?> have been submitted!</p>
-        <p style=text-align:center;><a href="../index.php">Return to Home Page</a></p>
+        <p>Your picks for week <?php echo $weekmarker; ?> have been submitted!</p>
+        <p><a href="../index.php">Return to Home Page</a></p>
 
         <?php 
 

@@ -48,7 +48,7 @@ if(isset($_SESSION['player_id'])) {
 			WELCOME TO THE 2019 NFL SUPERCONTEST
 		</div>
 		<div class="body">
-			Hello<?php echo " $user[first_name]";?>!
+			Hello<?php echo " $user[first_name]";?>
 			<fieldset>
 				<legend style='text-align:left'>Main Menu</legend>		
 

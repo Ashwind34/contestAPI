@@ -2,14 +2,7 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-		<style>
-
-			p {
-				text-align:center;
-			}
-			
-		</style>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
 
 <?php
@@ -37,8 +30,8 @@ if (!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     } else {
         echo '<br><br><p>Email or password is incorrect, please try again</p>';
-        echo '<br><p style="font-size:20px;"><a href="login.php">Try Again</a></p>';
-        echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+        echo '<br><p><a href="login.php">Try Again</a></p>';
+        echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
         exit();
     }
 }

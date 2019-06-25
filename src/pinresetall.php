@@ -26,12 +26,7 @@ if (!empty($_POST["select"])) {
 		<title>
 			SuperContest 2019
 		</title>
-	<!--<link rel="stylesheet" type="text/css" href="style.css">-->
-		<style>
-			h1{color:green;}
-			h2{color:black;}
-			p {color:blue; text-align:center;}		
-		</style>
+	    <link rel="stylesheet" type="text/css" href="../css/style.css">
 		<meta name="viewport" content="width=device-width">
 	</head>
     <body>
@@ -61,7 +56,7 @@ if (!empty($_POST["select"])) {
             <textarea name="msgbody" rows="5" cols="20">Greetings, note your registration pin and clink to register</textarea><br>
             <input type="submit" value="Submit">
             <br>
-            <p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>
+            <p><a href="../index.php">Return to Home Page</a></p>
         </form>
     </body>
 </html>

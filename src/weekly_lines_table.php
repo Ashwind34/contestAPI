@@ -9,10 +9,11 @@ require_once ('datecheck.php');
 <html>
     <head>
         <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
     </head>    
     <body>
-        <p style=text-align:center;><a href="../index.php">Return to Home Page</a></p>
-        <p style=text-align:center; color:blue>Week <?php echo $weekmarker ;?> Lines</p>
+        <p><a href="../index.php">Return to Home Page</a></p>
+        <p>Week <?php echo $weekmarker ;?> Lines</p>
         
         <?php
 

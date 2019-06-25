@@ -110,9 +110,9 @@ if (!empty($_POST['submit'])) {
 		
     } else {
 
-        echo '<p style=text-align:center><b>Please select 5 teams!</b></p><br>';
-        echo '<p style=text-align:center><a href="picksinput.php">Try Again</a></p><br>';
-        echo '<p style=text-align:center><a href="index.php">Return to Home Page</a></p>';
+        echo '<p><b>Please select 5 teams!</b></p><br>';
+        echo '<p><a href="picksinput.php">Try Again</a></p><br>';
+        echo '<p><a href="index.php">Return to Home Page</a></p>';
 		exit();
 		
     }
@@ -125,30 +125,17 @@ if (!empty($_POST['submit'])) {
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
 		<title>Week <?php echo $weekmarker;?> Picks</title>
-		<style>
-
-			h1 {
-				text-align:center;
-				color:red;
-			}
-
-			p {
-				text-align:center;
-				color:green;
-			}
-
-		</style>
 	</head>		
 	<body>
 		<h1>Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!</h1>
 		
-		<h2 style=text-align:center; color:blue><i>Your Current Picks</i></h2>
+		<h2>Your Current Picks</h2>
 
 		<!-- $player_picks_table located in picks_query.php -->
 
-		<h2 style=text-align:center;><?php echo $player_picks_table;?></h2>
+		<p><?php echo $player_picks_table;?></p>
 
 		<!--dropdown menus for each pick, referenced from function in picks_query.php -->
 
@@ -178,15 +165,14 @@ if (!empty($_POST['submit'])) {
 			
 		</form>			
 		<br>
-		<p style=text-align:center; color:blue;></p>
+		
+		<p><a href="../index.php">Return to Home Page</a></p><br>
 
-		<p style=text-align:center;><a href="../index.php">Return to Home Page</a></p><br>
-
-		<h3 style=text-align:center; color:blue>Week <?php echo $weekmarker ;?> Lines</h3>
+		<h3>Week <?php echo $weekmarker ;?> Lines</h3>
 			
 		<!-- display table with weekly lines from weekly_schedule.php -->
 			
-		<p style=text-align:center;><?php echo $weekly_lines_table?></p>
+		<p><?php echo $weekly_lines_table?></p>
 
 	</body>
 

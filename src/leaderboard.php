@@ -42,24 +42,22 @@ if (count($data) > 0) {
 
 	ob_start();
 
-	// echo '<table class="body" align="center" border="1" cellspacing="5" cellpadding="8">
-
-	echo '<table class="body" align="center" border="1" cellspacing="5" cellpadding="3">
+	echo '<table>
 		
-		<tr><th align="center">Player</th>
-		<th align="center">Favorite Team</th>
-		<th align="center">Total Score</th>
-		<th align="center">Last Week</th>
+		<tr><th>Player</th>
+		<th>Favorite Team</th>
+		<th>Total Score</th>
+		<th>Last Week</th>
 		</tr>';
 		
 	// foreach loop to list out each row in the array
 		
 	foreach ($data as $row) {
 		echo
-			'<tr><td align="center">' . $row['name'] . '</td>
-			<td align="center">' . $row['fav_team'] . '</td>
-			<td align="center">' . $row['total_score'] . '</td>
-			<td align="center">' . $row['week_score'] . '</td></tr>';
+			'<tr><td>' . $row['name'] . '</td>
+			<td>' . $row['fav_team'] . '</td>
+			<td>' . $row['total_score'] . '</td>
+			<td>' . $row['week_score'] . '</td></tr>';
 	}
 		
 	echo  '</table>';
@@ -86,13 +84,15 @@ if (count($data) > 0) {
 	</head>
 	<body>
 		<div class='headline'>LEADERBOARD</div>
-		<!-- <h1 style=text-align:center; style=color:blue;>LEADERBOARD</h1> -->
-		<p style=text-align:center;><a href="../index.php">Return to Home Page</a></p><br>
+		<p><a href="../index.php">Return to Home Page</a></p><br>
+		<div style='text-align:center'>
 	
-		<?php 
-		
-		echo $leaderboard;
-		
-		?>
+			<?php 
+			
+			echo $leaderboard;
+			
+			?>
+
+		</div>
 	</body>
 </html>
