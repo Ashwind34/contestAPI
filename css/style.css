@@ -92,10 +92,12 @@ select {
 	font-family: "TecmoBody";
 }
 
-input {
+/* input {
 	position: relative;
 	font-family: "TecmoBody";
-}
+} */
+
+/* NEED SECOND TABLE CLASS FOR LEADERBOARD AND PICKS - FOR LONG NAMES*/
 
 table {
 	border-collapse: separate;
@@ -108,12 +110,12 @@ table tr th,
 table tr td {
 border-right: 0.5vh solid white;
 border-bottom: 0.5vh solid white;
-padding: 5px;
+padding: 0.5vh;
 font-family: "TecmoBody";
 color: white;
 line-height: 1.5;
 text-align: center;
-font-size: 1.5vh;
+font-size: 1.65vh;
 }
 table tr th:first-child,
 table tr td:first-child {

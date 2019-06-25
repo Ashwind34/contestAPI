@@ -98,7 +98,6 @@ if (count($data) > 0) {
 	'<table>	
 		<tr>
 			<th align="center">Player</th>
-			<!-- <th align="center">Favorite Team</th> -->
 			<th align="center">Pick #1</th>
 			<th align="center">Pick #2</th>
 			<th align="center">Pick #3</th>
@@ -111,7 +110,6 @@ if (count($data) > 0) {
         echo
 		'<tr>
 			<td align="center">' . $row['name'] . '</td>
-			<!-- <td align="center"><i>' . $row['fav_team'] . '</i></td> -->
 			<td align="center">' . $row['pick_1'] . '</td>
 			<td align="center">' . $row['pick_2'] . '</td>
 			<td align="center">' . $row['pick_3'] . '</td>
