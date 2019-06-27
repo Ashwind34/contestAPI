@@ -63,6 +63,7 @@ p {
 a:link, a:visited {
 	color: white;
 	font-size: 0.75em;
+	margin: 4vh;
 }
 
 /* .title {

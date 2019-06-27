@@ -65,7 +65,7 @@ if(isset($_SESSION['player_id'])) {
 						echo 
 						'<a href="src/login.php">Login</a><br>
 						<a href="src/register.php">Register</a><br>
-						<a href="src/passreset.php">Change Password</a>';
+						<a href="src/passreset.php">Change Password</a><br>';
 
 					} else {
 						echo 
