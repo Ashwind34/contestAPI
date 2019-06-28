@@ -63,19 +63,8 @@ p {
 a:link, a:visited {
 	color: white;
 	font-size: 2vh;
+	text-align:center;
 }
-
-/* .title {
-	color: white;
-	padding: 1.5em;
-	text-align: center;
-	font-family: "TecmoHeadline";
-	line-height: 1.5;
-	margin: 2vh;
-	border: 2em solid white;
-	border-width: medium;
-	border-radius: 5px;
-} */
 
 .redHead {
 	color: red;
@@ -83,6 +72,7 @@ a:link, a:visited {
 	text-align: center;
 	line-height: 1.5;
 	font-size: 1.25em;
+	align-self:end;
 	}
 
 .whiteHead {
@@ -110,13 +100,21 @@ a:link, a:visited {
 	align-items: center;
 }
 
+.homeContainer {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1.5fr 0.75fr 2.5fr auto;
+	justify-items: center;
+	align-items: center;
+}
+
 .formTitle {
 	color: red;
 	font-family: "TecmoHeadline";
 	text-align: center;
 	line-height: 1.5;
 	font-size: 1.25em;
-	grid-row-start: 1;
+	font-weight: bold;
 }
 
 fieldset, form {
@@ -131,7 +129,7 @@ fieldset, form {
 	border: 2em solid white;
 	border-width: medium;
 	border-radius: 5px;
-	max-width: 320px;
+	min-width: 280px;
 	font-family: "TecmoBody";
 	color: white;
 	line-height: 1.5;

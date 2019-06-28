@@ -134,19 +134,12 @@ if (!empty($_POST['register'])) {
 					?>
 					
 				</select>
-				<!-- <br> -->
 				<label for="userpass">Select Password</label>
-				<!-- <br> -->
 				<input type="password" name="userpass" id="userpass">
-				<!-- <br> -->
 				<label for="confirmpass">Confirm Password</label>
-				<!-- <br>					 -->
 				<input type="password" name="confirmpass" id="confirmpass">
-				<!-- <br> -->
 				<label for="pin">PIN</label>
-				<!-- <br> -->
 				<input type="number" size="4" name="pin" id="pin">
-				<br>
 				<input type="submit" name="register" value="Register">	
 			</form>
 			<div class='formLink'>

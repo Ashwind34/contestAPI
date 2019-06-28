@@ -44,17 +44,16 @@ if(isset($_SESSION['player_id'])) {
 	</head>
 
 	<body>
-		<br>
-		<div class='redHead'>
-			TECMO 
-		</div>
-		<div class='whiteHead'>
-			SUPER CONTEST 2019
-		</div>
-		<br>
-		<br>
-		<div class="body">
-			Hello<?php echo " $user[first_name]";?>
+		<div class='homeContainer'>
+			<div class='redHead'>
+				TECMO 
+			</div>
+			<div class='whiteHead'>
+				SUPERCONTEST 2019
+			</div>
+			<div class="body">
+				Hello<?php echo " $user[first_name]";?>
+			</div>
 			<fieldset>
 				<legend style='text-align:left'>Main Menu</legend>		
 
@@ -65,7 +64,7 @@ if(isset($_SESSION['player_id'])) {
 						echo 
 						'<a href="src/login.php">Login</a><br>
 						<a href="src/register.php">Register</a><br>
-						<a href="src/passreset.php">Change Password</a><br>';
+						<a href="src/passreset.php">Change Password</a>';
 
 					} else {
 						echo 
@@ -80,7 +79,7 @@ if(isset($_SESSION['player_id'])) {
 						
 						if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
 							
-							echo'<a href="src/admin.php"><i>Admin Page</i></a><br>';
+							echo'<a href="src/admin.php"><i>Admin Page</i></a>';
 							
 						} 
 					}				
