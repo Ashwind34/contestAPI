@@ -43,11 +43,11 @@ if (!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
                 PLEASE LOG IN
             </div>
             <form action="login.php" method="post">
-                <div class='body'>
-                    Email <input type="email" name="useremail" id="useremail"><br><br>
-                    Password <input type="password" name="userpass" id="userpass"><br><br>           
-                    <input type="submit" name="login" value="Login">
-                </div>           
+                <label for='useremail'>Email</label>
+                <input type="email" name="useremail" id="useremail"><br>
+                <label for='userpass'>Password</label>
+                <input type="password" name="userpass" id="userpass"><br>          
+                <input type="submit" name="login" value="Login">
             </form>
             <div class='formLink'>
                 <a href="passreset.php">Change Password</a>

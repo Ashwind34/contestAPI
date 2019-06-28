@@ -88,69 +88,66 @@ if (!empty($_POST['register'])) {
 				PLEASE REGISTER
 			</div>
 			<form action="register.php" method="post">
-				<div class='body'>
-					Email 
-					<select name="email">
-						<option value="">-Select-</option>
+				<label for="email">Email</label>
+				<select name="email" id="email">
+					<option value="">-Select-</option>
+				
+					<?php 
+
+					//query db to get list of player emails and populate select field
+					$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
 					
-						<?php 
-
-						//query db to get list of player emails and populate select field
-						$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
-						
-						$email_query->execute();
-						
-						$email_list = $email_query->fetchAll(PDO::FETCH_ASSOC);
-						
-						foreach ($email_list as $k=>$v) {                
-							echo '<option value='. $v['email'] . '>' . $v['email'] . '</option>';                 
-						}
-								
-						?>  
-
-					</select>
-					<br>
-					<br>		
+					$email_query->execute();
 					
-					Favorite NFL Team
+					$email_list = $email_query->fetchAll(PDO::FETCH_ASSOC);
 					
-					<select name="team">
-						
-						<option value="">-Select-</option>
-						
-						<?php 
+					foreach ($email_list as $k=>$v) {                
+						echo '<option value='. $v['email'] . '>' . $v['email'] . '</option>';                 
+					}
+							
+					?>  
 
-						// query db to get list of all NFL teams 
-						$team_query = $conn->prepare(
-						"SELECT home AS teamlist FROM regseason WHERE week='2'
-						UNION
-						SELECT away AS teamlist FROM regseason WHERE week='2'
-						ORDER BY teamlist ASC");
-						
-						$team_query->execute();	
+				</select>	
+				<label for="team">Favorite NFL Team</label>
+				<!-- <br> -->
+				<select name="team">
+					
+					<option value="">-Select-</option>
+					
+					<?php 
 
-						$team_list = $team_query->fetchAll(PDO::FETCH_ASSOC);
-						
-						foreach ($team_list as $k=>$v) {
-							echo '<option value='. $v['teamlist'] . '>' . $v['teamlist'] . '</option>';
-						}
-								
-						?>
-						
-					</select>
-					<br>
-					<br>
-					Select Password <input type="password" name="userpass" id="userpass">
-					<br>
-					<br>					
-					Confirm Password <input type="password" name="confirmpass" id="confirmpass">
-					<br>
-					<br>
-					PIN Number <input type="number" size="4" name="pin" id="pin">
-					<br>
-					<br>
-					<input type="submit" name="register" value="Register">	
-				</div>
+					// query db to get list of all NFL teams 
+					$team_query = $conn->prepare(
+					"SELECT home AS teamlist FROM regseason WHERE week='2'
+					UNION
+					SELECT away AS teamlist FROM regseason WHERE week='2'
+					ORDER BY teamlist ASC");
+					
+					$team_query->execute();	
+
+					$team_list = $team_query->fetchAll(PDO::FETCH_ASSOC);
+					
+					foreach ($team_list as $k=>$v) {
+						echo '<option value='. $v['teamlist'] . '>' . $v['teamlist'] . '</option>';
+					}
+							
+					?>
+					
+				</select>
+				<!-- <br> -->
+				<label for="userpass">Select Password</label>
+				<!-- <br> -->
+				<input type="password" name="userpass" id="userpass">
+				<!-- <br> -->
+				<label for="confirmpass">Confirm Password</label>
+				<!-- <br>					 -->
+				<input type="password" name="confirmpass" id="confirmpass">
+				<!-- <br> -->
+				<label for="pin">PIN</label>
+				<!-- <br> -->
+				<input type="number" size="4" name="pin" id="pin">
+				<br>
+				<input type="submit" name="register" value="Register">	
 			</form>
 			<div class='formLink'>
 				<a href="../index.php">Return to Home Page</a>

@@ -97,7 +97,7 @@ a:link, a:visited {
 .loginContainer {
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 1fr 1fr 1fr 10%;
+	grid-template-rows: 1fr 2fr 2fr 15%;
 	justify-items: center;
 	align-items: center;
 }
@@ -132,9 +132,10 @@ fieldset, form {
 	border-width: medium;
 	border-radius: 5px;
 	max-width: 320px;
-	-moz-box-sizing:border-box;
-	-webkit-box-sizing:border-box;
-	box-sizing:border-box;
+	font-family: "TecmoBody";
+	color: white;
+	line-height: 1.5;
+	font-size: 2.5vh;
 }	
 
 .formLink {
@@ -147,15 +148,33 @@ fieldset, form {
 	align-items: center;
 }
 
+label {
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	font-family: "TecmoBody";
+	color: white;
+}
+
 select {
 	position: relative;
 	font-family: "TecmoBody";
 	width: 260px;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
 }
 
 input[type=email], input[type=password] {
 	position: relative;
-	font-family: "TecmoBody";
+	/* font-family: "TecmoBody"; */
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	width: 260px;
+}
+
+input[type=number] {
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	width:260px;
 }
 
 /* NEED ADDITIONAL TABLE CSS FOR LEADERBOARD AND PICKS - FOR LONG NAMES*/
