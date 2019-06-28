@@ -10,6 +10,25 @@
 require_once('pdo_connect.php');
 require_once('datecheck.php');
 
+//query db to get list of player emails and populate select field
+$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
+
+$email_query->execute();
+
+$email_list = $email_query->fetchAll(PDO::FETCH_ASSOC);
+
+// query db to get list of all NFL teams 
+$team_query = $conn->prepare(
+							"SELECT home AS teamlist FROM regseason WHERE week='2'
+							UNION
+							SELECT away AS teamlist FROM regseason WHERE week='2'
+							ORDER BY teamlist ASC"
+							);
+	
+$team_query->execute();	
+
+$team_list = $team_query->fetchAll(PDO::FETCH_ASSOC);
+
 //Check to make sure form is empty
 
 if (!empty($_POST['register'])) {
@@ -93,14 +112,7 @@ if (!empty($_POST['register'])) {
 					<option value="">-Select-</option>
 				
 					<?php 
-
-					//query db to get list of player emails and populate select field
-					$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
-					
-					$email_query->execute();
-					
-					$email_list = $email_query->fetchAll(PDO::FETCH_ASSOC);
-					
+				
 					foreach ($email_list as $k=>$v) {                
 						echo '<option value='. $v['email'] . '>' . $v['email'] . '</option>';                 
 					}
@@ -109,23 +121,11 @@ if (!empty($_POST['register'])) {
 
 				</select>	
 				<label for="team">Favorite NFL Team</label>
-				<!-- <br> -->
 				<select name="team">
 					
 					<option value="">-Select-</option>
 					
 					<?php 
-
-					// query db to get list of all NFL teams 
-					$team_query = $conn->prepare(
-					"SELECT home AS teamlist FROM regseason WHERE week='2'
-					UNION
-					SELECT away AS teamlist FROM regseason WHERE week='2'
-					ORDER BY teamlist ASC");
-					
-					$team_query->execute();	
-
-					$team_list = $team_query->fetchAll(PDO::FETCH_ASSOC);
 					
 					foreach ($team_list as $k=>$v) {
 						echo '<option value='. $v['teamlist'] . '>' . $v['teamlist'] . '</option>';
@@ -140,6 +140,7 @@ if (!empty($_POST['register'])) {
 				<input type="password" name="confirmpass" id="confirmpass">
 				<label for="pin">PIN</label>
 				<input type="number" size="4" name="pin" id="pin">
+				<br>
 				<input type="submit" name="register" value="Register">	
 			</form>
 			<div class='formLink'>
