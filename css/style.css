@@ -58,11 +58,11 @@ p {
 	text-align: center;
 	line-height: 1.5;
 	font-size: 2.5vh;
-	}
+}
 
 a:link, a:visited {
 	color: white;
-	font-size: 0.75em;
+	font-size: 2vh;
 }
 
 /* .title {
@@ -94,13 +94,20 @@ a:link, a:visited {
 
 }
 
-.container {
+.loginContainer {
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 1fr 1fr 1fr 10%;
 	justify-items: center;
 	align-items: center;
+}
 
+.regContainer {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 3fr 15%;
+	justify-items: center;
+	align-items: center;
 }
 
 .formTitle {
@@ -115,15 +122,20 @@ a:link, a:visited {
 fieldset, form {
 	padding: 1.5em;
 	margin: auto;
-	display: flex;
+	display: grid;
+	justify-items: center;
+	align-items: center;
 	padding-inline-start: 0.5em;
 	padding-inline-end: 0.5em;
 	min-inline-size: min-content;
 	border: 2em solid white;
 	border-width: medium;
 	border-radius: 5px;
-	max-width: 320px;	
-}
+	max-width: 320px;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+}	
 
 .formLink {
 	font-family: "TecmoBody";
@@ -133,12 +145,12 @@ fieldset, form {
 	display: grid;
 	justify-items: center;
 	align-items: center;
-
 }
 
 select {
 	position: relative;
 	font-family: "TecmoBody";
+	width: 260px;
 }
 
 input[type=email], input[type=password] {

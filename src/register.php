@@ -83,71 +83,78 @@ if (!empty($_POST['register'])) {
 ?>
 
 	<body>
-		<br>
-		<p style="font-size:25px"><b>PLEASE REGISTER</b></p>
-
-		<form action="register.php" method="post">
-			<div class='body'>
-
-				<p>Email
-
-				<select name="email">
-					<option value="">-Select-</option>
-				
-					<?php 
-
-					//query db to get list of player emails and populate select field
-					$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
-					
-					$email_query->execute();
-					
-					$email_list = $email_query->fetchAll(PDO::FETCH_ASSOC);
-					
-					foreach ($email_list as $k=>$v) {                
-						echo '<option value='. $v['email'] . '>' . $v['email'] . '</option>';                 
-					}
-							
-					?>  
-
-				</select></p>			
-				
-				<p>Favorite NFL Team
-				
-				<select name="team">
-					
-					<option value="">-Select-</option>
-					
-					<?php 
-
-					// query db to get list of all NFL teams 
-					$team_query = $conn->prepare(
-					"SELECT home AS teamlist FROM regseason WHERE week='2'
-					UNION
-					SELECT away AS teamlist FROM regseason WHERE week='2'
-					ORDER BY teamlist ASC");
-					
-					$team_query->execute();	
-
-					$team_list = $team_query->fetchAll(PDO::FETCH_ASSOC);
-					
-					foreach ($team_list as $k=>$v) {
-						echo '<option value='. $v['teamlist'] . '>' . $v['teamlist'] . '</option>';
-					}
-							
-					?>
-					
-				</select></p>
-				
-				<p>Your Password <input type="password" name="userpass" id="userpass"></p>
-				
-				<p>Confirm Password <input type="password" name="confirmpass" id="confirmpass"></p>
-
-				<p>PIN Number <input type="number" size="4" name="pin" id="pin"></p>
-				
-				<p><input type="submit" name="register" value="Register"></p>
-				
-				<p><a href="../index.php">Return to Home Page</a></p>
+		<div class="regContainer">
+			<div class="formTitle">
+				PLEASE REGISTER
 			</div>
-		<form>
+			<form action="register.php" method="post">
+				<div class='body'>
+					Email 
+					<select name="email">
+						<option value="">-Select-</option>
+					
+						<?php 
+
+						//query db to get list of player emails and populate select field
+						$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
+						
+						$email_query->execute();
+						
+						$email_list = $email_query->fetchAll(PDO::FETCH_ASSOC);
+						
+						foreach ($email_list as $k=>$v) {                
+							echo '<option value='. $v['email'] . '>' . $v['email'] . '</option>';                 
+						}
+								
+						?>  
+
+					</select>
+					<br>
+					<br>		
+					
+					Favorite NFL Team
+					
+					<select name="team">
+						
+						<option value="">-Select-</option>
+						
+						<?php 
+
+						// query db to get list of all NFL teams 
+						$team_query = $conn->prepare(
+						"SELECT home AS teamlist FROM regseason WHERE week='2'
+						UNION
+						SELECT away AS teamlist FROM regseason WHERE week='2'
+						ORDER BY teamlist ASC");
+						
+						$team_query->execute();	
+
+						$team_list = $team_query->fetchAll(PDO::FETCH_ASSOC);
+						
+						foreach ($team_list as $k=>$v) {
+							echo '<option value='. $v['teamlist'] . '>' . $v['teamlist'] . '</option>';
+						}
+								
+						?>
+						
+					</select>
+					<br>
+					<br>
+					Select Password <input type="password" name="userpass" id="userpass">
+					<br>
+					<br>					
+					Confirm Password <input type="password" name="confirmpass" id="confirmpass">
+					<br>
+					<br>
+					PIN Number <input type="number" size="4" name="pin" id="pin">
+					<br>
+					<br>
+					<input type="submit" name="register" value="Register">	
+				</div>
+			</form>
+			<div class='formLink'>
+				<a href="../index.php">Return to Home Page</a>
+			</div>
+		</div>
 	</body>
 </html>

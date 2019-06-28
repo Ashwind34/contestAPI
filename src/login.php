@@ -38,7 +38,7 @@ if (!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
 ?>
 
 	<body>
-        <div class='container'>
+        <div class='loginContainer'>
             <div class='formTitle'>
                 PLEASE LOG IN
             </div>
