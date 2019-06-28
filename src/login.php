@@ -38,23 +38,22 @@ if (!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
 ?>
 
 	<body>
-		<br>
-		<br>
-		<div class='redHead'>
-            PLEASE LOG IN
-        </div>
-		<br>
-		<br>
-		<form action="login.php" method="post">
-            <div class='body'>
-                Email <input type="email" name="useremail" id="useremail"><br><br>
-                Password <input type="password" name="userpass" id="userpass"><br><br>           
-                <input type="submit" name="login" value="Login">
-            </div>           
-        </form>
-        <div class='body'>
-            <a href="passreset.php">Change Password</a><br>
-            <a href="../index.php">Return to Home Page</a>
+        <div class='container'>
+            <div class='formTitle'>
+                PLEASE LOG IN
+            </div>
+            <form action="login.php" method="post">
+                <div class='body'>
+                    Email <input type="email" name="useremail" id="useremail"><br><br>
+                    Password <input type="password" name="userpass" id="userpass"><br><br>           
+                    <input type="submit" name="login" value="Login">
+                </div>           
+            </form>
+            <div class='formLink'>
+                <a href="passreset.php">Change Password</a>
+                <br>
+                <a href="../index.php">Return to Home Page</a>
+            </div>
         </div>
 	</body>
 </html>

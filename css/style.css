@@ -58,12 +58,11 @@ p {
 	text-align: center;
 	line-height: 1.5;
 	font-size: 2.5vh;
-}
+	}
 
 a:link, a:visited {
 	color: white;
 	font-size: 0.75em;
-	margin: 4vh;
 }
 
 /* .title {
@@ -84,7 +83,7 @@ a:link, a:visited {
 	text-align: center;
 	line-height: 1.5;
 	font-size: 1.25em;
-}
+	}
 
 .whiteHead {
 	color: white;
@@ -95,19 +94,46 @@ a:link, a:visited {
 
 }
 
+.container {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 1fr 1fr 10%;
+	justify-items: center;
+	align-items: center;
+
+}
+
+.formTitle {
+	color: red;
+	font-family: "TecmoHeadline";
+	text-align: center;
+	line-height: 1.5;
+	font-size: 1.25em;
+	grid-row-start: 1;
+}
+
 fieldset, form {
 	padding: 1.5em;
-	margin: 2vh;
-	display: block;
-	padding-block-start: 0.5em;
+	margin: auto;
+	display: flex;
 	padding-inline-start: 0.5em;
 	padding-inline-end: 0.5em;
-	padding-block-end: 0.5em;
 	min-inline-size: min-content;
 	border: 2em solid white;
 	border-width: medium;
 	border-radius: 5px;
 	max-width: 320px;	
+}
+
+.formLink {
+	font-family: "TecmoBody";
+	color: white;
+	text-align: center;
+	line-height: 1.5;
+	display: grid;
+	justify-items: center;
+	align-items: center;
+
 }
 
 select {
