@@ -95,7 +95,7 @@ a:link, a:visited {
 
 }
 
-fieldset {
+fieldset, form {
 	padding: 1.5em;
 	margin: 2vh;
 	display: block;
@@ -107,8 +107,7 @@ fieldset {
 	border: 2em solid white;
 	border-width: medium;
 	border-radius: 5px;
-	max-width: 320px;
-	
+	max-width: 320px;	
 }
 
 select {
@@ -116,10 +115,10 @@ select {
 	font-family: "TecmoBody";
 }
 
-/* input {
+input[type=email], input[type=password] {
 	position: relative;
 	font-family: "TecmoBody";
-} */
+}
 
 /* NEED ADDITIONAL TABLE CSS FOR LEADERBOARD AND PICKS - FOR LONG NAMES*/
 

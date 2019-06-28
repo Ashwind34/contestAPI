@@ -87,9 +87,9 @@ if (!empty($_POST['register'])) {
 		<p style="font-size:25px"><b>PLEASE REGISTER</b></p>
 
 		<form action="register.php" method="post">
-			<div style='text-align:center'>
+			<div class='body'>
 
-				<p>Email</p>
+				<p>Email
 
 				<select name="email">
 					<option value="">-Select-</option>
@@ -109,9 +109,9 @@ if (!empty($_POST['register'])) {
 							
 					?>  
 
-				</select><br>			
+				</select></p>			
 				
-				<p>Favorite NFL Team</p>
+				<p>Favorite NFL Team
 				
 				<select name="team">
 					
@@ -136,15 +136,15 @@ if (!empty($_POST['register'])) {
 							
 					?>
 					
-				</select><br> 
+				</select></p>
 				
-				<p>Your Password <input type="password" name="userpass" id="userpass"></p><br>
+				<p>Your Password <input type="password" name="userpass" id="userpass"></p>
 				
-				<p>Confirm Password <input type="password" name="confirmpass" id="confirmpass"></p><br> 
+				<p>Confirm Password <input type="password" name="confirmpass" id="confirmpass"></p>
 
-				<p>PIN Number <input type="number" size="4" name="pin" id="pin"></p><br>
+				<p>PIN Number <input type="number" size="4" name="pin" id="pin"></p>
 				
-				<p><input type="submit" name="register" value="Register"></p><br>
+				<p><input type="submit" name="register" value="Register"></p>
 				
 				<p><a href="../index.php">Return to Home Page</a></p>
 			</div>
