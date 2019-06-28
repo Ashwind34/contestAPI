@@ -66,6 +66,12 @@ a:link, a:visited {
 	text-align:center;
 }
 
+@media screen and (max-width: 325px) {
+	.redHead, .whiteHead {
+	  font-size: 1.05em !important;
+	}
+  }
+
 .redHead {
 	color: red;
 	font-family: "TecmoHeadline";
