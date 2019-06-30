@@ -85,6 +85,8 @@ $picks_table = $conn->prepare("SELECT
 $picks_table->execute();
 
 $data=$picks_table->fetchall(PDO::FETCH_ASSOC);
+
+//NEED TO ADD LOGIC TO TRUNCATE LONG NAMES TO LAST INITIAL PLUS .
   
 //Make sure	query array is not empty, then create html table with all entries
   

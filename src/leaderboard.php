@@ -32,6 +32,7 @@ $query = $conn->prepare(
 $query->execute();
 					
 //create array - data to be displayed in weekly picks table below.
+//NEED TO ADD LOGIC TO TRUNCATE LONG NAMES TO LAST INITIAL PLUS .
 
 $data=$query->fetchall(PDO::FETCH_ASSOC);
 
