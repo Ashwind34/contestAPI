@@ -19,22 +19,22 @@ if (!empty($_POST['submit'])) {
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
     </head>
     <body>
-        <br>
-        <br>
-        <p><b>Reset Your PIN</b></p>
-        <br>
-        <p><a href="../index.php">Return to Home Page</a></p>
-        <br>
-        <form action="pinresetfresh.php" method="post">
-
-            <p>Email <input type="email" name="email" id="email"></p><br><br>
-            
-            <p><input type="submit" name="submit" value="Reset Your Pin"></p>
-
-        </form>
+    <div class="pinContainer">
+            <div class="formTitle">
+                Reset Your PIN
+            </div>
+            <form action="pinresetfresh.php" method="post">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email"><br>                
+                <input type="submit" name="submit" value="Reset Your Pin">
+            </form>
+            <div class='formLink'>
+                <a href="../index.php">Return to Home Page</a>
+            </div>
+        </div>
     </body>
 </html>
 

@@ -90,28 +90,30 @@ a:link, a:visited {
 
 }
 
+.homeContainer, 
+.pinContainer,
+.regContainer,
 .loginContainer {
 	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 1fr 2fr 2fr 15%;
+	grid-template-columns: 1fr;	
 	justify-items: center;
 	align-items: center;
+}
+
+.loginContainer {
+	grid-template-rows: 1fr 2fr 2fr 15%;
 }
 
 .regContainer {
-	display: grid;
-	grid-template-columns: 1fr;
 	grid-template-rows: 1fr 3fr 15%;
-	justify-items: center;
-	align-items: center;
 }
 
 .homeContainer {
-	display: grid;
-	grid-template-columns: 1fr;
 	grid-template-rows: 1.5fr 0.75fr 2.5fr auto;
-	justify-items: center;
-	align-items: center;
+}
+
+.pinContainer {
+	grid-template-rows: 1.5fr 2fr 1.5fr;
 }
 
 .formTitle {
@@ -186,7 +188,7 @@ input[type=number] {
 table {
 	border-collapse: separate;
 	border-spacing: 0;
-	min-width: 350px;
+	min-width: 280px;
 	margin-left: 1vh;
 	margin-right: 1vh;
 }
