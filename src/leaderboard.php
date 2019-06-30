@@ -86,12 +86,19 @@ if (count($data) > 0) {
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
 	<body>
-		<div class='headline'>LEADERBOARD</div>
-		<p><a href="../index.php">Return to Home Page</a></p><br>
-		<?php 
-		
-		echo $leaderboard;
-		
-		?>
+		<div class="boardContainer">
+			<div class='formTitle'>
+				LEADERBOARD
+			</div>
+			<div class="formLink">
+				<a href="../index.php">Return to Home Page</a>
+			</div>
+			<div>			
+				<?php echo $leaderboard; ?>
+				<br>
+				<br>
+				<a class="formLink" href="../index.php">Return to Home Page</a>
+			</div>
+		</div>
 	</body>
 </html>

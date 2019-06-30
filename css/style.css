@@ -93,7 +93,9 @@ a:link, a:visited {
 .homeContainer, 
 .pinContainer,
 .regContainer,
-.loginContainer {
+.loginContainer,
+.schedContainer,
+.boardContainer {
 	display: grid;
 	grid-template-columns: 1fr;	
 	justify-items: center;
@@ -114,6 +116,13 @@ a:link, a:visited {
 
 .pinContainer {
 	grid-template-rows: 1.5fr 2fr 1.5fr;
+}
+
+.schedContainer {
+	grid-template-rows: 1fr 8fr 2fr;
+}
+.boardContainer {
+	grid-template-rows: 20% 20% auto;
 }
 
 .formTitle {
