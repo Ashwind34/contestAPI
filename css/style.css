@@ -95,7 +95,8 @@ a:link, a:visited {
 .regContainer,
 .loginContainer,
 .schedContainer,
-.boardContainer {
+.boardContainer,
+.picksContainer {
 	display: grid;
 	grid-template-columns: 1fr;	
 	justify-items: center;
@@ -125,6 +126,10 @@ a:link, a:visited {
 	grid-template-rows: 20% 20% auto;
 }
 
+.picksContainer {
+	grid-template-rows: 3fr 3fr auto;
+}
+
 .formTitle {
 	color: red;
 	font-family: "TecmoHeadline";
@@ -132,6 +137,7 @@ a:link, a:visited {
 	line-height: 1.5;
 	font-size: 1.25em;
 	font-weight: bold;
+	margin: 1vh;
 }
 
 fieldset, form {
