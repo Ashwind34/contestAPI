@@ -15,13 +15,16 @@ require_once('picks_query.php');
         <link rel="stylesheet" type="text/css" href="../css/style.css">
     </head>
     <body>
-        <p>Your picks for week <?php echo $weekmarker; ?> have been submitted!</p>
-        <p><a href="../index.php">Return to Home Page</a></p>
-
-        <?php 
-
-        echo $player_picks_table;
-
-        ?>
+        <div class="regContainer">
+            <div class="pickSubmit">
+                Your picks for week <?php echo $weekmarker; ?> have been submitted!
+            </div>
+            <div>
+                <?php echo $player_picks_table;?>
+            </div>
+            <div class="formLink">
+                <a href="../index.php">Return to Home Page</a>
+            </div>           
+        </div>
     </body>
 </html>
