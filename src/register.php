@@ -71,7 +71,7 @@ if (!empty($_POST['register'])) {
 
                 if ($submit->execute()) {
                     echo '<br><p>Player Updated Successfully</p>';
-                    echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
+                    echo '<br><p><a href="../home.php">Return to Home Page</a></p>';
                     exit();
                 } else {
                     echo '<br><p>Problem with Registration.  Please try again.</p>';

@@ -1,3 +1,18 @@
+<?php
+
+require_once('pdo_connect.php');
+require_once('datecheck.php');
+
+session_start();
+
+if(empty($_SESSION['player_id'])) {
+
+	header("Location: ./login.php");
+
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,13 +28,9 @@
 
 		<?php 
 
-		// STILL NEED TO FORMAT AND RE-FACTOR MOST OF THIS
-
-		require_once ('pdo_connect.php');
-		require_once ('datecheck.php');
-
-		//insert score and spread data into regseason table after data submit
-		//MUST UPDATE THIS TO SIMPLIFY, CAN DO THIS WITH MANY LESS DATABASE QUERIES
+		// insert score and spread data into regseason table after data submit
+		// STILL NEED TO FORMAT AND RE-FACTOR MOST OF THIS		
+		// MUST UPDATE THIS TO SIMPLIFY, CAN DO THIS WITH MANY LESS DATABASE QUERIES
 
 		if (empty($_POST['submit'])) {
 			} else {

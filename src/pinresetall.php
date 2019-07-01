@@ -5,6 +5,14 @@ require_once('pdo_connect.php');
 require_once('pinupdate.php');
 require_once('sendMessage.php');
 
+session_start();
+
+if(empty($_SESSION['player_id'])) {
+
+	header("Location: ./login.php");
+
+}
+
 //check if $_POST is empty
 
 if (!empty($_POST["select"])) {
@@ -34,7 +42,7 @@ if (!empty($_POST["select"])) {
         <!-- Select multiple emails for manual user PIN updates -->
 
         <form action="pinresetall.php" method="POST">
-            <select multiple size="20" name="select[]">
+            <select class="allselect" multiple size="20" name="select[]">
            
             <?php 
 

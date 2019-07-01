@@ -16,19 +16,12 @@
 		  url("./fonts/tecmo-bowl-body.woff2") format("woff2");  
 }
 
-body {
-	
-	background-image: url("./supersrc/field3.jpg");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-attachment: fixed;
-	background-size: contain;	
+body {	
 	background-color:rgb(59, 143, 240);
 	margin: 0;
 }
 
-.blackBack {
-	
+.blackBack {	
 	background-image: url("./img/star2.png");
 	background-repeat: no-repeat;
 	background-position: center;
@@ -36,50 +29,6 @@ body {
 	background-size: contain;	
 	background-color:black;
 	margin: 0;
-}
-
-
-
-h1 {
-	color:green;
-	text-align: center;
-	font-family: "TecmoHeadline";
-	line-height: 1.5;
-}
-	
-h2 {
-	color:red;
-	text-align: center;
-	font-family: "TecmoBody";
-	line-height: 1.5;
-}
-	
-p {
-	color:blue; 
-	text-align:center;
-	font-family: "TecmoBody";
-	line-height: 1.5;
-}
-
-.headline {
-	color:green;
-	text-align: center;
-	font-family: "TecmoHeadline";
-	line-height: 1.5;
-}
-
-.body {
-	font-family: "TecmoBody";
-	color: white;
-	text-align: center;
-	line-height: 1.5;
-	font-size: 2.5vh;
-}
-
-a:link, a:visited {
-	color: white;
-	font-size: 2vh;
-	text-align:center;
 }
 
 @media screen and (max-width: 365px) {
@@ -103,7 +52,6 @@ a:link, a:visited {
 	text-align: center;
 	line-height: 1.5;
 	font-size: 1.25em;
-
 }
 
 .homeContainer, 
@@ -191,6 +139,12 @@ fieldset, form {
 	align-items: center;
 }
 
+a:link, a:visited {
+	color: white;
+	font-size: 2vh;
+	text-align:center;
+}
+
 label, .pickselect {
 	margin-top: 1vh;
 	margin-bottom: 1vh;
@@ -220,6 +174,11 @@ label, .pickselect {
 
 select {
 	width: 62px;
+}
+
+.allselect {
+	width: 260px;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 input[type=email], input[type=password] {

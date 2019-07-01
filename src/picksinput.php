@@ -23,6 +23,8 @@ if (isset($_SESSION['player_id'])) {
     } else {
         die("No result returned");
     }
+} else {    
+    header("Location: ./login.php");
 }
 
 //skip sql query before data is entered

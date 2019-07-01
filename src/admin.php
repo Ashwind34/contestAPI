@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+
+if(empty($_SESSION['player_id'])) {
+
+	header("Location: ./login.php");
+
+}
+
+?>
+
+
 <!DOCTYPE HTML>
 <html>
 	<head>

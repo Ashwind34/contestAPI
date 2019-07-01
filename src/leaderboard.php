@@ -2,6 +2,14 @@
 require_once('datecheck.php');
 require_once('pdo_connect.php');
 
+session_start();
+
+if(empty($_SESSION['player_id'])) {
+
+	header("Location: ./login.php");
+
+}
+
 //query for leaderboard table
 
 $query = $conn->prepare(

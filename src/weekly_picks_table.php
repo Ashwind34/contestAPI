@@ -1,3 +1,18 @@
+<?php
+
+require_once('datecheck.php');
+require_once('pdo_connect.php');
+require_once('picks_query.php');
+			
+session_start();
+
+if(empty($_SESSION['player_id'])) {
+
+	header("Location: ./login.php");
+
+}
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,13 +22,7 @@
 	<body>
 		<div class="picksContainer">
 
-			<?php 
-
-			session_start();
-
-			require_once('datecheck.php');
-			require_once('pdo_connect.php');
-			require_once('picks_query.php');
+			<?php 	
 
 			//if we are before approx. 11:30 AM PST on Sunday, show logged-in player's picks only.  Else show all player's picks.
 

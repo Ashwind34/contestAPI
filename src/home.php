@@ -1,8 +1,5 @@
 <?php
 
-// TO-DOs
-// WRITE OBJECT/FUNCTION FOR ID CHECK
-
 session_start();
 
 require_once('pdo_connect.php');
@@ -28,6 +25,8 @@ if(isset($_SESSION['player_id'])) {
 	} else {
 		die("No result returned");
 	}
+} else {    
+    header("Location: ./login.php");
 }
 ?>
 
@@ -66,7 +65,7 @@ if(isset($_SESSION['player_id'])) {
                     <?php                     
                     if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
                         
-                        echo'<a href="src/admin.php"><i>Admin Page</i></a>';
+                        echo'<a href="admin.php"><i>Admin Page</i></a>';
                         
                     } 
                     ?>

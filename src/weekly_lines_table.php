@@ -1,7 +1,15 @@
 <?php 
 
-require_once ('weekly_schedule.php');
-require_once ('datecheck.php');
+require_once('weekly_schedule.php');
+require_once('datecheck.php');
+
+session_start();
+
+if(empty($_SESSION['player_id'])) {
+
+	header("Location: ./login.php");
+
+}
 
 ?>
 

@@ -1,11 +1,16 @@
 <?php 
 
-session_start();
-
 require_once('datecheck.php');
 require_once('pdo_connect.php');
 require_once('picks_query.php');
 
+session_start();
+
+if(empty($_SESSION['player_id'])) {
+
+	header("Location: ./login.php");
+
+}
 ?>
 
 <!DOCTYPE html>
