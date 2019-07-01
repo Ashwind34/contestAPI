@@ -26,7 +26,7 @@ if (!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
         $_SESSION['player_id'] = $result['player_id'];
     
         // redirect to index.php without using header()
-        $URL = '../index.php';
+        $URL = "home.php";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     } else {
         echo '<br><br><p>Email or password is incorrect, please try again</p>';

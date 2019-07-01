@@ -2,7 +2,7 @@
 	font-family: 'TecmoHeadline';
 	font-style: normal;
 	font-weight: normal;
-	src:  url('./fonts/tecmo-bowl-headline.ttf') format('truetype'),
+	src:  url("./fonts/tecmo-bowl-headline.ttf") format("truetype"),
 		  url("./fonts/tecmo-bowl-body.woff") format("woff"), 
 		  url("./fonts/tecmo-bowl-body.woff2") format("woff2");  
 }
@@ -11,7 +11,7 @@
 	font-family: 'TecmoBody';
 	font-style: normal;
 	font-weight: normal;
-	src:  url('./fonts/tecmo-bowl-body.ttf') format('truetype'), 
+	src:  url("./fonts/tecmo-bowl-body.ttf") format("truetype"), 
 		  url("./fonts/tecmo-bowl-body.woff") format("woff"), 
 		  url("./fonts/tecmo-bowl-body.woff2") format("woff2");  
 }
@@ -26,6 +26,19 @@ body {
 	background-color:rgb(59, 143, 240);
 	margin: 0;
 }
+
+.blackBack {
+	
+	background-image: url("./img/star2.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: contain;	
+	background-color:black;
+	margin: 0;
+}
+
+
 
 h1 {
 	color:green;

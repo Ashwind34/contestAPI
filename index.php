@@ -2,8 +2,6 @@
 
 // TO-DOs
 // WRITE OBJECT/FUNCTION FOR ID CHECK
-// ADD CSS FILE
-
 
 session_start();
 
@@ -43,7 +41,7 @@ if(isset($_SESSION['player_id'])) {
 		<meta name="viewport" content="width=device-width">
 	</head>
 
-	<body>
+	<body class="blackBack">
 		<div class='homeContainer'>
 			<div class='redHead'>
 				TECMO 
@@ -67,21 +65,25 @@ if(isset($_SESSION['player_id'])) {
 						<a href="src/passreset.php">Change Password</a>';
 
 					} else {
-						echo 
-						'<a href="src/picksinput.php">Submit Your Picks</a><br>
-						<a href="src/weekly_lines_table.php">Schedule</a><br>
-						<a href="src/weekly_picks_table.php">Picks Table</a><br>
-						<a href="src/leaderboard.php">Leaderboard</a><br>
-						<a href="src/passreset.php">Change Password</a><br>
-						<a href="src/logout.php">Logout</a><br>';
 
-						// Allow link to admin menu for specific users
+						$URL = './src/home.php';
+        				echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+
+						// echo 
+						// '<a href="src/picksinput.php">Submit Your Picks</a><br>
+						// <a href="src/weekly_lines_table.php">Schedule</a><br>
+						// <a href="src/weekly_picks_table.php">Picks Table</a><br>
+						// <a href="src/leaderboard.php">Leaderboard</a><br>
+						// <a href="src/passreset.php">Change Password</a><br>
+						// <a href="src/logout.php">Logout</a><br>';
+
+						// // Allow link to admin menu for specific users
 						
-						if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
+						// if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
 							
-							echo'<a href="src/admin.php"><i>Admin Page</i></a>';
+						// 	echo'<a href="src/admin.php"><i>Admin Page</i></a>';
 							
-						} 
+						// } 
 					}				
 				?>
 			</fieldset>	
