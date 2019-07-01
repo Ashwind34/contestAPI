@@ -2,7 +2,7 @@
 	font-family: 'TecmoHeadline';
 	font-style: normal;
 	font-weight: normal;
-	src:  url('./Fonts/tecmo-bowl-headline.ttf') format('truetype'),
+	src:  url('./fonts/tecmo-bowl-headline.ttf') format('truetype'),
 		  url("./fonts/tecmo-bowl-body.woff") format("woff"), 
 		  url("./fonts/tecmo-bowl-body.woff2") format("woff2");  
 }
@@ -11,7 +11,7 @@
 	font-family: 'TecmoBody';
 	font-style: normal;
 	font-weight: normal;
-	src:  url('./Fonts/tecmo-bowl-body.ttf') format('truetype'), 
+	src:  url('./fonts/tecmo-bowl-body.ttf') format('truetype'), 
 		  url("./fonts/tecmo-bowl-body.woff") format("woff"), 
 		  url("./fonts/tecmo-bowl-body.woff2") format("woff2");  
 }
@@ -69,8 +69,8 @@ a:link, a:visited {
 	text-align:center;
 }
 
-@media screen and (max-width: 325px) {
-	.redHead, .whiteHead {
+@media screen and (max-width: 365px) {
+	.redHead, .whiteHead, .picksTitle {
 	  font-size: 1.05em !important;
 	}
   }
@@ -99,7 +99,8 @@ a:link, a:visited {
 .loginContainer,
 .schedContainer,
 .boardContainer,
-.picksContainer {
+.picksContainer,
+.inputContainer {
 	display: grid;
 	grid-template-columns: 1fr;	
 	justify-items: center;
@@ -126,14 +127,19 @@ a:link, a:visited {
 	grid-template-rows: 1fr 8fr 2fr;
 }
 .boardContainer {
-	grid-template-rows: 20% 20% auto;
+	grid-template-rows: 20% 15% auto;
 }
 
 .picksContainer {
 	grid-template-rows: 3fr 3fr auto;
 }
 
-.formTitle {
+.inputContainer {
+	grid-template-rows: repeat(3, 1fr) auto;
+
+}
+
+.formTitle, .picksTitle {
 	color: red;
 	font-family: "TecmoHeadline";
 	text-align: center;
@@ -172,19 +178,26 @@ fieldset, form {
 	align-items: center;
 }
 
-label {
+label, .pickselect {
 	margin-top: 1vh;
 	margin-bottom: 1vh;
 	font-family: "TecmoBody";
 	color: white;
 }
 
-select {
+.regselect, select {
 	position: relative;
 	font-family: "TecmoBody";
-	width: 260px;
 	margin-top: 1vh;
 	margin-bottom: 1vh;
+}
+
+.regselect {
+	width: 260px;
+}
+
+select {
+	width: 62px;
 }
 
 input[type=email], input[type=password] {

@@ -108,7 +108,7 @@ if (!empty($_POST['register'])) {
 			</div>
 			<form action="register.php" method="post">
 				<label for="email">Email</label>
-				<select name="email" id="email">
+				<select class="regselect" name="email" id="email">
 					<option value="">-Select-</option>
 				
 					<?php 
@@ -121,7 +121,7 @@ if (!empty($_POST['register'])) {
 
 				</select>	
 				<label for="team">Favorite NFL Team</label>
-				<select name="team">
+				<select class="regselect" name="team">
 					
 					<option value="">-Select-</option>
 					

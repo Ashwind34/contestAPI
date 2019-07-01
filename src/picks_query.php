@@ -162,14 +162,14 @@ function PickDropdown($pick, $picknum)
                 
     if (!empty($current_pick)) {
         if (!in_array($current_pick, $avail_teams_array)) {
-            echo '<p><select name="' . $picknum . '">';
+            echo '<select name="' . $picknum . '">';
             echo '<option value="' . $current_pick . '">' . $current_pick . '</option>';
-            echo '</select></p>';
+            echo '</select>';
                                 
                                 
         // else enable dropdown menu wth remaining games
         } else {
-            echo '<p><select name="' . $picknum . '">';
+            echo '<select name="' . $picknum . '">';
             echo '<option value="' . $current_pick . '">' . $current_pick . '</option>';
                  
             // insert team list as options for picks dropdown list
@@ -180,10 +180,10 @@ function PickDropdown($pick, $picknum)
             while ($teamlist = $query->fetch(PDO::FETCH_ASSOC)) {
                 echo '<option value="' . $teamlist['teamlist'] . '">' . $teamlist['teamlist'] . '</option>';
             }
-            echo '</select></p>';
+            echo '</select>';
         }
     } else {
-        echo '<p><select name="' . $picknum . '">';
+        echo '<select name="' . $picknum . '">';
 
         echo '<option value="">-Select-</option>';
 
@@ -196,7 +196,7 @@ function PickDropdown($pick, $picknum)
         while ($teamlist = $query->fetch(PDO::FETCH_ASSOC)) {
             echo '<option value="' . $teamlist['teamlist'] . '">' . $teamlist['teamlist'] . '</option>';
         }
-        echo '</select></p>';
+        echo '</select>';
     }
 }	
 

@@ -129,54 +129,70 @@ if (!empty($_POST['submit'])) {
 		<title>Week <?php echo $weekmarker;?> Picks</title>
 	</head>		
 	<body>
-		<div class='headline'>
-            Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!
-        </div>		
-		<p>
-            Your Current Picks
-        </p>
+        <a name="picks"></a>
+        <div class="inputContainer">
+            <div class="picksTitle">
+                Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!
+            </div>		
+            <div class="formLink">
+                Your Current Picks
+            </div>
+            <div>
+                <!-- $player_picks_table located in picks_query.php -->
+                <?php echo $player_picks_table;?>
+            </div>  
+            <br>
 
-		<!-- $player_picks_table located in picks_query.php -->
+            <!--dropdown menus for each pick, referenced from function in picks_query.php -->
 
-		<p><?php echo $player_picks_table;?></p>
-
-		<!--dropdown menus for each pick, referenced from function in picks_query.php -->
-
-		<form action="picksinput.php" method="post">
-
-			<p>Pick #1</p>
-			
-			<p><?php PickDropdown($pick_1,'pick_1'); ?></p>
-			
-			<p>Pick #2</p>
-
-			<p><?php PickDropdown($pick_2, 'pick_2'); ?></p>
-			
-			<p>Pick #3</p>
-
-			<p><?php PickDropdown($pick_3, 'pick_3'); ?></p>
-				
-			<p>Pick #4</p>
-
-			<p><?php PickDropdown($pick_4, 'pick_4'); ?></p>
-			
-			<p>Pick #5</p>
-
-			<p><?php PickDropdown($pick_5,'pick_5'); ?></p>
-			
-			<p><input type="submit" name="submit" value="Submit Your Picks"></p>
-			
-		</form>			
-		<br>
-		
-		<p><a href="../index.php">Return to Home Page</a></p><br>
-
-		<h3>Week <?php echo $weekmarker ;?> Lines</h3>
-			
-		<!-- display table with weekly lines from weekly_schedule.php -->
-			
-		<p><?php echo $weekly_lines_table?></p>
-
+            <form action="picksinput.php" method="post">
+                <div class="pickselect">
+                    Pick #1		
+                    <?php PickDropdown($pick_1,'pick_1'); ?>
+                </div>
+                <div class="pickselect">
+                    Pick #2
+                    <?php PickDropdown($pick_2, 'pick_2'); ?> 
+                </div> 
+                <div class="pickselect">	
+                    Pick #3
+                    <?php PickDropdown($pick_3, 'pick_3'); ?>
+                </div>
+                <div class="pickselect">
+                    Pick #4
+                    <?php PickDropdown($pick_4, 'pick_4'); ?>
+                </div>
+                <div class="pickselect">
+                    Pick #5
+                    <?php PickDropdown($pick_5,'pick_5'); ?>
+                </div>
+                <div>
+                    <input type="submit" name="submit" value="Submit Your Picks">
+                </div>                			
+            </form>	
+            <br>		
+            <div class="formLink">
+                <a href="#schedule">Check the Schedule</a>
+                <br>
+                <a href="../index.php">Return to Home Page</a>                
+            </div>
+        </div>
+        <br>
+        <br>
+        <a name='schedule'></a>
+        <div class="schedContainer">            
+            <div class="picksTitle">
+                Week <?php echo $weekmarker ;?> Lines
+            </div>
+            <div>
+                <!-- display table with weekly lines from weekly_schedule.php -->
+                <?php echo $weekly_lines_table?>
+            </div>
+            <div class='formLink'>
+                <a href="#picks">Return to Picks</a>                
+                <br>
+                <a href="../index.php">Return to Home Page</a>
+            </div>
+        </div>
 	</body>
-
 </html>
