@@ -48,7 +48,7 @@ if(isset($_SESSION['player_id'])) {
 			<div class='whiteHead'>
 				SUPERCONTEST 2019
 			</div>
-			<div class="body">
+			<div class="pickSubmit">
 				Hello<?php echo " $user[first_name]";?>
 			</div>
 			<fieldset>

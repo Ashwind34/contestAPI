@@ -152,7 +152,7 @@ label, .pickselect {
 	color: white;
 }
 
-.pickSubmit {
+.pickSubmit, p {
 	margin-top: 1vh;
 	margin-bottom: 1vh;
 	font-family: "TecmoBody";

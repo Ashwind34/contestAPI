@@ -1,3 +1,9 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
 <?php
 
 require_once('pdo_connect.php');
@@ -14,13 +20,6 @@ if (!empty($_POST['submit'])) {
     send_email_message($recipientEmail, $recipiantName, $subject, $body);
 }
 ?>
-
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../css/style.css">
-    </head>
     <body>
     <div class="pinContainer">
             <div class="formTitle">

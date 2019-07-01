@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<title>Week <?php echo $weekmarker;?> Picks</title>
+	</head>		
+
 <?php
 
 session_start();
@@ -114,7 +122,7 @@ if (!empty($_POST['submit'])) {
 
         echo '<p><b>Please select 5 teams!</b></p><br>';
         echo '<p><a href="picksinput.php">Try Again</a></p><br>';
-        echo '<p><a href="index.php">Return to Home Page</a></p>';
+        echo '<p><a href="home.php">Return to Home Page</a></p>';
 		exit();
 		
     }
@@ -123,13 +131,6 @@ if (!empty($_POST['submit'])) {
 	
 ?>
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="../css/style.css">
-		<title>Week <?php echo $weekmarker;?> Picks</title>
-	</head>		
 	<body>
         <div class="inputContainer">
             <div class="picksTitle">

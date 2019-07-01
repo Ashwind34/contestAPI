@@ -1,3 +1,10 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+
 <?php
 
 session_start();
@@ -36,16 +43,8 @@ if (!empty($_POST['submit'])) {
     list($recipientEmail, $recipiantName, $subject, $body) = PinUpdate($email);
     send_email_message($recipientEmail, $recipiantName, $subject, $body);
 }
-
-
 ?>
 
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="style.css">
-	</head>
 	<body>
 		<br>
 		<br>

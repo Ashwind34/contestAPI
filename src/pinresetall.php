@@ -1,3 +1,12 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>
+			SuperContest 2019
+		</title>
+	    <link rel="stylesheet" type="text/css" href="../css/style.css">
+		<meta name="viewport" content="width=device-width">
+	</head>
 
 <?php
 
@@ -28,15 +37,6 @@ if (!empty($_POST["select"])) {
 }
 
 ?>
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>
-			SuperContest 2019
-		</title>
-	    <link rel="stylesheet" type="text/css" href="../css/style.css">
-		<meta name="viewport" content="width=device-width">
-	</head>
     <body>
 
         <!-- Select multiple emails for manual user PIN updates -->
