@@ -20,6 +20,8 @@ require_once ('datecheck.php');
                 <?php echo $weekly_lines_table ?>
             </div>
             <div class='formLink'>
+                <a href='picksinput.php'>Check your Picks</a>
+                <br>
                 <a href="../index.php">Return to Home Page</a>
             </div>
         </div>

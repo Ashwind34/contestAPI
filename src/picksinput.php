@@ -129,7 +129,6 @@ if (!empty($_POST['submit'])) {
 		<title>Week <?php echo $weekmarker;?> Picks</title>
 	</head>		
 	<body>
-        <a name="picks"></a>
         <div class="inputContainer">
             <div class="picksTitle">
                 Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!
@@ -172,26 +171,9 @@ if (!empty($_POST['submit'])) {
             </form>	
             <br>		
             <div class="formLink">
-                <a href="#schedule">Check the Schedule</a>
+                <a href="weekly_lines_table.php">Check the Schedule</a>
                 <br>
                 <a href="../index.php">Return to Home Page</a>                
-            </div>
-        </div>
-        <br>
-        <br>
-        <a name='schedule'></a>
-        <div class="schedContainer">            
-            <div class="picksTitle">
-                Week <?php echo $weekmarker ;?> Lines
-            </div>
-            <div>
-                <!-- display table with weekly lines from weekly_schedule.php -->
-                <?php echo $weekly_lines_table?>
-            </div>
-            <div class='formLink'>
-                <a href="#picks">Return to Picks</a>                
-                <br>
-                <a href="../index.php">Return to Home Page</a>
             </div>
         </div>
 	</body>
