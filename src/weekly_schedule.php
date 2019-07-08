@@ -31,27 +31,42 @@ if (count($data) > 0) {
 	echo 
 	'<table>	
 		<tr>
-			<th>Home</th>
-			<th>Home Spread</th>
-			<th>Away</th>
-			<th>Away Spread</th>
+			<th>Favorite</th>
+			<th>Spread</th>
+			<th>Underdog</th>
 			<th>Start Time (Eastern)</th>
 		</tr>';
     
-    // foreach loop to list out each row in the array
+	// foreach loop to list out each row in the array
+	// test to see if home or away is favored, then build table accordingly
     
     foreach ($data as $row) {
+
+		$home = '*'.$row['home'].'*';
+		$away = $row['away'];
+
+		if( $row['h_spread'] < $row['a_spread']) {
+			$favorite = $home;
+			$underdog = $away;
+			$spread = $row['h_spread'];
+		} else {
+			$favorite = $away;
+			$underdog = $home;
+			$spread = $row['a_spread'];
+		}
+
         echo
 		'<tr>
-			<td>' . $row['home'] . '</td>
-			<td>' . $row['h_spread'] . '</td>
-			<td>' . $row['away'] . '</td>
-			<td>' . $row['a_spread'] . '</td>
+			<td>' . $favorite . '</td>
+			<td>' . $spread . '</td>
+			<td>' . $underdog . '</td>
 			<td>' . date('h:i a', strtotime($row['start_time'])) . '</td>
 		</tr>';
+		
     }
             
-    echo  '</table>';
+	echo  '</table>';
+	echo '<br><p>** = Home Team</p>';
     
 	$weekly_lines_table = ob_get_clean();
 	
