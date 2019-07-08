@@ -16,6 +16,20 @@
 		  url("./fonts/tecmo-bowl-body.woff2") format("woff2");  
 }
 
+@font-face {
+	font-family: 'TecmoNarrow';
+	font-style: normal;
+	font-weight: normal;
+	src:  url("./fonts/GF-TecmoNarrow.TTF") format("truetype");
+}
+
+@font-face {
+	font-family: 'TecmoCaps';
+	font-style: normal;
+	font-weight: normal;
+	src:  url("./fonts/TecmoRounedAllCaps.TTF") format("truetype");
+}
+
 body {	
 	background-color:rgb(59, 143, 240);
 	margin: 0;
@@ -26,7 +40,7 @@ body {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
-	background-size: contain;	
+	background-size: cover;	
 	background-color:black;
 	margin: 0;
 }
@@ -54,6 +68,24 @@ body {
 	font-size: 1.25em;
 }
 
+.testnarrow {
+	font-family: 'TecmoNarrow';
+	color: white;
+}
+
+.testcaps {
+	font-family: 'TecmoCaps';
+	text-align: center;
+	color: white;
+	font-size: 3.5rem; 
+}
+
+.stars {
+	height: 2%;
+}
+
+
+
 .homeContainer, 
 .pinContainer,
 .regContainer,
@@ -61,7 +93,8 @@ body {
 .schedContainer,
 .boardContainer,
 .picksContainer,
-.inputContainer {
+.inputContainer,
+.menuContainer {
 	display: grid;
 	grid-template-columns: 1fr;	
 	justify-items: center;
@@ -74,6 +107,10 @@ body {
 
 .regContainer {
 	grid-template-rows: 1fr 3fr 15%;
+}
+
+.menuContainer {
+	grid-template-rows: repeat(5, 1fr);
 }
 
 .homeContainer {
@@ -129,7 +166,7 @@ fieldset, form {
 	font-size: 2.5vh;
 }	
 
-.formLink {
+.formLink, .legal, .menu {
 	font-family: "TecmoBody";
 	color: white;
 	text-align: center;
@@ -139,13 +176,29 @@ fieldset, form {
 	align-items: center;
 }
 
+.legal {
+	font-size: 0.5rem;
+	margin-top: 3vh;
+	display: grid;
+	grid-row: 4 / 5;
+}
+
+.menu {
+	display: grid;
+	margin-top: 3vh;
+	grid-row: 3 / 4;
+}
+
 a:link, a:visited {
 	color: white;
 	font-size: 2vh;
 	text-align:center;
 }
 
-label, .pickselect {
+p,
+label, 
+.pickselect,
+.pickSubmit {
 	margin-top: 1vh;
 	margin-bottom: 1vh;
 	font-family: "TecmoBody";
@@ -153,10 +206,6 @@ label, .pickselect {
 }
 
 .pickSubmit, p {
-	margin-top: 1vh;
-	margin-bottom: 1vh;
-	font-family: "TecmoBody";
-	color: white;
 	text-align: center;
 	line-height: 1.5;
 }

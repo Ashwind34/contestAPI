@@ -26,19 +26,44 @@ if(isset($_SESSION['player_id'])) {
 		<meta name="viewport" content="width=device-width">
 	</head>
 	<body class="blackBack">
-		<div class='homeContainer'>
+		<div class='menuContainer'>
 			<div class='redHead'>
-				TECMO 
+				TECMO<span style='font-size:0.75rem'>&reg</span>
 			</div>
-			<div class='whiteHead'>
-				SUPERCONTEST 2019
+			<div class='testcaps'>
+				<div>SUPER</div>
+				<div>CONTEST</div> 
+				<!-- <div>CONTEST<span style='font-size:0.75rem'>TM</span></div>  -->
+				<!-- <div>2019</div> -->
 			</div>
-			<fieldset>
-				<legend style='text-align:left'>Main Menu</legend>
-					<a href="src/login.php">Login</a><br>
-					<a href="src/register.php">Register</a><br>
-					<a href="src/passreset.php">Change Password</a>
-			</fieldset>	
+			<div class='menu'>
+				<!-- <div>
+					<img class='stars' src="./css/img/starsleft.png" alt=""> -->
+					<a class='pickselect' href="src/login.php">Login</a>
+					<!-- <img class='stars' src="./css/img/starsright.png" alt=""><br>
+				</div>
+				<div>
+					<img src="./css/img/starsleft.png" alt=""> -->
+					<a class='pickselect' href="src/register.php">Register</a>
+					<!-- <img src="./css/img/starsright.png" alt=""><br>
+				</div>
+				<div>
+					<img src="./css/img/starsleft.png" alt=""> -->
+					<a class='pickselect' href="src/passreset.php">Change Password</a>
+					<!-- <img src="./css/img/starsright.png" alt="">
+				</div> -->
+			</div>
+			<div class='legal'>
+				<div>
+					TM and &copy TECMO LTD 2019
+				</div>
+				<div>
+					LICENSED BY
+				</div>
+				<div>
+					NINTENDO OF AMERICA INC.
+				</div>
+			</div>	
 		</div>
 	</body>
 </html>

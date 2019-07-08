@@ -43,17 +43,19 @@ function send_email_message($recipientEmail, $recipientName, $subject, $body) {
         $mail->isHTML(true);                                    // Set email format to HTML    
         $mail->send();
 
-        echo '<br><p style="font-size:20px;">A new PIN has been sent to ' . $recipientEmail . '. Check your email!</p>';
-        echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+        echo '<link rel="stylesheet" type="text/css" href="../css/style.css">';
+        echo '<br><label>A new PIN has been sent to ' . $recipientEmail . '. Check your email!</label>';
+        echo '<br><a href="../index.php">Return to Home Page</a>';
         exit();
     
     } catch (Exception $e) {
+        echo '<link rel="stylesheet" type="text/css" href="../css/style.css">';
         echo 'Message could not be sent.';
         echo 'Mailer Error: ' . $mail->ErrorInfo;
-        echo '<br><p style="font-size:20px">Message could not be sent.  Please try again.</p>';
-        echo '<br><p>Mailer Error: ' . $mail->ErrorInfo . '.  Please email this error to the Commissioner.';
-        echo '<br><p style="font-size:20px;"><a href="pinresetfresh.php">Try Again</a></p>';
-        echo '<br><p style="font-size:20px;"><a href="../index.php">Return to Home Page</a></p>';
+        echo '<br><label>Message could not be sent.  Please try again.</label>';
+        echo '<br><label>Mailer Error: ' . $mail->ErrorInfo . '.  Please email this error to the Commissioner.</label>';
+        echo '<br><a href="pinresetfresh.php">Try Again</a>';
+        echo '<br><a href="../index.php">Return to Home Page</a>';
         exit();  
     }
 
