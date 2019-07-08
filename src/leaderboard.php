@@ -22,7 +22,6 @@ $query = $conn->prepare(
 								' ',
 								player_roster.last_name
 							) AS name,
-							player_roster.fav_team,
 							player_roster.total_score
 						FROM
 							player_picks
@@ -40,7 +39,6 @@ $query = $conn->prepare(
 $query->execute();
 					
 //create array - data to be displayed in weekly picks table below.
-//NEED TO ADD LOGIC TO TRUNCATE LONG NAMES TO LAST INITIAL PLUS .
 
 $data=$query->fetchall(PDO::FETCH_ASSOC);
 
@@ -54,19 +52,19 @@ if (count($data) > 0) {
 	echo 
 	'<table>		
 		<tr>
-			<th>Player</th>
-			<th>Favorite Team</th>
+			<th>Player</th>			
 			<th>Total Score</th>
 			<th>Last Week</th>
 		</tr>';
+		
+
 		
 	// foreach loop to list out each row in the array
 		
 	foreach ($data as $row) {
 		echo
 		'<tr>
-			<td>' . $row['name'] . '</td>
-			<td>' . $row['fav_team'] . '</td>
+			<td>' . $row['name'] . '</td>			
 			<td>' . $row['total_score'] . '</td>
 			<td>' . $row['week_score'] . '</td>
 		</tr>';

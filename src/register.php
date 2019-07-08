@@ -17,19 +17,6 @@ $email_query->execute();
 
 $email_list = $email_query->fetchAll(PDO::FETCH_ASSOC);
 
-// query db to get list of all NFL teams - CURRENTLY DISABLED
-
-// $team_query = $conn->prepare(
-// 							"SELECT home AS teamlist FROM regseason WHERE week='2'
-// 							UNION
-// 							SELECT away AS teamlist FROM regseason WHERE week='2'
-// 							ORDER BY teamlist ASC"
-// 							);
-	
-// $team_query->execute();	
-
-// $team_list = $team_query->fetchAll(PDO::FETCH_ASSOC);
-
 //Check to make sure form is empty
 
 if (!empty($_POST['register'])) {
@@ -40,7 +27,7 @@ if (!empty($_POST['register'])) {
         
         //check to make sure all fields completed
                 
-        if (!empty($_POST['userpass']) && !empty($_POST['email']) /*&& !empty($_POST['team'])*/) {
+        if (!empty($_POST['userpass']) && !empty($_POST['email'])) {
 
         //check to make sure user has correct PIN
 
@@ -63,9 +50,7 @@ if (!empty($_POST['register'])) {
                 //bind parameters
             
                 $submit->BindParam(':email', $_POST['email']);
-                $submit->BindParam(':password', password_hash($_POST['userpass'], PASSWORD_BCRYPT));
-                // $submit->BindParam(':team', $_POST['team']);
-            
+                $submit->BindParam(':password', password_hash($_POST['userpass'], PASSWORD_BCRYPT));       
                             
                 //Submit query to database
 
@@ -120,24 +105,6 @@ if (!empty($_POST['register'])) {
 					?>  
 
 				</select>	
-
-				<!--FAVORITE TEAM SELECT CURRENTLY DISABLED-->
-				
-				<!-- <label for="team">Favorite NFL Team</label>
-				<select class="regselect" name="team">
-					
-					<option value="">-Select-</option>
-					
-					<?php 
-					
-					// foreach ($team_list as $k=>$v) {
-					// 	echo '<option value='. $v['teamlist'] . '>' . $v['teamlist'] . '</option>';
-					// }
-							
-					?>
-					
-				</select> -->
-
 				<label for="userpass">Select Password</label>
 				<input type="password" name="userpass" id="userpass">
 				<label for="confirmpass">Confirm Password</label>
