@@ -132,6 +132,12 @@ body {
 
 }
 
+/* USE IF WE TRY TO ADD SCHEDULE TO PICKS INPUT PAGE */
+
+/* .inputContainer {
+	grid-template-rows: auto;
+} */
+
 .formTitle, .picksTitle {
 	color: red;
 	font-family: "TecmoHeadline";
@@ -203,6 +209,7 @@ label,
 .pickSubmit, p {
 	text-align: center;
 	line-height: 1.5;
+	font-size: 2vh;
 }
 
 .regselect, select {
@@ -239,8 +246,6 @@ input[type=number] {
 	width:260px;
 }
 
-/* NEED ADDITIONAL TABLE CSS FOR LEADERBOARD AND PICKS - FOR LONG NAMES*/
-
 table {
 	border-collapse: separate;
 	border-spacing: 0;
@@ -248,6 +253,12 @@ table {
 	margin-left: 1vh;
 	margin-right: 1vh;
 }
+
+table.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 table tr th,
 table tr td {
 border-right: 0.5vh solid white;

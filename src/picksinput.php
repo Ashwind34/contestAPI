@@ -135,15 +135,15 @@ if (!empty($_POST['submit'])) {
         <div class="inputContainer">
             <div class="picksTitle">
                 Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!
-            </div>		
+            </div>
             <div class="formLink">
                 Your Current Picks
             </div>
             <div>
                 <!-- $player_picks_table located in picks_query.php -->
                 <?php echo $player_picks_table;?>
-            </div>  
-            <br>
+            </div>
+            <br> 		
 
             <!--dropdown menus for each pick, referenced from function in picks_query.php -->
 
@@ -172,7 +172,7 @@ if (!empty($_POST['submit'])) {
                     <input type="submit" name="submit" value="Submit Your Picks">
                 </div>                			
             </form>	
-            <br>		
+            <br>
             <div class="formLink">
                 <a href="weekly_lines_table.php">Check the Schedule</a>
                 <br>

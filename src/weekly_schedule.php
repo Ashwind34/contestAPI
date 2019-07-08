@@ -29,12 +29,12 @@ if (count($data) > 0) {
     ob_start();
 
 	echo 
-	'<table>	
+	'<table class="center">	
 		<tr>
 			<th>Favorite</th>
 			<th>Spread</th>
 			<th>Underdog</th>
-			<th>Start Time (Eastern)</th>
+			<th>Start Time</th>
 		</tr>';
     
 	// foreach loop to list out each row in the array
@@ -62,11 +62,12 @@ if (count($data) > 0) {
 			<td>' . $underdog . '</td>
 			<td>' . date('h:i a', strtotime($row['start_time'])) . '</td>
 		</tr>';
-		
+
     }
             
 	echo  '</table>';
 	echo '<br><p>** = Home Team</p>';
+	echo '<p>All Times Eastern</p>';
     
 	$weekly_lines_table = ob_get_clean();
 	

@@ -24,7 +24,7 @@ if(empty($_SESSION['player_id'])) {
             <div class="formTitle">
                 Week <?php echo $weekmarker ;?> Lines
             </div>      
-            <div>
+            <div class='picksSubmit'>
                 <?php echo $weekly_lines_table ?>
             </div>
             <div class='formLink'>
