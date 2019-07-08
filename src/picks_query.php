@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 require_once('datecheck.php');
 require_once('pdo_connect.php');
 

@@ -11,7 +11,7 @@ if ($today < "20190905") {
 }
 
 // MANUAL DATE OVERRIDE IF NEEDED
-$date = strtotime("09/08/2019 17:30:00");
+$date = strtotime("09/08/2019 10:30:00");
 
 $season_start = strtotime("09/03/2019");
 

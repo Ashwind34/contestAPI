@@ -25,20 +25,22 @@ if(empty($_SESSION['player_id'])) {
 			<?php 	
 
 			//if we are before approx. 11:30 AM PST on Sunday, show logged-in player's picks only.  Else show all player's picks.
+			// CURRENTLY DISABLED
 
-			if ($kickoff_marker > 0.22) {
+			// if ($kickoff_marker > 0.22) {
+
 				echo '<div class="formTitle">Your Picks for <br>Week ' . $weekmarker . '</div>
 						<a class="formLink" href="../index.php">Return to Home Page</a>';
 
 				echo $player_picks_table;
 				
-			} else {
-				echo '<div class="formTitle">All Picks for <br>Week ' . $weekmarker . '</div>
-						<a class ="formLink" href="../index.php">Return to Home Page</a>';
+			// } else {
+			// 	echo '<div class="formTitle">All Picks for <br>Week ' . $weekmarker . '</div>
+			// 			<a class ="formLink" href="../index.php">Return to Home Page</a>';
 				
-				echo $weekly_picks_table;
+			// 	echo $weekly_picks_table;
 				
-			}
+			// }
 			
 			?>
 		</div>
