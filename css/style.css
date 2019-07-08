@@ -68,11 +68,6 @@ body {
 	font-size: 1.25em;
 }
 
-.testnarrow {
-	font-family: 'TecmoNarrow';
-	color: white;
-}
-
 .testcaps {
 	font-family: 'TecmoCaps';
 	text-align: center;
@@ -212,7 +207,7 @@ label,
 
 .regselect, select {
 	position: relative;
-	font-family: "TecmoBody";
+	/* font-family: "TecmoBody"; */
 	margin-top: 1vh;
 	margin-bottom: 1vh;
 }
