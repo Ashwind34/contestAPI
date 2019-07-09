@@ -45,9 +45,6 @@ if (!empty($_POST['submit'])) {
         && !empty($_POST['pick_5'])) {
 
             if ($_POST === array_unique($_POST)) {
-                print('<pre>' . print_r($_POST, true) . '</pre><br>');
-                print('<pre>' . print_r(array_unique($_POST), true) .'</pre><br>');
-                echo "TRUE";
                         
                 //insert picks into picks log table in case there is a problem
                     
@@ -118,7 +115,7 @@ if (!empty($_POST['submit'])) {
                 
                 echo '<meta HTTP-EQUIV="Refresh" Content="0; URL=player_picks_table.php">';
                 header("Location: ./player_picks_table.php");
-                
+
             } else {
 
                 echo '<p><b>You cannot select the same team twice!</b></p><br>';
