@@ -1,22 +1,43 @@
 <?php 
 
-    function gameCheck ($arr) {
+    function gameCheck($arr)
+    {
 
-        foreach ($arr as $team) {
+        global $conn, $weekmarker;
 
-            $checkquery =   "SELECT id 
-                            FROM regseason 
-                            WHERE week = '$weekmarker'
-                            AND (home = '$team' OR away = '$team')";
-        
+        $value = true;
+
+        $checkquery =   "SELECT id, home, away
+                        FROM regseason 
+                        WHERE week = '$weekmarker'";
+
+        try {
 
             $gamecheck = $conn->query($checkquery);
+            
             $gamecheck->execute();
-            $result = $gamecheck->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+
+            echo $e->getMessage();
+
+        }
+        
+        $result = $gamecheck->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($result as $game) {    
+            
+            if (in_array($game['home'], $arr) && in_array($game['away'], $arr)) {
+
+                $value = false;
+            
+            } 
+
+
+        }
+
+        return $value;
+        
     }
-
-
-
-
 
 ?>
