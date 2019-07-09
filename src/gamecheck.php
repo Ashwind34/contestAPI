@@ -14,7 +14,7 @@
         try {
 
             $gamecheck = $conn->query($checkquery);
-            
+
             $gamecheck->execute();
 
         } catch (PDOException $e) {
@@ -32,7 +32,6 @@
                 $value = false;
             
             } 
-
 
         }
 
