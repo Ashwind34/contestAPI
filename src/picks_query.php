@@ -131,8 +131,8 @@ if (count($data) > 0) {
 
 //function that populates pick dropdown menus with correct teams based on kickoff times
     
-function PickDropdown($pick, $picknum)
-{
+function PickDropdown($pick, $picknum) {
+	
     global $date, $player_id, $conn, $weekmarker, $user_pick_array;
 
     // query db to get list of teams available to pick for that week
