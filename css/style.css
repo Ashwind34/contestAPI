@@ -35,7 +35,13 @@ body {
 	margin: 0;
 }
 
-.blackBack {	
+@media screen and (max-width: 365px) {
+	.redHead, .whiteHead, .picksTitle {
+	  font-size: 1.05em !important;
+	}
+}
+
+.starBack {	
 	background-image: url("./img/star2.png");
 	background-repeat: no-repeat;
 	background-position: center;
@@ -45,11 +51,10 @@ body {
 	margin: 0;
 }
 
-@media screen and (max-width: 365px) {
-	.redHead, .whiteHead, .picksTitle {
-	  font-size: 1.05em !important;
-	}
-  }
+.blackBack {
+	background-color:black;
+	margin: 0;
+}
 
 .redHead {
 	color: red;
@@ -89,7 +94,8 @@ body {
 .boardContainer,
 .picksContainer,
 .inputContainer,
-.menuContainer {
+.menuContainer,
+.playerpicksContainer {
 	display: grid;
 	grid-template-columns: 1fr;	
 	justify-items: center;
@@ -124,7 +130,11 @@ body {
 }
 
 .picksContainer {
-	grid-template-rows: 3fr 3fr auto;
+	grid-template-rows: 20% 2fr 3fr 12fr;
+}
+
+.playerpicksContainer {
+	grid-template-rows: 2fr 1fr 2fr 5fr
 }
 
 .inputContainer {
@@ -210,6 +220,12 @@ label,
 	text-align: center;
 	line-height: 1.5;
 	font-size: 2vh;
+}
+
+.boPic {
+	display: grid;
+	width: 95%;
+	align-self: end;
 }
 
 .regselect, select {

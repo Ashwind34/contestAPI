@@ -19,8 +19,8 @@ if(empty($_SESSION['player_id'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../css/style.css">
     </head>
-    <body>
-        <div class="regContainer">
+    <body class="blackBack">
+        <div class="playerpicksContainer">
             <div class="pickSubmit">
                 Your picks for week <?php echo $weekmarker; ?> have been submitted!
             </div>
@@ -29,6 +29,9 @@ if(empty($_SESSION['player_id'])) {
             </div>
             <div class="formLink">
                 <a href="../index.php">Return to Home Page</a>
+            </div>
+            <div>
+                <img class="boPic" src="../css/img/TDbo.png" alt="Bo knows Tecmo Bowl">
             </div>           
         </div>
     </body>

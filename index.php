@@ -25,7 +25,7 @@ if(isset($_SESSION['player_id'])) {
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
 		<meta name="viewport" content="width=device-width">
 	</head>
-	<body class="blackBack">
+	<body class="starBack">
 		<div class='menuContainer'>
 			<div class='redHead'>
 				TECMO<span style='font-size:0.75rem'>&reg</span>

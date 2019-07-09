@@ -58,7 +58,8 @@ if(isset($_SESSION['player_id'])) {
                     <a href="weekly_picks_table.php">Picks Table</a><br>
                     <a href="leaderboard.php">Leaderboard</a><br>
                     <a href="passreset.php">Change Password</a><br>
-                    <a href="logout.php">Logout</a><br>
+					<a href="logout.php">Logout</a><br>
+					<a href="player_picks_table.php">Player Picks Table</a><br>
 
                     <!-- Allow link to admin menu for specific users -->
                     
