@@ -21,8 +21,6 @@ $datetest = (($date - $season_start)/"604800");
 
 $weekmarker = ceil($datetest);
 
-$weekmarker = 3;
-
 $kickoff_marker = $weekmarker - $datetest;
 
 //set variable to identify previous week

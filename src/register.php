@@ -60,8 +60,10 @@ if (!empty($_POST['register'])) {
                 //Submit query to database
 
                 if ($submit->execute()) {
-                    echo '<br><p>Player Updated Successfully</p>';
-                    echo '<br><p><a href="./login.php">Log In</a></p>';
+                    echo    '<br><p>Player Updated Successfully</p>
+                            <br><p><a href="./login.php">Log In</a></p>
+                            <audio src="../css/audio/firstdown.mp3" id="page_audio"></audio>
+                            <script src="../audio.js"></script>';
                     exit();
                 } else {
                     echo '<br><p>Problem with Registration.  Please try again.</p>';
