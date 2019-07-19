@@ -17,7 +17,7 @@ if(empty($_SESSION['player_id'])) {
 		<title>
 			Admin
 		</title>
-		<!--<link rel="stylesheet" type="text/css" href="style.css">-->
+		<link rel="stylesheet" type="text/css" href="style.css">
 		<style>
 			h1{color:green;}
 			h2{color:black;}

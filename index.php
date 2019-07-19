@@ -1,11 +1,9 @@
 <?php
 
-// TO-DOs
-// WRITE OBJECT/FUNCTION FOR ID CHECK
-
 session_start();
 
 require_once('src/pdo_connect.php');
+require_once('src/datecheck.php');
 
 //check if user is logged in
 
@@ -44,7 +42,12 @@ if(isset($_SESSION['player_id'])) {
 				</div>
 				<div>
 					<img src="./css/img/starsleft.png" alt=""> -->
-					<a class='pickselect' href="src/register.php">Register</a>
+					<?php 
+					if($weekmarker < 3){
+						echo "<a class='pickselect' href='src/register.php'>Register</a>";
+					}
+					?>
+
 					<!-- <img src="./css/img/starsright.png" alt=""><br>
 				</div>
 				<div>

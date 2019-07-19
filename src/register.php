@@ -10,6 +10,11 @@
 require_once('pdo_connect.php');
 require_once('datecheck.php');
 
+$tryAgain =     '<br><p><a href="register.php">Try Again</a></p>
+                <br><p><a href="../index.php">Return to Home Page</a></p>
+                <audio src="../css/audio/nogood.mp3" id="page_audio"></audio>
+                <script src="../audio.js"></script>';
+
 //query db to get list of player emails and populate select field
 $email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
 
@@ -56,30 +61,26 @@ if (!empty($_POST['register'])) {
 
                 if ($submit->execute()) {
                     echo '<br><p>Player Updated Successfully</p>';
-                    echo '<br><p><a href="./home.php">Return to Home Page</a></p>';
+                    echo '<br><p><a href="./login.php">Log In</a></p>';
                     exit();
                 } else {
                     echo '<br><p>Problem with Registration.  Please try again.</p>';
-                    echo '<br><p><a href="register.php">Try Again</a></p>';
-                    echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
+                    echo $tryAgain;
                     exit();
                 }
             } else {
                 echo '<br><p>PIN is incorrect.  Please try again.</p>';
-                echo '<br><p><a href="register.php">Try Again</a></p>';
-                echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
+                echo $tryAgain;
                 exit();
             }
         } else {
             echo '<br><p>Please complete all fields.</p>';
-            echo '<br><p><a href="register.php">Try Again</a></p>';
-            echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
+            echo $tryAgain;
             exit();
         }
     } else {
         echo '<br><p>Passwords to not match.  Please try again.</p>';
-        echo '<br><p><a href="register.php">Try Again</a></p>';
-        echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
+        echo $tryAgain;
         exit();
     }
 }

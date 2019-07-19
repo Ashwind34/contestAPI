@@ -29,9 +29,11 @@ if (!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
         $URL = "home.php";
         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
     } else {
-        echo '<br><br><p>Email or password is incorrect, please try again</p>';
-        echo '<br><p><a href="login.php">Try Again</a></p>';
-        echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
+        echo    '<br><br><p>Email or password is incorrect, please try again</p>
+                <br><p><a href="login.php">Try Again</a></p>
+                <br><p><a href="../index.php">Return to Home Page</a></p>
+                <audio src="../css/audio/nogood.mp3" id="page_audio"></audio>
+                <script src="../audio.js"></script>';
         exit();
     }
 }

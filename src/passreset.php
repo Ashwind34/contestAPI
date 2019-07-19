@@ -9,6 +9,11 @@
 
 require_once('pdo_connect.php');
 
+$tryAgain =     '<br><p><a href="passreset.php">Try Again</a></p>
+                <br><p><a href="../index.php">Return to Home Page</a></p>
+                <audio src="../css/audio/nogood.mp3" id="page_audio"></audio>
+                <script src="../audio.js"></script>';
+
     //Check to make sure form is empty
 
 if (!empty($_POST['passreset'])) {
@@ -51,27 +56,23 @@ if (!empty($_POST['passreset'])) {
                     echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
                     exit();
                 } else {
-                    echo '<br><p>Problem with Password Change.  Please try again.</p>';
-                    echo '<br><p><a href="passreset.php">Try Again</a></p>';
-                    echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
+                    echo '<br><p>Problem with Password Change.  Please try again.</p>';                    
+                    echo $tryagain;
                     exit();
                 }
             } else {
                 echo '<br><p>PIN is incorrect.  Please try again.</p>';
-                echo '<br><p><a href="passreset.php">Try Again</a></p>';
-                echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
+                echo $tryAgain;
                 exit();
             }
         } else {
             echo '<br><p>Please complete all fields.</p>';
-            echo '<br><p><a href="passreset.php">Try Again</a></p>';
-            echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
+            echo $tryAgain;
             exit();
         }
     } else {
         echo '<br><p>Passwords to not match.  Please try again.</p>';
-        echo '<br><p><a href="passreset.php">Try Again</a></p>';
-        echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
+        echo $tryAgain;
         exit();
     }
 }
