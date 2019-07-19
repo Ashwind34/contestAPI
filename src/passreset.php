@@ -52,8 +52,10 @@ if (!empty($_POST['passreset'])) {
                 //Submit query to database
 
                 if ($submit->execute()) {
-                    echo '<br><p>Password Updated Successfully</p>';
-                    echo '<br><p><a href="../index.php">Return to Home Page</a></p>';
+                    echo    '<br><p>Password Updated Successfully</p>
+                            <br><p><a href="../index.php">Return to Home Page</a></p>
+                            <audio src="../css/audio/extrapoint.mp3" id="page_audio"></audio>
+                            <script src="../audio.js"></script>';
                     exit();
                 } else {
                     echo '<br><p>Problem with Password Change.  Please try again.</p>';                    

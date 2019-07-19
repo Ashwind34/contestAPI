@@ -46,6 +46,8 @@ function send_email_message($recipientEmail, $recipientName, $subject, $body) {
         echo '<link rel="stylesheet" type="text/css" href="../css/style.css">';
         echo '<br><label>A new PIN has been sent to ' . $recipientEmail . '. Check your email!</label>';
         echo '<br><a href="../index.php">Return to Home Page</a>';
+        echo '<audio src="../css/audio/extrapoint.mp3" id="page_audio"></audio>
+                <script src="../audio.js"></script>';
         exit();
     
     } catch (Exception $e) {
