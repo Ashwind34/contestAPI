@@ -53,7 +53,7 @@ if (!empty($_POST['submit'])) {
 
                 if (gameCheck($_POST)) {   
                            
-                //     insert picks into picks log table in case there is a problem
+                    // insert picks into picks log table in case there is a problem
                     
                     $submit = $conn->prepare("INSERT INTO picks_log (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
                                             VALUES (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5, :weekmarker)");

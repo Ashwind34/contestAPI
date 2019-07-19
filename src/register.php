@@ -39,7 +39,7 @@ if (!empty($_POST['register'])) {
 
             if ($_POST['pin'] == $pin_check_array['pin']) {
             
-            //Prepared Statement to update favorite team and password
+            //Prepared Statement to update password
             
                 $query = "UPDATE player_roster 
 						SET password = :password

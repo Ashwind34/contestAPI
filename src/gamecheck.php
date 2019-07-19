@@ -1,7 +1,6 @@
 <?php 
 
-    function gameCheck($arr)
-    {
+    function gameCheck($arr) {
 
         global $conn, $weekmarker;
 
@@ -10,11 +9,9 @@
         $checkquery =   "SELECT id, home, away
                         FROM regseason 
                         WHERE week = '$weekmarker'";
-
         try {
-
+            
             $gamecheck = $conn->query($checkquery);
-
             $gamecheck->execute();
 
         } catch (PDOException $e) {

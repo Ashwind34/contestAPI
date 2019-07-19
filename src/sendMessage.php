@@ -25,7 +25,7 @@ function send_email_message($recipientEmail, $recipientName, $subject, $body) {
         $mail->SMTPDebug = 2;                                   // Enable verbose debug output
         $mail->isSMTP();                                        // Set mailer to use SMTP
         $mail->Host = $emailServer;                             // Specify main and backup SMTP servers
-        $mail->SMTPAuth = true;                                  // Enable SMTP authentication
+        $mail->SMTPAuth = true;                                 // Enable SMTP authentication
         $mail->Username = $emailUser;                           // SMTP username
         $mail->Password = $emailPass;                           // SMTP password
         $mail->SMTPSecure = 'tls';                              // Enable TLS encryption, `ssl` also accepted
