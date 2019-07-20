@@ -107,6 +107,8 @@ if (!empty($_POST['passreset'])) {
                 <a href="pinresetfresh.php">Reset PIN</a>
                 <br>                
                 <a href="../index.php">Return to Home Page</a>
+                <br>
+                <br>
             </div>
         </div>
     </body>

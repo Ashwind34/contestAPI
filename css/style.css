@@ -107,7 +107,7 @@ body {
 }
 
 .regContainer {
-	grid-template-rows: 1fr 3fr 15%;
+	grid-template-rows: 15% auto 1fr 10%;
 }
 
 .menuContainer {
@@ -210,10 +210,20 @@ p,
 label, 
 .pickselect,
 .pickSubmit {
-	margin-top: 0.65rem;
-	margin-bottom: 0.65rem;
 	font-family: "TecmoBody";
 	color: white;
+}
+
+.pickselect,
+.pickSubmit {
+	margin-top: 0.65rem;
+	margin-bottom: 0.65rem;
+}
+
+p,
+label {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 
 .pickSubmit, p {
