@@ -2,26 +2,20 @@
 	font-family: 'TecmoHeadline';
 	font-style: normal;
 	font-weight: normal;
-	src:  url("./fonts/tecmo-bowl-headline.ttf") format("truetype"),
-		  url("./fonts/tecmo-bowl-body.woff") format("woff"), 
-		  url("./fonts/tecmo-bowl-body.woff2") format("woff2");  
+	src:  	local('TecmoHeadline'),
+			url("./fonts/tecmo-bowl-headline.ttf") format("truetype"),
+		  	url("./fonts/tecmo-bowl-body.woff") format("woff"), 
+		  	url("./fonts/tecmo-bowl-body.woff2") format("woff2");  
 }
 
 @font-face {
 	font-family: 'TecmoBody';
 	font-style: normal;
 	font-weight: normal;
-	src:  
+	src:  	local('TecmoBody'),
 			url("./fonts/tecmo-bowl-body.ttf") format("truetype"), 
-		  url("./fonts/tecmo-bowl-body.woff") format("woff"), 
-		  url("./fonts/tecmo-bowl-body.woff2") format("woff2");  
-}
-
-@font-face {
-	font-family: 'TecmoNarrow';
-	font-style: normal;
-	font-weight: normal;
-	src:  url("./fonts/GF-TecmoNarrow.TTF") format("truetype");
+		  	url("./fonts/tecmo-bowl-body.woff") format("woff"), 
+		  	url("./fonts/tecmo-bowl-body.woff2") format("woff2");  
 }
 
 @font-face {
