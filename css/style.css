@@ -103,7 +103,7 @@ body {
 }
 
 .loginContainer {
-	grid-template-rows: 1fr 2fr 2fr 15%;
+	grid-template-rows: 15% 2fr 1.5fr;
 }
 
 .regContainer {
@@ -153,7 +153,7 @@ body {
 	font-family: "TecmoHeadline";
 	text-align: center;
 	line-height: 1.5;
-	font-size: 1.25em;
+	font-size: 1.75em;
 	font-weight: bold;
 	margin: 1vh;
 }
