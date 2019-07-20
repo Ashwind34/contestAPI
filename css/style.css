@@ -27,7 +27,9 @@
 	font-family: 'TecmoCaps';
 	font-style: normal;
 	font-weight: normal;
-	src:  url("./fonts/TecmoRounedAllCaps.TTF") format("truetype");
+	src:  	url("./fonts/francisco-serial-light-regular.ttf") format("truetype"),
+			url("./fonts/francisco-serial-light-regular.woff") format("woff"), 
+			url("./fonts/francisco-serial-light-regular.woff2") format("woff2"); 
 }
 
 body {	
@@ -78,6 +80,7 @@ body {
 	text-align: center;
 	color: white;
 	font-size: 3.5rem; 
+	letter-spacing: 1px;
 }
 
 .stars {
