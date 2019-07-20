@@ -60,7 +60,7 @@ body {
 	font-family: "TecmoHeadline";
 	text-align: center;
 	line-height: 1.5;
-	font-size: 1.25em;
+	font-size: 1.25rem;
 	align-self:end;
 	}
 
@@ -111,7 +111,7 @@ body {
 }
 
 .menuContainer {
-	grid-template-rows: repeat(5, 1fr);
+	grid-template-rows: 10% repeat(3, 1fr);
 }
 
 .homeContainer {
@@ -188,7 +188,7 @@ fieldset, form {
 }
 
 .legal {
-	font-size: 0.5rem;
+	font-size: 0.65rem;
 	margin-top: 3vh;
 	display: grid;
 	grid-row: 4 / 5;
@@ -202,7 +202,7 @@ fieldset, form {
 
 a:link, a:visited {
 	color: white;
-	font-size: 2vh;
+	font-size: 1rem;
 	text-align:center;
 }
 
@@ -210,8 +210,8 @@ p,
 label, 
 .pickselect,
 .pickSubmit {
-	margin-top: 1vh;
-	margin-bottom: 1vh;
+	margin-top: 0.65rem;
+	margin-bottom: 0.65rem;
 	font-family: "TecmoBody";
 	color: white;
 }
