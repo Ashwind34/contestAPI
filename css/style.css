@@ -11,7 +11,8 @@
 	font-family: 'TecmoBody';
 	font-style: normal;
 	font-weight: normal;
-	src:  url("./fonts/tecmo-bowl-body.ttf") format("truetype"), 
+	src:  
+			url("./fonts/tecmo-bowl-body.ttf") format("truetype"), 
 		  url("./fonts/tecmo-bowl-body.woff") format("woff"), 
 		  url("./fonts/tecmo-bowl-body.woff2") format("woff2");  
 }
@@ -27,7 +28,8 @@
 	font-family: 'TecmoCaps';
 	font-style: normal;
 	font-weight: normal;
-	src:  	url("./fonts/francisco-serial-light-regular.ttf") format("truetype"),
+	src:  	local('TecmoCaps'), 
+			url("./fonts/francisco-serial-light-regular.ttf") format("truetype"),
 			url("./fonts/francisco-serial-light-regular.woff") format("woff"), 
 			url("./fonts/francisco-serial-light-regular.woff2") format("woff2"); 
 }
@@ -35,6 +37,7 @@
 body {	
 	background-color:rgb(59, 143, 240);
 	margin: 0;
+	font-size: 2vh;
 }
 
 @media screen and (max-width: 365px) {
@@ -269,14 +272,14 @@ table {
 	border-collapse: separate;
 	border-spacing: 0;
 	min-width: 280px;
-	margin-left: 1vh;
-	margin-right: 1vh;
+	margin-left: 1rem;
+	margin-right: 1rem;
 }
 
-table.center {
+/* table.center {
 	margin-left: auto;
 	margin-right: auto;
-}
+} */
 
 table tr th,
 table tr td {
