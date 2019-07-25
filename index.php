@@ -26,8 +26,7 @@ if(isset($_SESSION['player_id'])) {
 	<body class="starBack">
 		<div class='menuContainer'>
 			<div class='redHead'>
-				TECMO
-				<span style='font-size:0.75rem'>&reg</span>
+				TECMO<span style='font-size:0.75rem'>&reg</span>
 			</div>
 			<div class='testcaps'>
 				<div>SUPER</div>

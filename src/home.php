@@ -48,11 +48,11 @@ if(isset($_SESSION['player_id'])) {
 			<div class='whiteHead'>
 				SUPERCONTEST 2019
 			</div>
-			<div class="pickSubmit">
-				Hello<?php echo " $user[first_name]";?>
+			<div class="hello">
+				&nbsp;Hello<?php echo " $user[first_name]&nbsp;";?>
 			</div>
 			<fieldset>
-				<legend style='text-align:left'>Main Menu</legend>		
+				<legend>Main Menu</legend>		
                     <a href="picksinput.php">Submit Your Picks</a><br>
                     <a href="weekly_lines_table.php">Schedule</a><br>
                     <a href="weekly_picks_table.php">Picks Table</a><br>
@@ -71,6 +71,8 @@ if(isset($_SESSION['player_id'])) {
                     } 
                     ?>
 			</fieldset>	
+			<br>
+			<br>
 		</div>
 	</body>
 </html>

@@ -28,16 +28,16 @@
 			url("./fonts/francisco-serial-light-regular.woff2") format("woff2"); 
 }
 
+@media screen and (max-width: 365px) {
+	.redHead, .whiteHead, .picksTitle, legend, .hello {
+	  font-size: 1.05rem !important;
+	}
+}
+
 body {	
 	background-color:rgb(59, 143, 240);
 	margin: 0;
 	font-size: 2vh;
-}
-
-@media screen and (max-width: 365px) {
-	.redHead, .whiteHead, .picksTitle {
-	  font-size: 1.05em !important;
-	}
 }
 
 .starBack {	
@@ -62,14 +62,14 @@ body {
 	line-height: 1.5;
 	font-size: 1.25rem;
 	align-self:end;
-	}
+}
 
 .whiteHead {
 	color: white;
 	font-family: "TecmoHeadline";
 	text-align: center;
 	line-height: 1.5;
-	font-size: 1.25em;
+	font-size: 1.25rem;
 }
 
 .testcaps {
@@ -83,8 +83,6 @@ body {
 .stars {
 	height: 2%;
 }
-
-
 
 .homeContainer, 
 .pinContainer,
@@ -174,8 +172,13 @@ fieldset, form {
 	font-family: "TecmoBody";
 	color: white;
 	line-height: 1.5;
-	font-size: 2.5vh;
+	font-size: 1.25rem;
 }	
+
+legend {
+	text-align:left;
+	/* text-shadow: 3px 2px black; */
+}
 
 .formLink, .legal, .menu {
 	font-family: "TecmoBody";
@@ -202,7 +205,7 @@ fieldset, form {
 
 a:link, a:visited {
 	color: white;
-	font-size: 1rem;
+	font-size: 0.9rem;
 	text-align:center;
 }
 
@@ -229,7 +232,18 @@ label {
 .pickSubmit, p {
 	text-align: center;
 	line-height: 1.5;
-	font-size: 2vh;
+	font-size: 1rem;
+}
+
+.hello {
+	font-size: 1.15rem;
+	font-family: "TecmoBody";
+	color: white;
+	text-shadow: 3px 2px red;
+	/* text-shadow: 3px 2px black; */
+	/* border-bottom: 0.15rem solid red;
+	border-top: 0.15rem solid red;
+	line-height: 1.5; */
 }
 
 .boPic {
