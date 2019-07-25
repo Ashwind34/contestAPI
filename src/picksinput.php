@@ -199,5 +199,7 @@ if (!empty($_POST['submit'])) {
                 <a href="../index.php">Return to Home Page</a>                
             </div>
         </div>
+        <br>
+        <br>
 	</body>
 </html>
