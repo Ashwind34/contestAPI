@@ -80,6 +80,16 @@ body {
 	letter-spacing: 1px;
 }
 
+.formTitle, .picksTitle {
+	color: red;
+	font-family: "TecmoHeadline";
+	text-align: center;
+	line-height: 1.5;
+	font-size: 1.10rem;
+	font-weight: bold;
+	margin: 1.5vh;
+}
+
 .stars {
 	height: 2%;
 }
@@ -101,7 +111,7 @@ body {
 }
 
 .loginContainer {
-	grid-template-rows: 15% 2fr 1.5fr;
+	grid-template-rows: 15% 2fr 1fr;
 }
 
 .regContainer {
@@ -146,18 +156,8 @@ body {
 	grid-template-rows: auto;
 } */
 
-.formTitle, .picksTitle {
-	color: red;
-	font-family: "TecmoHeadline";
-	text-align: center;
-	line-height: 1.5;
-	font-size: 1.25rem;
-	font-weight: bold;
-	margin: 1.5vh;
-}
-
 fieldset, form {
-	padding: 1.5em;
+	padding: 1.5rem;
 	margin: auto;
 	display: grid;
 	justify-items: center;
@@ -229,6 +229,10 @@ label {
 	margin-bottom: 0.5rem;
 }
 
+label {
+	font-size: 1rem;
+}
+
 .pickSubmit, .pickselect, p {
 	text-align: center;
 	line-height: 1.5;
@@ -284,6 +288,10 @@ input[type=number] {
 	margin-top: 1vh;
 	margin-bottom: 1vh;
 	width:260px;
+}
+
+input[type=submit] {
+	width: 150px;
 }
 
 table {
