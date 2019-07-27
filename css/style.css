@@ -29,7 +29,12 @@
 }
 
 @media screen and (max-width: 365px) {
-	.redHead, .whiteHead, .picksTitle, legend, .hello {
+	.redHead, 
+	.whiteHead, 
+	.picksTitle, 
+	.formTitle,
+	.hello,
+	legend {
 	  font-size: 1.05rem !important;
 	}
 }
@@ -97,6 +102,7 @@ body {
 .homeContainer, 
 .pinContainer,
 .regContainer,
+.resetContainer,
 .loginContainer,
 .schedContainer,
 .boardContainer,
@@ -116,8 +122,10 @@ body {
 
 .regContainer {
 	grid-template-rows: 15% auto 15%;
-	height: 100%;
-	width:100%;
+}
+
+.resetContainer {
+	grid-template-rows: 15% auto 15%;
 }
 
 .menuContainer {

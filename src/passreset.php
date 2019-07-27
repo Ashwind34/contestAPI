@@ -82,7 +82,7 @@ if (!empty($_POST['passreset'])) {
 ?>
 
     <body>
-        <div class="regContainer">
+        <div class="resetContainer">
             <div class="formTitle">
                 Change your Password
             </div>
@@ -99,10 +99,11 @@ if (!empty($_POST['passreset'])) {
 
                 <label for="pin">PIN</label>
                 <input type="number" size="4" name="pin" id="pin"> 
-                <br>               
+                              
                 <input type="submit" name="passreset" value="Reset Password">
             </form>
             <div class="formLink">
+                <br>
                 <br>
                 <a href="pinresetfresh.php">Reset PIN</a>
                 <br>                
