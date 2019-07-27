@@ -48,7 +48,7 @@ if (!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
                 <label for='useremail'>Email</label>
                 <input type="email" name="useremail" id="useremail">
                 <label for='userpass'>Password</label>
-                <input type="password" name="userpass" id="userpass"><br>          
+                <input type="password" name="userpass" id="userpass">          
                 <input type="submit" name="login" value="Login">
             </form>
             <div class='formLink'>

@@ -114,12 +114,15 @@ if (!empty($_POST['register'])) {
 				<input type="password" name="confirmpass" id="confirmpass">
 				<label for="pin">PIN</label>
 				<input type="number" size="4" name="pin" id="pin">
-				<br>
 				<input type="submit" name="register" value="Register">	
 			</form>
 			<div class='formLink'>
-				<a href="../index.php">Return to Home Page</a>
-			</div>
+				<br>
+                <br>
+                <a href="../index.php">Return to Home Page</a>
+                <br>
+                <br>
+            </div>
 		</div>
 	</body>
 </html>

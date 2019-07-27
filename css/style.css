@@ -115,7 +115,9 @@ body {
 }
 
 .regContainer {
-	grid-template-rows: 15% auto 1fr 10%;
+	grid-template-rows: 15% auto 15%;
+	height: 100%;
+	width:100%;
 }
 
 .menuContainer {
@@ -157,7 +159,10 @@ body {
 } */
 
 fieldset, form {
-	padding: 1.5rem;
+	padding-top: 1rem;
+	padding-left: 1.5rem;
+	padding-bottom: 1.5rem;
+	padding-right: 1.5rem;
 	margin: auto;
 	display: grid;
 	justify-items: center;
@@ -225,8 +230,8 @@ label,
 
 p,
 label {
-	margin-top: 0.5rem;
-	margin-bottom: 0.5rem;
+	margin-top: 0.4rem;
+	margin-bottom: 0.4rem;
 }
 
 label {
@@ -292,6 +297,7 @@ input[type=number] {
 
 input[type=submit] {
 	width: 150px;
+	margin-top: 1rem;
 }
 
 table {
