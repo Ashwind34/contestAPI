@@ -32,9 +32,9 @@ if (count($data) > 0) {
 	'<table class="center">	
 		<tr>
 			<th>Favorite</th>
-			<th>Spread</th>
+			<th>Line</th>
 			<th>Underdog</th>
-			<th>Start Time</th>
+			<th>Kickoff</th>
 		</tr>';
     
 	// foreach loop to list out each row in the array
@@ -60,7 +60,7 @@ if (count($data) > 0) {
 			<td>' . $favorite . '</td>
 			<td>' . $spread . '</td>
 			<td>' . $underdog . '</td>
-			<td>' . date('h:i a', strtotime($row['start_time'])) . '</td>
+			<td>' . date('g:i a', strtotime($row['start_time'])) . '</td>
 		</tr>';
 
     }

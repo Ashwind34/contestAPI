@@ -37,6 +37,11 @@
 	legend {
 	  font-size: 1.05rem !important;
 	}
+
+	table tr th,
+	table tr td {
+		font-size: 0.55rem !important;
+	}
 }
 
 body {	
