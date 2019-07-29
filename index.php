@@ -37,14 +37,14 @@ if(isset($_SESSION['player_id'])) {
 			<div class='menu'>
 				<!-- <div>
 					<img class='stars' src="./css/img/starsleft.png" alt=""> -->
-					<a class='pickselect' href="src/login.php">Login</a>
+					<a href="src/login.php">Login</a>
 					<!-- <img class='stars' src="./css/img/starsright.png" alt=""><br>
 				</div>
 				<div>
 					<img src="./css/img/starsleft.png" alt=""> -->
 					<?php 
 					if($weekmarker < 3){
-						echo "<a class='pickselect' href='src/register.php'>Register</a>";
+						echo "<a href='src/register.php'>Register</a>";
 					}
 					?>
 
@@ -52,7 +52,7 @@ if(isset($_SESSION['player_id'])) {
 				</div>
 				<div>
 					<img src="./css/img/starsleft.png" alt=""> -->
-					<a class='pickselect' href="src/passreset.php">Change Password</a>
+					<a href="src/passreset.php">Change Password</a>
 					<!-- <img src="./css/img/starsright.png" alt="">
 				</div> -->
 			</div>
