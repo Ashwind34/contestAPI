@@ -163,7 +163,7 @@ body {
 }
 
 .playerpicksContainer {
-	grid-template-rows: 2fr 1fr 2fr 5fr
+	grid-template-rows: 1.5fr 1fr 1.5fr auto;
 }
 
 .inputContainer {
