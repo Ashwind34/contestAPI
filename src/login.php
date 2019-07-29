@@ -52,8 +52,8 @@ if (!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
                 <input type="submit" name="login" value="Login">
             </form>
             <div class='formLink'>
-                <a href="passreset.php">Change Password</a>
                 <br>
+                <a href="passreset.php">Change Password</a>
                 <a href="../index.php">Return to Home Page</a>
             </div>
         </div>
