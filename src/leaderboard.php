@@ -54,7 +54,7 @@ if (count($data) > 0) {
 		<tr>
 			<th>Player</th>			
 			<th>Total Score</th>
-			<th>Quarter Score</th>
+			<th>Qtrly Score</th>
 			<th>Last Week</th>
 		</tr>';
 		
