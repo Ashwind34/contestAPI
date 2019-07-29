@@ -36,11 +36,11 @@ echo
 
 '<table>
 	<tr>
-		<th>Pick #1</th>
-		<th>Pick #2</th>
-		<th>Pick #3</th>
-		<th>Pick #4</th>
-		<th>Pick #5</th>';
+		<th>Pick 1</th>
+		<th>Pick 2</th>
+		<th>Pick 3</th>
+		<th>Pick 4</th>
+		<th>Pick 5</th>';
 
 // foreach loop to list out each row in the array
 
@@ -102,11 +102,11 @@ if (count($data) > 0) {
 	'<table>	
 		<tr>
 			<th align="center">Player</th>
-			<th align="center">Pick #1</th>
-			<th align="center">Pick #2</th>
-			<th align="center">Pick #3</th>
-			<th align="center">Pick #4</th>
-			<th align="center">Pick #5</th>';
+			<th align="center">Pick 1</th>
+			<th align="center">Pick 2</th>
+			<th align="center">Pick 3</th>
+			<th align="center">Pick 4</th>
+			<th align="center">Pick 5</th>';
     
     // foreach loop to list out each row in the array
     
