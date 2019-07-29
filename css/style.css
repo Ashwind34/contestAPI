@@ -30,7 +30,9 @@
 
 @media screen and (max-width: 365px) {
 	.redHead, 
-	.whiteHead, 
+	.whiteHead {
+		font-size: 1.05rem !important;
+	}
 	.picksTitle, 
 	.formTitle,
 	.hello,
