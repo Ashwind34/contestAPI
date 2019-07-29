@@ -39,7 +39,7 @@ if(empty($_SESSION['player_id'])) {
                 <img class="boPic" src="../css/img/TDbo.png" alt="Bo knows Tecmo Bowl">
             </div>           
         </div>
-        <!-- <audio src="../css/audio/touchdown.mp3" id="page_audio"></audio>
-        <script src="../audio.js"></script> -->
+        <audio src="../css/audio/touchdown.mp3" id="page_audio"></audio>
+        <script src="../audio.js"></script>
     </body>
 </html>
