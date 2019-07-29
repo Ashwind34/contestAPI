@@ -54,6 +54,7 @@ if (count($data) > 0) {
 		<tr>
 			<th>Player</th>			
 			<th>Total Score</th>
+			<th>Quarter Score</th>
 			<th>Last Week</th>
 		</tr>';
 		
@@ -66,10 +67,84 @@ if (count($data) > 0) {
 		'<tr>
 			<td>' . $row['name'] . '</td>			
 			<td>' . $row['total_score'] . '</td>
+			<td>0</td>
 			<td>' . $row['week_score'] . '</td>
 		</tr>';
 	}
-		
+
+	//DELETE TEST ROWS AFTER STYLING
+
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+	echo '<tr><td>Test</td><td>0</td><td>0</td><td>0</td></tr>';
+
+	// DELETE TO HERE
+
 	echo  '</table>';
 
 	//save output table to variable
@@ -105,6 +180,8 @@ if (count($data) > 0) {
 			</div>
 			<div>
 				<a class="formLink" href="../index.php">Return to Home Page</a>
+				<br>
+				<br>
 			</div>
 		</div>
 	</body>
