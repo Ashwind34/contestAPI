@@ -48,7 +48,6 @@
 	.boPic {
 		max-width: 400px;
 	} 
-
 }
 
 body {	
@@ -156,7 +155,7 @@ body {
 	grid-template-rows: 1fr 8fr 2fr;
 }
 .boardContainer {
-	grid-template-rows: 20% 15% auto;
+	grid-template-rows: 15% 20% auto 20%;
 }
 
 .picksContainer {
@@ -233,6 +232,10 @@ a:link, a:visited {
 	font-size: 0.9rem;
 	text-align:center;
 	margin-top: 1.15rem;
+}
+
+.noMargin {
+	margin-top: 0 !important;
 }
 
 p,

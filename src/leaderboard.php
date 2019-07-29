@@ -98,12 +98,12 @@ if (count($data) > 0) {
 				LEADERBOARD
 			</div>
 			<div class="formLink">
-				<a href="../index.php">Return to Home Page</a>
+				<a class="noMargin" href="../index.php">Return to Home Page</a>
 			</div>
 			<div>			
-				<?php echo $leaderboard; ?>
-				<br>
-				<br>
+				<?php echo $leaderboard; ?>				
+			</div>
+			<div>
 				<a class="formLink" href="../index.php">Return to Home Page</a>
 			</div>
 		</div>
