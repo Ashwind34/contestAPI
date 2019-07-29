@@ -49,7 +49,7 @@ if(isset($_SESSION['player_id'])) {
 				SUPERCONTEST 2019
 			</div>
 			<div class="hello">
-				&nbsp;Hello<?php echo " $user[first_name]&nbsp;";?>
+				Hello<?php echo " $user[first_name]";?>
 			</div>
 			<fieldset>
 				<legend>Main Menu</legend>		

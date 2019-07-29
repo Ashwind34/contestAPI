@@ -44,6 +44,13 @@
 	}
 }
 
+@media screen and (min-width: 365px) {
+	.boPic {
+		max-width: 400px;
+	} 
+
+}
+
 body {	
 	background-color:rgb(59, 143, 240);
 	margin: 0;
@@ -153,7 +160,7 @@ body {
 }
 
 .picksContainer {
-	grid-template-rows: 20% 2fr 3fr 12fr;
+	grid-template-rows: 20% 2fr 3fr 9fr;
 }
 
 .playerpicksContainer {
@@ -271,7 +278,7 @@ label {
 
 .boPic {
 	display: grid;
-	width: 95%;
+	width: 100%;
 	align-self: end;
 }
 
