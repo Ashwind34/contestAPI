@@ -105,8 +105,7 @@ if (!empty($_POST['passreset'])) {
             <div class="formLink">
                 <br>
                 <br>
-                <a href="pinresetfresh.php">Reset PIN</a>
-                <br>                
+                <a href="pinresetfresh.php">Reset PIN</a>         
                 <a href="../index.php">Return to Home Page</a>
                 <br>
                 <br>
