@@ -53,22 +53,22 @@ if(isset($_SESSION['player_id'])) {
 			</div>
 			<fieldset>
 				<legend>Main Menu</legend>		
-                    <a href="picksinput.php">Submit Your Picks</a><br>
-                    <a href="weekly_lines_table.php">Schedule</a><br>
-                    <a href="weekly_picks_table.php">Picks Table</a><br>
-                    <a href="leaderboard.php">Leaderboard</a><br>
-                    <a href="passreset.php">Change Password</a><br>
-					<a href="logout.php">Logout</a><br>
-					<a href="player_picks_table.php">Player Picks Table</a><br>
+                    <a href="picksinput.php">Submit Your Picks</a>
+                    <a href="weekly_lines_table.php">Schedule</a>
+                    <a href="weekly_picks_table.php">Picks Table</a>
+                    <a href="leaderboard.php">Leaderboard</a>
+                    <a href="passreset.php">Change Password</a>
+					<a href="logout.php">Logout</a>
+					<!-- <a href="player_picks_table.php">Player Picks Table</a> -->
 
                     <!-- Allow link to admin menu for specific users -->
                     
                     <?php                     
-                    if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
+                    // if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
                         
-                        echo'<a href="admin.php"><i>Admin Page</i></a>';
+                    //     echo'<a href="admin.php"><i>Admin Page</i></a>';
                         
-                    } 
+                    // } 
                     ?>
 			</fieldset>	
 			<br>
