@@ -156,7 +156,7 @@ if (!empty($_POST['submit'])) {
             <div class="picksTitle">
                 Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!
             </div>
-            <div class="formLink">
+            <div class="formLink" style="font-size:0.85rem;">
                 Your Current Picks
             </div>
             <div>
@@ -192,10 +192,8 @@ if (!empty($_POST['submit'])) {
                     <input type="submit" name="submit" value="Submit Your Picks">
                 </div>                			
             </form>	
-            <br>
             <div class="formLink">
                 <a href="weekly_lines_table.php">Check the Schedule</a>
-                <br>
                 <a href="../index.php">Return to Home Page</a>                
             </div>
         </div>
