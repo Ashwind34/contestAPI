@@ -66,8 +66,8 @@ if (count($data) > 0) {
     }
             
 	echo  '</table>';
-	echo '<br><p>** = Home Team</p>';
-	echo '<p>All Times Eastern</p>';
+	echo '<div class="legal">** = Home Team';
+	echo '<br>All Times Eastern</div>';
     
 	$weekly_lines_table = ob_get_clean();
 	

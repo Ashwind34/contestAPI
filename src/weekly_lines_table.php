@@ -29,9 +29,10 @@ if(empty($_SESSION['player_id'])) {
             </div>
             <div class='formLink'>
                 <a href='picksinput.php'>Check your Picks</a>
-                <br>
                 <a href="../index.php">Return to Home Page</a>
             </div>
         </div>
+        <br>
+        <br>
     </body>
 </html>
