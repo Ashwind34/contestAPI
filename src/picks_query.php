@@ -36,11 +36,11 @@ echo
 
 '<table>
 	<tr>
-		<th>Pick #1</th>
-		<th>Pick #2</th>
-		<th>Pick #3</th>
-		<th>Pick #4</th>
-		<th>Pick #5</th>';
+		<th>Pick 1</th>
+		<th>Pick 2</th>
+		<th>Pick 3</th>
+		<th>Pick 4</th>
+		<th>Pick 5</th>';
 
 // foreach loop to list out each row in the array
 
