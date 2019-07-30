@@ -90,39 +90,41 @@ if (!empty($_POST['register'])) {
 ?>
 
 	<body>
-		<div class="regContainer">
-			<div class="formTitle">
-				PLEASE REGISTER
-			</div>
-			<form action="register.php" method="post">
-				<label for="email">Email</label>
-				<select class="regselect" name="email" id="email">
-					<option value="">-Select-</option>
-				
-					<?php 
-				
-					foreach ($email_list as $k=>$v) {                
-						echo '<option value='. $v['email'] . '>' . $v['email'] . '</option>';                 
-					}
-							
-					?>  
+        <div class="wrapper">
+            <div class="regContainer">
+                <div class="formTitle">
+                    PLEASE REGISTER
+                </div>
+                <form action="register.php" method="post">
+                    <label for="email">Email</label>
+                    <select class="regselect" name="email" id="email">
+                        <option value="">-Select-</option>
+                    
+                        <?php 
+                    
+                        foreach ($email_list as $k=>$v) {                
+                            echo '<option value='. $v['email'] . '>' . $v['email'] . '</option>';                 
+                        }
+                                
+                        ?>  
 
-				</select>	
-				<label for="userpass">Select Password</label>
-				<input type="password" name="userpass" id="userpass">
-				<label for="confirmpass">Confirm Password</label>
-				<input type="password" name="confirmpass" id="confirmpass">
-				<label for="pin">PIN</label>
-				<input type="number" size="4" name="pin" id="pin">
-				<input type="submit" name="register" value="Register">	
-			</form>
-			<div class='formLink'>
-				<br>
-                <br>
-                <a href="../index.php">Return to Home Page</a>
-                <br>
-                <br>
+                    </select>	
+                    <label for="userpass">Select Password</label>
+                    <input type="password" name="userpass" id="userpass">
+                    <label for="confirmpass">Confirm Password</label>
+                    <input type="password" name="confirmpass" id="confirmpass">
+                    <label for="pin">PIN</label>
+                    <input type="number" size="4" name="pin" id="pin">
+                    <input type="submit" name="register" value="Register">	
+                </form>
+                <div class='formLink'>
+                    <br>
+                    <br>
+                    <a href="../index.php">Return to Home Page</a>
+                    <br>
+                    <br>
+                </div>
             </div>
-		</div>
+        </div>
 	</body>
 </html>

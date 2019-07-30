@@ -82,31 +82,33 @@ if (!empty($_POST['passreset'])) {
 ?>
 
     <body>
-        <div class="resetContainer">
-            <div class="formTitle">
-                Change your Password
-            </div>
-            <form action="passreset.php" method="post">
+        <div class="wrapper">
+            <div class="resetContainer">
+                <div class="formTitle">
+                    Change your Password
+                </div>
+                <form action="passreset.php" method="post">
 
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
 
-                <label for="userpass">New Password</label>                
-                <input type="password" name="userpass" id="userpass">
+                    <label for="userpass">New Password</label>                
+                    <input type="password" name="userpass" id="userpass">
 
-                <label for="confirmpass">Confirm Password</label>                
-                <input type="password" name="confirmpass" id="confirmpass">
+                    <label for="confirmpass">Confirm Password</label>                
+                    <input type="password" name="confirmpass" id="confirmpass">
 
-                <label for="pin">PIN</label>
-                <input type="number" size="4" name="pin" id="pin"> 
-                              
-                <input type="submit" name="passreset" value="Reset Password">
-            </form>
-            <div class="formLink">
-                <a href="pinresetfresh.php">Reset PIN</a>         
-                <a href="../index.php">Return to Home Page</a>
-                <br>
-                <br>
+                    <label for="pin">PIN</label>
+                    <input type="number" size="4" name="pin" id="pin"> 
+                                
+                    <input type="submit" name="passreset" value="Reset Password">
+                </form>
+                <div class="formLink">
+                    <a href="pinresetfresh.php">Reset PIN</a>         
+                    <a href="../index.php">Return to Home Page</a>
+                    <br>
+                    <br>
+                </div>
             </div>
         </div>
     </body>
