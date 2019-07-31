@@ -52,10 +52,31 @@
 	} 
 }
 
+@media screen and (max-width: 425px) {
+	.wrapper {
+		align-content: start !important;
+		align-items: start !important;
+	}
+}
+
 body {	
 	background-color:rgb(59, 143, 240);
 	margin: 0;
 	font-size: 2vh;
+	width: 100%;
+	height: 100vh;
+}
+
+.wrapper {
+	display:grid;
+	align-items:center;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	height: 100%;
+	width:100%
 }
 
 .starBack {	
@@ -300,7 +321,7 @@ label {
 }
 
 select {
-	width: 62px;
+	width: auto;
 }
 
 .allselect {

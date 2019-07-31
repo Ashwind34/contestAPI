@@ -20,31 +20,33 @@ if(empty($_SESSION['player_id'])) {
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
 	<body class="blackBack">
-		<div class="picksContainer">
-			
-			<?php 	
-
-			//if we are before approx. 11:30 AM PST on Sunday, show logged-in player's picks only.  Else show all player's picks.
-			// CURRENTLY DISABLED
-
-			// if ($kickoff_marker > 0.22) {
-
-				echo '<div class="formTitle">Your Picks for <br>Week ' . $weekmarker . '</div>';
-				echo $player_picks_table;
-				echo '<a class="formLink" href="../index.php">Return to Home Page</a>';
+		<div class="wrapper">
+			<div class="picksContainer">
 				
-			// } else {
-			// 	echo '<div class="formTitle">All Picks for <br>Week ' . $weekmarker . '</div>
-			// 			<a class ="formLink" href="../index.php">Return to Home Page</a>';
+				<?php 	
+
+				//if we are before approx. 11:30 AM PST on Sunday, show logged-in player's picks only.  Else show all player's picks.
+				// CURRENTLY DISABLED
+
+				// if ($kickoff_marker > 0.22) {
+
+					echo '<div class="formTitle">Your Picks for <br>Week ' . $weekmarker . '</div>';
+					echo $player_picks_table;
+					echo '<a class="formLink" href="../index.php">Return to Home Page</a>';
+					
+				// } else {
+				// 	echo '<div class="formTitle">All Picks for <br>Week ' . $weekmarker . '</div>
+				// 			<a class ="formLink" href="../index.php">Return to Home Page</a>';
+					
+				// 	echo $weekly_picks_table;
+					
+				// }
 				
-			// 	echo $weekly_picks_table;
+				?>
 				
-			// }
-			
-			?>
-			
-			<div class="formLink">
-				<img  class="boPic" src="../css/img/tecmoTD.png" alt="">
+				<div class="formLink">
+					<img  class="boPic" src="../css/img/tecmoTD.png" alt="">
+				</div>
 			</div>
 		</div>
 	</body>
