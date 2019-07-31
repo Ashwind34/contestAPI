@@ -11,6 +11,7 @@ if(empty($_SESSION['player_id'])) {
 	header("Location: ./login.php");
 
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@ if(empty($_SESSION['player_id'])) {
         <link rel="stylesheet" type="text/css" href="../css/style.css">
     </head>
     <body class="blackBack">
-    <div class="wrapper">
+        <div class="wrapper">
             <div class="playerpicksContainer">
                 <div class="pickSubmit">
                     <div>
