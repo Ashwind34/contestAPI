@@ -168,8 +168,7 @@ if (count($data) > 0) {
 		<meta http-equiv="Expires" content="0" />
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
-	<!-- <body class="blackBack"> -->
-	<body>
+	<body class="blackBack">
 		<div class="boardContainer">
 			<div class='formTitle'>
 				LEADERBOARD

@@ -35,7 +35,7 @@ if ($weekmarker != 1) {
 
 }
 
-// manual override for $weekmarker
+// manual override for $weekmarker testing
 
 // $weekmarker = 17;
 
