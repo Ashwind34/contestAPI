@@ -37,20 +37,22 @@ if ($weekmarker != 1) {
 
 //set variable to identify season quarter
 
-$qtrmarker;
-
 switch ($weekmarker) {
 	case in_array($weekmarker, range(1,4)):
 		$qtrmarker = 1;
+		$qtrcol = "q1_score";
 		break;
 	case in_array($weekmarker, range(5,8)):
 		$qtrmarker = 2;
+		$qtrcol = "q2_score";
 		break;
 	case in_array($weekmarker, range(9,12)):
 		$qtrmarker = 3;
+		$qtrcol = "q3_score";
 		break;
 	case in_array($weekmarker, range(13,17)):
 		$qtrmarker = 4;
+		$qtrcol = "q4_score";
 		break;
 }
 
