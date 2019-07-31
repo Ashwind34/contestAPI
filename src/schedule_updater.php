@@ -197,7 +197,8 @@ if(empty($_SESSION['player_id'])) {
 									WHERE pick_5 = '$team'
 									AND week = '$weekmarker'";
 									
-						//update week_score for each row of picks and total_score on player_roster table
+						// update week_score for each row of picks and total_score, quarterly score on player_roster table
+						//  MAY BE ABLE TO REMOVE $WEEKMARKER CLAUSE IN $UPDATE_WEEK_SCORE??
 									
 						$update_week_score = "UPDATE player_picks
 										SET week_score = pick_1_wlt + pick_2_wlt + pick_3_wlt + pick_4_wlt + pick_5_wlt
@@ -207,6 +208,26 @@ if(empty($_SESSION['player_id'])) {
 												FROM player_picks GROUP BY player_id) as p
 												SET r.total_score = p.tscore
 												WHERE r.player_id = p.player_id";
+
+						$update_q1_score = "UPDATE player_roster AS r,(SELECT player_id, SUM(week_score) as tscore
+											FROM player_picks WHERE week IN (1,2,3,4) GROUP BY player_id) as p
+											SET r.q1_score = p.tscore
+											WHERE r.player_id = p.player_id";
+
+						$update_q2_score = "UPDATE player_roster AS r,(SELECT player_id, SUM(week_score) as tscore
+											FROM player_picks WHERE week IN (5,6,7,8) GROUP BY player_id) as p
+											SET r.q2_score = p.tscore
+											WHERE r.player_id = p.player_id";
+
+						$update_q3_score = "UPDATE player_roster AS r,(SELECT player_id, SUM(week_score) as tscore
+											FROM player_picks WHERE week IN (9,10,11,12) GROUP BY player_id) as p
+											SET r.q3_score = p.tscore
+											WHERE r.player_id = p.player_id";
+
+						$update_q4_score = "UPDATE player_roster AS r,(SELECT player_id, SUM(week_score) as tscore
+											FROM player_picks WHERE week IN (13,14,15,16,17) GROUP BY player_id) as p
+											SET r.q4_score = p.tscore
+											WHERE r.player_id = p.player_id";
 									
 						TRY {
 					
@@ -217,6 +238,10 @@ if(empty($_SESSION['player_id'])) {
 							$conn->exec($update_5);
 							$conn->exec($update_week_score);
 							$conn->exec($update_total_score);
+							$conn->exec($update_q1_score);
+							$conn->exec($update_q2_score);
+							$conn->exec($update_q3_score);
+							$conn->exec($update_q4_score);
 							
 						}
 						CATCH (PDOException $e) {
