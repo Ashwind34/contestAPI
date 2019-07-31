@@ -43,7 +43,7 @@ function send_email_message($recipientEmail, $recipientName, $subject, $body) {
         $mail->isHTML(true);                                    // Set email format to HTML    
         $mail->send();
 
-        echo    '<div class="pickselect"><div><br>A new PIN has been sent to <span class="pinEmail">' . $recipientEmail . '.</span> Check your email!</div>
+        echo    '<div class="pickselect"><div><br>A new PIN has been sent to <span class="pinEmail">' . $recipientEmail . '</span> Check your email!</div>
                 <div><br><a href="../index.php">Return to Home Page</a></div></div>
                 <audio src="../css/audio/extrapoint.mp3" id="page_audio"></audio>
                 <script src="../audio.js"></script>';
