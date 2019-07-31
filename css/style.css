@@ -321,7 +321,7 @@ label {
 }
 
 select {
-	width: 62px;
+	width: auto;
 }
 
 .allselect {

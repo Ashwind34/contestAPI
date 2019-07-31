@@ -54,8 +54,7 @@ if (!empty($_POST['submit'])) {
                 <label for="email">Email</label>
 				<select name="email">			
 					<option value="<?php echo $user['email']; ?>"><?php echo $user['email']; ?></option>			
-				</select>
-                <input type="email" name="email" id="email"><br>                
+				</select>        
                 <input type="submit" name="submit" value="Reset Your Pin">
             </form>
             <div class='formLink'>
