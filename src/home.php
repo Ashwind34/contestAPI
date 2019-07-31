@@ -60,7 +60,6 @@ if(isset($_SESSION['player_id'])) {
 						<a href="leaderboard.php">Leaderboard</a>
 						<a href="passreset.php">Change Password</a>
 						<a href="logout.php">Logout</a>
-						<a href="player_picks_table.php">Player Picks Table</a>
 
 						<!-- Allow link to admin menu for specific users -->
 						

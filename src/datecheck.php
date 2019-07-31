@@ -35,4 +35,23 @@ if ($weekmarker != 1) {
 
 }
 
+//set variable to identify season quarter
+
+$qtrmarker;
+
+switch ($weekmarker) {
+	case in_array($weekmarker, range(1,4)):
+		$qtrmarker = 1;
+		break;
+	case in_array($weekmarker, range(5,8)):
+		$qtrmarker = 2;
+		break;
+	case in_array($weekmarker, range(9,12)):
+		$qtrmarker = 3;
+		break;
+	case in_array($weekmarker, range(13,17)):
+		$qtrmarker = 4;
+		break;
+}
+
 ?>
