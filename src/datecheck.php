@@ -35,6 +35,10 @@ if ($weekmarker != 1) {
 
 }
 
+// manual override for $weekmarker
+
+// $weekmarker = 17;
+
 //set variable to identify season quarter
 
 switch ($weekmarker) {

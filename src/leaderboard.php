@@ -22,7 +22,8 @@ $query = $conn->prepare(
 								' ',
 								player_roster.last_name
 							) AS name,
-							player_roster.total_score
+							player_roster.total_score,
+							player_roster." . $qtrcol . " AS qtr
 						FROM
 							player_picks
 						INNER JOIN
@@ -67,7 +68,7 @@ if (count($data) > 0) {
 		'<tr>
 			<td>' . $row['name'] . '</td>			
 			<td>' . $row['total_score'] . '</td>
-			<td>0</td>
+			<td>' . $row['qtr'] . '</td>
 			<td>' . $row['week_score'] . '</td>
 		</tr>';
 	}
@@ -167,7 +168,8 @@ if (count($data) > 0) {
 		<meta http-equiv="Expires" content="0" />
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
-	<body class="blackBack">
+	<!-- <body class="blackBack"> -->
+	<body>
 		<div class="boardContainer">
 			<div class='formTitle'>
 				LEADERBOARD
