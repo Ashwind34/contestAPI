@@ -303,6 +303,15 @@ label {
 	line-height: 1.5; */
 }
 
+.pinEmail {
+	display: block;
+	width: 90%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	margin-left: 1.5rem;
+	margin-right: 1.5rem;
+}
+
 .boPic {
 	display: grid;
 	width: 100%;
