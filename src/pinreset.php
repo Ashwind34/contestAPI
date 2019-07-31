@@ -46,23 +46,22 @@ if (!empty($_POST['submit'])) {
 ?>
 
 	<body>
-		<br>
-		<br>
-		<p><b>Reset Your PIN</b></p>
-		<br>
-		<p><a href="../index.php">Return to Home Page</a></p>
-		<br>
-		<form action="pinreset.php" method="post">
-			<div style="text-align:center">
-				<p>Email Address</p><br>
+        <div class="pinContainer">
+            <div class="formTitle">
+                Reset Your PIN
+            </div>
+            <form action="pinresetfresh.php" method="post">
+                <label for="email">Email</label>
 				<select name="email">			
 					<option value="<?php echo $user['email']; ?>"><?php echo $user['email']; ?></option>			
 				</select>
-				<br>
-				<br>			
-				<p><input type="submit" name="submit" value="Reset Your Pin"></p>
-			</div>
-		</form>
-	</body>
+                <input type="email" name="email" id="email"><br>                
+                <input type="submit" name="submit" value="Reset Your Pin">
+            </form>
+            <div class='formLink'>
+                <a href="../index.php">Return to Home Page</a>
+            </div>
+        </div>
+    </body>
 </html>
 

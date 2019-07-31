@@ -21,7 +21,7 @@ if (!empty($_POST['submit'])) {
 }
 ?>
     <body>
-    <div class="pinContainer">
+        <div class="pinContainer">
             <div class="formTitle">
                 Reset Your PIN
             </div>
