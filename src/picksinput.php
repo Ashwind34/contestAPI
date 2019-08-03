@@ -15,6 +15,8 @@ require_once('datecheck.php');
 require_once('picks_query.php');
 require_once('weekly_schedule.php');
 require_once('gamecheck.php');
+require_once('weekly_schedule.php');
+// require_once('leaderboardtable.php');
 
 if (isset($_SESSION['player_id'])) {
     
@@ -156,14 +158,10 @@ if (!empty($_POST['submit'])) {
             <div class="picksTitle">
                 Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!
             </div>
-            <div class="formLink" style="font-size:0.85rem;">
-                Your Current Picks
-            </div>
-            <div>
-                <!-- $player_picks_table located in picks_query.php -->
-                <?php echo $player_picks_table;?>
-            </div>
-            <br> 		
+            <div>			
+                <?php echo $weekly_lines_table ?>	
+                <br>
+			</div>
 
             <!--dropdown menus for each pick, referenced from function in picks_query.php -->
 
@@ -192,8 +190,16 @@ if (!empty($_POST['submit'])) {
                     <input type="submit" name="submit" value="Submit Your Picks">
                 </div>                			
             </form>	
+            <div class="formLink" style="font-size:0.85rem;">
+                Your Current Picks
+            </div>
+            <div>
+                <!-- $player_picks_table located in picks_query.php -->
+                <?php echo $player_picks_table;?>
+            </div>
+            <br> 	
             <div class="formLink">
-                <a href="weekly_lines_table.php">Check the Schedule</a>
+                <!-- <a href="weekly_lines_table.php">Check the Schedule</a> -->
                 <a href="../index.php">Return to Home Page</a>                
             </div>
         </div>

@@ -203,9 +203,9 @@ body {
 
 /* USE IF WE TRY TO ADD SCHEDULE TO PICKS INPUT PAGE */
 
-/* .inputContainer {
-	grid-template-rows: auto;
-} */
+.inputContainer {
+	grid-template-rows: 1.25fr auto auto 1fr 1fr;
+}
 
 fieldset, form {
 	padding-top: 1rem;
