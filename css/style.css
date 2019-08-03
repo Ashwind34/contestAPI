@@ -72,10 +72,9 @@
 body {	
 	background-color:rgb(59, 143, 240);
 	margin: 0;
-	width: 100%;
-	height: 100vh;
+	/* width: 100%;
+	height: 100vh; */
 }
-
 
 .wrapper {
 	display:grid;
@@ -85,8 +84,8 @@ body {
 	justify-content: center;
 	align-content: center;
 	align-items: center;
-	height: 100%;
-	width:100%
+	height: 100vh;
+	width: 100%
 }
 
 .starBack {	
@@ -208,7 +207,7 @@ body {
 
 /* .inputContainer {
 	grid-template-rows: auto;
-} */
+}*/
 
 fieldset, form {
 	padding-top: 1rem;
