@@ -160,8 +160,15 @@ if (!empty($_POST['submit'])) {
             </div>
             <div>			
                 <?php echo $weekly_lines_table ?>	
-                <br>
 			</div>
+            <div class="formLink" style="font-size:0.85rem;">
+                Your Current Picks
+            </div>
+            <div>
+                <!-- $player_picks_table located in picks_query.php -->
+                <?php echo $player_picks_table;?>
+                <br>
+            </div>
 
             <!--dropdown menus for each pick, referenced from function in picks_query.php -->
 
@@ -190,13 +197,6 @@ if (!empty($_POST['submit'])) {
                     <input type="submit" name="submit" value="Submit Your Picks">
                 </div>                			
             </form>	
-            <div class="formLink" style="font-size:0.85rem;">
-                Your Current Picks
-            </div>
-            <div>
-                <!-- $player_picks_table located in picks_query.php -->
-                <?php echo $player_picks_table;?>
-            </div>
             <br> 	
             <div class="formLink">
                 <!-- <a href="weekly_lines_table.php">Check the Schedule</a> -->
