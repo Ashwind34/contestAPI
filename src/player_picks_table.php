@@ -37,7 +37,7 @@ if(empty($_SESSION['player_id'])) {
                 <div class="formLink">
                     <a class="noMargin" href="../index.php">Return to Home Page</a>
                 </div>
-                <div>
+                <div class="formLink">
                     <img class="boPic" src="../css/img/TDbo.png" alt="Bo knows Tecmo Bowl">
                 </div>           
             </div>
