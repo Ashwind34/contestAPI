@@ -72,13 +72,8 @@
 body {	
 	background-color:rgb(59, 143, 240);
 	margin: 0;
-<<<<<<< HEAD
-	/* width: 100%;
-	height: 100vh; */
-=======
 	width: 100%;
 	height: 100vh;
->>>>>>> boardmerge2
 }
 
 .wrapper {
@@ -203,22 +198,16 @@ body {
 	grid-template-rows: 1.5fr 1fr 1.5fr auto;
 }
 
-.inputContainer {
+/* .inputContainer {
 	grid-template-rows: 1fr 0.6fr 1fr auto;
 
-}
+} */
 
 /* USE IF WE TRY TO ADD SCHEDULE TO PICKS INPUT PAGE */
 
-<<<<<<< HEAD
-/* .inputContainer {
-	grid-template-rows: auto;
-}*/
-=======
 .inputContainer {
 	grid-template-rows: 1.25fr auto 1fr 1fr;
 }
->>>>>>> boardmerge2
 
 fieldset, form {
 	padding-top: 1rem;
