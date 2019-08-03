@@ -59,11 +59,11 @@
 	}
 }
 
-@media screen and (min-width: 425px) {
+/* @media screen and (min-width: 425px) {
 	html {
 		font-size: 2vw !important;
 	}
-}
+} */
 
 body {	
 	background-color:rgb(59, 143, 240);
