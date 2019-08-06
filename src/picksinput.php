@@ -161,8 +161,8 @@ if (!empty($_POST['submit'])) {
             <div>			
                 <?php echo $weekly_lines_table ?>	
 			</div>
-            <div class="formLink" style="font-size:0.85rem;">
-                ***Your Current Picks***
+            <div class="pickselect" style="font-size:0.85rem;">
+                <span class="bold">***</span>Your Current Picks<span class="bold">***</span>
             </div>
             <div>
                 <!-- $player_picks_table located in picks_query.php -->
