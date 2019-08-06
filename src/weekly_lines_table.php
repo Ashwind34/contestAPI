@@ -28,8 +28,7 @@ if(empty($_SESSION['player_id'])) {
                 <?php echo $weekly_lines_table ?>
             </div>
             <div class='formLink'>
-                <a href='picksinput.php'>Check your Picks</a>
-                <a href="../index.php">Return to Home Page</a>
+                <a class="noMargin" href="../index.php">Return to Home Page</a>
             </div>
         </div>
         <br>
