@@ -46,29 +46,6 @@
 	}
 }
 
-@media screen and (min-width: 365px) {
-	.boPic {
-		max-width: 75%;
-	} 
-}
-
-@media screen and (max-width: 425px) {
-	.wrapper {
-		align-content: start !important;
-		align-items: start !important;
-	}
-}
-
-@media screen and (min-width: 425px) {
-	html {
-		font-size: 1.75vw !important;
-	}
-
-	fieldset, form {
-		min-width: 35% !important;
-	}
-}
-
 body {	
 	background-color:rgb(59, 143, 240);
 	margin: 0;
@@ -421,4 +398,25 @@ table tr:last-child td:last-child {
 border-bottom-right-radius: 4px;
 }
 
-	
+@media screen and (min-width: 365px) {
+	.boPic {
+		max-width: 75%;
+	} 
+}
+
+@media screen and (max-width: 425px) {
+	.wrapper {
+		align-content: start;
+		align-items: start;
+	}
+}
+
+@media screen and (min-width: 425px) {
+	html {
+		font-size: 1.75vw;
+	}
+
+	fieldset, form {
+		min-width: 35%;
+	}
+}	
