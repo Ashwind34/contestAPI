@@ -29,7 +29,7 @@ if (count($data) > 0) {
     ob_start();
 
 	echo 
-	'<table class="center">	
+	'<table>	
 		<tr>
 			<th>Favorite</th>
 			<th>Line</th>

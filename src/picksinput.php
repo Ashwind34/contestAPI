@@ -154,56 +154,58 @@ if (!empty($_POST['submit'])) {
 ?>
 
 	<body>
-        <div class="inputContainer">
-            <div class="picksTitle">
-                Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!
-            </div>
-            <div>			
-                <?php echo $weekly_lines_table ?>	
-			</div>
-            <div class="pickselect" style="font-size:0.85rem;">
-                <span class="bold">***</span>Your Current Picks<span class="bold">***</span>
-            </div>
-            <div>
-                <!-- $player_picks_table located in picks_query.php -->
-                <?php echo $player_picks_table;?>
-                <br>
-            </div>
-
-            <!--dropdown menus for each pick, referenced from function in picks_query.php -->
-
-            <form action="picksinput.php" method="post">
-                <div class="pickselect">
-                    Pick #1		
-                    <?php PickDropdown($pick_1,'pick_1'); ?>
+        <div class="wrapper">
+            <div class="inputContainer">
+                <div class="picksTitle">
+                    Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!
                 </div>
-                <div class="pickselect">
-                    Pick #2
-                    <?php PickDropdown($pick_2, 'pick_2'); ?> 
-                </div> 
-                <div class="pickselect">	
-                    Pick #3
-                    <?php PickDropdown($pick_3, 'pick_3'); ?>
+                <div>			
+                    <?php echo $weekly_lines_table ?>	
                 </div>
-                <div class="pickselect">
-                    Pick #4
-                    <?php PickDropdown($pick_4, 'pick_4'); ?>
-                </div>
-                <div class="pickselect">
-                    Pick #5
-                    <?php PickDropdown($pick_5,'pick_5'); ?>
+                <div class="pickselect" style="font-size:0.85rem;">
+                    <span class="bold">***</span>Your Current Picks<span class="bold">***</span>
                 </div>
                 <div>
-                    <input type="submit" name="submit" value="Submit Your Picks">
-                </div>                			
-            </form>	
-            <br> 	
-            <div class="formLink">
-                <!-- <a href="weekly_lines_table.php">Check the Schedule</a> -->
-                <a href="../index.php">Return to Home Page</a>                
+                    <!-- $player_picks_table located in picks_query.php -->
+                    <?php echo $player_picks_table;?>
+                    <br>
+                </div>
+
+                <!--dropdown menus for each pick, referenced from function in picks_query.php -->
+
+                <form action="picksinput.php" method="post">
+                    <div class="pickselect">
+                        Pick #1		
+                        <?php PickDropdown($pick_1,'pick_1'); ?>
+                    </div>
+                    <div class="pickselect">
+                        Pick #2
+                        <?php PickDropdown($pick_2, 'pick_2'); ?> 
+                    </div> 
+                    <div class="pickselect">	
+                        Pick #3
+                        <?php PickDropdown($pick_3, 'pick_3'); ?>
+                    </div>
+                    <div class="pickselect">
+                        Pick #4
+                        <?php PickDropdown($pick_4, 'pick_4'); ?>
+                    </div>
+                    <div class="pickselect">
+                        Pick #5
+                        <?php PickDropdown($pick_5,'pick_5'); ?>
+                    </div>
+                    <div>
+                        <input type="submit" name="submit" value="Submit Your Picks">
+                    </div>                			
+                </form>	
+                <br> 	
+                <div class="formLink">
+                    <!-- <a href="weekly_lines_table.php">Check the Schedule</a> -->
+                    <a href="../index.php">Return to Home Page</a>                
+                </div>
             </div>
+            <br>
+            <br>
         </div>
-        <br>
-        <br>
 	</body>
 </html>
