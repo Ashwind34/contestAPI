@@ -54,9 +54,9 @@ if(isset($_SESSION['player_id'])) {
 				</div>
 				<fieldset>
 					<legend>Main Menu</legend>		
-						<a href="picksinput.php">Submit Your Picks</a>
-						<a href="weekly_lines_table.php">Schedule</a>
-						<a href="weekly_picks_table.php">Picks Table</a>
+						<a href="picksinput.php">Make Your Picks</a>
+						<a href="weekly_lines_table.php">Weekly Schedule</a>
+						<a href="weekly_picks_table.php">Review Your Picks</a>
 						<a href="leaderboard.php">Leaderboard</a>
 						<a href="passreset.php">Change Password</a>
 						<a href="logout.php">Logout</a>
