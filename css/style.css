@@ -392,14 +392,14 @@ border-bottom-right-radius: 4px;
 	}
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 500px) {
 
 	html {
 		font-size: 2.75vh;
 	}
 
 	fieldset, form {
-		min-width: 37.5%;
+		min-width: 40%;
 	}
 }	
 

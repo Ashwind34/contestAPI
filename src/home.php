@@ -56,7 +56,7 @@ if(isset($_SESSION['player_id'])) {
 					<legend>Main Menu</legend>		
 						<a href="picksinput.php">Make Your Picks</a>
 						<a href="weekly_lines_table.php">Weekly Schedule</a>
-						<a href="weekly_picks_table.php">Review Your Picks</a>
+						<a href="weekly_picks_table.php">Current Picks</a>
 						<a href="leaderboard.php">Leaderboard</a>
 						<a href="passreset.php">Change Password</a>
 						<a href="logout.php">Logout</a>
