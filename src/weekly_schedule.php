@@ -42,7 +42,7 @@ if (count($data) > 0) {
     
     foreach ($data as $row) {
 
-		$home = ''.$row['home'].'+';
+		$home = ''.$row['home'].'++';
 		$away = $row['away'];
 
 		if( $row['h_spread'] < $row['a_spread']) {
@@ -66,7 +66,7 @@ if (count($data) > 0) {
     }
             
 	echo  '</table>';
-	echo '<div class="legal">+ = Home Team';
+	echo '<div class="legal">++ = Home Team';
 	echo '<br>All Times Eastern</div>';
     
 	$weekly_lines_table = ob_get_clean();
