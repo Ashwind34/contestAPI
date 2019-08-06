@@ -162,7 +162,7 @@ if (!empty($_POST['submit'])) {
                 <?php echo $weekly_lines_table ?>	
 			</div>
             <div class="formLink" style="font-size:0.85rem;">
-                Your Current Picks
+                ***Your Current Picks***
             </div>
             <div>
                 <!-- $player_picks_table located in picks_query.php -->
