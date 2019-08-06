@@ -28,24 +28,6 @@
 			url("./fonts/francisco-serial-light-regular.woff2") format("woff2"); 
 }
 
-@media screen and (max-width: 365px) {
-	.redHead, 
-	.whiteHead {
-		font-size: 1.05rem !important;
-	}
-	.picksTitle, 
-	.formTitle,
-	.hello,
-	legend {
-	  font-size: 0.95rem !important;
-	}
-
-	table tr th,
-	table tr td {
-		font-size: 0.55rem !important;
-	}
-}
-
 body {	
 	background-color:rgb(59, 143, 240);
 	margin: 0;
@@ -175,13 +157,6 @@ body {
 	grid-template-rows: 1.5fr 1fr 1.5fr auto;
 }
 
-/* .inputContainer {
-	grid-template-rows: 1fr 0.6fr 1fr auto;
-
-} */
-
-/* USE IF WE TRY TO ADD SCHEDULE TO PICKS INPUT PAGE */
-
 .inputContainer {
 	grid-template-rows: 1.25fr auto 1fr 1fr;
 }
@@ -211,7 +186,6 @@ fieldset, form {
 
 legend {
 	text-align:left;
-	/* text-shadow: 3px 2px black; */
 }
 
 .formLink, .legal, .menu {
@@ -283,10 +257,6 @@ label {
 	font-family: "TecmoBody";
 	color: white;
 	text-shadow: 3px 2px red;
-	/* text-shadow: 3px 2px black; */
-	/* border-bottom: 0.15rem solid red;
-	border-top: 0.15rem solid red;
-	line-height: 1.5; */
 }
 
 .pinEmail {
@@ -306,7 +276,6 @@ label {
 
 .regselect, select {
 	position: relative;
-	/* font-family: "TecmoBody"; */
 	margin-top: 1vh;
 	margin-bottom: 1vh;
 }
@@ -326,7 +295,6 @@ select {
 
 input[type=email], input[type=password] {
 	position: relative;
-	/* font-family: "TecmoBody"; */
 	margin-top: 1vh;
 	margin-bottom: 1vh;
 	width: 260px;
@@ -351,11 +319,6 @@ table {
 	margin-right: 1rem;
 	table-layout: fixed;
 }
-
-/* table.center {
-	margin-left: auto;
-	margin-right: auto;
-} */
 
 table tr th,
 table tr td {
@@ -396,6 +359,24 @@ border-bottom-left-radius: 4px;
 /* bottom-right border-radius */
 table tr:last-child td:last-child {
 border-bottom-right-radius: 4px;
+}
+
+@media screen and (max-width: 365px) {
+	.redHead, 
+	.whiteHead {
+		font-size: 1.05rem;
+	}
+	.picksTitle, 
+	.formTitle,
+	.hello,
+	legend {
+	  font-size: 0.95rem;
+	}
+
+	table tr th,
+	table tr td {
+		font-size: 0.55rem;
+	}
 }
 
 @media screen and (min-width: 365px) {
