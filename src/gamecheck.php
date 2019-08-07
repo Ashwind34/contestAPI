@@ -1,5 +1,8 @@
 <?php 
 
+    // function to check and see if any two of the players' picks are in the same game
+    // takes $_POST array as argument
+
     function gameCheck($arr) {
 
         global $conn, $weekmarker;

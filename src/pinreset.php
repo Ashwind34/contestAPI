@@ -10,8 +10,8 @@
 session_start();
 
 require_once('pdo_connect.php');
-require_once('pinupdate.php');
-require_once('sendMessage.php');
+// require_once('pinupdate.php');
+// require_once('sendMessage.php');
 
 if (isset($_SESSION['player_id'])) {
     
@@ -31,17 +31,41 @@ if (isset($_SESSION['player_id'])) {
         die("No result returned");
     }
 } else {    
-    header("Location: ./login.php");
+    // header("Location: ./login.php");
 }
 
 if (!empty($_POST['submit'])) {
 
-    //set email address for update
-    $email = $_POST['email'];
+    $emailquery = "SELECT email FROM player_roster";    
+    $emailresult = $conn->prepare($emailquery);
+    $emailresult->execute();
+    $emails = $emailresult->fetchall(PDO::FETCH_COLUMN);
+    // print_r($emails);
+    // echo"<br><a href='pinreset.php'>Reset</a>";
+    // exit();
 
-    //call function to
-    list($recipientEmail, $recipiantName, $subject, $body) = PinUpdate($email);
-    send_email_message($recipientEmail, $recipiantName, $subject, $body);
+    if(in_array($_POST['email'], $emails)) {
+        
+        $email = $_POST['email'];
+
+        echo "<p>That email IS in the contest records!</p>";
+        echo '<p><a href="pinreset.php">Try Again</a></p><br>';
+        echo '<p><a href="home.php">Return to Home Page</a></p>';
+        exit();
+
+        //call function to set email address for update
+
+        // list($recipientEmail, $recipiantName, $subject, $body) = PinUpdate($email);
+        // send_email_message($recipientEmail, $recipiantName, $subject, $body);
+
+    } else {
+        echo "<p>That email is not in the contest records.  Please try again.</p>";
+        echo '<p><a href="pinreset.php">Try Again</a></p><br>';
+        echo '<p><a href="home.php">Return to Home Page</a></p>';
+        exit();
+    }
+
+
 }
 ?>
 
@@ -50,11 +74,12 @@ if (!empty($_POST['submit'])) {
             <div class="formTitle">
                 Reset Your PIN
             </div>
-            <form action="pinresetfresh.php" method="post">
+            <form action="pinreset.php" method="post">
                 <label for="email">Email</label>
-				<select name="email">			
+                <input type="email" name="email" id="email"><?php echo $user['email']; ?><br>  
+				<!-- <select name="email">			
 					<option value="<?php echo $user['email']; ?>"><?php echo $user['email']; ?></option>			
-				</select>        
+				</select>         -->
                 <input type="submit" name="submit" value="Reset Your Pin">
             </form>
             <div class='formLink'>
