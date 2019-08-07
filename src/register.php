@@ -37,8 +37,9 @@ if (!empty($_POST['register'])) {
         //check to make sure user has correct PIN
 
             $email = $_POST['email'];
-            $pin_check = "SELECT email, pin FROM player_roster WHERE email ='$email'";
+            $pin_check = "SELECT email, pin FROM player_roster WHERE email = :email";
             $pin_query = $conn->prepare($pin_check);
+            $pin_query->BindParam(':email', $email);
             $pin_query->execute();
             $pin_check_array = $pin_query->fetch(PDO::FETCH_ASSOC);
 
