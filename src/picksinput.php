@@ -56,8 +56,6 @@ if (!empty($_POST['submit'])) {
 
                     $id = $_SESSION['player_id'];
 
-                    $weekmarker = 18;
-
                     // insert picks into picks log table for audit trail
                     
                     $submit = $conn->prepare("INSERT INTO picks_log (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 

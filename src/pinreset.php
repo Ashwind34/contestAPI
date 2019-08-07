@@ -15,24 +15,12 @@ require_once('pdo_connect.php');
 
 if (isset($_SESSION['player_id'])) {
     
-    //PDO prepared statement
     $record = $conn->prepare("SELECT player_id, email FROM player_roster WHERE player_id = :id");
     $record->bindParam(':id', $_SESSION['player_id']);
     $record->execute();
-    
-    //create associative array from query
-    $result = $record->fetch(PDO::FETCH_ASSOC);
-    
-    
-    //set $user as array that contains query data
-    if (COUNT($result) > 0) {
-        $user = $result;
-    } else {
-        die("No result returned");
-    }
-} else {    
-    // header("Location: ./login.php");
-}
+    $user = $record->fetch(PDO::FETCH_ASSOC);    
+
+} 
 
 if (!empty($_POST['submit'])) {
 
@@ -40,9 +28,6 @@ if (!empty($_POST['submit'])) {
     $emailresult = $conn->prepare($emailquery);
     $emailresult->execute();
     $emails = $emailresult->fetchall(PDO::FETCH_COLUMN);
-    // print_r($emails);
-    // echo"<br><a href='pinreset.php'>Reset</a>";
-    // exit();
 
     if(in_array($_POST['email'], $emails)) {
         
