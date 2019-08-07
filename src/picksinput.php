@@ -21,6 +21,7 @@ require_once('weekly_schedule.php');
 if (isset($_SESSION['player_id'])) {
     
     //PDO prepared statement
+
     $record = $conn->prepare("SELECT player_id, first_name FROM player_roster WHERE player_id = :id");
     $record->bindParam(':id', $_SESSION['player_id']);
     $record->execute();
@@ -79,49 +80,91 @@ if (!empty($_POST['submit'])) {
                     //updates player picks table to show current most recent picks
                     //CREATE A FUNCTION FOR THESE UPDATE STATEMENTS, USE FOREACH LOOP TO PROCESS EACH PICK
                         
-                    $pick_1_in = $_POST['pick_1'];
-                    $pick_2_in = $_POST['pick_2'];
-                    $pick_3_in = $_POST['pick_3'];
-                    $pick_4_in = $_POST['pick_4'];
-                    $pick_5_in = $_POST['pick_5'];
-                    $player_id_in = $_SESSION['player_id'];
-                                
-                    $submit_1 = "UPDATE player_picks 
-                                SET pick_1 = '$pick_1_in' 
-                                WHERE week = '$weekmarker'
-                                AND player_id = '$player_id_in'";
-                                
-                    $submit_2 = "UPDATE player_picks 
-                                SET pick_2 = '$pick_2_in' 
-                                WHERE week = '$weekmarker'
-                                AND player_id = '$player_id_in'";
-                                
-                    $submit_3 = "UPDATE player_picks 
-                                SET pick_3 = '$pick_3_in' 
-                                WHERE week = '$weekmarker'
-                                AND player_id = '$player_id_in'";
-                                
-                    $submit_4 = "UPDATE player_picks 
-                                SET pick_4 = '$pick_4_in' 
-                                WHERE week = '$weekmarker'
-                                AND player_id = '$player_id_in'";
+                    $id = $_SESSION['player_id'];
 
-                    $submit_5 = "UPDATE player_picks 
-                                SET pick_5 = '$pick_5_in'
-                                WHERE week = '$weekmarker'
-                                AND player_id = '$player_id_in'";
+                    $upsert = $conn->prepare(
+                                        "INSERT INTO player_picks (pick_1, pick_2, pick_3, pick_4, pick_5) 
+                                        VALUES 
+                                            (:pick_1, :pick_2, :pick_3, :pick_4, :pick_5)
+                                        ON DUPLICATE KEY UPDATE
+                                            pick_1 = :pick_1, 
+                                            pick_2 = :pick_2, 
+                                            pick_3 = :pick_3, 
+                                            pick_4 = :pick_4, 
+                                            pick_5 = :pick_5, 
+                                        WHERE 
+                                            week = '$weekmarker'
+                                        AND 
+                                            player_id = '$id'"                                         
+                                        );
+                    
+                    $upsert->BindParam(':pick_1', $_POST['pick_1']);
+                    $upsert->BindParam(':pick_2', $_POST['pick_2']);
+                    $upsert->BindParam(':pick_3', $_POST['pick_3']);
+                    $upsert->BindParam(':pick_4', $_POST['pick_4']);
+                    $upsert->BindParam(':pick_5', $_POST['pick_5']);
+
+                    if ($upsert->execute()) {
+                        header("Location: weekly_picks_table.php");
+                    } else {
+                        echo "It seems like there was a problem submitting your picks.  Please try again.";
+                    }
+                       
+
+                    
+
+                    // try {
+                        
+                    //     $conn->exec($upsert);
+
+                    // } catch (PDOException $e) {
+
+                    //     echo $e->getMessage();
+
+                    // }
+                    
+
+                    // $pick_1_in = $_POST['pick_1'];
+                    // $pick_2_in = $_POST['pick_2'];
+                    // $pick_3_in = $_POST['pick_3'];
+                    // $pick_4_in = $_POST['pick_4'];
+                    // $pick_5_in = $_POST['pick_5'];
+                    // $player_id_in = $_SESSION['player_id'];
+
+                                
+                    // $submit_1 = "UPDATE player_picks 
+                    //             SET pick_1 = '$pick_1_in' 
+                    //             WHERE week = '$weekmarker'
+                    //             AND player_id = '$player_id_in'";
+                                
+                    // $submit_2 = "UPDATE player_picks 
+                    //             SET pick_2 = '$pick_2_in' 
+                    //             WHERE week = '$weekmarker'
+                    //             AND player_id = '$player_id_in'";
+                                
+                    // $submit_3 = "UPDATE player_picks 
+                    //             SET pick_3 = '$pick_3_in' 
+                    //             WHERE week = '$weekmarker'
+                    //             AND player_id = '$player_id_in'";
+                                
+                    // $submit_4 = "UPDATE player_picks 
+                    //             SET pick_4 = '$pick_4_in' 
+                    //             WHERE week = '$weekmarker'
+                    //             AND player_id = '$player_id_in'";
+
+                    // $submit_5 = "UPDATE player_picks 
+                    //             SET pick_5 = '$pick_5_in'
+                    //             WHERE week = '$weekmarker'
+                    //             AND player_id = '$player_id_in'";
                                 
                             
-                    try {
-                        $conn->exec($submit_1);
-                        $conn->exec($submit_2);
-                        $conn->exec($submit_3);
-                        $conn->exec($submit_4);
-                        $conn->exec($submit_5);
-                    } catch (PDOException $e) {
-                        echo $e->getMessage();
-                    }
-                
+                    // try {
+                    //     $conn->exec($submit_1);
+                    //     $conn->exec($submit_2);
+                    //     $conn->exec($submit_3);
+                    //     $conn->exec($submit_4);
+                    //     $conn->exec($submit_5);
+        
                     echo '<meta HTTP-EQUIV="Refresh" Content="0; URL=player_picks_table.php">';
                     header("Location: ./player_picks_table.php");
 
