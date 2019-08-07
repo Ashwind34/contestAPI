@@ -50,7 +50,7 @@ if (!empty($_POST['submit'])) {
 
         echo "<p>That email IS in the contest records!</p>";
         echo '<p><a href="pinreset.php">Try Again</a></p><br>';
-        echo '<p><a href="home.php">Return to Home Page</a></p>';
+        echo '<p><a href="../index.php">Return to Home Page</a></p>';
         exit();
 
         //call function to set email address for update
@@ -61,7 +61,7 @@ if (!empty($_POST['submit'])) {
     } else {
         echo "<p>That email is not in the contest records.  Please try again.</p>";
         echo '<p><a href="pinreset.php">Try Again</a></p><br>';
-        echo '<p><a href="home.php">Return to Home Page</a></p>';
+        echo '<p><a href="../index.php">Return to Home Page</a></p>';
         exit();
     }
 
@@ -76,10 +76,7 @@ if (!empty($_POST['submit'])) {
             </div>
             <form action="pinreset.php" method="post">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email"><?php echo $user['email']; ?><br>  
-				<!-- <select name="email">			
-					<option value="<?php echo $user['email']; ?>"><?php echo $user['email']; ?></option>			
-				</select>         -->
+                <input type="email" name="email" id="email" value="<?php echo $user['email']; ?>"><br>  
                 <input type="submit" name="submit" value="Reset Your Pin">
             </form>
             <div class='formLink'>
