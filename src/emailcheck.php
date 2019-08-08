@@ -1,6 +1,6 @@
 <?php 
 
-function emailcheck($email, $url)
+function emailCheck($email)
 {
     global $conn;
 
@@ -14,8 +14,12 @@ function emailcheck($email, $url)
     return $value; 
 }
 
-$email_error_message =  '<br><p>That email is not in the contest records.  Please try again.</p>
-                        <br><p><a href="pinreset.php">Try Again</a></p><br>
-                        <br><p><a href="../index.php">Return to Home Page</a></p>';
-                        
+function email_error($url)
+{
+    echo '<br><p>That email is not in the contest records.  Please try again.</p>
+    <br><p><a href=' . $url . '>Try Again</a></p><br>
+    <br><p><a href="../index.php">Return to Home Page</a></p>';
+    exit();
+}
+
 ?>
