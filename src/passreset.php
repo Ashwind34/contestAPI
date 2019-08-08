@@ -30,7 +30,7 @@ $tryAgain =     '<br><p><a href="passreset.php">Try Again</a></p>
                 <audio src="../css/audio/nogood.mp3" id="page_audio"></audio>
                 <script src="../audio.js"></script>';
 
-    //Check to make sure form is empty
+//Check to make sure form is empty
 
 if (!empty($_POST['passreset'])) {
     
@@ -42,47 +42,55 @@ if (!empty($_POST['passreset'])) {
                 
         if (!empty($_POST['userpass']) && !empty($_POST['email'])) {
 
-        //check to make sure user has correct PIN
+            //check email is in the contest
 
             $email = $_POST['email'];
-            $pin_check = "SELECT email, pin FROM player_roster WHERE email = :email";
-            $pin_query = $conn->prepare($pin_check);
-            $pin_query->BindParam(':email', $email);
-            $pin_query->execute();
-            $pin_check_array = $pin_query->fetch(PDO::FETCH_ASSOC);
-
-            if ($_POST['pin'] == $pin_check_array['pin']) {
-            
-            //Prepared Statement to update password
-            
-                $query = "UPDATE player_roster 
-						SET password = :password
-						WHERE email = :email";
-            
-                $submit = $conn->prepare($query);
         
-                //bind parameters
-            
-                $submit->BindParam(':email', $_POST['email']);
-                $submit->BindParam(':password', password_hash($_POST['userpass'], PASSWORD_BCRYPT));
-                            
-                //Submit query to database
+            if (emailCheck($email)) {
+                
+                //check to make sure user has correct PIN  
 
-                if ($submit->execute()) {
-                    echo    '<br><p>Password Updated Successfully</p>
-                            <br><p><a href="../index.php">Return to Home Page</a></p>
-                            <audio src="../css/audio/extrapoint.mp3" id="page_audio"></audio>
-                            <script src="../audio.js"></script>';
-                    exit();
+                $pin_check = "SELECT email, pin FROM player_roster WHERE email = :email";
+                $pin_query = $conn->prepare($pin_check);
+                $pin_query->BindParam(':email', $email);
+                $pin_query->execute();
+                $pin_check_array = $pin_query->fetch(PDO::FETCH_ASSOC);
+    
+                if ($_POST['pin'] == $pin_check_array['pin']) {
+                
+                //Prepared Statement to update password
+                
+                    $query = "UPDATE player_roster 
+                            SET password = :password
+                            WHERE email = :email";
+                
+                    $submit = $conn->prepare($query);
+            
+                    //bind parameters
+                
+                    $submit->BindParam(':email', $_POST['email']);
+                    $submit->BindParam(':password', password_hash($_POST['userpass'], PASSWORD_BCRYPT));
+                                
+                    //Submit query to database
+    
+                    if ($submit->execute()) {
+                        echo    '<br><p>Password Updated Successfully</p>
+                                <br><p><a href="../index.php">Return to Home Page</a></p>
+                                <audio src="../css/audio/extrapoint.mp3" id="page_audio"></audio>
+                                <script src="../audio.js"></script>';
+                        exit();
+                    } else {
+                        echo '<br><p>Problem with Password Change.  Please try again.</p>';                    
+                        echo $tryagain;
+                        exit();
+                    }
                 } else {
-                    echo '<br><p>Problem with Password Change.  Please try again.</p>';                    
-                    echo $tryagain;
+                    echo '<br><p>PIN is incorrect.  Please try again.</p>';
+                    echo $tryAgain;
                     exit();
                 }
             } else {
-                echo '<br><p>PIN is incorrect.  Please try again.</p>';
-                echo $tryAgain;
-                exit();
+                email_error(basename(__FILE__));
             }
         } else {
             echo '<br><p>Please complete all fields.</p>';
