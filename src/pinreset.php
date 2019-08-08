@@ -11,8 +11,8 @@ session_start();
 
 require_once('pdo_connect.php');
 require_once('emailcheck.php');
-// require_once('pinupdate.php');
-// require_once('sendMessage.php');
+require_once('pinupdate.php');
+require_once('sendMessage.php');
 
 if (isset($_SESSION['player_id'])) {
     
@@ -24,57 +24,16 @@ if (isset($_SESSION['player_id'])) {
 } 
 
 if (!empty($_POST['submit'])) {
-
     $email = $_POST['email'];
 
-    if(emailCheck($email)) {
-
-        echo "<p>That email IS in the contest records!</p>";
-        echo '<p><a href="pinreset.php">Try Again</a></p><br>';
-        echo '<p><a href="../index.php">Return to Home Page</a></p>';
-        exit();
-
-        // list($recipientEmail, $recipiantName, $subject, $body) = PinUpdate($email);
-        // send_email_message($recipientEmail, $recipiantName, $subject, $body);
-
-        
-
+    if (emailCheck($email)) {
+        list($recipientEmail, $recipiantName, $subject, $body) = PinUpdate($email);
+        send_email_message($recipientEmail, $recipiantName, $subject, $body);
     } else {
-
         email_error(basename(__FILE__));
-
     }
-
-
-
-    // $emailquery = "SELECT email FROM player_roster";    
-    // $emailresult = $conn->prepare($emailquery);
-    // $emailresult->execute();
-    // $emails = $emailresult->fetchall(PDO::FETCH_COLUMN);
-
-    // if(in_array($_POST['email'], $emails)) {
-        
-    //     $email = $_POST['email'];
-
-    //     echo "<p>That email IS in the contest records!</p>";
-    //     echo '<p><a href="pinreset.php">Try Again</a></p><br>';
-    //     echo '<p><a href="../index.php">Return to Home Page</a></p>';
-    //     exit();
-
-    //     //call function to set email address for update
-
-    //     // list($recipientEmail, $recipiantName, $subject, $body) = PinUpdate($email);
-    //     // send_email_message($recipientEmail, $recipiantName, $subject, $body);
-
-    // } else {
-    //     echo "<p>That email is not in the contest records.  Please try again.</p>";
-    //     echo '<p><a href="pinreset.php">Try Again</a></p><br>';
-    //     echo '<p><a href="../index.php">Return to Home Page</a></p>';
-    //     exit();
-    // }
-
-
 }
+
 ?>
 
 	<body>

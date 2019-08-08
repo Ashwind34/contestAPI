@@ -11,7 +11,7 @@ function emailCheck($email)
 
     $value = in_array($email, $emails) ? true : false;
 
-    return $value; 
+    return $value;
 }
 
 function email_error($url)
