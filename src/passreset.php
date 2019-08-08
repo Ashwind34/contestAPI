@@ -1,3 +1,9 @@
+<?php 
+
+session_start();
+
+?>
+
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -8,6 +14,16 @@
 <?php
 
 require_once('pdo_connect.php');
+require_once('emailcheck.php');
+
+if (isset($_SESSION['player_id'])) {
+    
+    $record = $conn->prepare("SELECT player_id, email FROM player_roster WHERE player_id = :id");
+    $record->bindParam(':id', $_SESSION['player_id']);
+    $record->execute();
+    $user = $record->fetch(PDO::FETCH_ASSOC);    
+
+} 
 
 $tryAgain =     '<br><p><a href="passreset.php">Try Again</a></p>
                 <br><p><a href="../index.php">Return to Home Page</a></p>
@@ -91,7 +107,7 @@ if (!empty($_POST['passreset'])) {
                 <form action="passreset.php" method="post">
 
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email">
+                    <input type="email" name="email" id="email" value="<?php echo $user['email']; ?>">
 
                     <label for="userpass">New Password</label>                
                     <input type="password" name="userpass" id="userpass">
