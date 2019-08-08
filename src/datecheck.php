@@ -4,16 +4,16 @@ $today = date("Ymd");
 
 //check to make sure $date is not negative
 
-if ($today < "20190905") {
-	$date = strtotime("20190905");
+if ($today < "20190904") {
+	$date = strtotime("20190904");
 } else {
 	$date = strtotime(date("Y/m/d h:i:sa"));
 }
 
 // MANUAL DATE OVERRIDE IF NEEDED
-$date = strtotime("09/08/2019 10:30:00");
+$date = strtotime("09/04/2019 10:30:00");
 
-$season_start = strtotime("09/03/2019");
+$season_start = strtotime("09/04/2019");
 
 //$weekmarker variable will return current NFL week value
 

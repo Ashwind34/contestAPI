@@ -18,7 +18,9 @@ function email_error($url)
 {
     echo '<br><p>That email is not in the contest records.  Please try again.</p>
     <br><p><a href=' . $url . '>Try Again</a></p><br>
-    <br><p><a href="../index.php">Return to Home Page</a></p>';
+    <br><p><a href="../index.php">Return to Home Page</a></p>
+    <audio src="../css/audio/nogood.mp3" id="page_audio"></audio>
+    <script src="../audio.js"></script>';
     exit();
 }
 
