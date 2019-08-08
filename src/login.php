@@ -10,31 +10,36 @@
 session_start();
 
 require_once('pdo_connect.php');
+require_once('emailcheck.php');
 
 if (!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
+
+    $email = $_POST['useremail'];
+
+    if (emailCheck($email)) {    
+
+        $record = $conn->prepare("SELECT player_id, email, password FROM player_roster WHERE email = :email");
+        $record->bindParam(':email', $_POST['useremail']);
+        $record->execute();    
+        $result = $record->fetch(PDO::FETCH_ASSOC);
     
-//PDO prepared statement
-    $record = $conn->prepare("SELECT player_id, email, password FROM player_roster WHERE email = :email");
-    $record->bindParam(':email', $_POST['useremail']);
-    $record->execute();
+        //check password entered by user against db password, set session if match
+        if (COUNT($result) > 0 && password_verify($_POST['userpass'], $result['password'])) {
+            $_SESSION['player_id'] = $result['player_id'];
     
-    //create associative array from query
-    $result = $record->fetch(PDO::FETCH_ASSOC);
-    
-    //check password entered by user against db password, set session if match
-    if (COUNT($result) > 0 && password_verify($_POST['userpass'], $result['password'])) {
-        $_SESSION['player_id'] = $result['player_id'];
-    
-        // redirect to index.php without using header()
-        $URL = "home.php";
-        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-    } else {
-        echo    '<br><br><p>Email or password is incorrect, please try again</p>
+            // redirect to index.php without using header()
+            $URL = "home.php";
+            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+        } else {
+            echo '<br><br><p>Email or password is incorrect.  Please try again.</p>
                 <br><p><a href="login.php">Try Again</a></p>
                 <br><p><a href="../index.php">Return to Home Page</a></p>
                 <audio src="../css/audio/nogood.mp3" id="page_audio"></audio>
                 <script src="../audio.js"></script>';
-        exit();
+            exit();
+        }
+    } else {
+        email_error(basename(__FILE__));
     }
 }
 ?>
