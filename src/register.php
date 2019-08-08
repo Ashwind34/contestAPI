@@ -8,19 +8,12 @@
 <?php
 
 require_once('pdo_connect.php');
-require_once('datecheck.php');
+require_once('emailcheck.php');
 
 $tryAgain =     '<br><p><a href="register.php">Try Again</a></p>
                 <br><p><a href="../index.php">Return to Home Page</a></p>
                 <audio src="../css/audio/nogood.mp3" id="page_audio"></audio>
                 <script src="../audio.js"></script>';
-
-//query db to get list of player emails and populate select field
-$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
-
-$email_query->execute();
-
-$email_list = $email_query->fetchAll(PDO::FETCH_ASSOC);
 
 //Check to make sure form is empty
 
@@ -32,49 +25,57 @@ if (!empty($_POST['register'])) {
         
         //check to make sure all fields completed
                 
-        if (!empty($_POST['userpass']) && !empty($_POST['email'])) {
+        if (!empty($_POST['userpass']) && !empty($_POST['email'])) {        
 
-        //check to make sure user has correct PIN
+            //check email is in the contest
 
             $email = $_POST['email'];
-            $pin_check = "SELECT email, pin FROM player_roster WHERE email = :email";
-            $pin_query = $conn->prepare($pin_check);
-            $pin_query->BindParam(':email', $email);
-            $pin_query->execute();
-            $pin_check_array = $pin_query->fetch(PDO::FETCH_ASSOC);
 
-            if ($_POST['pin'] == $pin_check_array['pin']) {
-            
-            //Prepared Statement to update password
-            
-                $query = "UPDATE player_roster 
-						SET password = :password
-						WHERE email = :email";
-            
-                $submit = $conn->prepare($query);
-        
-                //bind parameters
-            
-                $submit->BindParam(':email', $_POST['email']);
-                $submit->BindParam(':password', password_hash($_POST['userpass'], PASSWORD_BCRYPT));       
-                            
-                //Submit query to database
+            if (emailCheck($email)) {
 
-                if ($submit->execute()) {
-                    echo    '<br><p>Player Updated Successfully</p>
-                            <br><p><a href="./login.php">Log In</a></p>
-                            <audio src="../css/audio/firstdown.mp3" id="page_audio"></audio>
-                            <script src="../audio.js"></script>';
-                    exit();
+                //check to make sure user has correct PIN
+
+                $pin_check = "SELECT email, pin FROM player_roster WHERE email = :email";
+                $pin_query = $conn->prepare($pin_check);
+                $pin_query->BindParam(':email', $email);
+                $pin_query->execute();
+                $pin_check_array = $pin_query->fetch(PDO::FETCH_ASSOC);
+
+                if ($_POST['pin'] == $pin_check_array['pin']) {
+                
+                //Prepared Statement to update password
+                
+                    $query = "UPDATE player_roster 
+                            SET password = :password
+                            WHERE email = :email";
+                
+                    $submit = $conn->prepare($query);
+            
+                    //bind parameters
+                
+                    $submit->BindParam(':email', $_POST['email']);
+                    $submit->BindParam(':password', password_hash($_POST['userpass'], PASSWORD_BCRYPT));       
+                                
+                    //Submit query to database
+
+                    if ($submit->execute()) {
+                        echo    '<br><p>Player Updated Successfully</p>
+                                <br><p><a href="./login.php">Log In</a></p>
+                                <audio src="../css/audio/firstdown.mp3" id="page_audio"></audio>
+                                <script src="../audio.js"></script>';
+                        exit();
+                    } else {
+                        echo '<br><p>Problem with Registration.  Please try again.</p>';
+                        echo $tryAgain;
+                        exit();
+                    }
                 } else {
-                    echo '<br><p>Problem with Registration.  Please try again.</p>';
+                    echo '<br><p>PIN is incorrect.  Please try again.</p>';
                     echo $tryAgain;
                     exit();
                 }
             } else {
-                echo '<br><p>PIN is incorrect.  Please try again.</p>';
-                echo $tryAgain;
-                exit();
+                email_error(basename(__FILE__));
             }
         } else {
             echo '<br><p>Please complete all fields.</p>';
@@ -98,18 +99,7 @@ if (!empty($_POST['register'])) {
                 </div>
                 <form action="register.php" method="post">
                     <label for="email">Email</label>
-                    <select class="regselect" name="email" id="email">
-                        <option value="">-Select-</option>
-                    
-                        <?php 
-                    
-                        foreach ($email_list as $k=>$v) {                
-                            echo '<option value='. $v['email'] . '>' . $v['email'] . '</option>';                 
-                        }
-                                
-                        ?>  
-
-                    </select>	
+                    <input type="email" name="email" id="email">
                     <label for="userpass">Select Password</label>
                     <input type="password" name="userpass" id="userpass">
                     <label for="confirmpass">Confirm Password</label>
