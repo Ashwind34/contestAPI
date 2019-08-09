@@ -72,7 +72,8 @@ if (!empty($_POST['submit'])) {
                     //make sure statement executes correctly, then send to table with all player picks
                                     
                     if ($submit->execute()) {
-                        header("Location: weekly_picks_table.php");
+                        $URL = "player_picks_table.php";
+                        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
                     } else {
                         echo "It seems like there was a problem submitting your picks.  Please try again.";
                     }
@@ -110,7 +111,8 @@ if (!empty($_POST['submit'])) {
                         $update->BindParam(':pick_5', $_POST['pick_5']);
 
                         if ($update->execute()) {
-                            header("Location: weekly_picks_table.php");
+                            $URL = "player_picks_table.php";
+                            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
                         } else {
                             echo "<p>It seems like there was a problem submitting your picks.  Please try again.</p>";
                             echo '<p><a href="picksinput.php">Try Again</a></p><br>';
@@ -137,7 +139,8 @@ if (!empty($_POST['submit'])) {
                         $upsert->BindParam(':weekmarker', $weekmarker);                     
 
                         if ($upsert->execute()) {
-                            header("Location: weekly_picks_table.php");
+                            $URL = "player_picks_table.php";
+                            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
                         } else {
                             echo "<p>It seems like there was a problem submitting your picks.  Please try again.</p>";
                             echo '<p><a href="picksinput.php">Try Again</a></p><br>';
