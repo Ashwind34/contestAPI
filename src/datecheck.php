@@ -11,17 +11,17 @@ $season_start = strtotime("09/04/2019");
 if ($today < $season_start) {
 	$date = $season_start;
 } else {
-	$date = strtotime(date("Y/m/d h:i:sa"));
+	$date = $today;
 }
 
 // date override for beta test
 
 $date = $today + 2419200;
 
-$fake_date = date("Y/m/d h:i:sa", $date);
-
 // MANUAL DATE OVERRIDE IF NEEDED
 // $date = strtotime("09/10/2019 10:30:00");
+
+$fake_date = date("Y/m/d h:i:sa", $date);
 
 //$weekmarker variable will return current NFL week value
 
