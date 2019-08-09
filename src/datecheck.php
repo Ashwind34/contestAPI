@@ -1,19 +1,27 @@
 <?php 
 
-$today = date("Ymd");
+$today = time();
+
+$today_date = date("Y/m/d h:i:sa", $today);
+
+$season_start = strtotime("09/04/2019");
 
 //check to make sure $date is not negative
 
-if ($today < "20190904") {
-	$date = strtotime("20190904");
+if ($today < $season_start) {
+	$date = $season_start;
 } else {
 	$date = strtotime(date("Y/m/d h:i:sa"));
 }
 
-// MANUAL DATE OVERRIDE IF NEEDED
-$date = strtotime("09/10/2019 10:30:00");
+// date override for beta test
 
-$season_start = strtotime("09/04/2019");
+$date = $today + 2419200;
+
+$fake_date = date("Y/m/d h:i:sa", $date);
+
+// MANUAL DATE OVERRIDE IF NEEDED
+// $date = strtotime("09/10/2019 10:30:00");
 
 //$weekmarker variable will return current NFL week value
 
@@ -35,29 +43,33 @@ if ($weekmarker != 1) {
 
 }
 
-// manual override for $weekmarker testing
-
+// MANUAL OVERRIDE FOR $WEEKMARKER IF NEEDED
 // $weekmarker = 17;
 
-//set variable to identify season quarter
+//set variables to identify season quarter
 
 switch ($weekmarker) {
 	case in_array($weekmarker, range(1,4)):
 		$qtrmarker = 1;
+		$qtrend = 4;
 		$qtrcol = "q1_score";
 		break;
 	case in_array($weekmarker, range(5,8)):
 		$qtrmarker = 2;
+		$qtrend = 8;
 		$qtrcol = "q2_score";
 		break;
 	case in_array($weekmarker, range(9,12)):
 		$qtrmarker = 3;
+		$qtrend = 12;
 		$qtrcol = "q3_score";
 		break;
 	case in_array($weekmarker, range(13,17)):
 		$qtrmarker = 4;
+		$qtrend = 17;
 		$qtrcol = "q4_score";
 		break;
 }
+
 
 ?>
