@@ -16,7 +16,7 @@ if ($today < $season_start) {
 
 // date override for beta test
 
-$date = $today + 2419200;
+// $date = $today + 2419200;
 
 // MANUAL OVERRIDE FOR $DATE IF NEEDED
 // $date = strtotime("09/10/2019 10:30:00");
