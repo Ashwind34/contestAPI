@@ -1,6 +1,6 @@
 <?php
 
-require_once('leaderboardtable.php');
+require_once('qtrboardtable.php');
 
 ?>
 
@@ -17,17 +17,18 @@ require_once('leaderboardtable.php');
 	<body class="blackBack">
 		<div class="boardContainer">
 			<div class='formTitle'>
-				LEADERBOARD 
+				QUARTERLY LEADERBOARD 
 			</div>
 			<div class='formTitle'>
 				WEEK <?php echo $weekmarker ?>
 			</div>
-			<div class="formLink">
-				<a class="noMargin" href="quarterboard.php">Quarterly Leaderboard</a>
+            <div class="formLink">
+                <p>Current Quarter ends at Week <?php echo $qtrend ?></p>
+				<a href="leaderboard.php">Return to Leaderboard</a>
 				<a href="../index.php">Return to Home Page</a>				
 			</div>
 			<div>			
-				<?php echo $leaderboard; ?>				
+				<?php echo $qtrboard; ?>				
 			</div>
 			<div>
 				<a class="formLink" href="../index.php">Return to Home Page</a>
