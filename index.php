@@ -12,6 +12,9 @@ if(isset($_SESSION['player_id'])) {
 	header("Location: ./src/home.php");
 
 }
+
+//BETA BRANCH IS NOW THE LIVE DREAMHOST BRANCH
+
 ?>
 
 <!DOCTYPE HTML>
