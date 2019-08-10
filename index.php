@@ -20,6 +20,9 @@ if(isset($_SESSION['player_id'])) {
 		<title>
 			SuperContest 2019
 		</title>
+		<link rel="preload" href="./css/fonts/tecmo-bowl-body.woff2" as="font">
+		<link rel="preload" href="./css/fonts/tecmo-bowl-headline.woff2" as="font">
+		<link rel="preload" href="./css/fonts/francisco-serial-light-regular.woff2" as="font">
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
 		<meta name="viewport" content="width=device-width">
 	</head>

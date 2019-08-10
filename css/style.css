@@ -4,8 +4,8 @@
 	font-weight: normal;
 	src:  	local('TecmoHeadline'),
 			url("./fonts/tecmo-bowl-headline.ttf") format("truetype"),
-		  	url("./fonts/tecmo-bowl-body.woff") format("woff"), 
-		  	url("./fonts/tecmo-bowl-body.woff2") format("woff2");  
+		  	url("./fonts/tecmo-bowl-headline.woff") format("woff"), 
+		  	url("./fonts/tecmo-bowl-headline.woff2") format("woff2");  
 }
 
 @font-face {
