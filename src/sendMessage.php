@@ -47,7 +47,7 @@ function send_email_message($recipientEmail, $recipientName, $subject, $body) {
                 <div><br><a href="../index.php">Return to Home Page</a></div></div>
                 <audio src="../css/audio/extrapoint.mp3" id="page_audio"></audio>
                 <script src="../audio.js"></script>';
-        exit();
+        //exit();
     
     } catch (Exception $e) {
         echo '<link rel="stylesheet" type="text/css" href="../css/style.css">';

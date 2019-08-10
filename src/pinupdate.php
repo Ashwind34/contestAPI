@@ -31,7 +31,7 @@ function PinUpdate($email) {
                 <body>
                     <h3>YOUR NEW SUPERCONTEST PIN IS</h3>
                     <h3>' . $pin .'</h3><br>                    
-                    <p><a href="www.nfl-supercontest.com/src/passreset.php">Click Here to Change your Password</a></p>
+                    <p><a href="www.nfl-supercontest.com/index.php">Click Here to go to the site.</a></p>
                 </body>
             </html>';               
 
