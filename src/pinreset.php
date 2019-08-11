@@ -1,3 +1,14 @@
+<?php 
+
+session_start();
+
+require_once('pdo_connect.php');
+require_once('emailcheck.php');
+require_once('pinupdate.php');
+require_once('sendMessage.php');
+
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -6,13 +17,6 @@
 	</head>
 
 <?php
-
-session_start();
-
-require_once('pdo_connect.php');
-require_once('emailcheck.php');
-require_once('pinupdate.php');
-require_once('sendMessage.php');
 
 if (isset($_SESSION['player_id'])) {
     

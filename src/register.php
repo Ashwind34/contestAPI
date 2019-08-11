@@ -1,3 +1,10 @@
+<?php 
+
+require_once('pdo_connect.php');
+require_once('emailcheck.php');
+
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -6,9 +13,6 @@
 	</head>
 
 <?php
-
-require_once('pdo_connect.php');
-require_once('emailcheck.php');
 
 $tryAgain =     '<br><p><a href="register.php">Try Again</a></p>
                 <br><p><a href="../index.php">Return to Home Page</a></p>

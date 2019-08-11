@@ -1,3 +1,12 @@
+<?php 
+
+session_start();
+
+require_once('pdo_connect.php');
+require_once('emailcheck.php');
+
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -6,11 +15,6 @@
 	</head>
 
 <?php
-
-session_start();
-
-require_once('pdo_connect.php');
-require_once('emailcheck.php');
 
 if (!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
 

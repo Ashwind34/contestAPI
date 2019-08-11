@@ -1,3 +1,16 @@
+<?php 
+
+session_start();
+
+require_once('pdo_connect.php');
+require_once('datecheck.php');
+require_once('picks_query.php');
+require_once('weekly_schedule.php');
+require_once('gamecheck.php');
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,14 +20,6 @@
 	</head>		
 
 <?php
-
-session_start();
-
-require_once('pdo_connect.php');
-require_once('datecheck.php');
-require_once('picks_query.php');
-require_once('weekly_schedule.php');
-require_once('gamecheck.php');
 
 if (isset($_SESSION['player_id'])) {
     
