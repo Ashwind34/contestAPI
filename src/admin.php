@@ -30,6 +30,7 @@ if(empty($_SESSION['player_id'])) {
 		<p><a href="schedule_updater.php"><i>Update Lines and Scores</i></a></p><br>
 		<p><a href="pinresetall.php">Reset Player PIN</a></p><br>
 		<p><a href="../index.php">Back to Homepage</a></p>
+		<p><a href="functioncheck.php">Check Functions</a></p>
 		<p>Current Date: <?php echo $today_date ?></p><br>
 		<p>Beta Test Date: <?php echo $fake_date ?></p><br>
 	</body>
