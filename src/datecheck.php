@@ -1,8 +1,10 @@
 <?php 
 
+date_default_timezone_set("America/New_York");
+
 $today = time();
 
-$today_date = date("Y/m/d h:i:sa", $today);
+$today_date = date("m/d/Y h:i:sa", $today);
 
 $season_start = strtotime("09/04/2019");
 
@@ -19,9 +21,9 @@ if ($today < $season_start) {
 // $date = $today + 2419200;
 
 // MANUAL OVERRIDE FOR $DATE IF NEEDED
-// $date = strtotime("09/10/2019 10:30:00");
+$date = strtotime("09/08/2019 13:05:00");
 
-$fake_date = date("Y/m/d h:i:sa", $date);
+$fake_date = date("m/d/Y h:i:sa", $date);
 
 //$weekmarker variable will return current NFL week value
 

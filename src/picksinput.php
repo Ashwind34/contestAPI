@@ -1,3 +1,17 @@
+<?php 
+
+session_start();
+
+require_once('pdo_connect.php');
+require_once('datecheck.php');
+require_once('picks_query.php');
+require_once('weekly_schedule.php');
+require_once('gamecheck.php');
+require_once('dupeteamcheck.php');
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,14 +21,6 @@
 	</head>		
 
 <?php
-
-session_start();
-
-require_once('pdo_connect.php');
-require_once('datecheck.php');
-require_once('picks_query.php');
-require_once('weekly_schedule.php');
-require_once('gamecheck.php');
 
 if (isset($_SESSION['player_id'])) {
     
@@ -41,135 +47,130 @@ if (isset($_SESSION['player_id'])) {
 
 if (!empty($_POST['submit'])) {
 
-    //make sure that all picks are filled
-    
-    if (!empty($_POST['pick_1']) && !empty($_POST['pick_2']) && !empty($_POST['pick_3']) && !empty($_POST['pick_4'])
-        && !empty($_POST['pick_5'])) {
+    //check for duplicate picks
 
-            //check for duplicate picks
+    if (dupeCheck($_POST)) {
 
-            if ($_POST === array_unique($_POST)) {
+        // check to make sure players don't select both teams from one game
 
-                // check to make sure players don't select both teams from one game
+        if (gameCheck($_POST)) {
 
-                if (gameCheck($_POST)) {  
+            // check to make sure that picks are still available at time of submit
 
-                    $id = $_SESSION['player_id'];
+            if (timeCheck($_POST)) {
+                $id = $_SESSION['player_id'];
 
-                    // insert picks into picks log table for audit trail
-                    
-                    $submit = $conn->prepare("INSERT INTO picks_log (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
-                                            VALUES (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5, :weekmarker)");
-                                            
-                    $submit->BindParam(':pick_1', $_POST['pick_1']);
-                    $submit->BindParam(':pick_2', $_POST['pick_2']);
-                    $submit->BindParam(':pick_3', $_POST['pick_3']);
-                    $submit->BindParam(':pick_4', $_POST['pick_4']);
-                    $submit->BindParam(':pick_5', $_POST['pick_5']);
-                    $submit->BindParam(':player_id', $_SESSION['player_id']);
-                    $submit->BindParam(':weekmarker', $weekmarker);
-                    
-                    //make sure statement executes correctly, then send to table with all player picks
-                                    
-                    if ($submit->execute()) {
+                // insert picks into picks log table for audit trail
+                
+                $submit = $conn->prepare("INSERT INTO picks_log (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
+                                        VALUES (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5, :weekmarker)");
+                                        
+                $submit->BindParam(':pick_1', $_POST['pick_1']);
+                $submit->BindParam(':pick_2', $_POST['pick_2']);
+                $submit->BindParam(':pick_3', $_POST['pick_3']);
+                $submit->BindParam(':pick_4', $_POST['pick_4']);
+                $submit->BindParam(':pick_5', $_POST['pick_5']);
+                $submit->BindParam(':player_id', $_SESSION['player_id']);
+                $submit->BindParam(':weekmarker', $weekmarker);
+                
+                //make sure statement executes correctly, then send to table with all player picks
+                                
+                if ($submit->execute()) {
+                    $URL = "player_picks_table.php";
+                    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+                } else {
+                    echo "It seems like there was a problem submitting your picks.  Please try again.";
+                }
+
+                // check to see if player has already made picks for this week
+                
+                $keycheck = "SELECT primary_key 
+                            FROM player_picks
+                            WHERE week = '$weekmarker'
+                            AND player_id = '$id'";
+                
+                $rowcheck = $conn->prepare($keycheck);
+                $rowcheck->execute();
+                $rowpk = $rowcheck->fetchall(PDO::FETCH_COLUMN);
+
+                // if yes, update existing picks
+                
+                if (count($rowpk) > 0) {
+                    $update_query = "UPDATE player_picks
+                                    SET pick_1 = :pick_1, 
+                                        pick_2 = :pick_2, 
+                                        pick_3 = :pick_3, 
+                                        pick_4 = :pick_4, 
+                                        pick_5 = :pick_5
+                                    WHERE week = '$weekmarker'
+                                    AND player_id = '$id'";
+
+                    $update = $conn->prepare($update_query);
+
+                    $update->BindParam(':pick_1', $_POST['pick_1']);
+                    $update->BindParam(':pick_2', $_POST['pick_2']);
+                    $update->BindParam(':pick_3', $_POST['pick_3']);
+                    $update->BindParam(':pick_4', $_POST['pick_4']);
+                    $update->BindParam(':pick_5', $_POST['pick_5']);
+
+                    if ($update->execute()) {
                         $URL = "player_picks_table.php";
                         echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
                     } else {
-                        echo "It seems like there was a problem submitting your picks.  Please try again.";
+                        echo "<p>It seems like there was a problem submitting your picks.  Please try again.</p>";
+                        echo '<p><a href="picksinput.php">Try Again</a></p><br>';
+                        echo '<p><a href="home.php">Return to Home Page</a></p>';
+                        exit();
                     }
-
-                    // check to see if player has already made picks for this week
-                    
-                    $keycheck = "SELECT primary_key 
-                                FROM player_picks
-                                WHERE week = '$weekmarker'
-                                AND player_id = '$id'";
-                    
-                    $rowcheck = $conn->prepare($keycheck);                                                           
-                    $rowcheck->execute();
-                    $rowpk = $rowcheck->fetchall(PDO::FETCH_COLUMN);
-
-                    // if yes, update existing picks
-                    
-                    if(count($rowpk) > 0) {
-
-                        $update_query = "UPDATE player_picks
-                                        SET pick_1 = :pick_1, 
-                                            pick_2 = :pick_2, 
-                                            pick_3 = :pick_3, 
-                                            pick_4 = :pick_4, 
-                                            pick_5 = :pick_5
-                                        WHERE week = '$weekmarker'
-                                        AND player_id = '$id'";
-
-                        $update = $conn->prepare($update_query);
-        
-                        $update->BindParam(':pick_1', $_POST['pick_1']);
-                        $update->BindParam(':pick_2', $_POST['pick_2']);
-                        $update->BindParam(':pick_3', $_POST['pick_3']);
-                        $update->BindParam(':pick_4', $_POST['pick_4']);
-                        $update->BindParam(':pick_5', $_POST['pick_5']);
-
-                        if ($update->execute()) {
-                            $URL = "player_picks_table.php";
-                            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-                        } else {
-                            echo "<p>It seems like there was a problem submitting your picks.  Please try again.</p>";
-                            echo '<p><a href="picksinput.php">Try Again</a></p><br>';
-                            echo '<p><a href="home.php">Return to Home Page</a></p>';
-                            exit();
-                        }
-
-                    } else {
-
-                        // if not, insert new row
-                        
-                        $insert_query = "INSERT INTO player_picks (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
-                                        VALUES 
-                                            (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5, :weekmarker)"; 
-
-                        $upsert = $conn->prepare($insert_query);
-                            
-                        $upsert->BindParam(':pick_1', $_POST['pick_1']);
-                        $upsert->BindParam(':pick_2', $_POST['pick_2']);
-                        $upsert->BindParam(':pick_3', $_POST['pick_3']);
-                        $upsert->BindParam(':pick_4', $_POST['pick_4']);
-                        $upsert->BindParam(':pick_5', $_POST['pick_5']);
-                        $upsert->BindParam(':player_id', $id);
-                        $upsert->BindParam(':weekmarker', $weekmarker);                     
-
-                        if ($upsert->execute()) {
-                            $URL = "player_picks_table.php";
-                            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-                        } else {
-                            echo "<p>It seems like there was a problem submitting your picks.  Please try again.</p>";
-                            echo '<p><a href="picksinput.php">Try Again</a></p><br>';
-                            echo '<p><a href="home.php">Return to Home Page</a></p>';
-                            exit();
-                        }
-                    }    
-
                 } else {
-                    echo '<p><b>You cannot select both sides of the same game!</b></p><br>';
-                    echo '<p><a href="picksinput.php">Try Again</a></p><br>';
-                    echo '<p><a href="home.php">Return to Home Page</a></p>';
-                    exit();
-                }
 
+                // if not, insert new row
+                
+                    $insert_query = "INSERT INTO player_picks (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
+                                VALUES 
+                                    (:player_id, :pick_1, :pick_2, :pick_3, :pick_4, :pick_5, :weekmarker)";
+
+                    $upsert = $conn->prepare($insert_query);
+                    
+                    $upsert->BindParam(':pick_1', $_POST['pick_1']);
+                    $upsert->BindParam(':pick_2', $_POST['pick_2']);
+                    $upsert->BindParam(':pick_3', $_POST['pick_3']);
+                    $upsert->BindParam(':pick_4', $_POST['pick_4']);
+                    $upsert->BindParam(':pick_5', $_POST['pick_5']);
+                    $upsert->BindParam(':player_id', $id);
+                    $upsert->BindParam(':weekmarker', $weekmarker);
+
+                    if ($upsert->execute()) {
+                        $URL = "player_picks_table.php";
+                        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+                    } else {
+                        echo "<p>It seems like there was a problem submitting your picks.  Please try again.</p>";
+                        echo '<p><a href="picksinput.php">Try Again</a></p><br>';
+                        echo '<p><a href="home.php">Return to Home Page</a></p>';
+                        exit();
+                    }
+                }
             } else {
-                echo '<p><b>You cannot select the same team twice!</b></p><br>';
+                echo '<p><b>Some of your picks are no longer available.  Please try again!</b></p><br>';
                 echo '<p><a href="picksinput.php">Try Again</a></p><br>';
                 echo '<p><a href="home.php">Return to Home Page</a></p>';
                 exit();
             }
-		
+        } else {
+            echo '<p><b>You cannot select both sides of the same game!</b></p><br>';
+            echo '<p><a href="picksinput.php">Try Again</a></p><br>';
+            echo '<p><a href="home.php">Return to Home Page</a></p>';
+            exit();
+        }
+    
+
     } else {
-        echo '<p><b>Please select 5 teams!</b></p><br>';
+        echo '<p><b>You cannot select the same team twice!</b></p><br>';
         echo '<p><a href="picksinput.php">Try Again</a></p><br>';
         echo '<p><a href="home.php">Return to Home Page</a></p>';
-		exit();
-		
+        exit();
     }
+		
 }
 
 	

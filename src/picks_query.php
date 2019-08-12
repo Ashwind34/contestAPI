@@ -135,19 +135,20 @@ function PickDropdown($pick, $picknum) {
 
     global $date, $player_id, $conn, $weekmarker, $user_pick_array;
 
-    // query db to get list of teams available to pick for that week
+	// query db to get list of teams available to pick for that week
+	// -10800 seconds used to offset west coast time vs east coast game start times
 
-    $t = $date; //time();
+    $t = $date; 
 
     $team_query = "SELECT home AS teamlist
 					FROM regseason 
 					WHERE week='$weekmarker' 
-					AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > '$t'
+					AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) - 10800 > '$t'
 					UNION
 					SELECT away AS teamlist
 					FROM regseason 
 					WHERE week='$weekmarker' 
-					AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) > '$t'
+					AND UNIX_TIMESTAMP(CONCAT(Start_Date, ' ', Start_Time)) - 10800 > '$t'
 					ORDER BY teamlist ASC";
 
     $team_list_query = $conn->prepare($team_query);

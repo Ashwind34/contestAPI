@@ -1,3 +1,14 @@
+<?php 
+
+session_start();
+
+require_once('pdo_connect.php');
+require_once('pinupdate.php');
+require_once('sendMessage.php');
+
+?>
+
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -10,11 +21,7 @@
 
 <?php
 
-require_once('pdo_connect.php');
-require_once('pinupdate.php');
-require_once('sendMessage.php');
 
-session_start();
 
 if(empty($_SESSION['player_id'])) {
 
