@@ -183,7 +183,8 @@ if (!empty($_POST['submit'])) {
                     Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!
                 </div>
                 <div>
-                    <p style="color:red;">Beta Test Date: <?php echo $fake_date ?></p><br>			
+                    <p style="color:red;">Beta Test Date: <br>
+                    <?php echo $fake_date ?></p><br>			
                     <?php echo $weekly_lines_table ?>	
                 </div>
                 <div class="pickselect" style="font-size:0.85rem;">
