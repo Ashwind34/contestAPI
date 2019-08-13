@@ -1,7 +1,5 @@
 <?php 
 
-session_start();
-
 require_once('datecheck.php');
 require_once('pdo_connect.php');
 
@@ -131,7 +129,7 @@ if (count($data) > 0) {
 
 //function that populates pick dropdown menus with correct teams based on kickoff times
     
-function PickDropdown($pick, $picknum) {
+function PickDropdown($picknum) {
 
     global $date, $player_id, $conn, $weekmarker, $user_pick_array;
 

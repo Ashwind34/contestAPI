@@ -198,23 +198,23 @@ if (!empty($_POST['submit'])) {
                 <form action="picksinput.php" method="post">
                     <div class="pickselect">
                         Pick #1		
-                        <?php PickDropdown($pick_1,'pick_1'); ?>
+                        <?php PickDropdown('pick_1'); ?>
                     </div>
                     <div class="pickselect">
                         Pick #2
-                        <?php PickDropdown($pick_2, 'pick_2'); ?> 
+                        <?php PickDropdown('pick_2'); ?> 
                     </div> 
                     <div class="pickselect">	
                         Pick #3
-                        <?php PickDropdown($pick_3, 'pick_3'); ?>
+                        <?php PickDropdown('pick_3'); ?>
                     </div>
                     <div class="pickselect">
                         Pick #4
-                        <?php PickDropdown($pick_4, 'pick_4'); ?>
+                        <?php PickDropdown('pick_4'); ?>
                     </div>
                     <div class="pickselect">
                         Pick #5
-                        <?php PickDropdown($pick_5,'pick_5'); ?>
+                        <?php PickDropdown('pick_5'); ?>
                     </div>
                     <div>
                         <input type="submit" name="submit" value="Submit Your Picks">
