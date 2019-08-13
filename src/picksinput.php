@@ -180,7 +180,7 @@ if (!empty($_POST['submit'])) {
         <div class="wrapper">
             <div class="inputContainer">
                 <div class="picksTitle">
-                    Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!
+                    Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!                    
                 </div>
                 <div>
                     <p style="color:red;">Beta Test Date: <br>
