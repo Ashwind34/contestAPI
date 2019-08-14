@@ -71,7 +71,7 @@ if(isset($_SESSION['player_id'])) {
 						LICENSED BY
 					</div>
 					<div>
-						NINTENDO OF AMERICA INC.
+						VANDELAY INDUSTRIES, INC.
 					</div>
 				</div>	
 			</div>
