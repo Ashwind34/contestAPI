@@ -5,7 +5,7 @@ require_once('datecheck.php');
 require_once('pdo_connect.php');
 require_once('picks_query.php');
 
-if(empty($_SESSION['player_id'])) {
+if(!sessionCheck()) {
 
 	header("Location: ./login.php");
 

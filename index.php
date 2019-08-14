@@ -7,7 +7,7 @@ require_once('src/datecheck.php');
 
 //check if user is logged in
 
-if(isset($_SESSION['player_id'])) {
+if(sessionCheck()) {
 
 	header("Location: ./src/home.php");
 

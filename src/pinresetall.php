@@ -6,6 +6,10 @@ require_once('pdo_connect.php');
 require_once('pinupdate.php');
 require_once('sendMessage.php');
 
+if(!adminCheck()) {
+	header("Location: ./login.php");
+}
+
 ?>
 
 
@@ -20,14 +24,6 @@ require_once('sendMessage.php');
 	</head>
 
 <?php
-
-
-
-if(empty($_SESSION['player_id'])) {
-
-	header("Location: ./login.php");
-
-}
 
 //check if $_POST is empty
 

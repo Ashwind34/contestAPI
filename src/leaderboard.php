@@ -2,6 +2,12 @@
 
 require_once('leaderboardtable.php');
 
+if(!sessionCheck()) {
+
+	header("Location: ./login.php");
+
+}
+
 ?>
 
 <!DOCTYPE html>

@@ -18,7 +18,7 @@ require_once('sendMessage.php');
 
 <?php
 
-if (isset($_SESSION['player_id'])) {
+if (sessionCheck()) {
     
     $record = $conn->prepare("SELECT player_id, email FROM player_roster WHERE player_id = :id");
     $record->bindParam(':id', $_SESSION['player_id']);

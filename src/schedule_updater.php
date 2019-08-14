@@ -5,11 +5,10 @@ session_start();
 require_once('pdo_connect.php');
 require_once('datecheck.php');
 
-if(empty($_SESSION['player_id'])) {
-
+if(!adminCheck()) {
 	header("Location: ./login.php");
-
 }
+
 ?>
 
 

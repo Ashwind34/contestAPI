@@ -2,6 +2,9 @@
 
 session_start();
 
+require_once('pdo_connect.php');
+require_once('emailcheck.php');
+
 ?>
 
 <!DOCTYPE HTML>
@@ -13,10 +16,7 @@ session_start();
 
 <?php
 
-require_once('pdo_connect.php');
-require_once('emailcheck.php');
-
-if (isset($_SESSION['player_id'])) {
+if (sessionCheck()) {
     
     $record = $conn->prepare("SELECT player_id, email FROM player_roster WHERE player_id = :id");
     $record->bindParam(':id', $_SESSION['player_id']);

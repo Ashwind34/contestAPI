@@ -5,7 +5,7 @@ require_once('datecheck.php');
 
 session_start();
 
-if(empty($_SESSION['player_id'])) {
+if(!sessionCheck()) {
 
 	header("Location: ./login.php");
 

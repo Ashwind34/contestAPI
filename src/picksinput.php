@@ -22,7 +22,7 @@ require_once('dupeteamcheck.php');
 
 <?php
 
-if (isset($_SESSION['player_id'])) {
+if (sessionCheck()) {
     
     //PDO prepared statement
 

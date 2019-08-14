@@ -8,7 +8,7 @@ require_once('datecheck.php');
 
 //check if user is logged in
 
-if(isset($_SESSION['player_id'])) {
+if(sessionCheck()) {
 	
 	//PDO prepared statement
 	$record = $conn->prepare("SELECT player_id, first_name FROM player_roster WHERE player_id = :id"); 
@@ -64,7 +64,7 @@ if(isset($_SESSION['player_id'])) {
 						<!-- Allow link to admin menu for specific users -->
 						
 						<?php                     
-						if ($user['player_id'] == 1 OR $user['player_id'] == 2) {
+						if ($user['player_id'] == 1 || $user['player_id'] == 2) {
 							
 							echo'<a href="admin.php"><i>Admin Page</i></a>';
 							
