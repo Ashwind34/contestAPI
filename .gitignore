@@ -1,6 +1,6 @@
 # DB credentials
-pdo_connect.php
 email_conf.php
+src/creds.php
 
 # Visual Studio files
 /.vs
