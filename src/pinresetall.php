@@ -19,8 +19,12 @@ if(!adminCheck()) {
 		<title>
 			SuperContest 2019
 		</title>
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
 	    <link rel="stylesheet" type="text/css" href="../css/style.css">
-		<meta name="viewport" content="width=device-width">
+		
 	</head>
 
 <?php

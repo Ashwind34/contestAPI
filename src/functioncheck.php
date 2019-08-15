@@ -19,6 +19,8 @@ if(!empty($_POST['submit'])) {
     print 'GameCheck:' . gameCheck($_POST) . '<br>';
     print 'TimeCheck:' . timeCheck($_POST) . '<br>';
 
+    
+
 
 }
 
@@ -58,5 +60,6 @@ if(!empty($_POST['submit'])) {
                 </div>
             </div>
         </div>
+        <?php phpinfo(); ?>
 	</body>
 </html>

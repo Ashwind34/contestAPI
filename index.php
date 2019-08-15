@@ -26,6 +26,9 @@ if(sessionCheck()) {
 		<link rel="preload" href="./css/fonts/tecmo-bowl-body.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="preload" href="./css/fonts/tecmo-bowl-headline.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="preload" href="./css/fonts/francisco-serial-light-regular.woff2" as="font" type="font/woff2" crossorigin>
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
 		<meta name="viewport" content="width=device-width">
 	</head>

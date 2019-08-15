@@ -18,13 +18,16 @@ if(!adminCheck()) {
 		<title>
 			Admin
 		</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
 		<style>
 			h1{color:green;}
 			h2{color:black;}
 			p {color:blue; text-align:center;}
 		</style>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>				
 		<p><a href="schedule_updater.php"><i>Update Lines and Scores</i></a></p><br>
