@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+require_once('src/sessioncheck.php');
+
+setSession(basename(__FILE__));
 
 require_once('src/pdo_connect.php');
 require_once('src/datecheck.php');
@@ -12,8 +14,6 @@ if(sessionCheck()) {
 	header("Location: ./src/home.php");
 
 }
-
-//BETA BRANCH IS NOW THE LIVE DREAMHOST BRANCH
 
 ?>
 

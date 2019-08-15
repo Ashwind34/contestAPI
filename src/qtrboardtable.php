@@ -1,8 +1,11 @@
 <?php
+
+require_once('sessioncheck.php');
+
+setSession(basename(__FILE__));
+
 require_once('datecheck.php');
 require_once('pdo_connect.php');
-
-session_start();
 
 if(empty($_SESSION['player_id'])) {
 
