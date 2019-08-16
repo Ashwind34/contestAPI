@@ -1,6 +1,7 @@
 # DB credentials
 email_conf.php
 src/creds.php
+./sessions
 
 # Visual Studio files
 /.vs
