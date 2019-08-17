@@ -25,27 +25,9 @@ require_once('dupeteamcheck.php');
 
 <?php
 
-if (sessionCheck()) {
-    
-    //PDO prepared statement
+sessionCheck("login.php");
 
-    $record = $conn->prepare("SELECT player_id, first_name FROM player_roster WHERE player_id = :id");
-    $record->bindParam(':id', $_SESSION['player_id']);
-    $record->execute();
-    
-    //create associative array from query
-    $result = $record->fetch(PDO::FETCH_ASSOC);    
-    
-    //set $user as array that contains query data
-    if (COUNT($result) > 0) {
-        $user = $result;
-    } else {
-        die("No result returned");
-    }
-} else {    
-    $URL = "home.php";
-    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-}
+$id = $_SESSION['player_id'];
 
 //skip sql query before data is entered
 
@@ -59,7 +41,7 @@ if (!empty($_POST['submit'])) {
 
         if (gameCheck($_POST)) {
 
-            $id = $_SESSION['player_id'];
+            //check to make sure games have not started at time of submit
 
             if (timeCheck($_POST)) {
                 
@@ -117,8 +99,11 @@ if (!empty($_POST['submit'])) {
                     $update->BindParam(':pick_5', $_POST['pick_5']);
 
                     if ($update->execute()) {
-                        $URL = "player_picks_table.php";
-                        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+                        // $URL = "player_picks_table.php";
+                        // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+                        '<script type="text/javascript">window.location.href="player_picks_table.php"</script>';
+                        exit();
+                        
                     } else {
                         echo "<p>It seems like there was a problem submitting your picks.  Please try again.</p>";
                         echo '<p><a href="picksinput.php">Try Again</a></p><br>';
@@ -183,7 +168,7 @@ if (!empty($_POST['submit'])) {
         <div class="wrapper">
             <div class="inputContainer">
                 <div class="picksTitle">
-                    Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!                    
+                    Make your picks for Week <?php echo "$weekmarker, $player_name";?>!                    
                 </div>
                 <div>
                     <p style="color:red;">Beta Test Date: <br>

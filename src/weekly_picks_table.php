@@ -5,11 +5,8 @@ session_start();
 require_once('datecheck.php');
 require_once('picks_query.php');
 
-if(!sessionCheck()) {
+sessionCheck("login.php");
 
-	header("Location: ./login.php");
-
-}
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +32,7 @@ if(!sessionCheck()) {
 
 					echo '<div class="formTitle">Your Picks for <br>Week ' . $weekmarker . '</div>';
 					echo $player_picks_table;
-					echo '<a class="formLink" href="../index.php">Return to Home Page</a>';
+					echo '<a class="formLink" href="home.php">Return to Home Page</a>';
 					
 				// } else {
 				// 	echo '<div class="formTitle">All Picks for <br>Week ' . $weekmarker . '</div>

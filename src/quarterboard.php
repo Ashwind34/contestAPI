@@ -2,6 +2,8 @@
 
 require_once('qtrboardtable.php');
 
+sessionCheck("login.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -23,15 +25,15 @@ require_once('qtrboardtable.php');
 				WEEK <?php echo $weekmarker ?>
 			</div>
             <div class="formLink">
-                <p>Current Quarter ends at Week <?php echo $qtrend ?></p>
+                <p>Current Quarter ends after Week <?php echo $qtrend ?></p>
 				<a href="leaderboard.php">Return to Leaderboard</a>
-				<a href="../index.php">Return to Home Page</a>				
+				<a href="home.php">Return to Home Page</a>				
 			</div>
 			<div>			
 				<?php echo $qtrboard; ?>				
 			</div>
 			<div>
-				<a class="formLink" href="../index.php">Return to Home Page</a>
+				<a class="formLink" href="home.php">Return to Home Page</a>
 				<br>
 				<br>
 			</div>

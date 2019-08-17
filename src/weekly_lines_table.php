@@ -1,15 +1,11 @@
 <?php 
 
+session_start();
+
 require_once('weekly_schedule.php');
 require_once('datecheck.php');
 
-session_start();
-
-if(!sessionCheck()) {
-
-	header("Location: ./login.php");
-
-}
+sessionCheck("login.php");
 
 ?>
 
@@ -31,7 +27,7 @@ if(!sessionCheck()) {
                 <?php echo $weekly_lines_table ?>
             </div>
             <div class='formLink'>
-                <a class="noMargin" href="../index.php">Return to Home Page</a>
+                <a class="noMargin" href="home.php">Return to Home Page</a>
             </div>
         </div>
         <br>

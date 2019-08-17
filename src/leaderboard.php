@@ -2,11 +2,7 @@
 
 require_once('leaderboardtable.php');
 
-if(!sessionCheck()) {
-
-	header("Location: ./login.php");
-
-}
+sessionCheck("login.php");
 
 ?>
 
@@ -30,13 +26,13 @@ if(!sessionCheck()) {
 			</div>
 			<div class="formLink">
 				<a class="noMargin" href="quarterboard.php">Quarterly Leaderboard</a>
-				<a href="../index.php">Return to Home Page</a>				
+				<a href="home.php">Return to Home Page</a>				
 			</div>
 			<div>			
 				<?php echo $leaderboard; ?>				
 			</div>
 			<div>
-				<a class="formLink" href="../index.php">Return to Home Page</a>
+				<a class="formLink" href="home.php">Return to Home Page</a>
 				<br>
 				<br>
 			</div>
