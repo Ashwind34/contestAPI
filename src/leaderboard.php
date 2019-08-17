@@ -1,9 +1,5 @@
 <?php
 
-require_once('sessioncheck.php');
-
-setSession(basename(__FILE__));
-
 require_once('leaderboardtable.php');
 
 sessionCheck("login.php");

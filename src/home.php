@@ -54,7 +54,7 @@ sessionCheck("login.php");
 							
 						} 
 						?>
-				</fieldset>	
+				</fieldset>
 				<br>
 				<br>
 			</div>

@@ -13,7 +13,6 @@ if(isset($_SESSION['player_id']) && !empty($_SESSION['player_id'])) {
 
 }
 
-
 ?>
 
 <!DOCTYPE HTML>

@@ -1,6 +1,8 @@
 <?php 
 
-session_start();
+require_once('sessioncheck.php');
+
+setSession(basename(__FILE__));
 
 require_once('weekly_schedule.php');
 require_once('datecheck.php');
@@ -30,6 +32,7 @@ sessionCheck("login.php");
                 <a class="noMargin" href="home.php">Return to Home Page</a>
             </div>
         </div>
+        <?php phpinfo() ?>
         <br>
         <br>
     </body>
