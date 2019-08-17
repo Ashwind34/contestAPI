@@ -55,9 +55,16 @@ function timeCheck($arr) {
     
     $result = $gamecheck->fetchAll(PDO::FETCH_COLUMN);
 
+    echo '<pre>';
+    print_r($result);
+    echo '</pre><br>';
+
     foreach ($arr as $key => $value) {
         if (!in_array($value, $result) && $key != 'submit') {
+            echo $key . '<br>';
+            echo $value . '<br>';
             $checkvalue = false;
+            echo $checkvalue;
         }
     }
 
