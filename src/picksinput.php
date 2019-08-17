@@ -58,11 +58,10 @@ if (!empty($_POST['submit'])) {
 
         if (gameCheck($_POST)) {
 
-            // check to make sure that picks are still available at time of submit
+            $id = $_SESSION['player_id'];
 
             if (timeCheck($_POST)) {
-                $id = $_SESSION['player_id'];
-
+                
                 // insert picks into picks log table for audit trail
                 
                 $submit = $conn->prepare("INSERT INTO picks_log (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
