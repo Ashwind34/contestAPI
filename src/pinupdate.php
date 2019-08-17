@@ -4,8 +4,6 @@
 
 function PinUpdate($email) {
 
-    // require_once('pdo_connect.php');
-
     global $conn;
    
     //generate random 4-digit pin number

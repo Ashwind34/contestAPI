@@ -41,6 +41,7 @@ if (!empty($_POST["select"])) {
         list($recipientEmail, $recipiantName, $subject, $body) = PinUpdate($email);
         send_email_message($recipientEmail, $recipiantName, $subject, $body);
     }
+    exit();
 }
 
 ?>

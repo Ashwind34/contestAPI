@@ -29,6 +29,7 @@ if (!empty($_POST['submit'])) {
     if (emailCheck($email)) {
         list($recipientEmail, $recipiantName, $subject, $body) = PinUpdate($email);
         send_email_message($recipientEmail, $recipiantName, $subject, $body);
+        exit();
     } else {
         email_error(basename(__FILE__));
     }
