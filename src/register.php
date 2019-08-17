@@ -1,16 +1,16 @@
 <?php 
 
-require_once('sessioncheck.php');
-
-setSession(basename(__FILE__));
+session_start();
+session_unset();
+session_destroy();
 
 require_once('pdo_connect.php');
 require_once('emailcheck.php');
+require_once('datecheck.php');
 
-if (sessionCheck()) {
 
-    header("Location: ./home.php");
-
+if($weekmarker > 3){
+    echo '<script type="text/javascript">window.location.href="./src/index.php"</script>';
 }
 
 ?>

@@ -21,7 +21,7 @@ if ($today < $season_start) {
 // $date = $today + 2419200;
 
 // MANUAL OVERRIDE FOR $DATE IF NEEDED
-$date = strtotime("09/08/2019 13:05:00");
+$date = strtotime("09/12/2019 22:05:00");
 
 $fake_date = date("m/d/Y h:i:sa", $date);
 

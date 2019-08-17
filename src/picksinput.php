@@ -27,26 +27,9 @@ require_once('dupeteamcheck.php');
 
 <?php
 
-if (sessionCheck()) {
-    
-    //PDO prepared statement
+sessionCheck("login.php");
 
-    $record = $conn->prepare("SELECT player_id, first_name FROM player_roster WHERE player_id = :id");
-    $record->bindParam(':id', $_SESSION['player_id']);
-    $record->execute();
-    
-    //create associative array from query
-    $result = $record->fetch(PDO::FETCH_ASSOC);    
-    
-    //set $user as array that contains query data
-    if (COUNT($result) > 0) {
-        $user = $result;
-    } else {
-        die("No result returned");
-    }
-} else {    
-    header("Location: ./login.php");
-}
+$id = $_SESSION['player_id'];
 
 //skip sql query before data is entered
 
@@ -60,11 +43,10 @@ if (!empty($_POST['submit'])) {
 
         if (gameCheck($_POST)) {
 
-            // check to make sure that picks are still available at time of submit
+            //check to make sure games have not started at time of submit
 
             if (timeCheck($_POST)) {
-                $id = $_SESSION['player_id'];
-
+                
                 // insert picks into picks log table for audit trail
                 
                 $submit = $conn->prepare("INSERT INTO picks_log (player_id, pick_1, pick_2, pick_3, pick_4, pick_5, week) 
@@ -77,15 +59,8 @@ if (!empty($_POST['submit'])) {
                 $submit->BindParam(':pick_5', $_POST['pick_5']);
                 $submit->BindParam(':player_id', $_SESSION['player_id']);
                 $submit->BindParam(':weekmarker', $weekmarker);
-                
-                //make sure statement executes correctly, then send to table with all player picks
-                                
-                if ($submit->execute()) {
-                    $URL = "player_picks_table.php";
-                    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-                } else {
-                    echo "It seems like there was a problem submitting your picks.  Please try again.";
-                }
+                $submit->execute();
+
 
                 // check to see if player has already made picks for this week
                 
@@ -119,8 +94,8 @@ if (!empty($_POST['submit'])) {
                     $update->BindParam(':pick_5', $_POST['pick_5']);
 
                     if ($update->execute()) {
-                        $URL = "player_picks_table.php";
-                        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+                        echo '<script type="text/javascript">window.location.href="player_picks_table.php"</script>';
+                        exit();                        
                     } else {
                         echo "<p>It seems like there was a problem submitting your picks.  Please try again.</p>";
                         echo '<p><a href="picksinput.php">Try Again</a></p><br>';
@@ -146,8 +121,8 @@ if (!empty($_POST['submit'])) {
                     $upsert->BindParam(':weekmarker', $weekmarker);
 
                     if ($upsert->execute()) {
-                        $URL = "player_picks_table.php";
-                        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+                        echo '<script type="text/javascript">window.location.href="player_picks_table.php"</script>';
+                        exit();
                     } else {
                         echo "<p>It seems like there was a problem submitting your picks.  Please try again.</p>";
                         echo '<p><a href="picksinput.php">Try Again</a></p><br>';
@@ -185,7 +160,7 @@ if (!empty($_POST['submit'])) {
         <div class="wrapper">
             <div class="inputContainer">
                 <div class="picksTitle">
-                    Make your picks for Week <?php echo "$weekmarker, $user[first_name]";?>!                    
+                    Make your picks for Week <?php echo "$weekmarker, $player_name";?>!                    
                 </div>
                 <div>
                     <p style="color:red;">Beta Test Date: <br>
@@ -229,7 +204,7 @@ if (!empty($_POST['submit'])) {
                 </form>	
                 <br> 	
                 <div class="formLink">
-                    <a href="../index.php">Return to Home Page</a>                
+                    <a href="home.php">Return to Home Page</a>                
                 </div>
             </div>
             <br>

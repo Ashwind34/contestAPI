@@ -8,11 +8,7 @@ require_once('datecheck.php');
 require_once('pdo_connect.php');
 require_once('picks_query.php');
 
-if(!sessionCheck()) {
-
-	header("Location: ./login.php");
-
-}
+sessionCheck("login.php");
 
 ?>
 
@@ -41,7 +37,7 @@ if(!sessionCheck()) {
                     <?php echo $player_picks_table;?>
                 </div>
                 <div class="formLink">
-                    <a class="noMargin" href="../index.php">Return to Home Page</a>
+                    <a class="noMargin" href="home.php">Return to Home Page</a>
                 </div>
                 <div class="formLink">
                     <img class="boPic" src="../css/img/TDbo.png" alt="Bo knows Tecmo Bowl">
