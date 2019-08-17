@@ -5,9 +5,9 @@ session_start();
 require_once('pdo_connect.php');
 require_once('emailcheck.php');
 
-if (sessionCheck()) {
+if(isset($_SESSION['player_id']) && !empty($_SESSION['player_id'])) {
 
-    header("Location: ./home.php");
+	echo '<script type="text/javascript">window.location.href="./home.php"</script>';
 
 }
 
@@ -41,11 +41,11 @@ if (!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
         if (COUNT($result) > 0 && password_verify($_POST['userpass'], $result['password'])) {
             $_SESSION['player_id'] = $result['player_id'];
             $_SESSION['email'] = $result['email'];
-            $_SESSION['fname'] = $result['first_name'];
+            $_SESSION['name'] = $result['first_name'];
     
             // redirect to index.php without using header()
-            // $URL = "home.php";
-            // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+            $URL = "home.php";
+            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         } else {
             echo '<br><br><p>Email or password is incorrect.  Please try again.</p>
                 <br><p><a href="login.php">Try Again</a></p>

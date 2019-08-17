@@ -5,15 +5,12 @@ session_start();
 require_once('src/pdo_connect.php');
 require_once('src/datecheck.php');
 
-//check if user is logged in
+if(isset($_SESSION['player_id']) && !empty($_SESSION['player_id'])) {
 
-if(sessionCheck()) {
-
-	header("Location: ./src/home.php");
-
+	echo '<script type="text/javascript">window.location.href="./src/home.php"</script>';
 }
 
-//BETA BRANCH IS NOW THE LIVE DREAMHOST BRANCH
+
 
 ?>
 
