@@ -19,10 +19,8 @@ sessionCheck("login.php");
 	<body class="blackBack">
 		<div class="boardContainer">
 			<div class='formTitle'>
-				LEADERBOARD 
-			</div>
-			<div class='formTitle'>
-				WEEK <?php echo $weekmarker; ?>
+				LEADERBOARD<br>
+				WEEK <?php echo $weekmarker; ?> 
 			</div>
 			<div class="formLink">
 				<a class="noMargin" href="quarterboard.php">Quarterly Leaderboard</a>
