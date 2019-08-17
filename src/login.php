@@ -32,7 +32,7 @@ if (!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
 
     if (emailCheck($email)) {    
 
-        $record = $conn->prepare("SELECT player_id, email, password FROM player_roster WHERE email = :email");
+        $record = $conn->prepare("SELECT player_id, email, password, first_name FROM player_roster WHERE email = :email");
         $record->bindParam(':email', $_POST['useremail']);
         $record->execute();    
         $result = $record->fetch(PDO::FETCH_ASSOC);
@@ -40,10 +40,12 @@ if (!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
         //check password entered by user against db password, set session if match
         if (COUNT($result) > 0 && password_verify($_POST['userpass'], $result['password'])) {
             $_SESSION['player_id'] = $result['player_id'];
+            $_SESSION['email'] = $result['email'];
+            $_SESSION['fname'] = $result['first_name'];
     
             // redirect to index.php without using header()
-            $URL = "home.php";
-            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+            // $URL = "home.php";
+            // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
         } else {
             echo '<br><br><p>Email or password is incorrect.  Please try again.</p>
                 <br><p><a href="login.php">Try Again</a></p>

@@ -13,25 +13,27 @@ require_once('datecheck.php');
 //check if user is logged in
 
 if(sessionCheck()) {
+
+	$name = $_SESSION['fname'];
 	
-	//PDO prepared statement
-	$record = $conn->prepare("SELECT player_id, first_name FROM player_roster WHERE player_id = :id"); 
-	$record->bindParam(':id',$_SESSION['player_id']);
-	$record->execute();
+	// //PDO prepared statement
+	// $record = $conn->prepare("SELECT player_id, first_name FROM player_roster WHERE player_id = :id"); 
+	// $record->bindParam(':id',$_SESSION['player_id']);
+	// $record->execute();
 	
-	//create associative array from query
-	$result = $record->fetch(PDO::FETCH_ASSOC);
-	$user = '';
+	// //create associative array from query
+	// $result = $record->fetch(PDO::FETCH_ASSOC);
+	// $user = '';
 	
-	//set $user as array that contains query data
-	if (COUNT($result) > 0 ) {
-		$user = $result;
-	} else {
-		die("No result returned");
-	}
+	// //set $user as array that contains query data
+	// if (COUNT($result) > 0 ) {
+	// 	$user = $result;
+	// } else {
+	// 	die("No result returned");
+	// }
 } else {    
 	$URL = "login.php";
-	echo '<script type="text/javascript">window.location.href=' . $URL . '</script>';
+	echo '<script type="text/javascript">window.location.href="' . $URL . '"</script>';
     // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
 
@@ -114,7 +116,7 @@ if(sessionCheck()) {
 					SUPERCONTEST 2019
 				</div>
 				<div class="hello">
-					Hello<?php echo " $user[first_name]";?>
+					Hello<?php echo " $name";?>
 				</div>
 				<fieldset>
 					<legend>Main Menu</legend>		
