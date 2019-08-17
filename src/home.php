@@ -26,7 +26,8 @@ if(sessionCheck()) {
 		die("No result returned");
 	}
 } else {    
-    header("Location: ./login.php");
+	$URL = "login.php";
+    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
 }
 ?>
 

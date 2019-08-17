@@ -97,30 +97,6 @@ function timeCheck($arr) {
         }
     }
 
-    echo 'Week =' . $weekmarker;
-
-    echo '<br>ID = ' . $id;
-
-    echo '<pre>';
-    print_r($result);
-    echo '</pre><br>';
-
-    echo 'Raw<br><pre>';
-    print_r($raw_arr);
-    echo '</pre><br>';
-
-    echo 'Picks<br><pre>';
-    print_r($picks_arr);
-    echo '</pre><br>';
-
-    echo 'Filtered<br><pre>';
-    print_r($filtered_arr);
-    echo '</pre><br>';
-
-    echo 'Final<br><pre>';
-    print_r($final_arr);
-    echo '</pre><br>';
-
     // make sure ONLY NEW PICKS are screened for time
 
     foreach ($final_arr as $value) {
