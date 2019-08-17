@@ -4,11 +4,11 @@ session_start();
 
 require_once('pdo_connect.php');
 require_once('emailcheck.php');
+require_once('datecheck.php');
 
-if (sessionCheck()) {
 
-    header("Location: ./home.php");
-
+if($weekmarker > 3){
+    echo '<script type="text/javascript">window.location.href="./src/index.php"</script>';
 }
 
 ?>

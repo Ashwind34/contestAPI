@@ -21,14 +21,7 @@ require_once('sendMessage.php');
 
 <?php
 
-if (sessionCheck()) {
-    
-    $record = $conn->prepare("SELECT player_id, email FROM player_roster WHERE player_id = :id");
-    $record->bindParam(':id', $_SESSION['player_id']);
-    $record->execute();
-    $user = $record->fetch(PDO::FETCH_ASSOC);    
-
-} 
+$player_email = $_SESSION['email'];
 
 if (!empty($_POST['submit'])) {
     $email = $_POST['email'];
@@ -50,7 +43,7 @@ if (!empty($_POST['submit'])) {
             </div>
             <form action="pinreset.php" method="post">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" value="<?php echo $user['email']; ?>"><br>  
+                <input type="email" name="email" id="email" value="<?php echo $player_email;?>"><br>  
                 <input type="submit" name="submit" value="Reset Your Pin">
             </form>
             <div class='formLink'>
