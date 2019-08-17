@@ -250,9 +250,8 @@ if(!adminCheck()) {
 						}
 					}
 						
-				echo '<meta HTTP-EQUIV="Refresh" Content="0; URL=weekly_lines_table.php">';;
-				//POSSIBLY REDUNDANT
-				header("Location: ./weekly_lines_table.php");
+				echo '<script type="text/javascript">window.location.href="weekly_lines_table.php"</script>';
+				exit();
 				
 				}			
 

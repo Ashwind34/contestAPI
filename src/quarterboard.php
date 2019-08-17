@@ -25,7 +25,7 @@ sessionCheck("login.php");
 				WEEK <?php echo $weekmarker ?>
 			</div>
             <div class="formLink">
-                <p>Current Quarter ends after Week <?php echo $qtrend ?></p>
+                <p>Current Quarter ends after Week <?php echo $qtrend; ?></p>
 				<a href="leaderboard.php">Return to Leaderboard</a>
 				<a href="home.php">Return to Home Page</a>				
 			</div>

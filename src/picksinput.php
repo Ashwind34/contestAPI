@@ -57,15 +57,8 @@ if (!empty($_POST['submit'])) {
                 $submit->BindParam(':pick_5', $_POST['pick_5']);
                 $submit->BindParam(':player_id', $_SESSION['player_id']);
                 $submit->BindParam(':weekmarker', $weekmarker);
-                
-                //make sure statement executes correctly, then send to table with all player picks
-                                
-                if ($submit->execute()) {
-                    $URL = "player_picks_table.php";
-                    echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-                } else {
-                    echo "It seems like there was a problem submitting your picks.  Please try again.";
-                }
+                $submit->execute();
+
 
                 // check to see if player has already made picks for this week
                 
@@ -99,11 +92,8 @@ if (!empty($_POST['submit'])) {
                     $update->BindParam(':pick_5', $_POST['pick_5']);
 
                     if ($update->execute()) {
-                        // $URL = "player_picks_table.php";
-                        // echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
-                        '<script type="text/javascript">window.location.href="player_picks_table.php"</script>';
-                        exit();
-                        
+                        echo '<script type="text/javascript">window.location.href="player_picks_table.php"</script>';
+                        exit();                        
                     } else {
                         echo "<p>It seems like there was a problem submitting your picks.  Please try again.</p>";
                         echo '<p><a href="picksinput.php">Try Again</a></p><br>';
@@ -129,8 +119,8 @@ if (!empty($_POST['submit'])) {
                     $upsert->BindParam(':weekmarker', $weekmarker);
 
                     if ($upsert->execute()) {
-                        $URL = "player_picks_table.php";
-                        echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+                        echo '<script type="text/javascript">window.location.href="player_picks_table.php"</script>';
+                        exit();
                     } else {
                         echo "<p>It seems like there was a problem submitting your picks.  Please try again.</p>";
                         echo '<p><a href="picksinput.php">Try Again</a></p><br>';
@@ -212,7 +202,7 @@ if (!empty($_POST['submit'])) {
                 </form>	
                 <br> 	
                 <div class="formLink">
-                    <a href="../index.php">Return to Home Page</a>                
+                    <a href="home.php">Return to Home Page</a>                
                 </div>
             </div>
             <br>

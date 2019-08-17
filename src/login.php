@@ -44,8 +44,7 @@ if (!empty($_POST['userpass']) && !empty($_POST['useremail'])) {
             $_SESSION['name'] = $result['first_name'];
     
             // redirect to index.php without using header()
-            $URL = "home.php";
-            echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $URL . '">';
+            echo '<script type="text/javascript">window.location.href="home.php"</script>';;
         } else {
             echo '<br><br><p>Email or password is incorrect.  Please try again.</p>
                 <br><p><a href="login.php">Try Again</a></p>
