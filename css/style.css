@@ -210,7 +210,7 @@ legend {
 	grid-row: 3 / 4;
 }
 
-a:link, a:visited {
+a:link, a:visited, .payout {
 	color: white;
 	font-size: 0.9rem;
 	text-align:center;
