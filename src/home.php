@@ -38,7 +38,7 @@ sessionCheck("login.php");
 				</div>
 				<fieldset>
 					<legend>Main Menu</legend>		
-						<a href="picksinput.php">Make Your Picks</a>
+						<a class = "noMargin" href="picksinput.php">Make Your Picks</a>
 						<a href="weekly_lines_table.php">Weekly Schedule</a>
 						<a href="weekly_picks_table.php">Current Picks</a>
 						<a href="leaderboard.php">Leaderboard</a>
