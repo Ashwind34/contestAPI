@@ -33,24 +33,24 @@ $quarterly = 100;
 	</head>
 	<body>
 		<div class="wrapper">
-			<div class='homeContainer'>
-				<div class='redHead'>
-					TECMO 
+			<div class='payContainer'>
+				<div class='redHead' style="align-self:center">
+					TECMO<br>
+					<span style='color:white'>SUPERCONTEST 2019</span>
 				</div>
-				<div class='whiteHead'>
-					SUPERCONTEST 2019
-				</div>
+				<!-- <div> -->
 				<fieldset>
 					<legend>Payouts</legend>		
-						<div class="payout">1st Place: $<?php echo $first ?></div>
+						<div class="payout" style="margin:0">1st Place: $<?php echo $first ?></div>
 						<div class="payout">2nd Place: $<?php echo $second ?></div>
 						<div class="payout">3rd Place: $<?php echo $third ?></div>
 						<div class="payout">4th Place: $<?php echo $fourth ?></div>
 						<div class="payout">5th Place: $<?php echo $fifth ?></div>
 						<div class="payout">6th Place: $<?php echo $sixth ?></div>
 						<div class="payout">7th Place: $<?php echo $seventh ?></div>
-						<div class="payout">Quarterly Winner: $<?php echo $quarterly ?></div>
+						<div class="payout">Quarterly: $<?php echo $quarterly ?></div>
 				</fieldset>
+				<!-- </div> -->
                 <div>
                     <a class="formLink" href="home.php">Return to Home Page</a>
                     <br>

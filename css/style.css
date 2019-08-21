@@ -108,6 +108,7 @@ body {
 .schedContainer,
 .boardContainer,
 .qtrboardContainer,
+.payContainer,
 .picksContainer,
 .inputContainer,
 .menuContainer,
@@ -154,6 +155,10 @@ body {
 	grid-template-rows: 1.25fr 2fr auto 1fr;
 }
 
+.payContainer {
+	grid-template-rows: 1.25fr auto 1fr;
+}
+
 .picksContainer {
 	grid-template-rows: 20% 2fr 3fr 8fr;
 }
@@ -182,7 +187,7 @@ fieldset, form {
 	border: 2em solid white;
 	border-width: medium;
 	border-radius: 5px;
-	min-width: 280px;
+	min-width: 85%;
 	font-family: "TecmoBody";
 	color: white;
 	line-height: 1.5;
@@ -221,6 +226,11 @@ a:link, a:visited, .payout {
 	font-size: 0.9rem;
 	text-align:center;
 	margin-top: 1.15rem;
+}
+
+.payout {
+	font-family: "TecmoBody";
+	display: grid;
 }
 
 .quartertext {
