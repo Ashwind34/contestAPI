@@ -267,6 +267,18 @@ label {
 	margin-right: 1.5rem;
 }
 
+@keyframes slide {
+	from {right: -200%;}
+	to {right: 25%}
+}
+
+.slide {
+	position: relative;
+	animation-name: slide;
+	animation-duration: 1.5s;
+	animation-timing-function: ease-out;
+}
+
 .boPic {
 	display: grid;
 	width: 100%;
