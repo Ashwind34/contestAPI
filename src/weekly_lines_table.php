@@ -32,7 +32,6 @@ sessionCheck("login.php");
                 <a class="noMargin" href="home.php">Return to Home Page</a>
             </div>
         </div>
-        <?php phpinfo() ?>
         <br>
         <br>
     </body>

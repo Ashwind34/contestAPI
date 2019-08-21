@@ -17,15 +17,13 @@ sessionCheck("login.php");
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
 	<body class="blackBack">
-		<div class="boardContainer">
+		<div class="qtrboardContainer">
 			<div class='formTitle'>
-				QUARTERLY LEADERBOARD 
-			</div>
-			<div class='formTitle'>
+				QUARTERLY LEADERBOARD<br>
 				WEEK <?php echo $weekmarker ?>
 			</div>
             <div class="formLink">
-                <p>Current Quarter ends after Week <?php echo $qtrend; ?></p>
+                <div class='quartertext'>Current Quarter ends after Week <?php echo $qtrend; ?></div>
 				<a href="leaderboard.php">Return to Leaderboard</a>
 				<a href="home.php">Return to Home Page</a>				
 			</div>
