@@ -38,7 +38,6 @@ $quarterly = 100;
 					TECMO<br>
 					<span style='color:white'>SUPERCONTEST 2019</span>
 				</div>
-				<!-- <div> -->
 				<fieldset>
 					<legend>Payouts</legend>		
 						<div class="payout" style="margin:0">1st Place: $<?php echo $first ?></div>
@@ -50,7 +49,6 @@ $quarterly = 100;
 						<div class="payout">7th Place: $<?php echo $seventh ?></div>
 						<div class="payout">Quarterly: $<?php echo $quarterly ?></div>
 				</fieldset>
-				<!-- </div> -->
                 <div>
                     <a class="formLink" href="home.php">Return to Home Page</a>
                     <br>
