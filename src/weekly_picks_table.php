@@ -45,10 +45,7 @@ sessionCheck("login.php");
 				// }
 				
 				?>
-				
-				<!-- <div class="formLink"> -->
 				<div class="slide">
-					<!-- <img src="../css/img/tecmoTD.png" alt=""> -->
 					<img class="boPic" src="../css/img/tecmoTD.png" alt="">
 				</div>
 			</div>

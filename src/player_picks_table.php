@@ -39,7 +39,7 @@ sessionCheck("login.php");
                 <div class="formLink">
                     <a class="noMargin" href="home.php">Return to Home Page</a>
                 </div>
-                <div class="formLink">
+                <div class="slide">
                     <img class="boPic" src="../css/img/TDbo.png" alt="Bo knows Tecmo Bowl">
                 </div>           
             </div>

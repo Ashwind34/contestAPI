@@ -269,7 +269,7 @@ label {
 
 @keyframes slide {
 	from {right: -200%;}
-	to {right: 25%}
+	to {right: 0%;}
 }
 
 .slide {
@@ -283,6 +283,7 @@ label {
 	display: grid;
 	width: 100%;
 	align-self: end;
+	margin: auto;
 }
 
 .regselect, select {
