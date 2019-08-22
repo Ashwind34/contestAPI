@@ -96,10 +96,6 @@ body {
 	margin: 1.25vh;
 }
 
-.stars {
-	height: 2%;
-}
-
 .homeContainer, 
 .pinContainer,
 .regContainer,
@@ -394,10 +390,6 @@ border-bottom-left-radius: 4px;
 /* bottom-right border-radius */
 table tr:last-child td:last-child {
 border-bottom-right-radius: 4px;
-}
-
-.bold {
-	font-weight:bold;
 }
 
 @media screen and (max-width: 365px) {
