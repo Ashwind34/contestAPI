@@ -15,35 +15,20 @@ if(empty($_SESSION['player_id'])) {
 
 //query for leaderboard table
 
-$query = $conn->prepare(
-						"SELECT
-							player_picks.player_id,
-							player_picks.week_score,
-							player_picks.week,
-							CONCAT(
-								player_roster.first_name,
-								' ',
-								player_roster.last_name
-							) AS name,
-							player_roster." . $qtrcol . " AS qtr
-						FROM
-							player_picks
-						INNER JOIN
-							player_roster
-						ON
-							player_picks.player_id = player_roster.player_id
-						WHERE
-							week = '$last_weekmarker'
-						ORDER BY
-						qtr DESC, name"
-);
-			
-		
-$query->execute();
-					
-//create array - data to be displayed in weekly picks table below.
+$query = "SELECT 
+			CONCAT
+			( player_roster.first_name, ' ', player_roster.last_name ) AS name, 
+			player_roster." . $qtrcol . " AS qtr,
+			IFNULL( 
+			(SELECT week_score FROM player_picks WHERE week = " . $last_weekmarker . " AND player_picks.player_id = player_roster.player_id), 0) AS week_score
+			FROM player_roster 
+			ORDER BY qtr DESC, name";
 
-$data=$query->fetchall(PDO::FETCH_ASSOC);
+$stmt = $conn->prepare($query);			
+		
+$stmt->execute();
+
+$data=$stmt->fetchall(PDO::FETCH_ASSOC);
 
 //Make sure	query array is not empty, then create html table with all entries
 //Save html output to variable with ob_start(), then echo in html below
