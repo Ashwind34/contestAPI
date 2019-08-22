@@ -35,28 +35,20 @@ if(empty($_SESSION['player_id'])) {
 // 			ORDER BY
 // 			total_score DESC, name";
 
-$query = "SELECT
-			player_picks.week_score,
-			CONCAT(
-				player_roster.first_name,
-				' ',
-				player_roster.last_name
-			) AS name,
-			player_roster.total_score,
-			player_roster." . $qtrcol . " AS qtr
-			FROM
-			player_picks
-			INNER JOIN
-			player_roster
-			ON
-			player_picks.player_id = player_roster.player_id
-			WHERE
-			week = '$last_weekmarker'
-			ORDER BY
-			total_score DESC, name";
+$last_weekmarker = 13;
+$weekmarker = 14;
 
-$stmt = $conn->prepare($query);
-			
+$query = "SELECT 
+			CONCAT
+			( player_roster.first_name, ' ', player_roster.last_name ) AS name, 
+			player_roster.total_score, 
+			player_roster." . $qtrcol . " AS qtr,
+			IFNULL( 
+			(SELECT week_score FROM player_picks WHERE week = " . $last_weekmarker . " AND player_picks.player_id = player_roster.player_id), 0) AS week_score
+			FROM player_roster 
+			ORDER BY total_score DESC, name";
+
+$stmt = $conn->prepare($query);			
 		
 $stmt->execute();
 					
