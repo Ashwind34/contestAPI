@@ -42,6 +42,7 @@ sessionCheck("login.php");
 						<a href="weekly_lines_table.php">Weekly Schedule</a>
 						<a href="weekly_picks_table.php">Current Picks</a>
 						<a href="leaderboard.php">Leaderboard</a>
+						<a href="payouts.php">Contest Prizes</a>
 						<a href="passreset.php">Change Password</a>
 						<a href="logout.php">Logout</a>
 

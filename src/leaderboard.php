@@ -26,7 +26,6 @@ sessionCheck("login.php");
 			</div>
 			<div class="formLink">
 				<a class="noMargin" href="quarterboard.php">Quarterly Leaderboard</a>
-				<a href="payouts.php">Prize List</a>
 				<a href="home.php">Return to Home Page</a>				
 			</div>
 			<div>			
