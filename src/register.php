@@ -10,7 +10,7 @@ require_once('datecheck.php');
 
 
 if($weekmarker > 3){
-    echo '<script type="text/javascript">window.location.href="./src/index.php"</script>';
+    echo '<script type="text/javascript">window.location.href="./home.php"</script>';
 }
 
 ?>
