@@ -36,8 +36,7 @@ if (count($data) > 0) {
 			<th>Underdog</th>
 			<th>Kickoff</th>
 		</tr>';
-    
-	// foreach loop to list out each row in the array
+		
 	// test to see if home or away is favored, then build table accordingly
     
     foreach ($data as $row) {

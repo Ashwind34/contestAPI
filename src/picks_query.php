@@ -22,8 +22,6 @@ $user_picks_table = $conn->prepare("SELECT
                         
 $user_picks_table->execute();
 
-//create array to pull data from
-
 $user_pick_array = $user_picks_table->fetchALL(PDO::FETCH_ASSOC);
 
 //Create HTML table and assign output to $player_picks_table variable
@@ -85,16 +83,10 @@ $picks_table = $conn->prepare("SELECT
 $picks_table->execute();
 
 $data=$picks_table->fetchall(PDO::FETCH_ASSOC);
-
-//NEED TO ADD LOGIC TO TRUNCATE LONG NAMES TO LAST INITIAL PLUS .
-  
-//Make sure	query array is not empty, then create html table with all entries
   
 if (count($data) > 0) {
 	
 	ob_start();
-
-	// CHECK TO SEE IF WE NEED TO ADD FAVORITE TEAM BELOW
     
 	echo 	
 	'<table>	

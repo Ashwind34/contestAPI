@@ -26,7 +26,6 @@ function PinUpdate($email) {
     $recipientEmail = $email;
     $recipientName = $email_query_array['first_name'] . " " . $email_query_array ['last_name'];
     $subject = 'NFL SUPERCONTEST - PIN RESET';
-    // CHECK LINK IN BELOW TEMPLATE TO MAKE SURE IT WORKS ON DREAMHOST
     $body = '<html>
                 <body>
                     <h3>YOUR NEW SUPERCONTEST PIN IS</h3>

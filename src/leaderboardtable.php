@@ -43,8 +43,6 @@ if (count($data) > 0) {
 			<th>Last Week</th>
 		</tr>';
 		
-
-		
 	// foreach loop to list out each row in the array
 		
 	foreach ($data as $row) {

@@ -32,11 +32,6 @@ if ($weekmarker != 1) {
 
 }
 
-// MANUAL OVERRIDE FOR $DATE, $WEEKMARKER, $LAST_WEEKMARKER IF NEEDED
-// $date = strtotime("09/12/2019 22:05:00");
-// $weekmarker = 17;
-// $last_weekmarker = 17;
-
 //set variables to identify season quarter
 
 switch ($weekmarker) {

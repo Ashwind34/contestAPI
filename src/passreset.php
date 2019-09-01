@@ -59,20 +59,14 @@ if (!empty($_POST['passreset'])) {
     
                 if ($_POST['pin'] == $pin_check_array['pin']) {
                 
-                //Prepared Statement to update password
-                
                     $query = "UPDATE player_roster 
                             SET password = :password
                             WHERE email = :email";
                 
                     $submit = $conn->prepare($query);
-            
-                    //bind parameters
                 
                     $submit->BindParam(':email', $_POST['email']);
                     $submit->BindParam(':password', password_hash($_POST['userpass'], PASSWORD_BCRYPT));
-                                
-                    //Submit query to database
     
                     if ($submit->execute()) {
                         echo    '<br><p>Password Updated Successfully</p>
