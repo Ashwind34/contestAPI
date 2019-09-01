@@ -28,7 +28,7 @@ if(!adminCheck()) {
 	<body>
 		<p style=text-align:center; color:blue;></p>
 		<p style=text-align:center;><a href="../index.php">Return to Home Page</a></p>
-		<p style=text-align:center;><a href="https://www.westgateresorts.com/hotels/nevada/las-vegas/westgate-las-vegas-resort-casino/supercontest-weekly-card/">Check Vegas Lines</a></p>
+		<p style=text-align:center;><a href="https://www.westgateresorts.com/hotels/nevada/las-vegas/westgate-las-vegas-resort-casino/supercontest-weekly-card/" target="_blank">Check Vegas Lines</a></p>
 
 		<?php 
 
