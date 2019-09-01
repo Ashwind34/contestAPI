@@ -153,7 +153,6 @@ if (!empty($_POST['submit'])) {
 		
 }
 
-	
 ?>
 
 	<body>
@@ -162,9 +161,7 @@ if (!empty($_POST['submit'])) {
                 <div class="picksTitle">
                     Make your picks for Week <?php echo "$weekmarker, $player_name";?>!                    
                 </div>
-                <div>
-                    <p style="color:red;">Beta Test Date: <br>
-                    <?php echo $fake_date ?></p><br>			
+                <div>			
                     <?php echo $weekly_lines_table ?>	
                 </div>
                 <div class="pickselect" style="font-size:0.85rem;">

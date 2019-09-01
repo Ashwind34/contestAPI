@@ -10,26 +10,13 @@ $season_start = strtotime("09/04/2019");
 
 //check to make sure $date is not negative
 
-if ($today < $season_start) {
-	$date = $season_start;
-} else {
-	$date = $today;
-}
-
-// date override for beta test
-
-// $date = $today + 2419200;
-
-// MANUAL OVERRIDE FOR $DATE IF NEEDED
-$date = strtotime("09/12/2019 22:05:00");
-
-$fake_date = date("m/d/Y h:i:sa", $date);
+($today < $season_start) ? $date = $season_start : $date = $today;
 
 //$weekmarker variable will return current NFL week value
 
 $datetest = (($date - $season_start)/"604800");
 
-$weekmarker = ceil($datetest);
+($datetest > 0) ? $weekmarker = ceil($datetest) : $weekmarker = 1;
 
 $kickoff_marker = $weekmarker - $datetest;
 
@@ -45,8 +32,10 @@ if ($weekmarker != 1) {
 
 }
 
-// MANUAL OVERRIDE FOR $WEEKMARKER IF NEEDED
+// MANUAL OVERRIDE FOR $DATE, $WEEKMARKER, $LAST_WEEKMARKER IF NEEDED
+// $date = strtotime("09/12/2019 22:05:00");
 // $weekmarker = 17;
+// $last_weekmarker = 17;
 
 //set variables to identify season quarter
 
@@ -72,6 +61,22 @@ switch ($weekmarker) {
 		$qtrcol = "q4_score";
 		break;
 }
+
+// CODE TO CHECK DATE/TIME/WEEK VALUES
+// echo '$today = ' . $today;
+
+// echo '<br>$today_date = ' . $today_date;
+
+// echo '<br>$season_start = ' . $season_start;
+
+// echo '<br>$date = ' . $date;
+
+// echo '<br>$datetest = ' . $datetest;
+
+// echo '<br>$weekmarker = . ' . $weekmarker;
+
+// echo '<br>$last_weekmarker = ' . $last_weekmarker;
+
 
 
 ?>
