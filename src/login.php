@@ -16,6 +16,9 @@ if(isset($_SESSION['player_id']) && !empty($_SESSION['player_id'])) {
 <!DOCTYPE HTML>
 <html>
 	<head>
+        <title>
+            Log In
+        </title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 		<meta http-equiv="Pragma" content="no-cache" />

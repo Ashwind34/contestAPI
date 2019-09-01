@@ -17,6 +17,9 @@ require_once('dupeteamcheck.php');
 <!DOCTYPE html>
 <html>
 	<head>
+        <title>
+            Enter Picks
+        </title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 		<meta http-equiv="Pragma" content="no-cache" />

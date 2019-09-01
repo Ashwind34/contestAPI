@@ -14,6 +14,9 @@ sessionCheck("login.php");
 <!DOCTYPE html>
 <html>
     <head>
+        <title>
+           NFL Schedule
+        </title>
         <meta name="viewport" content="width=device-width">
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 		<meta http-equiv="Pragma" content="no-cache" />

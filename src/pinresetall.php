@@ -19,7 +19,7 @@ if(!adminCheck()) {
 <html>
 	<head>
 		<title>
-			SuperContest 2019
+			Update PINs
 		</title>
         <meta name="viewport" content="width=device-width">
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />

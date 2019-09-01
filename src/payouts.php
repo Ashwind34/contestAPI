@@ -23,7 +23,7 @@ $quarterly = 100;
 <html>
 	<head>
 		<title>
-			SuperContest 2019
+			Contest Prizes
 		</title>
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />

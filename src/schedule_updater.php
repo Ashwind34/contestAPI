@@ -17,7 +17,9 @@ if(!adminCheck()) {
 <!DOCTYPE html>
 <html>
 	<head>
-		<!-- set page to eliminate data cache storage on reload -->
+		<title>
+			Update the Schedule
+		</title>
 		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 		<meta http-equiv="Pragma" content="no-cache" />
 		<meta http-equiv="Expires" content="0" />
@@ -26,6 +28,7 @@ if(!adminCheck()) {
 	<body>
 		<p style=text-align:center; color:blue;></p>
 		<p style=text-align:center;><a href="../index.php">Return to Home Page</a></p>
+		<p style=text-align:center;><a href="https://www.westgateresorts.com/hotels/nevada/las-vegas/westgate-las-vegas-resort-casino/supercontest-weekly-card/">Check Vegas Lines</a></p>
 
 		<?php 
 

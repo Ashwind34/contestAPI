@@ -15,6 +15,9 @@ sessionCheck("login.php");
 <!DOCTYPE html>
 <html>
     <head>
+        <title>
+            Success!!
+        </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preload" href="../css/img/TDbo.png" as="image">
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
