@@ -40,7 +40,7 @@ sessionCheck("login.php");
 					<legend>Main Menu</legend>		
 						<a class = "noMargin" href="picksinput.php">Make Your Picks</a>
 						<a href="weekly_lines_table.php">Weekly Schedule</a>
-						<a href="weekly_picks_table.php">Current Picks</a>
+						<a href="weekly_picks_table.php">Current Selections</a>
 						<a href="leaderboard.php">Leaderboard</a>
 						<a href="payouts.php">Contest Prizes</a>
 						<a href="passreset.php">Change Password</a>

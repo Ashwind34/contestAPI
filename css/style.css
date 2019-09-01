@@ -254,6 +254,10 @@ label,
 	margin-bottom: 0.65rem;
 }
 
+.pickSubmit {
+	text-shadow: 2px 2px red;
+}
+
 p,
 label {
 	margin-top: 0.4rem;

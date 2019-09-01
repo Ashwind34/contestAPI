@@ -167,8 +167,8 @@ if (!empty($_POST['submit'])) {
                 <div>			
                     <?php echo $weekly_lines_table ?>	
                 </div>
-                <div class="pickselect" style="font-size:0.85rem;">
-                    <span class="bold">***</span>Your Current Picks<span class="bold">***</span>
+                <div class="pickSubmit" style="font-size:0.85rem;">
+                    ***Your Current Picks***
                 </div>
                 <div>
                     <?php echo $player_picks_table;?>
