@@ -227,6 +227,7 @@ a:link, a:visited, .payout {
 .payout {
 	font-family: "TecmoBody";
 	display: grid;
+	margin-top: 0.5rem;
 }
 
 .quartertext {
