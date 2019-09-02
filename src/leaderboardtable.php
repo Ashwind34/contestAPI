@@ -35,7 +35,7 @@ if (count($data) > 0) {
 	ob_start();
 
 	echo 
-	'<table>		
+	'<table class="board">		
 		<tr>
 			<th>Player</th>			
 			<th>Total Score</th>
