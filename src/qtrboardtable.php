@@ -2,7 +2,7 @@
 
 require_once('sessioncheck.php');
 
-setSession(basename(__FILE__));
+session_start();
 
 require_once('datecheck.php');
 require_once('pdo_connect.php');
