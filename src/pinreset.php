@@ -40,17 +40,19 @@ if (!empty($_POST['submit'])) {
 ?>
 
 	<body>
-        <div class="pinContainer">
-            <div class="formTitle">
-                Reset Your PIN
-            </div>
-            <form action="pinreset.php" method="post">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" value="<?php echo $player_email;?>"><br>  
-                <input type="submit" name="submit" value="Reset Your Pin">
-            </form>
-            <div class='formLink'>
-                <a href="../index.php">Return to Home Page</a>
+        <div class="wrapper">
+            <div class="pinContainer">
+                <div class="formTitle">
+                    Reset Your PIN
+                </div>
+                <form action="pinreset.php" method="post">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" value="<?php echo $player_email;?>"><br>  
+                    <input type="submit" name="submit" value="Reset Your Pin">
+                </form>
+                <div class='formLink'>
+                    <a href="../index.php">Return to Home Page</a>
+                </div>
             </div>
         </div>
     </body>

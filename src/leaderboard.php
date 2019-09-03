@@ -19,22 +19,24 @@ sessionCheck("login.php");
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
 	<body class="blackBack">
-		<div class="boardContainer">
-			<div class='formTitle'>
-				LEADERBOARD<br>
-				WEEK <?php echo $weekmarker; ?> 
-			</div>
-			<div class="formLink">
-				<a class="noMargin" href="quarterboard.php">Quarterly Leaderboard</a>
-				<a href="home.php">Return to Home Page</a>				
-			</div>
-			<div>			
-				<?php echo $leaderboard; ?>				
-			</div>
-			<div>
-				<a class="formLink" href="home.php">Return to Home Page</a>
-				<br>
-				<br>
+		<div class ="wrapper">
+			<div class="boardContainer">
+				<div class='formTitle'>
+					LEADERBOARD<br>
+					WEEK <?php echo $weekmarker; ?> 
+				</div>
+				<div class="formLink">
+					<a class="noMargin" href="quarterboard.php">Quarterly Leaderboard</a>
+					<a href="home.php">Return to Home Page</a>				
+				</div>
+				<div>			
+					<?php echo $leaderboard;?>				
+				</div>
+				<div>
+					<a class="formLink" href="home.php">Return to Home Page</a>
+					<br>
+					<br>
+				</div>
 			</div>
 		</div>
 	</body>

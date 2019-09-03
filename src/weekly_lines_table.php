@@ -24,15 +24,17 @@ sessionCheck("login.php");
         <link rel="stylesheet" type="text/css" href="../css/style.css">
     </head>    
     <body>
-        <div class ="schedContainer">            
-            <div class="formTitle">
-                Week <?php echo $weekmarker ;?> Lines
-            </div>      
-            <div class='picksSubmit'>
-                <?php echo $weekly_lines_table ?>
-            </div>
-            <div class='formLink'>
-                <a class="noMargin" href="home.php">Return to Home Page</a>
+        <div class="wrapper">
+            <div class ="schedContainer">            
+                <div class="formTitle">
+                    Week <?php echo $weekmarker;?> Lines
+                </div>      
+                <div class='picksSubmit'>
+                    <?php echo $weekly_lines_table;?>
+                </div>
+                <div class='formLink'>
+                    <a class="noMargin" href="home.php">Return to Home Page</a>
+                </div>
             </div>
         </div>
         <br>
