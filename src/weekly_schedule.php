@@ -9,6 +9,7 @@ $query=$conn->prepare("SELECT
 						h_spread,
 						away,
 						a_spread,
+						start_date,
 						start_time
 						FROM
 						regseason
@@ -59,7 +60,7 @@ if (count($data) > 0) {
 			<td>' . $favorite . '</td>
 			<td>' . $spread . '</td>
 			<td>' . $underdog . '</td>
-			<td>' . date('g:i a', strtotime($row['start_time'])) . '</td>
+			<td>' . date('D', strtotime($row['start_date'])). '<br>' . date('g:i a', strtotime($row['start_time'])) . '</td>
 		</tr>';
 
     }

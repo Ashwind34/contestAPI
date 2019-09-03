@@ -434,22 +434,29 @@ border-bottom-right-radius: 4px;
 }
 
 @media screen and (min-width: 500px) {
-
-	html {
-		font-size: 2.75vh;
-	}
-
 	.wrapper{
 		align-content: start;
 	}
 
 	fieldset, form {
-		min-width: 40%;
+		min-width: 50%;
 	}
+}
+
+@media screen and (min-width: 825px) {
+
+	html {
+		font-size: 2vw;
+	}
+
 }	
 
 @media screen and (min-width: 1030px) {
 	html {
 		font-size: 1.5vw;
+	}
+
+	fieldset, form {
+		min-width: 40%;
 	}
 }
