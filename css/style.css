@@ -180,8 +180,7 @@ fieldset, form {
 	padding-inline-start: 0.5em;
 	padding-inline-end: 0.5em;
 	min-inline-size: min-content;
-	border: 2em solid white;
-	border-width: medium;
+	border: 0.2rem solid white;
 	border-radius: 5px;
 	min-width: 85%;
 	font-family: "TecmoBody";
