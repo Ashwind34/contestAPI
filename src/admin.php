@@ -21,22 +21,28 @@ if(!adminCheck()) {
 			Admin
 		</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
 		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 		<meta http-equiv="Pragma" content="no-cache" />
 		<meta http-equiv="Expires" content="0" />
-		<style>
-			h1{color:green;}
-			h2{color:black;}
-			p {color:blue; text-align:center;}
-		</style>
 	</head>
-	<body>				
-		<p><a href="schedule_updater.php"><i>Update Lines and Scores</i></a></p><br>
-		<p><a href="pinresetall.php">Reset Player PIN</a></p><br>
-		<p><a href="all_picks.php">All Current Picks</a></p><br>
-		<p><a href="home.php">Back to Homepage</a></p><br><br>
-		<p><a href="phpinfo.php">PHP Info</a></p><br>
-
-		<p>Current Date: <?php echo $today_date ?></p><br>
+	<body>
+		<div class="wrapper">
+			<div class="adminContainer">
+				<div class="whiteHead">
+					ADMIN
+				</div>
+				<div>
+					<p>Current Date: <?php echo $today_date ?></p>
+				</div>
+				<fieldset>				
+					<a href="schedule_updater.php">Update Lines and Scores</a><br>
+					<a href="pinresetall.php">Reset Player PIN</a><br>
+					<a href="all_picks.php">All Current Picks</a><br>
+					<a href="home.php">Back to Homepage</a><br>
+					<a href="phpinfo.php">PHP Info</a><br>
+				</fieldset>			
+			</div>
+		</div>
 	</body>
 </html>
