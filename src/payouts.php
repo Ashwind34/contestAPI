@@ -6,14 +6,14 @@ session_start();
 
 sessionCheck("login.php");
 
-$total = 100;
-$first = floor($total * 0.51);
-$second = floor($total * 0.22);
-$third = floor($total * 0.12);
-$fourth = floor($total * 0.07);
-$fifth = floor($total * 0.04);
-$sixth = floor($total * 0.02);
-$seventh = floor($total * 0.01);
+$total = 7400 - 400;
+$first = ceil($total * 0.5);
+$second = ceil($total * 0.24285);
+$third = ceil($total * 0.11428);
+$fourth = ceil($total * 0.05714);
+$fifth = ceil($total * 0.042857);
+$sixth = ceil($total * 0.02857);
+$seventh = ceil($total * 0.01428);
 $quarterly = 100;
 
 

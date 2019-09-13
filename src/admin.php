@@ -33,6 +33,7 @@ if(!adminCheck()) {
 	<body>				
 		<p><a href="schedule_updater.php"><i>Update Lines and Scores</i></a></p><br>
 		<p><a href="pinresetall.php">Reset Player PIN</a></p><br>
+		<p><a href="all_picks.php">All Current Picks</a></p><br>
 		<p><a href="home.php">Back to Homepage</a></p><br><br>
 		<p><a href="phpinfo.php">PHP Info</a></p><br>
 

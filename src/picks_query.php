@@ -64,8 +64,7 @@ $picks_table = $conn->prepare("SELECT
 									player_roster.first_name,
 									' ',
 									player_roster.last_name
-									) AS name,
-								player_roster.fav_team,						 
+									) AS name,					 
 								player_picks.player_id,
 								player_picks.pick_1,
 								player_picks.pick_2,
