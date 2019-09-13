@@ -74,9 +74,9 @@ $picks_table = $conn->prepare("SELECT
 								player_picks.week,
 								player_picks.time_entered
 								FROM player_roster 
-									INNER JOIN player_picks
+									LEFT JOIN player_picks
 										ON player_roster.player_id = player_picks.player_id
-								WHERE week = '$weekmarker'
+								AND week = '$weekmarker'
 								ORDER BY player_roster.last_name ASC");
                         
 $picks_table->execute();
