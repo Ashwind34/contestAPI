@@ -52,7 +52,6 @@ if (!empty($_POST["select"])) {
 
     $body = '<html>
                 <body>
-                    <h3>This is a reminder from the SuperContest!</h3>
                     <h3>' . $_POST["msgbody"] .'</h3><br>                    
                     <h4><a href="www.nfl-supercontest.com">Click Here to make your picks!</a></h4>
                 </body>
@@ -98,7 +97,9 @@ if (!empty($_POST["select"])) {
                     </select>
                     <br>
                     <label for="msgbody">Email Message</label>
-                    <textarea id="msgbody" name="msgbody" rows="5" cols="20">Don't forget to make your picks for this week!</textarea><br>
+                    <textarea id="msgbody" name="msgbody" rows="5" cols="20">
+                        This is a reminder from the SuperContest.  Don't forget to make your picks for this week!
+                    </textarea><br>
                     <input type="submit" value="Submit">
                     <br>
                     <p><a href="./admin.php">Return to Admin Page</a></p>
