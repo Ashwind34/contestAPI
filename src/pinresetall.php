@@ -52,33 +52,34 @@ if (!empty($_POST["select"])) {
 
 ?>
     <body>
+        <div class="wrapper">
+            <div class="messageContainer">
+                <div class="redHead">
+					PLAYER PIN RESET
+				</div>
 
-        <!-- Select multiple emails for manual user PIN updates -->
+                <!-- Select multiple emails for manual user PIN updates -->
 
-        <form action="pinresetall.php" method="POST">
-            <select class="allselect" multiple size="20" name="select[]">
-           
-            <?php 
+                <form action="pinresetall.php" method="POST">
+                    <select class="allselect" multiple size="20" name="select[]">
+                
+                    <?php 
+                    $email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
+                    $email_query->execute();                    
+                    $email_list = $email_query->fetchAll(PDO::FETCH_ASSOC);
+                    
+                    foreach($email_list as $k=>$v) {                
+                        echo '<option value='. $v['email'] . '>' . $v['email'] . '</option>';                 
+                    }
+                            
+                    ?>  
 
-			//query db to get list of player emails and populate select field
-			$email_query = $conn->prepare("SELECT email FROM player_roster ORDER BY email ASC");
-            
-            $email_query->execute();
-            
-            $email_list = $email_query->fetchAll(PDO::FETCH_ASSOC);
-            
-            foreach($email_list as $k=>$v) {                
-                echo '<option value='. $v['email'] . '>' . $v['email'] . '</option>';                 
-            }
-                      
-            ?>  
-
-            </select>
-            <br>
-            <textarea name="msgbody" rows="5" cols="20">Greetings, note your registration pin and clink to register</textarea><br>
-            <input type="submit" value="Submit">
-            <br>
-            <p><a href="../index.php">Return to Home Page</a></p>
-        </form>
+                    </select>
+                    <input type="submit" value="Submit">
+                    <br>
+                    <p><a href="./admin.php">Return to Admin Page</a></p>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

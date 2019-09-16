@@ -109,7 +109,8 @@ body {
 .inputContainer,
 .menuContainer,
 .playerpicksContainer,
-.adminContainer {
+.adminContainer,
+.messageContainer {
 	display: grid;
 	grid-template-columns: 1fr;	
 	justify-items: center;
@@ -170,6 +171,10 @@ body {
 
 .adminContainer {
 	grid-template-rows: 1fr 1fr auto;
+}
+
+.messageContainer {
+	grid-template-rows: 1fr auto;
 }
 
 fieldset, form {

@@ -37,9 +37,9 @@ if(!adminCheck()) {
 				</div>
 				<fieldset>				
 					<a href="schedule_updater.php">Update Lines and Scores</a><br>
-					<a href="pinresetall.php">Reset Player PIN</a><br>
 					<a href="all_picks.php">All Current Picks</a><br>
-					<a href="reminders.php">Reminder List</a><br>
+					<a href="pinresetall.php">Reset Player PINs</a><br>
+					<a href="reminders.php">Send Email Reminders</a><br>
 					<a href="home.php">Back to Homepage</a><br>
 					<a href="phpinfo.php">PHP Info</a><br>
 				</fieldset>			
