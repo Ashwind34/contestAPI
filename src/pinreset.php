@@ -31,6 +31,10 @@ if (!empty($_POST['submit'])) {
     if (emailCheck($email)) {
         list($recipientEmail, $recipiantName, $subject, $body) = PinUpdate($email);
         send_email_message($recipientEmail, $recipiantName, $subject, $body);
+        echo    '<div class="pickselect"><div><br>A new PIN has been sent to <span class="pinEmail">' . $recipientEmail . '</span> Check your email!</div>
+                <div><br><a href="../index.php">Return to Home Page</a></div></div>
+                <audio src="../css/audio/extrapoint.mp3" id="page_audio"></audio>
+                <script src="../audio.js"></script>';
         exit();
     } else {
         email_error(basename(__FILE__));

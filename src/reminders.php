@@ -32,13 +32,13 @@ if(!adminCheck()) {
 <?php
 
 $forgotPicksQuery = $conn->prepare("SELECT 
-                                player_roster.email
-								FROM player_roster 
-									LEFT JOIN player_picks
-										ON player_roster.player_id = player_picks.player_id
-								AND week = '$weekmarker'
-                                WHERE player_picks.pick_1 IS NULL
-								ORDER BY player_roster.email ASC");
+                                        player_roster.email
+                                    FROM player_roster 
+                                        LEFT JOIN player_picks
+                                            ON player_roster.player_id = player_picks.player_id
+                                            AND week = '$weekmarker'
+                                        WHERE player_picks.pick_1 IS NULL
+                                        ORDER BY player_roster.email ASC");
                         
 $forgotPicksQuery->execute();
 
@@ -54,7 +54,7 @@ if (!empty($_POST["select"])) {
                 <body>
                     <h3>This is a reminder to make your SuperContest Picks!</h3>
                     <h3>' . $_POST["msgbody"] .'</h3><br>                    
-                    <p><a href="www.nfl-supercontest.com">Click Here to go to the site.</a></p>
+                    <h4><a href="www.nfl-supercontest.com">Click Here to make your picks!</a></h4>
                 </body>
             </html>';
             
@@ -67,17 +67,18 @@ if (!empty($_POST["select"])) {
         $name_result = $name_query->fetch(PDO::FETCH_ASSOC);
         $recipiantName = $name_result['first_name'] . ' ' . $name_result['last_name'];
         send_email_message($email, $recipiantName, $subject, $body);
-        echo 'Reminder sent to ' . $email;
+        echo '<div class="pickselect">Reminder sent to <span class="pinEmail">' . $email . '</span></div>';
     }
-    echo '<p><a href="./admin.php">Return to Admin</a></p>';
+   
+    echo    '<p><a href="./admin.php">Return to Admin</a></p>
+            <audio src="../css/audio/extrapoint.mp3" id="page_audio"></audio>
+            <script src="../audio.js"></script>';
     exit();
 }
 
+
 ?>
     <body>
-
-        <!-- Select multiple emails for manual user PIN updates -->
-
         <form action="reminders.php" method="POST">
             <select class="allselect" multiple size="20" name="select[]">
            

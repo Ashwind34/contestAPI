@@ -43,6 +43,10 @@ if (!empty($_POST["select"])) {
         list($recipientEmail, $recipiantName, $subject, $body) = PinUpdate($email);
         send_email_message($recipientEmail, $recipiantName, $subject, $body);
     }
+    echo        '<div class="pickselect">New PINs have been sent!
+                <br><br><a href="./admin.php">Return to Admin Page</a></div>
+                <audio src="../css/audio/extrapoint.mp3" id="page_audio"></audio>
+                <script src="../audio.js"></script>';
     exit();
 }
 

@@ -39,11 +39,6 @@ function send_email_message($recipientEmail, $recipientName, $subject, $body) {
         //Content
         $mail->isHTML(true);                                    // Set email format to HTML    
         $mail->send();
-
-        echo    '<div class="pickselect"><div><br>A new PIN has been sent to <span class="pinEmail">' . $recipientEmail . '</span> Check your email!</div>
-                <div><br><a href="../index.php">Return to Home Page</a></div></div>
-                <audio src="../css/audio/extrapoint.mp3" id="page_audio"></audio>
-                <script src="../audio.js"></script>';
     
     } catch (Exception $e) {
         echo '<link rel="stylesheet" type="text/css" href="../css/style.css">';
@@ -51,8 +46,7 @@ function send_email_message($recipientEmail, $recipientName, $subject, $body) {
         echo 'Mailer Error: ' . $mail->ErrorInfo;
         echo '<br><label>Message could not be sent.  Please try again.</label>';
         echo '<br><label>Mailer Error: ' . $mail->ErrorInfo . '.  Please email this error to the Commissioner.</label>';
-        echo '<br><a href="pinresetfresh.php">Try Again</a>';
-        echo '<br><a href="../index.php">Return to Home Page</a>';
+        echo '<br><a href="./admin.php">Return to Admin Page</a>';
         exit();  
     }
 
