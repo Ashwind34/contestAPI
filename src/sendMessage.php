@@ -13,7 +13,7 @@ function send_email_message($recipientEmail, $recipientName, $subject, $body) {
     try {
 
         //Load composer's autoloader
-        require '/home/' . get_current_user() . '/.php/composer/vendor/autoload.php';
+        require '../vendor/autoload.php';
         
         $mail = new PHPMailer(true);                            // Passing `true` enables exceptions
 
