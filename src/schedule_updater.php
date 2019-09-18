@@ -24,11 +24,25 @@ if(!adminCheck()) {
 		<meta http-equiv="Pragma" content="no-cache" />
 		<meta http-equiv="Expires" content="0" />
 		<meta name="viewport" content="width=device-width">
+		<style>
+			p: {
+				text-align: center;
+				color: blue;
+			}
+		</style>
 	</head>
 	<body>
-		<p style=text-align:center; color:blue;></p>
-		<p style=text-align:center;><a href="../index.php">Return to Home Page</a></p>
-		<p style=text-align:center;><a href="https://www.westgateresorts.com/hotels/nevada/las-vegas/westgate-las-vegas-resort-casino/supercontest-weekly-card/" target="_blank">Check Vegas Lines</a></p>
+		<div style="text-align:center">
+			<p><a href="../index.php">Return to Home Page</a></p>
+			<p><a href="https://www.westgateresorts.com/hotels/nevada/las-vegas/westgate-las-vegas-resort-casino/supercontest-weekly-card/" target="_blank">Check Vegas Lines</a></p>
+			<form action="schedule_updater.php" method="post">
+				<p>Set Week to Update</p>
+				<input type="number" name='week' value=<?php echo $weekmarker?>>
+				<br>
+				<br>
+				<input type="submit" value="Set Week">
+			</form>
+		</div>
 
 		<?php 
 
@@ -36,7 +50,11 @@ if(!adminCheck()) {
 		// STILL NEED TO FORMAT AND RE-FACTOR MOST OF THIS		
 		// MUST UPDATE THIS TO SIMPLIFY, CAN DO THIS WITH MANY LESS DATABASE QUERIES
 
-		if (empty($_POST['submit'])) {
+		if(!empty($_POST['week'])) {
+			$weekmarker = $_POST['week'];
+		}
+
+		if (empty($_POST['update'])) {
 			} else {
 					
 					$h_spread_array = $_POST['h_spread'];
@@ -313,7 +331,7 @@ if(!adminCheck()) {
 			} 
 					
 			echo  
-			'<p align="center"><input type="submit" name="submit" value="Update"></p>
+			'<p align="center"><input type="submit" name="update" value="Update"></p>
 			</table>
 			</form>';
 				
