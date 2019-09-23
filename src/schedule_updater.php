@@ -15,10 +15,6 @@ if(!adminCheck()) {
 // STILL NEED TO FORMAT AND RE-FACTOR MOST OF THIS		
 // MUST UPDATE THIS TO SIMPLIFY, CAN DO THIS WITH MANY LESS DATABASE QUERIES
 
-if(!empty($_POST['week'])) {
-	$weekmarker = $_POST['week'];
-}
-
 if (empty($_POST['update'])) {
 	} else {
 			
@@ -185,7 +181,6 @@ if (empty($_POST['update'])) {
 							AND week = '$weekmarker'";
 							
 				// update week_score for each row of picks and total_score, quarterly score on player_roster table
-				//  MAY BE ABLE TO REMOVE $WEEKMARKER CLAUSE IN $UPDATE_WEEK_SCORE??
 							
 				$update_week_score = "UPDATE player_picks
 								SET week_score = pick_1_wlt + pick_2_wlt + pick_3_wlt + pick_4_wlt + pick_5_wlt
@@ -238,8 +233,8 @@ if (empty($_POST['update'])) {
 				}
 			}
 				
-		// echo '<script type="text/javascript">window.location.href="weekly_lines_table.php"</script>';
-		// exit();
+		echo '<script type="text/javascript">window.location.href="weekly_lines_table.php"</script>';
+		exit();
 		
 		}			
 
@@ -334,14 +329,6 @@ if (count($data) > 0) {
 		<div style="text-align:center">
 			<p><a href="../index.php">Return to Home Page</a></p>
 			<p><a href="https://www.westgateresorts.com/hotels/nevada/las-vegas/westgate-las-vegas-resort-casino/supercontest-weekly-card/" target="_blank">Check Vegas Lines</a></p>
-			<form action="schedule_updater.php" method="post">
-				<p>Set Week to Update</p>
-				<input type="number" name='week' style="width:50px" value=<?php echo $weekmarker?>>
-				<br>
-				<br>
-				<input type="submit" value="Set Week">
-			</form>
-			<br>
 			<?php echo $schedule_updater;?>
 		</div>
 	</body>
