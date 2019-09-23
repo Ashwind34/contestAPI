@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
-CREATE DATABASE regseason;
+CREATE DATABASE supercontest;
 
 --
 -- Table structure for table `picks_log`
