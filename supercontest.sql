@@ -129,10 +129,6 @@ ALTER TABLE `regseason`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
---
-
---
 -- AUTO_INCREMENT for table `picks_log`
 --
 ALTER TABLE `picks_log`
