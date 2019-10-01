@@ -23,7 +23,6 @@ sessionCheck("login.php");
 			<div class="qtrboardContainer">
 				<div class='formTitle'>
 					QUARTERLY LEADERBOARD<br>
-					WEEK <?php echo $weekmarker ?>
 				</div>
 				<div class="formLink">
 					<div class='quartertext'>Current Quarter ends after Week <?php echo $qtrend; ?></div>

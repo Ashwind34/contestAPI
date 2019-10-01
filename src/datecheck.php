@@ -1,5 +1,7 @@
 <?php 
 
+require_once("pdo_connect.php");
+
 date_default_timezone_set("America/New_York");
 
 $today = time();
@@ -16,7 +18,17 @@ $season_start = strtotime("09/04/2019");
 
 $datetest = (($date - $season_start)/"604800");
 
-($datetest > 0) ? $weekmarker = ceil($datetest) : $weekmarker = 1;
+$query = "SELECT week 
+			FROM weekmarker
+			ORDER BY week DESC
+			LIMIT 1";
+
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$weekmarker = $stmt->fetch(PDO::FETCH_COLUMN);
+
+// USE BELOW TO SET WEEKMARKER AUTOMATICALLY BASED ON DATE
+// ($datetest > 0) ? $weekmarker = ceil($datetest) : $weekmarker = 1;
 
 $kickoff_marker = $weekmarker - $datetest;
 
@@ -56,22 +68,5 @@ switch ($weekmarker) {
 		$qtrcol = "q4_score";
 		break;
 }
-
-// CODE TO CHECK DATE/TIME/WEEK VALUES
-// echo '$today = ' . $today;
-
-// echo '<br>$today_date = ' . $today_date;
-
-// echo '<br>$season_start = ' . $season_start;
-
-// echo '<br>$date = ' . $date;
-
-// echo '<br>$datetest = ' . $datetest;
-
-// echo '<br>$weekmarker = . ' . $weekmarker;
-
-// echo '<br>$last_weekmarker = ' . $last_weekmarker;
-
-
 
 ?>
