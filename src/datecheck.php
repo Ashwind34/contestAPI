@@ -57,21 +57,4 @@ switch ($weekmarker) {
 		break;
 }
 
-// CODE TO CHECK DATE/TIME/WEEK VALUES
-// echo '$today = ' . $today;
-
-// echo '<br>$today_date = ' . $today_date;
-
-// echo '<br>$season_start = ' . $season_start;
-
-// echo '<br>$date = ' . $date;
-
-// echo '<br>$datetest = ' . $datetest;
-
-// echo '<br>$weekmarker = . ' . $weekmarker;
-
-// echo '<br>$last_weekmarker = ' . $last_weekmarker;
-
-
-
 ?>

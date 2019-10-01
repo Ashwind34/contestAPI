@@ -26,27 +26,11 @@ sessionCheck("login.php");
 	</head>
 	<body class="blackBack">
 		<div class="wrapper">
-			<div class="picksContainer">
-				
+			<div class="picksContainer">				
 				<?php 	
-
-				//if we are before approx. 11:30 AM PST on Sunday, show logged-in player's picks only.  Else show all player's picks.
-				// CURRENTLY DISABLED
-
-				// if ($kickoff_marker > 0.22) {
-
 					echo '<div class="formTitle">Your Picks for <br>Week ' . $weekmarker . '</div>';
 					echo $player_picks_table;
-					echo '<a class="formLink" href="home.php">Return to Home Page</a>';
-					
-				// } else {
-				// 	echo '<div class="formTitle">All Picks for <br>Week ' . $weekmarker . '</div>
-				// 			<a class ="formLink" href="../index.php">Return to Home Page</a>';
-					
-				// 	echo $weekly_picks_table;
-					
-				// }
-				
+					echo '<a class="formLink" href="home.php">Return to Home Page</a>';				
 				?>
 				<div class="slide">
 					<img class="boPic" src="../css/img/tecmoTD.png" alt="">

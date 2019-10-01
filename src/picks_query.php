@@ -165,7 +165,6 @@ function PickDropdown($picknum) {
             echo '<option value="' . $current_pick . '">' . $current_pick . '</option>';
                  
             // insert team list as options for picks dropdown list
-            // NEED TO FILTER TEAMLIST ARRAY TO EXCLUDE $CURRENT_PICK
                 
             $query = $conn->prepare($team_query);
             $query->execute();
