@@ -150,7 +150,7 @@ body {
 }
 
 .qtrboardContainer {
-	grid-template-rows: 1.25fr 2fr auto 1fr;
+	grid-template-rows: 0.75fr 2fr auto 1fr;
 }
 
 .payContainer {
@@ -170,7 +170,7 @@ body {
 }
 
 .adminContainer {
-	grid-template-rows: 1fr 1fr auto;
+	grid-template-rows: 0.75fr 1fr auto;
 }
 
 .messageContainer {
