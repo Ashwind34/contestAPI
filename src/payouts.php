@@ -6,14 +6,14 @@ require_once('sessioncheck.php');
 sessionCheck("login.php");
 
 $quarterly = 100;
-$total = 7400 - (4 * $quarterly);
+$total = 1400 - (4 * $quarterly);
 $first = ceil($total * 0.5);
-$second = ceil($total * 0.24285);
-$third = ceil($total * 0.11428);
-$fourth = ceil($total * 0.05714);
-$fifth = ceil($total * 0.042857);
-$sixth = ceil($total * 0.02857);
-$seventh = ceil($total * 0.01428);
+$second = ceil($total * 0.25);
+$third = ceil($total * 0.12);
+$fourth = ceil($total * 0.05);
+$fifth = ceil($total * 0.04);
+$sixth = ceil($total * 0.03);
+$seventh = ceil($total * 0.01);
 
 
 
