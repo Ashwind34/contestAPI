@@ -86,8 +86,6 @@ function timeCheck($arr) {
 
     foreach ($final_arr as $value) {
         if (!in_array($value, $result) && $value !== 'Submit Your Picks') {
-            echo $value . '<br>';
-            echo $checkvalue;
             $checkvalue = false;     
         }
     }

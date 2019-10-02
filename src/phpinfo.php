@@ -1,8 +1,12 @@
 <?php 
 
+session_start();
+
 require_once('sessioncheck.php');
 
-session_start();
+if(!adminCheck()) {
+	header("Location: ./login.php");
+}
 
 phpinfo()
 

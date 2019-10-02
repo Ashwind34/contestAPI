@@ -1,9 +1,10 @@
 <?php
+
+session_start();
+
 require_once('sessioncheck.php');
 require_once('datecheck.php');
 require_once('pdo_connect.php');
-
-session_start();
 
 if(empty($_SESSION['player_id'])) {
 

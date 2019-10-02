@@ -1,17 +1,12 @@
 <?php
 
-require_once('sessioncheck.php');
-
 session_start();
 
+require_once('sessioncheck.php');
 require_once('datecheck.php');
 require_once('pdo_connect.php');
 
-if(empty($_SESSION['player_id'])) {
-
-	header("Location: ./login.php");
-
-}
+sessionCheck("login.php");
 
 //query for leaderboard table
 

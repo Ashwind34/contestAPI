@@ -1,9 +1,8 @@
 <?php
 
-require_once('src/sessioncheck.php');
-
 session_start();
 
+require_once('src/sessioncheck.php');
 require_once('src/pdo_connect.php');
 require_once('src/datecheck.php');
 

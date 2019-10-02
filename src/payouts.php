@@ -1,12 +1,12 @@
 <?php
 
-require_once('sessioncheck.php');
-
 session_start();
 
+require_once('sessioncheck.php');
 sessionCheck("login.php");
 
-$total = 7400 - 400;
+$quarterly = 100;
+$total = 7400 - (4 * $quarterly);
 $first = ceil($total * 0.5);
 $second = ceil($total * 0.24285);
 $third = ceil($total * 0.11428);
@@ -14,7 +14,7 @@ $fourth = ceil($total * 0.05714);
 $fifth = ceil($total * 0.042857);
 $sixth = ceil($total * 0.02857);
 $seventh = ceil($total * 0.01428);
-$quarterly = 100;
+
 
 
 ?>
