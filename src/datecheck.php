@@ -1,5 +1,7 @@
 <?php 
 
+require_once("pdo_connect.php");
+
 date_default_timezone_set("America/New_York");
 
 $today = time();
@@ -16,21 +18,23 @@ $season_start = strtotime("09/04/2019");
 
 $datetest = (($date - $season_start)/"604800");
 
-($datetest > 0) ? $weekmarker = ceil($datetest) : $weekmarker = 1;
+$query = "SELECT week 
+			FROM weekmarker
+			ORDER BY week DESC
+			LIMIT 1";
+
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$weekmarker = $stmt->fetch(PDO::FETCH_COLUMN);
+
+// USE BELOW TO SET WEEKMARKER AUTOMATICALLY BASED ON DATE
+// ($datetest > 0) ? $weekmarker = ceil($datetest) : $weekmarker = 1;
 
 $kickoff_marker = $weekmarker - $datetest;
 
 //set variable to identify previous week
 
-if ($weekmarker != 1) {
-	
-	$last_weekmarker = $weekmarker - 1;
-
-} else {
-
-	$last_weekmarker = 1;
-
-}
+$weekmarker != 1 ? $last_weekmarker = $weekmarker - 1 :	$last_weekmarker = 1;
 
 //set variables to identify season quarter
 

@@ -1,9 +1,8 @@
 <?php
 
-require_once('sessioncheck.php');
-
 session_start();
 
+require_once('sessioncheck.php');
 require_once('datecheck.php');
 require_once('pdo_connect.php');
 
@@ -32,8 +31,10 @@ if(!adminCheck()) {
 				<div class="whiteHead">
 					ADMIN
 				</div>
-				<div>
+				<div class="quartertext">
 					<p>Current Date: <?php echo $today_date ?></p>
+					<p>Current Week: <?php echo ceil($datetest) ?></p>
+					<p>Contest Set for Week # <?php echo $weekmarker?></p>
 				</div>
 				<fieldset>				
 					<a href="schedule_updater.php">Update Lines and Scores</a><br>

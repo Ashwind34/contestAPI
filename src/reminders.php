@@ -57,7 +57,7 @@ if (!empty($_POST["select"])) {
                 </body>
             </html>';
             
-    $subject = 'SuperContest Reminder';
+    $subject =  $_POST['subject'];
  
     foreach ($emailstoreset as $key=>$email) {
         $name_query = $conn->prepare("SELECT email, first_name, last_name FROM player_roster WHERE email = :email");
@@ -96,6 +96,8 @@ if (!empty($_POST["select"])) {
 
                     </select>
                     <br>
+                    <label for="subject">Email Subject</label>
+                    <input type="text" id="subject" name="subject">
                     <label for="msgbody">Email Message</label>
                     <textarea id="msgbody" name="msgbody" rows="5" cols="20">
                         This is a reminder from the SuperContest.  Don't forget to make your picks for this week!
