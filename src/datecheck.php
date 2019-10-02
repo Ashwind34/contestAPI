@@ -8,6 +8,8 @@ $today = time();
 
 $today_date = date("m/d/Y h:i:sa", $today);
 
+// SET SEASON START DATE HERE
+
 $season_start = strtotime("09/04/2019");
 
 //check to make sure $date is not negative
