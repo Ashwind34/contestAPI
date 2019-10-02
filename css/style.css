@@ -142,7 +142,7 @@ body {
 }
 
 .schedContainer {
-	grid-template-rows: 1fr 8fr 2fr;
+	grid-template-rows: 1fr 8fr 1fr;
 }
 
 .boardContainer {

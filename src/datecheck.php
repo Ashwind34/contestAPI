@@ -34,15 +34,7 @@ $kickoff_marker = $weekmarker - $datetest;
 
 //set variable to identify previous week
 
-if ($weekmarker != 1) {
-	
-	$last_weekmarker = $weekmarker - 1;
-
-} else {
-
-	$last_weekmarker = 1;
-
-}
+$weekmarker != 1 ? $last_weekmarker = $weekmarker - 1 :	$last_weekmarker = 1;
 
 //set variables to identify season quarter
 
