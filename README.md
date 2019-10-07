@@ -1,5 +1,5 @@
 # The NFL Supercontest App
-This is my application to administer an NFL picks contest using HTML, CSS, MySQL, and PHP.  This project was born out of a need to run this contest with multiple participants without keeping track of player picks and scorekeeping with spreadsheets.  The current css theme for this project is styled after the 1991 video game Tecmo Super Bowl for the original Nintendo Entertainment System.
+This is my application to administer an NFL picks contest with remote users.  The application was built using HTML, CSS, MySQL, and PHP.  This project was born out of a need to run this contest with multiple participants without keeping track of player picks and scores with spreadsheets.  The current css theme for this project is styled after the 1991 video game Tecmo Super Bowl for the original Nintendo Entertainment System. 
 
 ## Requirements
 
