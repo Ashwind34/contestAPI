@@ -1,5 +1,5 @@
 # The NFL Supercontest App
-This is my application to administer an NFL picks contest with remote users.  The application was built using HTML, CSS, MySQL, and PHP.  This project was born out of a need to run this contest with multiple participants without keeping track of player picks and scores with spreadsheets.  The current css theme for this project is styled after the 1991 video game Tecmo Super Bowl for the original Nintendo Entertainment System. 
+This is my application to administer an NFL picks contest with remote users.  Contest participants pick 5 NFL games per week, and the application calculates weekly scores for each player and maintains a leaderboard for the contest.  The application was built using HTML, CSS, MySQL, and PHP.  This project was born out of a need to run this contest with multiple participants without keeping track of player picks and scores with spreadsheets.  The current css theme for this project is styled after the 1991 video game Tecmo Super Bowl for the original Nintendo Entertainment System. 
 
 ## Requirements
 
@@ -21,7 +21,7 @@ This is my application to administer an NFL picks contest with remote users.  Th
 
 5) This application uses PHPMailer.  Update the src/email_conf.php file with your email account and email server credentials.
 
-6) Generate PINs for each player using the RESET PLAYER PINS link in the admin panel.  Players will need a PIN to register.
+6) Generate PINs for each player using the RESET PLAYER PINS link in the admin panel.  Players will need a PIN to register.  PINs are emailed to each participant at the beginning of the season, and whenever a player requests a new PIN.  PINs are necessary for security to ensure that the individual player is the only person who can change his or her password.
 
 7) Game lines, game scores, and the current week need to be updated manually using the UPDATE LINES AND SCORES link in the admin panel.
 
